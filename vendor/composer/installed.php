@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '630c7da9696f298499715deb9ecf7421c22e69e9',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '630c7da9696f298499715deb9ecf7421c22e69e9',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -864,9 +864,9 @@
             'dev_requirement' => false,
         ),
         'symfony/maker-bundle' => array(
-            'pretty_version' => 'v1.53.0',
-            'version' => '1.53.0.0',
-            'reference' => '8d2f3f96704766837548d177fe3ae39ae94822d9',
+            'pretty_version' => 'v1.54.0',
+            'version' => '1.54.0.0',
+            'reference' => 'a8523cf35d777bf2d8cf5703fa73f378fdc27125',
             'type' => 'symfony-bundle',
             'install_path' => __DIR__ . '/../symfony/maker-bundle',
             'aliases' => array(),
