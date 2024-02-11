@@ -22,7 +22,7 @@ composer install
 ```
 2. Run application
 ``` shell
-symfony server --port=8080
+symfony serve --port=8080
 ``` 
 3. Open http://localhost:8080 in browser
 

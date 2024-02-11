@@ -17,8 +17,6 @@ return [
     '_profiler_router' => [['token'], ['_controller' => 'web_profiler.controller.router::panelAction'], [], [['text', '/router'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
-    'app_list_loans' => [[], ['_controller' => 'App\\Controller\\ListLoansController::index'], [], [['text', '/loans/list']], [], [], []],
-    'app_login' => [[], ['_controller' => 'App\\Controller\\LoginController::index'], [], [['text', '/login']], [], [], []],
-    'App\Controller\ListLoansController::index' => [[], ['_controller' => 'App\\Controller\\ListLoansController::index'], [], [['text', '/loans/list']], [], [], []],
-    'App\Controller\LoginController::index' => [[], ['_controller' => 'App\\Controller\\LoginController::index'], [], [['text', '/login']], [], [], []],
+    'app_loans_list' => [[], ['_controller' => 'App\\Controller\\LoansListController::index'], [], [['text', '/loans/list']], [], [], []],
+    'App\Controller\LoansListController::index' => [[], ['_controller' => 'App\\Controller\\LoansListController::index'], [], [['text', '/loans/list']], [], [], []],
 ];

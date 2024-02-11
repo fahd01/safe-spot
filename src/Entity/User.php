@@ -14,19 +14,16 @@ class User
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
-    #[ORM\OneToMany(targetEntity: Loan::class, mappedBy: 'borrower')]
-    private Collection $loans;
-
     #[ORM\Column(length: 255)]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 255)]
     private ?string $lastName = null;
 
+
     public function __construct()
     {
-        $this->loans = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -44,32 +41,7 @@ class User
     /**
      * @return Collection<int, Loan>
      */
-    public function getLoans(): Collection
-    {
-        return $this->loans;
-    }
 
-    public function addLoan(Loan $loan): static
-    {
-        if (!$this->loans->contains($loan)) {
-            $this->loans->add($loan);
-            $loan->setBorrower($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLoan(Loan $loan): static
-    {
-        if ($this->loans->removeElement($loan)) {
-            // set the owning side to null (unless already changed)
-            if ($loan->getBorrower() === $this) {
-                $loan->setBorrower(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getFirstName(): ?string
     {

@@ -19,11 +19,9 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\InternalProxy
         "\0".parent::class."\0".'firstName' => [parent::class, 'firstName', null],
         "\0".parent::class."\0".'id' => [parent::class, 'id', null],
         "\0".parent::class."\0".'lastName' => [parent::class, 'lastName', null],
-        "\0".parent::class."\0".'loans' => [parent::class, 'loans', null],
         'firstName' => [parent::class, 'firstName', null],
         'id' => [parent::class, 'id', null],
         'lastName' => [parent::class, 'lastName', null],
-        'loans' => [parent::class, 'loans', null],
     ];
 
     public function __isInitialized(): bool
