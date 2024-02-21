@@ -26,22 +26,36 @@ class LoansListController extends AbstractController
     #[Route('/loans/create', name: 'app_loans_create')]
     public function new(Request $request,LoanRepository $loanRepo ): Response
     {
+        $id = $request->query->get('id');
 
-        $loan = new Loan();
+        if (  ctype_digit($id) ) {
+            $loan=$loanRepo->find($id);
+        }
+        else {
+            $loan = new Loan();
+        }
 
         $form = $this->createForm(LoanType::class, $loan);
-
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $loan = $form->getData();
             $loanRepo->save($loan);
             return $this->redirectToRoute('app_loans_list');
-
         }
 
         return $this->render('loans_list/createLoan.html.twig', [
             'form' => $form
         ]);
+
     }
+    #[Route('/loans/{id}/delete', name: 'app_loans_delete')]
+
+    public function delete (Loan $loan,LoanRepository $repository){
+        $repository->delete($loan);
+        return $this->redirectToRoute('app_loans_list');
+
+    }
+
 
 }

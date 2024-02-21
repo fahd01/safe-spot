@@ -28,7 +28,6 @@
   font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
- 
 /* Code for individual icons */ 
 .typcn-adjust-brightness:before { 
   content: '\e000'; /* '' */

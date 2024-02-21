@@ -361,6 +361,10 @@
     <service id="App\Form\LoanType" class="App\Form\LoanType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Repository\BidRepository" class="App\Repository\BidRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\CommentaireRepository" class="App\Repository\CommentaireRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -416,7 +420,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.mLpiLo7"/>
+      <argument type="service" id=".service_locator.iJyah0v"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -3280,7 +3284,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.mLpiLo7"/>
+      <argument type="service" id=".service_locator.iJyah0v"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -5023,7 +5027,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.SnoBv4O"/>
+      <argument type="service" id=".service_locator.H77hOVX"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -6961,6 +6965,8 @@
     <service id=".abstract.instanceof.App\Controller\LoansListController" class="App\Controller\LoansListController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\LoanType" class="App\Form\LoanType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\LoanType" class="App\Form\LoanType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\BidRepository" class="App\Repository\BidRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\BidRepository" class="App\Repository\BidRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CommentaireRepository" class="App\Repository\CommentaireRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CommentaireRepository" class="App\Repository\CommentaireRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\InvestissementRepository" class="App\Repository\InvestissementRepository" autowire="true" abstract="true"/>
@@ -7368,15 +7374,24 @@
         <argument key="loanRepo" type="service_closure" id="App\Repository\LoanRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.mLpiLo7" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.119gtIa" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="loan" type="service_closure" id=".errored..service_locator.119gtIa.App\Entity\Loan"/>
+        <argument key="repository" type="service_closure" id="App\Repository\LoanRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.iJyah0v" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="App\Controller\LoansListController::delete" type="service_closure" id=".service_locator.119gtIa"/>
         <argument key="App\Controller\LoansListController::index" type="service_closure" id=".service_locator.JmgQ6AO"/>
         <argument key="App\Controller\LoansListController::new" type="service_closure" id=".service_locator.b_SENms"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
+        <argument key="App\Controller\LoansListController:delete" type="service_closure" id=".service_locator.119gtIa"/>
         <argument key="App\Controller\LoansListController:index" type="service_closure" id=".service_locator.JmgQ6AO"/>
         <argument key="App\Controller\LoansListController:new" type="service_closure" id=".service_locator.b_SENms"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
@@ -7669,9 +7684,10 @@
         <argument key="turbo.doctrine.event_listener" type="service_closure" id="turbo.doctrine.event_listener"/>
       </argument>
     </service>
-    <service id=".service_locator.SnoBv4O" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.H77hOVX" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Repository\BidRepository" type="service_closure" id="App\Repository\BidRepository"/>
         <argument key="App\Repository\CommentaireRepository" type="service_closure" id="App\Repository\CommentaireRepository"/>
         <argument key="App\Repository\InvestissementRepository" type="service_closure" id="App\Repository\InvestissementRepository"/>
         <argument key="App\Repository\LoanRepository" type="service_closure" id="App\Repository\LoanRepository"/>
@@ -8362,6 +8378,9 @@
     <service id="debug.security.event_dispatcher.main.inner" class="Symfony\Component\EventDispatcher\EventDispatcher"/>
     <service id=".errored..service_locator.y4_Zrx..Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.y4_Zrx.&quot;: it needs an instance of &quot;Symfony\Component\Config\Loader\LoaderInterface&quot; but this type has been excluded from autowiring."/>
+    </service>
+    <service id=".errored..service_locator.119gtIa.App\Entity\Loan" class="App\Entity\Loan">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.119gtIa&quot;: it needs an instance of &quot;App\Entity\Loan&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>about</argument>
@@ -9519,7 +9538,7 @@
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.mLpiLo7"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.iJyah0v"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -9543,7 +9562,7 @@
     <service id=".service_locator.80edgLI" alias="messenger.receiver_locator"/>
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.bJ.4HC5" alias=".service_locator.w7.f4fT"/>
-    <service id=".service_locator.fr9fDvF" alias=".service_locator.mLpiLo7"/>
+    <service id=".service_locator.BYE_Pvb" alias=".service_locator.iJyah0v"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.bHFXOtX" alias=".service_locator.DEFAoyS"/>
     <service id=".service_locator.XtmiKbi" alias=".service_locator.MfxSDRP"/>
@@ -9571,6 +9590,7 @@
     <service id=".service_locator.gFlme_s" alias=".service_locator.y4_Zrx."/>
     <service id=".service_locator.NqRJ3FA" alias=".service_locator.JmgQ6AO"/>
     <service id=".service_locator.y72syCD" alias=".service_locator.b_SENms"/>
+    <service id=".service_locator.sOHCMIv" alias=".service_locator.119gtIa"/>
     <service id=".service_locator.Q1z.f9O" alias=".service_locator.O2p6Lk7"/>
     <service id=".service_locator.dGUCsbe" alias=".service_locator.oR77BOj"/>
     <service id=".service_locator.u6DWx23" alias=".service_locator.cXsfP3P"/>

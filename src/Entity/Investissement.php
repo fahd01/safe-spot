@@ -35,18 +35,6 @@ class Investissement
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $echeance = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?user $idUser = null;
-
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?user $Iduser = null;
-
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?user $idInvestisseur = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -136,27 +124,5 @@ class Investissement
         return $this;
     }
 
-    public function getIdUser(): ?user
-    {
-        return $this->idUser;
-    }
-
-    public function setIdUser(?user $idUser): static
-    {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
-
-    public function getIdInvestisseur(): ?user
-    {
-        return $this->idInvestisseur;
-    }
-
-    public function setIdInvestisseur(?user $idInvestisseur): static
-    {
-        $this->idInvestisseur = $idInvestisseur;
-
-        return $this;
-    }
 }
+

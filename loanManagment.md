@@ -7,7 +7,7 @@
     * interest:decimal
     * term:int
     * purpose:string
-    * status:string //TODO(enum)
+    * status:string 
     * startDate:date //TODO
     * borrower:userId //TODO(add loans property to user if needed)
 * bid entity
@@ -15,13 +15,13 @@
     * amount:decimal
     * bidder:userId
     * loan:loanId
-    * interest:decimal (maybe added later)
+    * interest:decimal //TODO (maybe added later)
     * status:string
 ### our navigation entries:
 * all loans
 * my loans
 * my bids
-* submitt loan
+* submit loan
 
 ### Loan Lifecycle
 Loan can have one of the following statuses:  

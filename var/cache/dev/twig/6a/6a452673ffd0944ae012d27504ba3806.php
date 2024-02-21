@@ -26,6 +26,7 @@ class __TwigTemplate_086aefbeed75f80e3c21e9b0a4ae6cc7 extends Template
 
         $this->blocks = [
             'title' => [$this, 'block_title'],
+            'navigation' => [$this, 'block_navigation'],
             'body' => [$this, 'block_body'],
         ];
     }
@@ -75,6 +76,29 @@ class __TwigTemplate_086aefbeed75f80e3c21e9b0a4ae6cc7 extends Template
     }
 
     // line 5
+    public function block_navigation($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navigation"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navigation"));
+
+        // line 6
+        echo "    ";
+        echo twig_include($this->env, $context, "loans_list/_loanNavMenu.html.twig");
+        echo "
+";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 8
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -84,7 +108,7 @@ class __TwigTemplate_086aefbeed75f80e3c21e9b0a4ae6cc7 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 6
+        // line 9
         echo "    <div>
 
 
@@ -93,8 +117,8 @@ class __TwigTemplate_086aefbeed75f80e3c21e9b0a4ae6cc7 extends Template
 
                 <h4 class=\"card-title\">Create Loan</h4>
                 ";
-        // line 13
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 13, $this->source); })()), 'form');
+        // line 16
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 16, $this->source); })()), 'form');
         echo "
 
             </div>
@@ -132,7 +156,7 @@ class __TwigTemplate_086aefbeed75f80e3c21e9b0a4ae6cc7 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  97 => 13,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  121 => 16,  112 => 9,  102 => 8,  89 => 6,  79 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -141,6 +165,9 @@ class __TwigTemplate_086aefbeed75f80e3c21e9b0a4ae6cc7 extends Template
 
 {% block title %}Create Loan{% endblock %}
 
+{% block navigation %}
+    {{ include('loans_list/_loanNavMenu.html.twig')}}
+{% endblock %}
 {% block body %}
     <div>
 

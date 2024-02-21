@@ -1,6 +1,11 @@
+
 {% extends 'base.html.twig' %}
 
 {% block title %}List of all loans{% endblock %}
+
+{% block navigation %}
+{{ include('loans_list/_loanNavMenu.html.twig')}}
+{% endblock %}
 
 {% block body %}
   <style>
@@ -8,13 +13,21 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
   </style>
 
+
+
+
+
+
   <div>
 
 
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">List of all loans</h4>
-
+        <a href="/loans/create"
+           role="button" class="btn btn-info btn-sm btn-icon-text mr-3 float-right"  title=" create new loan">
+          +loan
+        </a>
         <div class="table-responsive pt-3">
           <table class="table table-striped">
             <thead>
@@ -35,6 +48,10 @@
                 Purpose
               </th>
               <th>
+                Status
+              </th>
+
+              <th>
                 Borrower
               </th>
               <th>
@@ -52,11 +69,22 @@
                 <td> {{ item.interest }} % </td>
                 <td> {{ item.term }} mois</td>
                 <td> {{ item.purpose }}</td>
+                <td> {{ include ('loans_list/_loanStatus.html.twig',{'status':item.status}) }}  </td>
+
                 <td> {{ item.borrower.firstName }} {{ item.borrower.lastName }}</td>
                 <td>
                   <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3" title="a bid is a participation in a loan where the owner of the bid lends the borrower a fraction of the loan">
                     Bid
                   </button>
+                  <a href="/loans/{{ item.id }}/delete"
+                          role="button" class="btn btn-danger btn-sm btn-icon-text mr-3" title="delete this loan">
+                    Delete
+                  </a>
+
+                  <a href="/loans/create?id={{ item.id }}"
+                     role="button" class="btn btn-warning btn-sm btn-icon-text mr-3" title="edit this loan">
+                    Edit
+                  </a>
                 </td>
 
               </tr>

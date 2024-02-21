@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Loan;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use phpDocumentor\Reflection\Types\Integer;
 
 /**
  * @extends ServiceEntityRepository<Loan>
@@ -24,6 +25,13 @@ class LoanRepository extends ServiceEntityRepository
     public function save(Loan $loan){
         $this->getEntityManager()->persist($loan);
         $this->getEntityManager()->flush();
+
+    }
+    public function delete(Loan $loan){
+        //$loan=$this->find($id);
+        $this->getEntityManager()->remove($loan);
+        $this->getEntityManager()->flush();
+
     }
 
 

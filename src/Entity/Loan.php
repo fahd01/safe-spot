@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LoanRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -28,10 +30,30 @@ class Loan
     #[ORM\Column(length: 255)]
     private ?string $purpose = null;
 
+    #[ORM\Column(type: Types::STRING, enumType: LoanStatus::class)]
+    private LoanStatus $status = LoanStatus::InBidding;
+
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $borrower = null;
 
+    #[ORM\OneToMany(targetEntity: Bid::class, mappedBy: 'loan')]
+    private Collection $bids;
+
+    public function __construct()
+    {
+        $this->bids = new ArrayCollection();
+    }
+
+    public function getStatus():LoanStatus
+    {
+        return $this->status;
+    }
+
+    public function setStatus(LoanStatus $status): void
+    {
+        $this->status = $status;
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -93,6 +115,36 @@ class Loan
     public function setBorrower(?User $borrower): static
     {
         $this->borrower = $borrower;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Bid>
+     */
+    public function getBids(): Collection
+    {
+        return $this->bids;
+    }
+
+    public function addBid(Bid $bid): static
+    {
+        if (!$this->bids->contains($bid)) {
+            $this->bids->add($bid);
+            $bid->setLoan($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBid(Bid $bid): static
+    {
+        if ($this->bids->removeElement($bid)) {
+            // set the owning side to null (unless already changed)
+            if ($bid->getLoan() === $this) {
+                $bid->setLoan(null);
+            }
+        }
 
         return $this;
     }

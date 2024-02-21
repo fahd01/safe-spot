@@ -19,6 +19,8 @@ return [
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     'app_loans_list' => [[], ['_controller' => 'App\\Controller\\LoansListController::index'], [], [['text', '/loans/list']], [], [], []],
     'app_loans_create' => [[], ['_controller' => 'App\\Controller\\LoansListController::new'], [], [['text', '/loans/create']], [], [], []],
+    'app_loans_delete' => [['id'], ['_controller' => 'App\\Controller\\LoansListController::delete'], [], [['text', '/delete'], ['variable', '/', '[^/]++', 'id', true], ['text', '/loans']], [], [], []],
     'App\Controller\LoansListController::index' => [[], ['_controller' => 'App\\Controller\\LoansListController::index'], [], [['text', '/loans/list']], [], [], []],
     'App\Controller\LoansListController::new' => [[], ['_controller' => 'App\\Controller\\LoansListController::new'], [], [['text', '/loans/create']], [], [], []],
+    'App\Controller\LoansListController::delete' => [['id'], ['_controller' => 'App\\Controller\\LoansListController::delete'], [], [['text', '/delete'], ['variable', '/', '[^/]++', 'id', true], ['text', '/loans']], [], [], []],
 ];
