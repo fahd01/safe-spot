@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<<< HEAD:var/cache/dev/ContainerIcbrOko/getDataCollector_Request_SessionCollectorService.php
 namespace ContainerIcbrOko;
+========
+namespace ContainerUxMMTSV;
+>>>>>>>> 9a42ed6 (create loan form):var/cache/dev/ContainerUxMMTSV/getDataCollector_Request_SessionCollectorService.php
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;

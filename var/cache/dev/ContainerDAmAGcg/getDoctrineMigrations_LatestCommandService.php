@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<<< HEAD:var/cache/dev/ContainerDAmAGcg/getDoctrineMigrations_LatestCommandService.php
 namespace ContainerDAmAGcg;
+========
+namespace ContainerC04TK59;
+>>>>>>>> 9a42ed6 (create loan form):var/cache/dev/ContainerC04TK59/getDoctrineMigrations_LatestCommandService.php
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;

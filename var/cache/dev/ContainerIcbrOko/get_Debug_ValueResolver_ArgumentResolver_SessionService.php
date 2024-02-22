@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<<< HEAD:var/cache/dev/ContainerIcbrOko/get_Debug_ValueResolver_ArgumentResolver_SessionService.php
 namespace ContainerIcbrOko;
+========
+namespace ContainerC04TK59;
+>>>>>>>> 9a42ed6 (create loan form):var/cache/dev/ContainerC04TK59/get_Debug_ValueResolver_ArgumentResolver_SessionService.php
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;

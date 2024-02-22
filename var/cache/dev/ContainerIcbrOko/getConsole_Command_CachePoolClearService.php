@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<<< HEAD:var/cache/dev/ContainerIcbrOko/getConsole_Command_CachePoolClearService.php
 namespace ContainerIcbrOko;
+========
+namespace ContainerC04TK59;
+>>>>>>>> 9a42ed6 (create loan form):var/cache/dev/ContainerC04TK59/getConsole_Command_CachePoolClearService.php
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;

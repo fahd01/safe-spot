@@ -26,6 +26,7 @@ class __TwigTemplate_5f3dc4206177db5f9cc7cab841bc3260 extends Template
 
         $this->blocks = [
             'title' => [$this, 'block_title'],
+            'navigation' => [$this, 'block_navigation'],
             'body' => [$this, 'block_body'],
         ];
     }
@@ -74,7 +75,43 @@ class __TwigTemplate_5f3dc4206177db5f9cc7cab841bc3260 extends Template
 
     }
 
-    // line 5
+    // line 6
+    public function block_navigation($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navigation"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navigation"));
+
+        // line 7
+        echo "<!-- partial:partials/_sidebar.html -->
+<nav class=\"sidebar sidebar-offcanvas\" id=\"sidebar\">
+  <ul class=\"nav\">
+    <li class=\"nav-item\">
+      <a class=\"nav-link\" href=\"/loans/list\">
+        <i class=\"typcn typcn-device-desktop menu-icon\"></i>
+        <span class=\"menu-title\">Find a loan</span>
+      </a>
+    </li>
+    <li class=\"nav-item\">
+      <a class=\"nav-link\" href=\"/loans/create\">
+        <i class=\"typcn typcn-mortar-board menu-icon\"></i>
+        <span class=\"menu-title\">Request Loan</span>
+      </a>
+    </li>
+  </ul>
+</nav>";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 25
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -84,7 +121,7 @@ class __TwigTemplate_5f3dc4206177db5f9cc7cab841bc3260 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 6
+        // line 26
         echo "<style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
@@ -92,8 +129,8 @@ class __TwigTemplate_5f3dc4206177db5f9cc7cab841bc3260 extends Template
 
 <div>
     <h1>Hello ";
-        // line 12
-        echo twig_escape_filter($this->env, (isset($context["controller_name"]) || array_key_exists("controller_name", $context) ? $context["controller_name"] : (function () { throw new RuntimeError('Variable "controller_name" does not exist.', 12, $this->source); })()), "html", null, true);
+        // line 32
+        echo twig_escape_filter($this->env, (isset($context["controller_name"]) || array_key_exists("controller_name", $context) ? $context["controller_name"] : (function () { throw new RuntimeError('Variable "controller_name" does not exist.', 32, $this->source); })()), "html", null, true);
         echo "! ✅</h1>
 
               <div class=\"row\">
@@ -114,9 +151,9 @@ class __TwigTemplate_5f3dc4206177db5f9cc7cab841bc3260 extends Template
                         </thead>
                         <tbody>
                           ";
-        // line 31
+        // line 51
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["loans"]) || array_key_exists("loans", $context) ? $context["loans"] : (function () { throw new RuntimeError('Variable "loans" does not exist.', 31, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["loans"]) || array_key_exists("loans", $context) ? $context["loans"] : (function () { throw new RuntimeError('Variable "loans" does not exist.', 51, $this->source); })()));
         $context['loop'] = [
           'parent' => $context['_parent'],
           'index0' => 0,
@@ -131,43 +168,43 @@ class __TwigTemplate_5f3dc4206177db5f9cc7cab841bc3260 extends Template
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["loan"]) {
-            // line 32
+            // line 52
             echo "                          <tr>
                             <td>";
-            // line 33
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["loan"], "id", [], "any", false, false, false, 33), "html", null, true);
+            // line 53
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["loan"], "id", [], "any", false, false, false, 53), "html", null, true);
             echo "</td>
                             <td>";
-            // line 34
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["loan"], "borrower", [], "any", false, false, false, 34), "firstName", [], "any", false, false, false, 34), "html", null, true);
+            // line 54
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["loan"], "borrower", [], "any", false, false, false, 54), "firstName", [], "any", false, false, false, 54), "html", null, true);
             echo " ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["loan"], "borrower", [], "any", false, false, false, 34), "lastName", [], "any", false, false, false, 34), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["loan"], "borrower", [], "any", false, false, false, 54), "lastName", [], "any", false, false, false, 54), "html", null, true);
             echo "</td>
                             <td>";
-            // line 35
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["loan"], "amount", [], "any", false, false, false, 35), "html", null, true);
+            // line 55
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["loan"], "amount", [], "any", false, false, false, 55), "html", null, true);
             echo " TND</td>
                             <td>";
-            // line 36
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["loan"], "interest", [], "any", false, false, false, 36), "html", null, true);
+            // line 56
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["loan"], "interest", [], "any", false, false, false, 56), "html", null, true);
             echo " %</td>
                             <td>";
-            // line 37
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["loan"], "term", [], "any", false, false, false, 37), "html", null, true);
+            // line 57
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["loan"], "term", [], "any", false, false, false, 57), "html", null, true);
             echo " months</td>
                             <td>
                             ";
-            // line 39
-            echo twig_include($this->env, $context, "list_loans/_loan-status.html.twig", ["status" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["loan"], "status", [], "any", false, false, false, 39), "value", [], "any", false, false, false, 39)]);
+            // line 59
+            echo twig_include($this->env, $context, "list_loans/_loan-status.html.twig", ["status" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["loan"], "status", [], "any", false, false, false, 59), "value", [], "any", false, false, false, 59)]);
             echo "
                             </td>
                             <td>";
-            // line 41
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["loan"], "purpose", [], "any", false, false, false, 41), "html", null, true);
+            // line 61
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["loan"], "purpose", [], "any", false, false, false, 61), "html", null, true);
             echo "</td>
                             <td>";
-            // line 42
-            (((twig_get_attribute($this->env, $this->source, $context["loan"], "description", [], "any", false, false, false, 42) == null)) ? (print ("--")) : (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["loan"], "description", [], "any", false, false, false, 42), "html", null, true))));
+            // line 62
+            (((twig_get_attribute($this->env, $this->source, $context["loan"], "description", [], "any", false, false, false, 62) == null)) ? (print ("--")) : (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["loan"], "description", [], "any", false, false, false, 62), "html", null, true))));
             echo "</td>
                             <td>
                               <div class=\"d-flex align-items-center\">
@@ -191,7 +228,7 @@ class __TwigTemplate_5f3dc4206177db5f9cc7cab841bc3260 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['loan'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 53
+        // line 73
         echo "
                         </tbody>
                       </table>
@@ -229,7 +266,7 @@ class __TwigTemplate_5f3dc4206177db5f9cc7cab841bc3260 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  195 => 53,  170 => 42,  166 => 41,  161 => 39,  156 => 37,  152 => 36,  148 => 35,  142 => 34,  138 => 33,  135 => 32,  118 => 31,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  232 => 73,  207 => 62,  203 => 61,  198 => 59,  193 => 57,  189 => 56,  185 => 55,  179 => 54,  175 => 53,  172 => 52,  155 => 51,  133 => 32,  125 => 26,  115 => 25,  89 => 7,  79 => 6,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -237,6 +274,26 @@ class __TwigTemplate_5f3dc4206177db5f9cc7cab841bc3260 extends Template
         return new Source("{% extends 'base.html.twig' %}
 
 {% block title %}List all loans{% endblock %}
+
+
+{% block navigation %}
+<!-- partial:partials/_sidebar.html -->
+<nav class=\"sidebar sidebar-offcanvas\" id=\"sidebar\">
+  <ul class=\"nav\">
+    <li class=\"nav-item\">
+      <a class=\"nav-link\" href=\"/loans/list\">
+        <i class=\"typcn typcn-device-desktop menu-icon\"></i>
+        <span class=\"menu-title\">Find a loan</span>
+      </a>
+    </li>
+    <li class=\"nav-item\">
+      <a class=\"nav-link\" href=\"/loans/create\">
+        <i class=\"typcn typcn-mortar-board menu-icon\"></i>
+        <span class=\"menu-title\">Request Loan</span>
+      </a>
+    </li>
+  </ul>
+</nav>{% endblock %}
 
 {% block body %}
 <style>

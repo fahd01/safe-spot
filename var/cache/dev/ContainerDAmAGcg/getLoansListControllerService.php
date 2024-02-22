@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<<< HEAD:var/cache/dev/ContainerDAmAGcg/getLoansListControllerService.php
 namespace ContainerDAmAGcg;
+========
+namespace ContainerC04TK59;
+>>>>>>>> 9a42ed6 (create loan form):var/cache/dev/ContainerC04TK59/get_ServiceLocator_O2p6Lk7Service.php
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;

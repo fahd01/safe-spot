@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<<< HEAD:var/cache/dev/ContainerIcbrOko/get_Messenger_HandlerDescriptor_QXXNQ9dService.php
 namespace ContainerIcbrOko;
+========
+namespace ContainerUxMMTSV;
+>>>>>>>> 9a42ed6 (create loan form):var/cache/dev/ContainerUxMMTSV/get_Messenger_HandlerDescriptor_QXXNQ9dService.php
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;

@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<<< HEAD:var/cache/dev/ContainerIcbrOko/getDoctrineMigrations_MigrateCommandService.php
 namespace ContainerIcbrOko;
+========
+namespace ContainerUxMMTSV;
+>>>>>>>> 9a42ed6 (create loan form):var/cache/dev/ContainerUxMMTSV/getDoctrineMigrations_MigrateCommandService.php
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;

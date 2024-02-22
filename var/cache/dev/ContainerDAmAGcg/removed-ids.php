@@ -1,16 +1,26 @@
 <?php
 
+<<<<<<<< HEAD:var/cache/dev/ContainerDAmAGcg/removed-ids.php
 namespace ContainerDAmAGcg;
+========
+namespace ContainerUxMMTSV;
+>>>>>>>> 9a42ed6 (create loan form):var/cache/dev/ContainerUxMMTSV/removed-ids.php
 
 return [
     '.1_ServiceLocator~P7Fg_ks' => true,
     '.Psr\\Container\\ContainerInterface $parameter_bag' => true,
     '.Psr\\Log\\LoggerInterface $asset_mapperLogger' => true,
     '.Psr\\Log\\LoggerInterface $http_clientLogger' => true,
+<<<<<<<< HEAD:var/cache/dev/ContainerDAmAGcg/removed-ids.php
     '.abstract.instanceof.App\\Controller\\LoansListController' => true,
     '.abstract.instanceof.App\\Form\\LoanType' => true,
     '.abstract.instanceof.App\\Repository\\CommentaireRepository' => true,
     '.abstract.instanceof.App\\Repository\\InvestissementRepository' => true,
+========
+    '.abstract.instanceof.App\\Controller\\ListLoansController' => true,
+    '.abstract.instanceof.App\\Controller\\LoginController' => true,
+    '.abstract.instanceof.App\\Form\\LoanType' => true,
+>>>>>>>> 9a42ed6 (create loan form):var/cache/dev/ContainerUxMMTSV/removed-ids.php
     '.abstract.instanceof.App\\Repository\\LoanRepository' => true,
     '.abstract.instanceof.App\\Repository\\NewsRepository' => true,
     '.abstract.instanceof.App\\Repository\\ReclamationRepository' => true,
@@ -132,9 +142,17 @@ return [
     '.instanceof.Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepositoryInterface.0.App\\Repository\\ReclamationRepository' => true,
     '.instanceof.Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepositoryInterface.0.App\\Repository\\ReponseRepository' => true,
     '.instanceof.Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepositoryInterface.0.App\\Repository\\UserRepository' => true,
+<<<<<<<< HEAD:var/cache/dev/ContainerDAmAGcg/removed-ids.php
     '.instanceof.Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController.0.App\\Controller\\LoansListController' => true,
     '.instanceof.Symfony\\Component\\Form\\FormTypeInterface.0.App\\Form\\LoanType' => true,
     '.instanceof.Symfony\\Contracts\\Service\\ServiceSubscriberInterface.0.App\\Controller\\LoansListController' => true,
+========
+    '.instanceof.Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController.0.App\\Controller\\ListLoansController' => true,
+    '.instanceof.Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController.0.App\\Controller\\LoginController' => true,
+    '.instanceof.Symfony\\Component\\Form\\FormTypeInterface.0.App\\Form\\LoanType' => true,
+    '.instanceof.Symfony\\Contracts\\Service\\ServiceSubscriberInterface.0.App\\Controller\\ListLoansController' => true,
+    '.instanceof.Symfony\\Contracts\\Service\\ServiceSubscriberInterface.0.App\\Controller\\LoginController' => true,
+>>>>>>>> 9a42ed6 (create loan form):var/cache/dev/ContainerUxMMTSV/removed-ids.php
     '.maker.auto_command.make_auth.lazy' => true,
     '.maker.auto_command.make_command.lazy' => true,
     '.maker.auto_command.make_controller.lazy' => true,
@@ -173,9 +191,15 @@ return [
     '.security.request_matcher.kLbKLHa' => true,
     '.security.request_matcher.q1UFWmc' => true,
     '.service_locator.0TACwl3' => true,
+<<<<<<<< HEAD:var/cache/dev/ContainerDAmAGcg/removed-ids.php
     '.service_locator.119gtIa' => true,
+========
+    '.service_locator.2i4KyfS' => true,
+>>>>>>>> 9a42ed6 (create loan form):var/cache/dev/ContainerUxMMTSV/removed-ids.php
     '.service_locator.5cAhUFF' => true,
     '.service_locator.80edgLI' => true,
+    '.service_locator.9wtMW3.' => true,
+    '.service_locator.A4k2iY1' => true,
     '.service_locator.BFrsqsn' => true,
     '.service_locator.BYE_Pvb' => true,
     '.service_locator.BlxN3Cw' => true,
@@ -192,9 +216,18 @@ return [
     '.service_locator.NqRJ3FA' => true,
     '.service_locator.O24_MAy' => true,
     '.service_locator.O2p6Lk7' => true,
+<<<<<<<< HEAD:var/cache/dev/ContainerDAmAGcg/removed-ids.php
     '.service_locator.O2p6Lk7.App\\Controller\\LoansListController' => true,
     '.service_locator.Q1z.f9O' => true,
     '.service_locator.SnoBv4O' => true,
+========
+    '.service_locator.O2p6Lk7.App\\Controller\\ListLoansController' => true,
+    '.service_locator.O2p6Lk7.App\\Controller\\LoginController' => true,
+    '.service_locator.OoSyeOu' => true,
+    '.service_locator.Q1z.f9O' => true,
+    '.service_locator.S6_gtt9' => true,
+    '.service_locator.VCASzHs' => true,
+>>>>>>>> 9a42ed6 (create loan form):var/cache/dev/ContainerUxMMTSV/removed-ids.php
     '.service_locator.XXv1IfR' => true,
     '.service_locator.Xbsa8iG' => true,
     '.service_locator.XtmiKbi' => true,
@@ -228,7 +261,11 @@ return [
     '.service_locator.u6DWx23' => true,
     '.service_locator.w7.f4fT' => true,
     '.service_locator.y4_Zrx.' => true,
+<<<<<<<< HEAD:var/cache/dev/ContainerDAmAGcg/removed-ids.php
     '.service_locator.y72syCD' => true,
+========
+    '.service_locator.y8iSzSS' => true,
+>>>>>>>> 9a42ed6 (create loan form):var/cache/dev/ContainerUxMMTSV/removed-ids.php
     '.service_locator.yY.p4P7' => true,
     '.service_locator.zJyh7qS' => true,
     '.twig.command.debug.lazy' => true,
@@ -236,8 +273,11 @@ return [
     '.var_dumper.command.server_dump.lazy' => true,
     'App\\Entity' => true,
     'App\\Form\\LoanType' => true,
+<<<<<<<< HEAD:var/cache/dev/ContainerDAmAGcg/removed-ids.php
     'App\\Repository\\CommentaireRepository' => true,
     'App\\Repository\\InvestissementRepository' => true,
+========
+>>>>>>>> 9a42ed6 (create loan form):var/cache/dev/ContainerUxMMTSV/removed-ids.php
     'App\\Repository\\LoanRepository' => true,
     'App\\Repository\\NewsRepository' => true,
     'App\\Repository\\ReclamationRepository' => true,

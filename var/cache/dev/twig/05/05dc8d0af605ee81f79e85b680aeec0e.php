@@ -31,6 +31,7 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
             'stylesheets' => [$this, 'block_stylesheets'],
             'javascripts' => [$this, 'block_javascripts'],
             'importmap' => [$this, 'block_importmap'],
+            'navigation' => [$this, 'block_navigation'],
             'body' => [$this, 'block_body'],
         ];
     }
@@ -435,120 +436,18 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
         </div>
       </div>
       <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
-      <nav class=\"sidebar sidebar-offcanvas\" id=\"sidebar\">
-        <ul class=\"nav\">
-          <li class=\"nav-item\">
-            <a class=\"nav-link\" href=\"index.html\">
-              <i class=\"typcn typcn-device-desktop menu-icon\"></i>
-              <span class=\"menu-title\">Dashboard</span>
-              <div class=\"badge badge-danger\">new</div>
-            </a>
-          </li>
-          <li class=\"nav-item\">
-            <a class=\"nav-link\" data-toggle=\"collapse\" href=\"#ui-basic\" aria-expanded=\"false\" aria-controls=\"ui-basic\">
-              <i class=\"typcn typcn-document-text menu-icon\"></i>
-              <span class=\"menu-title\">UI Elements</span>
-              <i class=\"menu-arrow\"></i>
-            </a>
-            <div class=\"collapse\" id=\"ui-basic\">
-              <ul class=\"nav flex-column sub-menu\">
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/ui-features/buttons.html\">Buttons</a></li>
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/ui-features/dropdowns.html\">Dropdowns</a></li>
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/ui-features/typography.html\">Typography</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class=\"nav-item\">
-            <a class=\"nav-link\" data-toggle=\"collapse\" href=\"#form-elements\" aria-expanded=\"false\" aria-controls=\"form-elements\">
-              <i class=\"typcn typcn-film menu-icon\"></i>
-              <span class=\"menu-title\">Form elements</span>
-              <i class=\"menu-arrow\"></i>
-            </a>
-            <div class=\"collapse\" id=\"form-elements\">
-              <ul class=\"nav flex-column sub-menu\">
-                <li class=\"nav-item\"><a class=\"nav-link\" href=\"pages/forms/basic_elements.html\">Basic Elements</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class=\"nav-item\">
-            <a class=\"nav-link\" data-toggle=\"collapse\" href=\"#charts\" aria-expanded=\"false\" aria-controls=\"charts\">
-              <i class=\"typcn typcn-chart-pie-outline menu-icon\"></i>
-              <span class=\"menu-title\">Charts</span>
-              <i class=\"menu-arrow\"></i>
-            </a>
-            <div class=\"collapse\" id=\"charts\">
-              <ul class=\"nav flex-column sub-menu\">
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/charts/chartjs.html\">ChartJs</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class=\"nav-item\">
-            <a class=\"nav-link\" data-toggle=\"collapse\" href=\"#tables\" aria-expanded=\"false\" aria-controls=\"tables\">
-              <i class=\"typcn typcn-th-small-outline menu-icon\"></i>
-              <span class=\"menu-title\">Tables</span>
-              <i class=\"menu-arrow\"></i>
-            </a>
-            <div class=\"collapse\" id=\"tables\">
-              <ul class=\"nav flex-column sub-menu\">
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/tables/basic-table.html\">Basic table</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class=\"nav-item\">
-            <a class=\"nav-link\" data-toggle=\"collapse\" href=\"#icons\" aria-expanded=\"false\" aria-controls=\"icons\">
-              <i class=\"typcn typcn-compass menu-icon\"></i>
-              <span class=\"menu-title\">Icons</span>
-              <i class=\"menu-arrow\"></i>
-            </a>
-            <div class=\"collapse\" id=\"icons\">
-              <ul class=\"nav flex-column sub-menu\">
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/icons/mdi.html\">Mdi icons</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class=\"nav-item\">
-            <a class=\"nav-link\" data-toggle=\"collapse\" href=\"#auth\" aria-expanded=\"false\" aria-controls=\"auth\">
-              <i class=\"typcn typcn-user-add-outline menu-icon\"></i>
-              <span class=\"menu-title\">User Pages</span>
-              <i class=\"menu-arrow\"></i>
-            </a>
-            <div class=\"collapse\" id=\"auth\">
-              <ul class=\"nav flex-column sub-menu\">
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/samples/login.html\"> Login </a></li>
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/samples/register.html\"> Register </a></li>
-              </ul>
-            </div>
-          </li>
-          <li class=\"nav-item\">
-            <a class=\"nav-link\" data-toggle=\"collapse\" href=\"#error\" aria-expanded=\"false\" aria-controls=\"error\">
-              <i class=\"typcn typcn-globe-outline menu-icon\"></i>
-              <span class=\"menu-title\">Error pages</span>
-              <i class=\"menu-arrow\"></i>
-            </a>
-            <div class=\"collapse\" id=\"error\">
-              <ul class=\"nav flex-column sub-menu\">
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/samples/error-404.html\"> 404 </a></li>
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/samples/error-500.html\"> 500 </a></li>
-              </ul>
-            </div>
-          </li>
-          <li class=\"nav-item\">
-            <a class=\"nav-link\" href=\"https://bootstrapdash.com/demo/polluxui-free/docs/documentation.html\">
-              <i class=\"typcn typcn-mortar-board menu-icon\"></i>
-              <span class=\"menu-title\">Documentation</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- partial -->
+      ";
+        // line 385
+        $this->displayBlock('navigation', $context, $blocks);
+        // line 386
+        echo "      <!-- partial -->
       <div class=\"main-panel\">
         <div class=\"content-wrapper\">
           <!-- twig page bodies will be inserted here -->
            ";
-        // line 495
+        // line 390
         $this->displayBlock('body', $context, $blocks);
-        // line 496
+        // line 391
         echo "        </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -680,7 +579,25 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
 
     }
 
-    // line 495
+    // line 385
+    public function block_navigation($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navigation"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navigation"));
+
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 390
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -711,7 +628,7 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  684 => 495,  665 => 25,  655 => 26,  652 => 25,  642 => 24,  632 => 22,  622 => 21,  603 => 19,  552 => 496,  550 => 495,  80 => 27,  78 => 24,  75 => 23,  73 => 21,  68 => 19,  48 => 1,);
+        return array (  601 => 390,  583 => 385,  564 => 25,  554 => 26,  551 => 25,  541 => 24,  531 => 22,  521 => 21,  502 => 19,  451 => 391,  449 => 390,  443 => 386,  441 => 385,  81 => 27,  79 => 24,  76 => 23,  74 => 21,  69 => 19,  49 => 1,);
     }
 
     public function getSourceContext()
@@ -1100,112 +1017,7 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
         </div>
       </div>
       <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
-      <nav class=\"sidebar sidebar-offcanvas\" id=\"sidebar\">
-        <ul class=\"nav\">
-          <li class=\"nav-item\">
-            <a class=\"nav-link\" href=\"index.html\">
-              <i class=\"typcn typcn-device-desktop menu-icon\"></i>
-              <span class=\"menu-title\">Dashboard</span>
-              <div class=\"badge badge-danger\">new</div>
-            </a>
-          </li>
-          <li class=\"nav-item\">
-            <a class=\"nav-link\" data-toggle=\"collapse\" href=\"#ui-basic\" aria-expanded=\"false\" aria-controls=\"ui-basic\">
-              <i class=\"typcn typcn-document-text menu-icon\"></i>
-              <span class=\"menu-title\">UI Elements</span>
-              <i class=\"menu-arrow\"></i>
-            </a>
-            <div class=\"collapse\" id=\"ui-basic\">
-              <ul class=\"nav flex-column sub-menu\">
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/ui-features/buttons.html\">Buttons</a></li>
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/ui-features/dropdowns.html\">Dropdowns</a></li>
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/ui-features/typography.html\">Typography</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class=\"nav-item\">
-            <a class=\"nav-link\" data-toggle=\"collapse\" href=\"#form-elements\" aria-expanded=\"false\" aria-controls=\"form-elements\">
-              <i class=\"typcn typcn-film menu-icon\"></i>
-              <span class=\"menu-title\">Form elements</span>
-              <i class=\"menu-arrow\"></i>
-            </a>
-            <div class=\"collapse\" id=\"form-elements\">
-              <ul class=\"nav flex-column sub-menu\">
-                <li class=\"nav-item\"><a class=\"nav-link\" href=\"pages/forms/basic_elements.html\">Basic Elements</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class=\"nav-item\">
-            <a class=\"nav-link\" data-toggle=\"collapse\" href=\"#charts\" aria-expanded=\"false\" aria-controls=\"charts\">
-              <i class=\"typcn typcn-chart-pie-outline menu-icon\"></i>
-              <span class=\"menu-title\">Charts</span>
-              <i class=\"menu-arrow\"></i>
-            </a>
-            <div class=\"collapse\" id=\"charts\">
-              <ul class=\"nav flex-column sub-menu\">
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/charts/chartjs.html\">ChartJs</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class=\"nav-item\">
-            <a class=\"nav-link\" data-toggle=\"collapse\" href=\"#tables\" aria-expanded=\"false\" aria-controls=\"tables\">
-              <i class=\"typcn typcn-th-small-outline menu-icon\"></i>
-              <span class=\"menu-title\">Tables</span>
-              <i class=\"menu-arrow\"></i>
-            </a>
-            <div class=\"collapse\" id=\"tables\">
-              <ul class=\"nav flex-column sub-menu\">
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/tables/basic-table.html\">Basic table</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class=\"nav-item\">
-            <a class=\"nav-link\" data-toggle=\"collapse\" href=\"#icons\" aria-expanded=\"false\" aria-controls=\"icons\">
-              <i class=\"typcn typcn-compass menu-icon\"></i>
-              <span class=\"menu-title\">Icons</span>
-              <i class=\"menu-arrow\"></i>
-            </a>
-            <div class=\"collapse\" id=\"icons\">
-              <ul class=\"nav flex-column sub-menu\">
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/icons/mdi.html\">Mdi icons</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class=\"nav-item\">
-            <a class=\"nav-link\" data-toggle=\"collapse\" href=\"#auth\" aria-expanded=\"false\" aria-controls=\"auth\">
-              <i class=\"typcn typcn-user-add-outline menu-icon\"></i>
-              <span class=\"menu-title\">User Pages</span>
-              <i class=\"menu-arrow\"></i>
-            </a>
-            <div class=\"collapse\" id=\"auth\">
-              <ul class=\"nav flex-column sub-menu\">
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/samples/login.html\"> Login </a></li>
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/samples/register.html\"> Register </a></li>
-              </ul>
-            </div>
-          </li>
-          <li class=\"nav-item\">
-            <a class=\"nav-link\" data-toggle=\"collapse\" href=\"#error\" aria-expanded=\"false\" aria-controls=\"error\">
-              <i class=\"typcn typcn-globe-outline menu-icon\"></i>
-              <span class=\"menu-title\">Error pages</span>
-              <i class=\"menu-arrow\"></i>
-            </a>
-            <div class=\"collapse\" id=\"error\">
-              <ul class=\"nav flex-column sub-menu\">
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/samples/error-404.html\"> 404 </a></li>
-                <li class=\"nav-item\"> <a class=\"nav-link\" href=\"pages/samples/error-500.html\"> 500 </a></li>
-              </ul>
-            </div>
-          </li>
-          <li class=\"nav-item\">
-            <a class=\"nav-link\" href=\"https://bootstrapdash.com/demo/polluxui-free/docs/documentation.html\">
-              <i class=\"typcn typcn-mortar-board menu-icon\"></i>
-              <span class=\"menu-title\">Documentation</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+      {% block navigation %}{% endblock %}
       <!-- partial -->
       <div class=\"main-panel\">
         <div class=\"content-wrapper\">
