@@ -700,3 +700,12 @@ eb6ba0,172.19.0.1,GET,http://localhost:8080/bids/mine,1708859154,,200,request
 29350c,172.19.0.1,GET,http://localhost:8080/loans/mine,1708864518,,200,request
 409285,172.19.0.1,GET,http://localhost:8080/bids/mine,1708864525,,200,request
 d97423,172.19.0.1,GET,http://localhost:8080/loans/mine,1708864536,,200,request
+3b8e57,172.19.0.1,GET,http://localhost:8080/bids/mine,1708872549,,200,request
+707b30,172.19.0.1,GET,http://localhost:8080/loans/mine,1708872567,,200,request
+20ccd8,172.19.0.1,GET,http://localhost:8080/loans/mine,1708872606,,200,request
+cf377c,172.19.0.1,GET,http://localhost:8080/bids/mine,1708872608,,200,request
+b819d6,172.19.0.1,GET,http://localhost:8080/loans/list,1708872633,,200,request
+6deefe,172.19.0.1,GET,http://localhost:8080/loans/mine,1708872639,,200,request
+b69502,172.19.0.1,GET,http://localhost:8080/loans/list,1708872646,,200,request
+d61ba8,172.19.0.1,GET,http://localhost:8080/bids/mine,1708872650,,200,request
+00dd07,172.19.0.1,GET,http://localhost:8080/loans/mine,1708872656,,200,request
