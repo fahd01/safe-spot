@@ -47,7 +47,8 @@ the lower the borrower rating, the riskier the loan, the higher the interest
 When creating a loan, the user can choose the instalment payments period: monthly or custom (per 1, 2 or 3 months)
 and installments gets calculated accordingly.  
 This feature can be enabled by rating, maybe.
-
+#### External API integration(emails)
+#### charts
 ### Technical Notes
 - `DECIMAL` MySQL type should be used for `amount`.  
 - Every time a bid is `APROVED`, check missing amount, if all amount is covered change the loan to `ACTIVE`
