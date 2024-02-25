@@ -428,6 +428,13 @@
   <!-- Custom js for this page-->
   <script src="/dashboard-template/js/dashboard.js"></script>
   <!-- End custom js for this page-->
+<script>var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+
+
+</script>
 </body>
 
 </html>

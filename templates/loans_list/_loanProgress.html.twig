@@ -10,6 +10,8 @@
         bg-success
         {% endif %}
         -stripped"
+         data-bs-toggle="tooltip" data-bs-placement="bottom"
+         title="Remaining Amount: {{ remainingAmount }} TND &#013;Collected Amount: {{ collectedAmount }} TND"
          role="progressbar"
          style="width: {{ progressValue }}%"
          aria-valuenow="{{ progressValue }}"

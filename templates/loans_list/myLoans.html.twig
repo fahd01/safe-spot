@@ -61,8 +61,22 @@
                             </tr>
                             <tr>
                                 <td class="text-muted">Progress: </td>
-                                <td>{{ include ('loans_list/_loanProgress.html.twig',{'progress':item.bidsProgress()}) }} </td>
+                                <td>{{ include ('loans_list/_loanProgress.html.twig',{'progress':item.bidsProgress(),'remainingAmount':item.amount - item.collectedBids(),'collectedAmount':item.collectedBids() }) }} </td>
                             </tr>
+                            <tr>
+                                <td class="text-muted">Collected Amount: </td>
+                                <td>{{ item.collectedBids() }} TND
+
+
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted">Remaining Amount: </td>
+                                <td>{{ item.amount - item.collectedBids() }} TND </td>
+                            </tr>
+
+
                         </table>
                     </div>
 
