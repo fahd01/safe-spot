@@ -1,0 +1,21 @@
+{% set progressValue = progress %}
+
+<div class="progress">
+    <div class="progress-bar progress-bar-striped
+        {% if progressValue < 40 %}
+        bg-danger
+        {% elseif progressValue < 80 %}
+        bg-warning
+        {% else %}
+        bg-success
+        {% endif %}
+        -stripped"
+         role="progressbar"
+         style="width: {{ progressValue }}%"
+         aria-valuenow="{{ progressValue }}"
+         aria-valuemin="0"
+         aria-valuemax="100">
+        {{ progressValue }}%
+    </div>
+</div>
+

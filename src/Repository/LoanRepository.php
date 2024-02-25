@@ -22,13 +22,14 @@ class LoanRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Loan::class);
     }
+
     public function save(Loan $loan){
         $this->getEntityManager()->persist($loan);
         $this->getEntityManager()->flush();
 
     }
+
     public function delete(Loan $loan){
-        //$loan=$this->find($id);
         $this->getEntityManager()->remove($loan);
         $this->getEntityManager()->flush();
 

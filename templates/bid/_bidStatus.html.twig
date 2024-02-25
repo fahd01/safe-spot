@@ -1,0 +1,11 @@
+{% if status.value == "PENDING" %}
+    <label class="badge badge-info">Pending</label>
+{% elseif status.value == "APPROVED" %}
+    <label class="badge badge-success">Approved</label>
+{% elseif status.value == "REJECTED" %}
+    <label class="badge badge-danger">Rejected</label>
+{% elseif status.value == "ACTIVE" %}
+    <label class="badge badge-warning">Active</label>
+{% else %}
+    <label class="badge badge-secondary">Completed</label>
+{% endif %}

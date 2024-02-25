@@ -40,4 +40,15 @@ Once bid is created it is in `PENDING` status.
 Then the borrower either `APPROVED` or `REJECTED`.  
 Once the loan is `ACTIVE`, all chosen bids are set to `ACTIVE` as well.  
 Once the loan is `PAID`, all chosen bids are set to `PAID` as well.
- 
+
+### Constraints:
+- User can have one active loan at a time
+- User can have one bidding per loan
+- [x] User can delete his loans when they are still in `IN_BIDDING` status only
+  - Subsequent bids (including approved ones) are deleted as well
+    - notify
+- User can edit his loans when they are still in `IN_BIDDING` status only
+  - editing a loan should reset all accepted bids to `PENDING`
+- [x] User can not bid on his own loan
+- [x] User can  edit his bid, only if it is in `PENDING`
+- [x] User can  delete his bid, only if it is in `PENDING` or `REJECTED`

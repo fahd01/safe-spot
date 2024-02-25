@@ -21,6 +21,17 @@ class BidRepository extends ServiceEntityRepository
         parent::__construct($registry, Bid::class);
     }
 
+    public function save(Bid $bid){
+        $this->getEntityManager()->persist($bid);
+        $this->getEntityManager()->flush();
+    }
+
+    public function delete(Bid $bid){
+        $this->getEntityManager()->remove($bid);
+        $this->getEntityManager()->flush();
+    }
+
+
 //    /**
 //     * @return Bid[] Returns an array of Bid objects
 //     */

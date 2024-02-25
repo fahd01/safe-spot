@@ -8,6 +8,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+use Psr\Log\LoggerInterface;
+
 #[ORM\Entity(repositoryClass: LoanRepository::class)]
 class Loan
 {
@@ -147,5 +149,17 @@ class Loan
         }
 
         return $this;
+    }
+
+    public function collectedBids(): int {
+        $bidsAmount = $this->bids
+            ->filter( function($bid) { return $bid->getStatus() == BidStatus::Approved;} )
+            ->map( function($bid) { return $bid->getAmount();} )
+            ->reduce(function(int $accumulator, int $bidAmount): int { return $accumulator + $bidAmount;}, 0);
+        return $bidsAmount;
+    }
+
+    public function bidsProgress(): int {
+        return ($this->collectedBids() / $this->amount) * 100;
     }
 }

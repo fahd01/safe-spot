@@ -54,6 +54,7 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
   <meta charset=\"utf-8\">
   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
   <!-- base:css -->
+  <link rel=\"stylesheet\" href=\"/dashboard-template/vendors/mdi/css/materialdesignicons.min.css\">
   <link rel=\"stylesheet\" href=\"/dashboard-template/vendors/typicons/typicons.css\">
   <link rel=\"stylesheet\" href=\"/dashboard-template/vendors/css/vendor.bundle.base.css\">
   <!-- endinject -->
@@ -65,19 +66,19 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
   <link rel=\"shortcut icon\" href=\"/dashboard-template/images/favicon.png\" />
 
   <title>";
-        // line 19
+        // line 20
         $this->displayBlock('title', $context, $blocks);
         echo "</title>
 
   ";
-        // line 21
+        // line 22
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 23
+        // line 24
         echo "
   ";
-        // line 24
+        // line 25
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 27
+        // line 28
         echo "
 </head>
 <body>
@@ -120,7 +121,10 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
         <ul class=\"navbar-nav navbar-nav-right\">
           <li class=\"nav-item nav-date dropdown\">
             <a class=\"nav-link d-flex justify-content-center align-items-center\" href=\"javascript:;\">
-              <h6 class=\"date mb-0\">Today : Mar 23</h6>
+              <h6 class=\"date mb-0\">Today : ";
+        // line 70
+        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "M d"), "html", null, true);
+        echo "</h6>
               <i class=\"typcn typcn-calendar\"></i>
             </a>
           </li>
@@ -436,18 +440,20 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
         </div>
       </div>
       <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
       ";
-        // line 385
+        // line 387
         $this->displayBlock('navigation', $context, $blocks);
-        // line 386
-        echo "      <!-- partial -->
+        // line 388
+        echo "
+      <!-- partial -->
       <div class=\"main-panel\">
         <div class=\"content-wrapper\">
           <!-- twig page bodies will be inserted here -->
            ";
-        // line 390
+        // line 393
         $this->displayBlock('body', $context, $blocks);
-        // line 391
+        // line 394
         echo "        </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -498,7 +504,7 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
 
     }
 
-    // line 19
+    // line 20
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -517,7 +523,7 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
 
     }
 
-    // line 21
+    // line 22
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -527,30 +533,7 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 22
-        echo "  ";
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-        
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
-
-    }
-
-    // line 24
-    public function block_javascripts($context, array $blocks = [])
-    {
-        $macros = $this->macros;
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
-
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
-
-        // line 25
-        echo "  ";
-        $this->displayBlock('importmap', $context, $blocks);
-        // line 26
+        // line 23
         echo "  ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -561,6 +544,29 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
     }
 
     // line 25
+    public function block_javascripts($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
+
+        // line 26
+        echo "  ";
+        $this->displayBlock('importmap', $context, $blocks);
+        // line 27
+        echo "  ";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 26
     public function block_importmap($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -579,7 +585,7 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
 
     }
 
-    // line 385
+    // line 387
     public function block_navigation($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -597,7 +603,7 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
 
     }
 
-    // line 390
+    // line 393
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -626,9 +632,17 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
     /**
      * @codeCoverageIgnore
      */
+    public function isTraitable()
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo()
     {
-        return array (  601 => 390,  583 => 385,  564 => 25,  554 => 26,  551 => 25,  541 => 24,  531 => 22,  521 => 21,  502 => 19,  451 => 391,  449 => 390,  443 => 386,  441 => 385,  81 => 27,  79 => 24,  76 => 23,  74 => 21,  69 => 19,  49 => 1,);
+        return array (  607 => 393,  589 => 387,  570 => 26,  560 => 27,  557 => 26,  547 => 25,  537 => 23,  527 => 22,  508 => 20,  457 => 394,  455 => 393,  448 => 388,  446 => 387,  126 => 70,  82 => 28,  80 => 25,  77 => 24,  75 => 22,  70 => 20,  49 => 1,);
     }
 
     public function getSourceContext()
@@ -641,6 +655,7 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
   <meta charset=\"utf-8\">
   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
   <!-- base:css -->
+  <link rel=\"stylesheet\" href=\"/dashboard-template/vendors/mdi/css/materialdesignicons.min.css\">
   <link rel=\"stylesheet\" href=\"/dashboard-template/vendors/typicons/typicons.css\">
   <link rel=\"stylesheet\" href=\"/dashboard-template/vendors/css/vendor.bundle.base.css\">
   <!-- endinject -->
@@ -701,7 +716,7 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
         <ul class=\"navbar-nav navbar-nav-right\">
           <li class=\"nav-item nav-date dropdown\">
             <a class=\"nav-link d-flex justify-content-center align-items-center\" href=\"javascript:;\">
-              <h6 class=\"date mb-0\">Today : Mar 23</h6>
+              <h6 class=\"date mb-0\">Today : {{ 'now'|date('M d') }}</h6>
               <i class=\"typcn typcn-calendar\"></i>
             </a>
           </li>
@@ -1017,7 +1032,9 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
         </div>
       </div>
       <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
       {% block navigation %}{% endblock %}
+
       <!-- partial -->
       <div class=\"main-panel\">
         <div class=\"content-wrapper\">

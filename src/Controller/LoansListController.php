@@ -14,15 +14,14 @@ class LoansListController extends AbstractController
     #[Route('/loans/list', name: 'app_loans_list')]
     public function index(LoanRepository $repo): Response
     {
-    $loans=$repo->findAll();
+        $loans=$repo->findAll();
 
         return $this->render('loans_list/index.html.twig', [
             'controller_name' => 'LoansListController',
             'loanskey'=>$loans,
         ]);
-
-
     }
+
     #[Route('/loans/create', name: 'app_loans_create')]
     public function new(Request $request,LoanRepository $loanRepo ): Response
     {
@@ -49,13 +48,23 @@ class LoansListController extends AbstractController
         ]);
 
     }
-    #[Route('/loans/{id}/delete', name: 'app_loans_delete')]
 
+    #[Route('/loans/{id}/delete', name: 'app_loans_delete')]
     public function delete (Loan $loan,LoanRepository $repository){
         $repository->delete($loan);
         return $this->redirectToRoute('app_loans_list');
-
     }
 
+    #[Route('/loans/mine', name: 'app_loans_mine')]
+    public function myLoans(LoanRepository $repo): Response
+    {
+        # TODO inject and use current user
+        $userId = 1;
+        $loans=$repo->findBy(['borrower' => $userId]);;
 
+        return $this->render('loans_list/myLoans.html.twig', [
+            'controller_name' => 'LoansListController',
+            'loans'=>$loans,
+        ]);
+    }
 }

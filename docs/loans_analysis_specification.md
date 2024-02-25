@@ -28,6 +28,9 @@ Once the loan is `PAID`, all chosen bids are set to `PAID` as well.
 ### Constraints:
 - User can have one active loan at a time
 - User can have one bidding per loan
+- User can delete his loans when they are still in `IN_BIDDING` status only
+- User can edit his loans when they are still in `IN_BIDDING` status only
+  - editing a loan should reset all accepted bids to `PENDING`
 
 ### Loan Rating
 The loan interest rate is determined by the system based on the borrower rating and base market interest.  
