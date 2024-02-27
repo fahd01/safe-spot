@@ -1,0 +1,43 @@
+
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/loans/create">
+                <i class="typcn typcn-plus menu-icon"></i>
+                <span class="menu-title">Request Loan</span>
+                <div class="badge badge-danger">new</div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"  href="/loans/list" >
+                <i class="typcn typcn-zoom menu-icon"></i>
+                <span class="menu-title">Find a Loan</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"  href="/loans/mine" >
+                <i class="typcn typcn-th-list menu-icon"></i>
+                <span class="menu-title">My Loans</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"  href="/bids/mine" >
+                <i class="mdi mdi-currency-usd menu-icon"></i>
+                <span class="menu-title">My Bids</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#bids-automation" aria-expanded="false" aria-controls="auth">
+                <i class="mdi mdi-flash-auto menu-icon"></i>
+                <span class="menu-title">Bids Automation</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="bids-automation">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="/bids/automations/create"> Create Automation </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/bids/automations/mine"> My Automations </a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</nav>

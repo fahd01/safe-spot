@@ -88,7 +88,7 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
       <div class=\"navbar-brand-wrapper d-flex justify-content-center\">
         <div class=\"navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100\">
           <a class=\"navbar-brand brand-logo\" href=\"index.html\">
-            <img src=\"/dashboard-template/images/logo.svg\" alt=\"logo\"/>
+            <img src=\"/dashboard-template/images/logo-1.svg\" alt=\"logo\"/>
           </a>
           <a class=\"navbar-brand brand-logo-mini\" href=\"index.html\"><img src=\"/dashboard-template/images/logo-mini.svg\" alt=\"logo\"/></a>
           <button class=\"navbar-toggler navbar-toggler align-self-center\" type=\"button\" data-toggle=\"minimize\">
@@ -491,6 +491,13 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
   <!-- Custom js for this page-->
   <script src=\"/dashboard-template/js/dashboard.js\"></script>
   <!-- End custom js for this page-->
+<script>var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle=\"tooltip\"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+
+
+</script>
 </body>
 
 </html>
@@ -642,7 +649,7 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  607 => 393,  589 => 387,  570 => 26,  560 => 27,  557 => 26,  547 => 25,  537 => 23,  527 => 22,  508 => 20,  457 => 394,  455 => 393,  448 => 388,  446 => 387,  126 => 70,  82 => 28,  80 => 25,  77 => 24,  75 => 22,  70 => 20,  49 => 1,);
+        return array (  614 => 393,  596 => 387,  577 => 26,  567 => 27,  564 => 26,  554 => 25,  544 => 23,  534 => 22,  515 => 20,  457 => 394,  455 => 393,  448 => 388,  446 => 387,  126 => 70,  82 => 28,  80 => 25,  77 => 24,  75 => 22,  70 => 20,  49 => 1,);
     }
 
     public function getSourceContext()
@@ -683,7 +690,7 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
       <div class=\"navbar-brand-wrapper d-flex justify-content-center\">
         <div class=\"navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100\">
           <a class=\"navbar-brand brand-logo\" href=\"index.html\">
-            <img src=\"/dashboard-template/images/logo.svg\" alt=\"logo\"/>
+            <img src=\"/dashboard-template/images/logo-1.svg\" alt=\"logo\"/>
           </a>
           <a class=\"navbar-brand brand-logo-mini\" href=\"index.html\"><img src=\"/dashboard-template/images/logo-mini.svg\" alt=\"logo\"/></a>
           <button class=\"navbar-toggler navbar-toggler align-self-center\" type=\"button\" data-toggle=\"minimize\">
@@ -1077,6 +1084,13 @@ class __TwigTemplate_b2c7c42fae49c8bfa1efd510249ae2a5 extends Template
   <!-- Custom js for this page-->
   <script src=\"/dashboard-template/js/dashboard.js\"></script>
   <!-- End custom js for this page-->
+<script>var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle=\"tooltip\"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+
+
+</script>
 </body>
 
 </html>

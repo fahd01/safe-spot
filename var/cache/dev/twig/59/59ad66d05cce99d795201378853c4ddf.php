@@ -120,7 +120,11 @@ class __TwigTemplate_1fdc8f6b73053a863e8bf22103ee4f33 extends Template
       <div class=\"card-body\">
         <h4 class=\"card-title\">List of all loans</h4>
         <a href=\"/loans/create\"
-           role=\"button\" class=\"btn btn-info btn-sm btn-icon-text mr-3 float-right\"  title=\" create new loan\">
+           role=\"button\"
+           class=\"btn btn-info btn-sm btn-icon-text mr-3 float-right\"
+           data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+           title=\"Create new loan\"
+        >
           <i class=\"mdi mdi-plus-circle-outline btn-icon-prepend\"></i>
           Request Loan
         </a>
@@ -136,14 +140,15 @@ class __TwigTemplate_1fdc8f6b73053a863e8bf22103ee4f33 extends Template
               <th>Status</th>
               <th>Borrower</th>
               <th>Bids Progress</th>
+
               <th></th>
             </tr>
             </thead>
             <tbody>
             ";
-        // line 43
+        // line 48
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["loanskey"]) || array_key_exists("loanskey", $context) ? $context["loanskey"] : (function () { throw new RuntimeError('Variable "loanskey" does not exist.', 43, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["loanskey"]) || array_key_exists("loanskey", $context) ? $context["loanskey"] : (function () { throw new RuntimeError('Variable "loanskey" does not exist.', 48, $this->source); })()));
         $context['loop'] = [
           'parent' => $context['_parent'],
           'index0' => 0,
@@ -158,64 +163,69 @@ class __TwigTemplate_1fdc8f6b73053a863e8bf22103ee4f33 extends Template
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["item"]) {
-            // line 44
+            // line 49
             echo "              <tr>
 
                 <td> ";
-            // line 46
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 46), "html", null, true);
+            // line 51
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 51), "html", null, true);
             echo "    </td>
                 <td> ";
-            // line 47
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "amount", [], "any", false, false, false, 47), "html", null, true);
+            // line 52
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "amount", [], "any", false, false, false, 52), "html", null, true);
             echo " TND </td>
                 <td> ";
-            // line 48
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "interest", [], "any", false, false, false, 48), "html", null, true);
+            // line 53
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "interest", [], "any", false, false, false, 53), "html", null, true);
             echo " % </td>
                 <td> ";
-            // line 49
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "term", [], "any", false, false, false, 49), "html", null, true);
+            // line 54
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "term", [], "any", false, false, false, 54), "html", null, true);
             echo " mois</td>
                 <td> ";
-            // line 50
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "purpose", [], "any", false, false, false, 50), "html", null, true);
+            // line 55
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "purpose", [], "any", false, false, false, 55), "html", null, true);
             echo "</td>
                 <td> ";
-            // line 51
-            echo twig_include($this->env, $context, "loans_list/_loanStatus.html.twig", ["status" => twig_get_attribute($this->env, $this->source, $context["item"], "status", [], "any", false, false, false, 51)]);
+            // line 56
+            echo twig_include($this->env, $context, "loans_list/_loanStatus.html.twig", ["status" => twig_get_attribute($this->env, $this->source, $context["item"], "status", [], "any", false, false, false, 56)]);
             echo "  </td>
                 <td> ";
-            // line 52
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "borrower", [], "any", false, false, false, 52), "firstName", [], "any", false, false, false, 52), "html", null, true);
+            // line 57
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "borrower", [], "any", false, false, false, 57), "firstName", [], "any", false, false, false, 57), "html", null, true);
             echo " ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "borrower", [], "any", false, false, false, 52), "lastName", [], "any", false, false, false, 52), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "borrower", [], "any", false, false, false, 57), "lastName", [], "any", false, false, false, 57), "html", null, true);
             echo "</td>
                 <td> ";
-            // line 53
-            echo twig_include($this->env, $context, "loans_list/_loanProgress.html.twig", ["progress" => twig_get_attribute($this->env, $this->source, $context["item"], "bidsProgress", [], "method", false, false, false, 53)]);
+            // line 58
+            echo twig_include($this->env, $context, "loans_list/_loanProgress.html.twig", ["progress" => twig_get_attribute($this->env, $this->source, $context["item"], "bidsProgress", [], "method", false, false, false, 58), "remainingAmount" => (twig_get_attribute($this->env, $this->source, $context["item"], "amount", [], "any", false, false, false, 58) - twig_get_attribute($this->env, $this->source, $context["item"], "collectedBids", [], "method", false, false, false, 58)), "collectedAmount" => twig_get_attribute($this->env, $this->source, $context["item"], "collectedBids", [], "method", false, false, false, 58)]);
             echo " </td>
                 <td>
                   <a href=\"/loans/";
-            // line 55
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 55), "html", null, true);
-            echo "/bids/create\" role=\"button\" class=\"btn btn-success btn-sm btn-icon-text mr-3\" title=\"a bid is a participation in a loan where the owner of the bid lends the borrower a fraction of the loan\">
+            // line 60
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 60), "html", null, true);
+            echo "/bids/create\"
+                     data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\"
+                     role=\"button\" class=\"btn btn-success btn-sm btn-icon-text mr-3\"
+                     title=\"A bid is a participation in a loan where the owner of the bid lends the borrower a fraction of the loan\">
                     <i class=\"mdi mdi-currency-usd btn-icon-prepend\"></i>
                     Bid
                   </a>
                   <a href=\"/loans/create?id=";
-            // line 59
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 59), "html", null, true);
+            // line 67
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 67), "html", null, true);
             echo "\"
-                     role=\"button\" class=\"btn btn-warning btn-sm btn-icon-text mr-3\" title=\"edit this loan\">
+                     data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\"
+                     role=\"button\" class=\"btn btn-warning btn-sm btn-icon-text mr-3\" title=\"Edit this loan\">
                     <i class=\"mdi mdi-pencil btn-icon-prepend\"></i>
                     Edit
                   </a>
                   <button onclick=\"triggerDeleteLoanModal(";
-            // line 64
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 64), "html", null, true);
+            // line 73
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 73), "html", null, true);
             echo ")\"
-                     type=\"button\" class=\"btn btn-danger btn-sm btn-icon-text mr-3\" title=\"delete this loan\">
+                     type=\"button\" class=\"btn btn-danger btn-sm btn-icon-text mr-3\"
+                          data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Delete this loan\">
                     <i class=\"mdi mdi-delete-forever btn-icon-prepend\"></i>
                     Delete
                   </button>
@@ -236,7 +246,7 @@ class __TwigTemplate_1fdc8f6b73053a863e8bf22103ee4f33 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['item'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 74
+        // line 84
         echo "
             </tbody>
           </table>
@@ -304,7 +314,7 @@ function triggerDeleteLoanModal(loanId){
      */
     public function getDebugInfo()
     {
-        return array (  240 => 74,  216 => 64,  208 => 59,  201 => 55,  196 => 53,  190 => 52,  186 => 51,  182 => 50,  178 => 49,  174 => 48,  170 => 47,  166 => 46,  162 => 44,  145 => 43,  111 => 11,  101 => 10,  89 => 7,  79 => 6,  60 => 4,  37 => 2,);
+        return array (  250 => 84,  225 => 73,  216 => 67,  206 => 60,  201 => 58,  195 => 57,  191 => 56,  187 => 55,  183 => 54,  179 => 53,  175 => 52,  171 => 51,  167 => 49,  150 => 48,  111 => 11,  101 => 10,  89 => 7,  79 => 6,  60 => 4,  37 => 2,);
     }
 
     public function getSourceContext()
@@ -331,7 +341,11 @@ function triggerDeleteLoanModal(loanId){
       <div class=\"card-body\">
         <h4 class=\"card-title\">List of all loans</h4>
         <a href=\"/loans/create\"
-           role=\"button\" class=\"btn btn-info btn-sm btn-icon-text mr-3 float-right\"  title=\" create new loan\">
+           role=\"button\"
+           class=\"btn btn-info btn-sm btn-icon-text mr-3 float-right\"
+           data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+           title=\"Create new loan\"
+        >
           <i class=\"mdi mdi-plus-circle-outline btn-icon-prepend\"></i>
           Request Loan
         </a>
@@ -347,6 +361,7 @@ function triggerDeleteLoanModal(loanId){
               <th>Status</th>
               <th>Borrower</th>
               <th>Bids Progress</th>
+
               <th></th>
             </tr>
             </thead>
@@ -361,19 +376,24 @@ function triggerDeleteLoanModal(loanId){
                 <td> {{ item.purpose }}</td>
                 <td> {{ include ('loans_list/_loanStatus.html.twig',{'status':item.status}) }}  </td>
                 <td> {{ item.borrower.firstName }} {{ item.borrower.lastName }}</td>
-                <td> {{ include ('loans_list/_loanProgress.html.twig',{'progress':item.bidsProgress()}) }} </td>
+                <td> {{ include ('loans_list/_loanProgress.html.twig',{'progress':item.bidsProgress(),'remainingAmount':item.amount-item.collectedBids(), 'collectedAmount':item.collectedBids() }) }} </td>
                 <td>
-                  <a href=\"/loans/{{ item.id }}/bids/create\" role=\"button\" class=\"btn btn-success btn-sm btn-icon-text mr-3\" title=\"a bid is a participation in a loan where the owner of the bid lends the borrower a fraction of the loan\">
+                  <a href=\"/loans/{{ item.id }}/bids/create\"
+                     data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\"
+                     role=\"button\" class=\"btn btn-success btn-sm btn-icon-text mr-3\"
+                     title=\"A bid is a participation in a loan where the owner of the bid lends the borrower a fraction of the loan\">
                     <i class=\"mdi mdi-currency-usd btn-icon-prepend\"></i>
                     Bid
                   </a>
                   <a href=\"/loans/create?id={{ item.id }}\"
-                     role=\"button\" class=\"btn btn-warning btn-sm btn-icon-text mr-3\" title=\"edit this loan\">
+                     data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\"
+                     role=\"button\" class=\"btn btn-warning btn-sm btn-icon-text mr-3\" title=\"Edit this loan\">
                     <i class=\"mdi mdi-pencil btn-icon-prepend\"></i>
                     Edit
                   </a>
                   <button onclick=\"triggerDeleteLoanModal({{ item.id }})\"
-                     type=\"button\" class=\"btn btn-danger btn-sm btn-icon-text mr-3\" title=\"delete this loan\">
+                     type=\"button\" class=\"btn btn-danger btn-sm btn-icon-text mr-3\"
+                          data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Delete this loan\">
                     <i class=\"mdi mdi-delete-forever btn-icon-prepend\"></i>
                     Delete
                   </button>

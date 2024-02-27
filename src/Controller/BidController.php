@@ -11,6 +11,8 @@ use App\Entity\Bid;
 use App\Entity\Loan;
 use App\Form\BidType;
 use App\Entity\BidStatus;
+use App\Entity\LoanStatus;
+use App\Repository\LoanRepository;
 
 class BidController extends AbstractController
 {
@@ -21,7 +23,7 @@ class BidController extends AbstractController
         $userId = 1;
         $bids=$repo->findBy(['bidder' => $userId]);;
 
-        return $this->render('bid/myBids.html.twig', [
+        return $this->render('bids/myBids.html.twig', [
             'controller_name' => 'BidController',
             'bids' => $bids
         ]);
@@ -51,7 +53,7 @@ class BidController extends AbstractController
             return $this->redirectToRoute('app_my_bids');
         }
 
-        return $this->render('bid/placeBid.html.twig', [
+        return $this->render('bids/placeBid.html.twig', [
             'form' => $form
         ]);
 
@@ -66,12 +68,21 @@ class BidController extends AbstractController
 
 
     #[Route('/bids/{id}/approve', name: 'app_approve_bid')]
-    public function approve (Bid $bid,BidRepository $repo){
+    public function approve (Bid $bid, BidRepository $bidRepo, LoanRepository $loanRepo){
         # TODO check if loan is still in bidding and how much is remaining
-        # TODO change loan status
         $loan = $bid->getLoan();
+        $remainingAmount = $loan->getAmount() - $loan->collectedBids();
+        if ($remainingAmount < $bid->getAmount())
+            return $this->redirectToRoute('app_loans_mine');
+
         $bid->setStatus(BidStatus::Approved);
-        $repo->save($bid);
+        $bidRepo->save($bid);
+
+        # TODO use event ??
+        if ($remainingAmount == $bid->getAmount()) {
+            $loan->setToActive();
+            $loanRepo->save($loan);
+        }
         return $this->redirectToRoute('app_loans_mine');
     }
 

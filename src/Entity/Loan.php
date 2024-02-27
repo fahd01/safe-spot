@@ -153,7 +153,7 @@ class Loan
 
     public function collectedBids(): int {
         $bidsAmount = $this->bids
-            ->filter( function($bid) { return $bid->getStatus() == BidStatus::Approved;} )
+            ->filter( function($bid) { return in_array($bid->getStatus(), [BidStatus::Approved, BidStatus::Active, BidStatus::Paid]) ;} )
             ->map( function($bid) { return $bid->getAmount();} )
             ->reduce(function(int $accumulator, int $bidAmount): int { return $accumulator + $bidAmount;}, 0);
         return $bidsAmount;
@@ -161,5 +161,17 @@ class Loan
 
     public function bidsProgress(): int {
         return ($this->collectedBids() / $this->amount) * 100;
+    }
+
+    # Set the loan and all its approved bids to active status
+    # use this method when loan amount is reached via approved bids
+    public function setToActive(): void {
+        $this->setStatus(LoanStatus::Active);
+        foreach (
+            $this->bids->filter( fn($bid) => $bid->getStatus() == BidStatus::Approved )
+            as $key => $bid
+        ) {
+            $bid->setStatus(BidStatus::Active);
+        }
     }
 }

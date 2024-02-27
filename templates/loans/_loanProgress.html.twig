@@ -1,0 +1,23 @@
+{% set progressValue = progress %}
+
+<div class="progress">
+    <div class="progress-bar progress-bar-striped
+        {% if progressValue < 40 %}
+        bg-danger
+        {% elseif progressValue < 80 %}
+        bg-warning
+        {% else %}
+        bg-success
+        {% endif %}
+        -stripped"
+         data-bs-toggle="tooltip" data-bs-placement="bottom" data-html="true"
+         title="Collected Amount: {{ collectedAmount }} TND<br/>Remaining Amount: {{ remainingAmount }} TND"
+         role="progressbar"
+         style="width: {{ progressValue }}%"
+         aria-valuenow="{{ progressValue }}"
+         aria-valuemin="0"
+         aria-valuemax="100">
+        {{ progressValue }}%
+    </div>
+</div>
+

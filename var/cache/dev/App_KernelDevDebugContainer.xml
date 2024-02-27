@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
   <parameters>
-    <parameter key="kernel.project_dir">C:\Users\elgay\IdeaProjects\safe-spot1</parameter>
+    <parameter key="kernel.project_dir">/var/safe-spot/safe-spot</parameter>
     <parameter key="kernel.environment">dev</parameter>
     <parameter key="kernel.runtime_environment">%env(default:kernel.environment:APP_RUNTIME_ENV)%</parameter>
     <parameter key="kernel.runtime_mode">%env(query_string:default:container.runtime_mode:APP_RUNTIME_MODE)%</parameter>
@@ -9,9 +9,9 @@
     <parameter key="kernel.runtime_mode.cli">%env(not:default:kernel.runtime_mode.web:)%</parameter>
     <parameter key="kernel.runtime_mode.worker">%env(bool:default::key:worker:default:kernel.runtime_mode:)%</parameter>
     <parameter key="kernel.debug">true</parameter>
-    <parameter key="kernel.build_dir">C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev</parameter>
-    <parameter key="kernel.cache_dir">C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev</parameter>
-    <parameter key="kernel.logs_dir">C:\Users\elgay\IdeaProjects\safe-spot1\var\log</parameter>
+    <parameter key="kernel.build_dir">/var/safe-spot/safe-spot/var/cache/dev</parameter>
+    <parameter key="kernel.cache_dir">/var/safe-spot/safe-spot/var/cache/dev</parameter>
+    <parameter key="kernel.logs_dir">/var/safe-spot/safe-spot/var/log</parameter>
     <parameter key="kernel.bundles" type="collection">
       <parameter key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</parameter>
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
@@ -28,51 +28,51 @@
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
-        <parameter key="path">C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\framework-bundle</parameter>
+        <parameter key="path">/var/safe-spot/safe-spot/vendor/symfony/framework-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\FrameworkBundle</parameter>
       </parameter>
       <parameter key="DoctrineBundle" type="collection">
-        <parameter key="path">C:\Users\elgay\IdeaProjects\safe-spot1\vendor\doctrine\doctrine-bundle</parameter>
+        <parameter key="path">/var/safe-spot/safe-spot/vendor/doctrine/doctrine-bundle</parameter>
         <parameter key="namespace">Doctrine\Bundle\DoctrineBundle</parameter>
       </parameter>
       <parameter key="DoctrineMigrationsBundle" type="collection">
-        <parameter key="path">C:\Users\elgay\IdeaProjects\safe-spot1\vendor\doctrine\doctrine-migrations-bundle</parameter>
+        <parameter key="path">/var/safe-spot/safe-spot/vendor/doctrine/doctrine-migrations-bundle</parameter>
         <parameter key="namespace">Doctrine\Bundle\MigrationsBundle</parameter>
       </parameter>
       <parameter key="DebugBundle" type="collection">
-        <parameter key="path">C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\debug-bundle</parameter>
+        <parameter key="path">/var/safe-spot/safe-spot/vendor/symfony/debug-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\DebugBundle</parameter>
       </parameter>
       <parameter key="TwigBundle" type="collection">
-        <parameter key="path">C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\twig-bundle</parameter>
+        <parameter key="path">/var/safe-spot/safe-spot/vendor/symfony/twig-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\TwigBundle</parameter>
       </parameter>
       <parameter key="WebProfilerBundle" type="collection">
-        <parameter key="path">C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\web-profiler-bundle</parameter>
+        <parameter key="path">/var/safe-spot/safe-spot/vendor/symfony/web-profiler-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\WebProfilerBundle</parameter>
       </parameter>
       <parameter key="StimulusBundle" type="collection">
-        <parameter key="path">C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\stimulus-bundle</parameter>
+        <parameter key="path">/var/safe-spot/safe-spot/vendor/symfony/stimulus-bundle</parameter>
         <parameter key="namespace">Symfony\UX\StimulusBundle</parameter>
       </parameter>
       <parameter key="TurboBundle" type="collection">
-        <parameter key="path">C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\ux-turbo</parameter>
+        <parameter key="path">/var/safe-spot/safe-spot/vendor/symfony/ux-turbo</parameter>
         <parameter key="namespace">Symfony\UX\Turbo</parameter>
       </parameter>
       <parameter key="TwigExtraBundle" type="collection">
-        <parameter key="path">C:\Users\elgay\IdeaProjects\safe-spot1\vendor\twig\extra-bundle</parameter>
+        <parameter key="path">/var/safe-spot/safe-spot/vendor/twig/extra-bundle</parameter>
         <parameter key="namespace">Twig\Extra\TwigExtraBundle</parameter>
       </parameter>
       <parameter key="SecurityBundle" type="collection">
-        <parameter key="path">C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-bundle</parameter>
+        <parameter key="path">/var/safe-spot/safe-spot/vendor/symfony/security-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\SecurityBundle</parameter>
       </parameter>
       <parameter key="MonologBundle" type="collection">
-        <parameter key="path">C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\monolog-bundle</parameter>
+        <parameter key="path">/var/safe-spot/safe-spot/vendor/symfony/monolog-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\MonologBundle</parameter>
       </parameter>
       <parameter key="MakerBundle" type="collection">
-        <parameter key="path">C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\maker-bundle\src</parameter>
+        <parameter key="path">/var/safe-spot/safe-spot/vendor/symfony/maker-bundle/src</parameter>
         <parameter key="namespace">Symfony\Bundle\MakerBundle</parameter>
       </parameter>
     </parameter>
@@ -113,18 +113,18 @@
     <parameter key="asset.request_context.base_path">null</parameter>
     <parameter key="asset.request_context.secure">null</parameter>
     <parameter key="translator.logging">false</parameter>
-    <parameter key="translator.default_path">C:\Users\elgay\IdeaProjects\safe-spot1/translations</parameter>
+    <parameter key="translator.default_path">/var/safe-spot/safe-spot/translations</parameter>
     <parameter key="debug.error_handler.throw_at">-1</parameter>
-    <parameter key="debug.container.dump">C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/App_KernelDevDebugContainer.xml</parameter>
+    <parameter key="debug.container.dump">/var/safe-spot/safe-spot/var/cache/dev/App_KernelDevDebugContainer.xml</parameter>
     <parameter key="router.request_context.host">localhost</parameter>
     <parameter key="router.request_context.scheme">http</parameter>
     <parameter key="router.request_context.base_url"></parameter>
     <parameter key="router.resource">kernel::loadRoutes</parameter>
-    <parameter key="router.cache_dir">C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev</parameter>
+    <parameter key="router.cache_dir">/var/safe-spot/safe-spot/var/cache/dev</parameter>
     <parameter key="request_listener.http_port">80</parameter>
     <parameter key="request_listener.https_port">443</parameter>
-    <parameter key="serializer.mapping.cache.file">C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/serialization.php</parameter>
-    <parameter key="cache.prefix.seed">_C:\Users\elgay\IdeaProjects\safe-spot1.App_KernelDevDebugContainer</parameter>
+    <parameter key="serializer.mapping.cache.file">/var/safe-spot/safe-spot/var/cache/dev/serialization.php</parameter>
+    <parameter key="cache.prefix.seed">_/var/safe-spot/safe-spot.App_KernelDevDebugContainer</parameter>
     <parameter key="session.metadata.storage_key">_sf2_meta</parameter>
     <parameter key="session.storage.options" type="collection">
       <parameter key="cache_limiter" type="string">0</parameter>
@@ -137,11 +137,11 @@
     <parameter key="session.metadata.update_threshold">0</parameter>
     <parameter key="form.type_extension.csrf.enabled">true</parameter>
     <parameter key="form.type_extension.csrf.field_name">_token</parameter>
-    <parameter key="validator.mapping.cache.file">C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/validation.php</parameter>
+    <parameter key="validator.mapping.cache.file">/var/safe-spot/safe-spot/var/cache/dev/validation.php</parameter>
     <parameter key="validator.translation_domain">validators</parameter>
     <parameter key="profiler_listener.only_exceptions">false</parameter>
     <parameter key="profiler_listener.only_main_requests">false</parameter>
-    <parameter key="profiler.storage.dsn">file:C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/profiler</parameter>
+    <parameter key="profiler.storage.dsn">file:/var/safe-spot/safe-spot/var/cache/dev/profiler</parameter>
     <parameter key="doctrine.dbal.configuration.class">Doctrine\DBAL\Configuration</parameter>
     <parameter key="doctrine.data_collector.class">Doctrine\Bundle\DoctrineBundle\DataCollector\DoctrineDataCollector</parameter>
     <parameter key="doctrine.dbal.connection.event_manager.class">Symfony\Bridge\Doctrine\ContainerAwareEventManager</parameter>
@@ -206,7 +206,7 @@
     <parameter key="doctrine.orm.second_level_cache.regions_configuration.class">Doctrine\ORM\Cache\RegionsConfiguration</parameter>
     <parameter key="doctrine.orm.auto_generate_proxy_classes">true</parameter>
     <parameter key="doctrine.orm.enable_lazy_ghost_objects">true</parameter>
-    <parameter key="doctrine.orm.proxy_dir">C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/doctrine/orm/Proxies</parameter>
+    <parameter key="doctrine.orm.proxy_dir">/var/safe-spot/safe-spot/var/cache/dev/doctrine/orm/Proxies</parameter>
     <parameter key="doctrine.orm.proxy_namespace">Proxies</parameter>
     <parameter key="doctrine.migrations.preferred_em">null</parameter>
     <parameter key="doctrine.migrations.preferred_connection">null</parameter>
@@ -215,7 +215,7 @@
       <parameter>form_div_layout.html.twig</parameter>
       <parameter>bootstrap_4_layout.html.twig</parameter>
     </parameter>
-    <parameter key="twig.default_path">C:\Users\elgay\IdeaProjects\safe-spot1/templates</parameter>
+    <parameter key="twig.default_path">/var/safe-spot/safe-spot/templates</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
     <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
     <parameter key="security.role_hierarchy.roles" type="collection"/>
@@ -351,6 +351,13 @@
     <service id="App\Entity" class="App\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
+    <service id="App\Controller\AutomationController" class="App\Controller\AutomationController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\AutomationController"/>
+      </call>
+    </service>
     <service id="App\Controller\BidController" class="App\Controller\BidController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -358,11 +365,11 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\BidController"/>
       </call>
     </service>
-    <service id="App\Controller\LoansListController" class="App\Controller\LoansListController" public="true" autowire="true" autoconfigure="true">
+    <service id="App\Controller\LoansController" class="App\Controller\LoansController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
-        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\LoansListController"/>
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\LoansController"/>
       </call>
     </service>
     <service id="App\Controller\LoginController" class="App\Controller\LoginController" public="true" autowire="true" autoconfigure="true">
@@ -372,11 +379,25 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\LoginController"/>
       </call>
     </service>
+    <service id="App\Form\AutomationRuleType" class="App\Form\AutomationRuleType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\AutomationType" class="App\Form\AutomationType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\BidType" class="App\Form\BidType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Form\LoanType" class="App\Form\LoanType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
+    </service>
+    <service id="App\Repository\AutomationRepository" class="App\Repository\AutomationRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\AutomationRuleRepository" class="App\Repository\AutomationRuleRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\BidRepository" class="App\Repository\BidRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
@@ -437,7 +458,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.oTiQKeL"/>
+      <argument type="service" id=".service_locator.AbXNv5v"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -518,7 +539,7 @@
       </argument>
     </service>
     <service id="http_cache.store" class="Symfony\Component\HttpKernel\HttpCache\Store">
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/http_cache</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/http_cache</argument>
     </service>
     <service id="url_helper" class="Symfony\Component\HttpFoundation\UrlHelper">
       <argument type="service" id="request_stack"/>
@@ -528,7 +549,7 @@
       <tag name="container.no_preload"/>
       <argument type="tagged_iterator" tag="kernel.cache_warmer"/>
       <argument>true</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/App_KernelDevDebugContainerDeprecations.log</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/App_KernelDevDebugContainerDeprecations.log</argument>
     </service>
     <service id="cache_clearer" class="Symfony\Component\HttpKernel\CacheClearer\ChainCacheClearer">
       <argument type="tagged_iterator" tag="kernel.cache_clearer"/>
@@ -774,7 +795,7 @@
       </argument>
       <argument>UTF-8</argument>
       <argument type="service" id="debug.file_link_formatter" on-invalid="null"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1</argument>
+      <argument>/var/safe-spot/safe-spot</argument>
       <argument type="service">
         <service>
           <argument type="service" id="request_stack"/>
@@ -810,7 +831,7 @@
       <tag name="console.command"/>
       <tag name="container.no_preload"/>
       <argument type="service" id="filesystem"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1</argument>
+      <argument>/var/safe-spot/safe-spot</argument>
       <call method="setName">
         <argument>assets:install</argument>
       </call>
@@ -996,7 +1017,7 @@
       <tag name="console.command"/>
       <tag name="container.no_preload"/>
       <argument>dev</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1</argument>
+      <argument>/var/safe-spot/safe-spot</argument>
       <call method="setName">
         <argument>debug:dotenv</argument>
       </call>
@@ -1228,16 +1249,16 @@
       <argument type="service" id="translator.data_collector"/>
       <argument type="service" id="translation.reader"/>
       <argument type="service" id="translation.extractor"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1/translations</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1/templates</argument>
+      <argument>/var/safe-spot/safe-spot/translations</argument>
+      <argument>/var/safe-spot/safe-spot/templates</argument>
       <argument type="collection">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations</argument>
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations</argument>
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations</argument>
       </argument>
       <argument type="collection">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\twig-bridge/Resources/views/Email</argument>
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\twig-bridge/Resources/views/Form</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/symfony/twig-bridge/Resources/views/Email</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/symfony/twig-bridge/Resources/views/Form</argument>
       </argument>
       <argument type="collection"/>
       <call method="setName">
@@ -1254,16 +1275,16 @@
       <argument type="service" id="translation.reader"/>
       <argument type="service" id="translation.extractor"/>
       <argument>en</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1/translations</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1/templates</argument>
+      <argument>/var/safe-spot/safe-spot/translations</argument>
+      <argument>/var/safe-spot/safe-spot/templates</argument>
       <argument type="collection">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations</argument>
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations</argument>
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations</argument>
       </argument>
       <argument type="collection">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\twig-bridge/Resources/views/Email</argument>
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\twig-bridge/Resources/views/Form</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/symfony/twig-bridge/Resources/views/Email</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/symfony/twig-bridge/Resources/views/Form</argument>
       </argument>
       <argument type="collection"/>
       <call method="setName">
@@ -1344,6 +1365,8 @@
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\AutomationRuleType</argument>
+        <argument>App\Form\AutomationType</argument>
         <argument>App\Form\BidType</argument>
         <argument>App\Form\LoanType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
@@ -1508,7 +1531,7 @@
       <argument></argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/pools/system</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/pools/system</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -1527,7 +1550,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/pools/app</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/pools/app</argument>
       <argument type="service" id="cache.default_marshaller" on-invalid="ignore"/>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
@@ -1697,16 +1720,16 @@
     <service id="asset_mapper.cached_mapped_asset_factory" class="Symfony\Component\AssetMapper\Factory\CachedMappedAssetFactory">
       <tag name="container.decorator" id="asset_mapper.mapped_asset_factory" inner="asset_mapper.cached_mapped_asset_factory.inner"/>
       <argument type="service" id="asset_mapper.cached_mapped_asset_factory.inner"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/asset_mapper</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/asset_mapper</argument>
       <argument>true</argument>
     </service>
     <service id="asset_mapper.repository" class="Symfony\Component\AssetMapper\AssetMapperRepository">
       <argument type="collection">
-        <argument key="C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\ux-turbo\src\DependencyInjection/../../assets/dist">@symfony/ux-turbo</argument>
-        <argument key="C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\stimulus-bundle\src\DependencyInjection/../../assets/dist">@symfony/stimulus-bundle</argument>
+        <argument key="/var/safe-spot/safe-spot/vendor/symfony/ux-turbo/src/DependencyInjection/../../assets/dist">@symfony/ux-turbo</argument>
+        <argument key="/var/safe-spot/safe-spot/vendor/symfony/stimulus-bundle/src/DependencyInjection/../../assets/dist">@symfony/stimulus-bundle</argument>
         <argument key="assets/"></argument>
       </argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1</argument>
+      <argument>/var/safe-spot/safe-spot</argument>
       <argument type="collection">
         <argument>#^(?=[^\.]).*\.d\.ts$#</argument>
         <argument>#^(?=[^\.]).*.*/(?=[^\.])controllers\.json$#</argument>
@@ -1717,10 +1740,10 @@
       <argument>/assets/</argument>
     </service>
     <service id="asset_mapper.local_public_assets_filesystem" class="Symfony\Component\AssetMapper\Path\LocalPublicAssetsFilesystem">
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1/public</argument>
+      <argument>/var/safe-spot/safe-spot/public</argument>
     </service>
     <service id="asset_mapper.compiled_asset_mapper_config_reader" class="Symfony\Component\AssetMapper\CompiledAssetMapperConfigReader">
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1/public/assets</argument>
+      <argument>/var/safe-spot/safe-spot/public/assets</argument>
     </service>
     <service id="asset_mapper.asset_package" class="Symfony\Component\AssetMapper\MapperAwareAssetPackage">
       <tag name="container.decorator" id="assets._default_package" inner="asset_mapper.asset_package.inner"/>
@@ -1744,7 +1767,7 @@
       <argument type="service" id="asset_mapper"/>
       <argument type="service" id="asset_mapper.importmap.generator"/>
       <argument type="service" id="asset_mapper.local_public_assets_filesystem"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1</argument>
+      <argument>/var/safe-spot/safe-spot</argument>
       <argument>true</argument>
       <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
       <call method="setName">
@@ -1759,7 +1782,7 @@
       <tag name="container.no_preload"/>
       <argument type="service" id="asset_mapper"/>
       <argument type="service" id="asset_mapper.repository"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1</argument>
+      <argument>/var/safe-spot/safe-spot</argument>
       <call method="setName">
         <argument>debug:asset-map</argument>
       </call>
@@ -1788,7 +1811,7 @@
       <argument type="service" id="monolog.logger.asset_mapper"/>
     </service>
     <service id="asset_mapper.importmap.config_reader" class="Symfony\Component\AssetMapper\ImportMap\ImportMapConfigReader">
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1/importmap.php</argument>
+      <argument>/var/safe-spot/safe-spot/importmap.php</argument>
       <argument type="service" id="asset_mapper.importmap.remote_package_storage"/>
     </service>
     <service id="asset_mapper.importmap.manager" class="Symfony\Component\AssetMapper\ImportMap\ImportMapManager">
@@ -1803,7 +1826,7 @@
       <argument type="service" id="asset_mapper.importmap.config_reader"/>
     </service>
     <service id="asset_mapper.importmap.remote_package_storage" class="Symfony\Component\AssetMapper\ImportMap\RemotePackageStorage">
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1/assets/vendor</argument>
+      <argument>/var/safe-spot/safe-spot/assets/vendor</argument>
     </service>
     <service id="asset_mapper.importmap.remote_package_downloader" class="Symfony\Component\AssetMapper\ImportMap\RemotePackageDownloader">
       <argument type="service" id="asset_mapper.importmap.remote_package_storage"/>
@@ -1874,7 +1897,7 @@
       <tag name="console.command"/>
       <tag name="container.no_preload"/>
       <argument type="service" id="asset_mapper.importmap.remote_package_downloader"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1</argument>
+      <argument>/var/safe-spot/safe-spot</argument>
       <call method="setName">
         <argument>importmap:install</argument>
       </call>
@@ -2064,331 +2087,331 @@
         </argument>
       </argument>
       <argument type="collection">
-        <argument key="cache_dir">C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/translations</argument>
+        <argument key="cache_dir">/var/safe-spot/safe-spot/var/cache/dev/translations</argument>
         <argument key="debug">true</argument>
         <argument key="resource_files" type="collection">
           <argument key="af" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.af.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.af.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.af.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.af.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.af.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.af.xlf</argument>
           </argument>
           <argument key="ar" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.ar.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.ar.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.ar.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.ar.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.ar.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.ar.xlf</argument>
           </argument>
           <argument key="az" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.az.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.az.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.az.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.az.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.az.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.az.xlf</argument>
           </argument>
           <argument key="be" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.be.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.be.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.be.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.be.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.be.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.be.xlf</argument>
           </argument>
           <argument key="bg" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.bg.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.bg.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.bg.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.bg.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.bg.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.bg.xlf</argument>
           </argument>
           <argument key="bs" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.bs.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.bs.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.bs.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.bs.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.bs.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.bs.xlf</argument>
           </argument>
           <argument key="ca" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.ca.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.ca.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.ca.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.ca.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.ca.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.ca.xlf</argument>
           </argument>
           <argument key="cs" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.cs.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.cs.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.cs.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.cs.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.cs.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.cs.xlf</argument>
           </argument>
           <argument key="cy" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.cy.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.cy.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.cy.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.cy.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.cy.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.cy.xlf</argument>
           </argument>
           <argument key="da" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.da.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.da.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.da.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.da.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.da.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.da.xlf</argument>
           </argument>
           <argument key="de" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.de.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.de.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.de.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.de.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.de.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.de.xlf</argument>
           </argument>
           <argument key="el" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.el.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.el.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.el.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.el.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.el.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.el.xlf</argument>
           </argument>
           <argument key="en" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.en.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.en.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.en.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.en.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.en.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.en.xlf</argument>
           </argument>
           <argument key="es" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.es.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.es.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.es.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.es.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.es.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.es.xlf</argument>
           </argument>
           <argument key="et" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.et.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.et.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.et.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.et.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.et.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.et.xlf</argument>
           </argument>
           <argument key="eu" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.eu.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.eu.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.eu.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.eu.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.eu.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.eu.xlf</argument>
           </argument>
           <argument key="fa" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.fa.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.fa.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.fa.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.fa.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.fa.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.fa.xlf</argument>
           </argument>
           <argument key="fi" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.fi.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.fi.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.fi.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.fi.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.fi.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.fi.xlf</argument>
           </argument>
           <argument key="fr" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.fr.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.fr.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.fr.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.fr.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.fr.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.fr.xlf</argument>
           </argument>
           <argument key="gl" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.gl.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.gl.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.gl.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.gl.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.gl.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.gl.xlf</argument>
           </argument>
           <argument key="he" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.he.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.he.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.he.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.he.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.he.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.he.xlf</argument>
           </argument>
           <argument key="hr" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.hr.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.hr.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.hr.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.hr.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.hr.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.hr.xlf</argument>
           </argument>
           <argument key="hu" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.hu.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.hu.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.hu.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.hu.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.hu.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.hu.xlf</argument>
           </argument>
           <argument key="hy" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.hy.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.hy.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.hy.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.hy.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.hy.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.hy.xlf</argument>
           </argument>
           <argument key="id" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.id.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.id.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.id.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.id.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.id.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.id.xlf</argument>
           </argument>
           <argument key="it" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.it.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.it.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.it.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.it.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.it.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.it.xlf</argument>
           </argument>
           <argument key="ja" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.ja.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.ja.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.ja.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.ja.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.ja.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.ja.xlf</argument>
           </argument>
           <argument key="lb" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.lb.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.lb.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.lb.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.lb.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.lb.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.lb.xlf</argument>
           </argument>
           <argument key="lt" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.lt.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.lt.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.lt.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.lt.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.lt.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.lt.xlf</argument>
           </argument>
           <argument key="lv" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.lv.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.lv.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.lv.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.lv.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.lv.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.lv.xlf</argument>
           </argument>
           <argument key="mk" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.mk.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.mk.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.mk.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.mk.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.mk.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.mk.xlf</argument>
           </argument>
           <argument key="mn" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.mn.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.mn.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.mn.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.mn.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.mn.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.mn.xlf</argument>
           </argument>
           <argument key="my" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.my.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.my.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.my.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.my.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.my.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.my.xlf</argument>
           </argument>
           <argument key="nb" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.nb.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.nb.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.nb.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.nb.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.nb.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.nb.xlf</argument>
           </argument>
           <argument key="nl" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.nl.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.nl.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.nl.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.nl.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.nl.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.nl.xlf</argument>
           </argument>
           <argument key="nn" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.nn.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.nn.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.nn.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.nn.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.nn.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.nn.xlf</argument>
           </argument>
           <argument key="no" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.no.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.no.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.no.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.no.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.no.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.no.xlf</argument>
           </argument>
           <argument key="pl" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.pl.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.pl.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.pl.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.pl.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.pl.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.pl.xlf</argument>
           </argument>
           <argument key="pt" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.pt.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.pt.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.pt.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.pt.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.pt.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.pt.xlf</argument>
           </argument>
           <argument key="pt_BR" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.pt_BR.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.pt_BR.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.pt_BR.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.pt_BR.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.pt_BR.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.pt_BR.xlf</argument>
           </argument>
           <argument key="ro" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.ro.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.ro.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.ro.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.ro.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.ro.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.ro.xlf</argument>
           </argument>
           <argument key="ru" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.ru.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.ru.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.ru.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.ru.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.ru.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.ru.xlf</argument>
           </argument>
           <argument key="sk" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.sk.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.sk.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.sk.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.sk.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.sk.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.sk.xlf</argument>
           </argument>
           <argument key="sl" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.sl.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.sl.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.sl.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.sl.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.sl.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.sl.xlf</argument>
           </argument>
           <argument key="sq" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.sq.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.sq.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.sq.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.sq.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.sq.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.sq.xlf</argument>
           </argument>
           <argument key="sr_Cyrl" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.sr_Cyrl.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.sr_Cyrl.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.sr_Cyrl.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.sr_Cyrl.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.sr_Cyrl.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.sr_Cyrl.xlf</argument>
           </argument>
           <argument key="sr_Latn" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.sr_Latn.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.sr_Latn.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.sr_Latn.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.sr_Latn.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.sr_Latn.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.sr_Latn.xlf</argument>
           </argument>
           <argument key="sv" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.sv.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.sv.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.sv.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.sv.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.sv.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.sv.xlf</argument>
           </argument>
           <argument key="th" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.th.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.th.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.th.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.th.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.th.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.th.xlf</argument>
           </argument>
           <argument key="tl" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.tl.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.tl.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.tl.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.tl.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.tl.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.tl.xlf</argument>
           </argument>
           <argument key="tr" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.tr.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.tr.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.tr.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.tr.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.tr.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.tr.xlf</argument>
           </argument>
           <argument key="uk" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.uk.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.uk.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.uk.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.uk.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.uk.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.uk.xlf</argument>
           </argument>
           <argument key="ur" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.ur.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.ur.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.ur.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.ur.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.ur.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.ur.xlf</argument>
           </argument>
           <argument key="uz" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.uz.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.uz.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.uz.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.uz.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.uz.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.uz.xlf</argument>
           </argument>
           <argument key="vi" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.vi.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.vi.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.vi.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.vi.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.vi.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.vi.xlf</argument>
           </argument>
           <argument key="zh_CN" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.zh_CN.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.zh_CN.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.zh_CN.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.zh_CN.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.zh_CN.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.zh_CN.xlf</argument>
           </argument>
           <argument key="zh_TW" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations\validators.zh_TW.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations\validators.zh_TW.xlf</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations\security.zh_TW.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations/validators.zh_TW.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations/validators.zh_TW.xlf</argument>
+            <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations/security.zh_TW.xlf</argument>
           </argument>
         </argument>
         <argument key="scanned_directories" type="collection">
-          <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations</argument>
-          <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations</argument>
-          <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations</argument>
-          <argument>C:\Users\elgay\IdeaProjects\safe-spot1/translations</argument>
-          <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\framework-bundle/translations</argument>
-          <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\doctrine\doctrine-bundle/translations</argument>
-          <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\doctrine\doctrine-migrations-bundle/translations</argument>
-          <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\debug-bundle/translations</argument>
-          <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\twig-bundle/translations</argument>
-          <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\web-profiler-bundle/translations</argument>
-          <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\stimulus-bundle/translations</argument>
-          <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\ux-turbo/translations</argument>
-          <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\twig\extra-bundle/translations</argument>
-          <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-bundle/translations</argument>
-          <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\monolog-bundle/translations</argument>
-          <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\maker-bundle\src/translations</argument>
+          <argument>/var/safe-spot/safe-spot/vendor/symfony/validator/Resources/translations</argument>
+          <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/translations</argument>
+          <argument>/var/safe-spot/safe-spot/vendor/symfony/security-core/Resources/translations</argument>
+          <argument>/var/safe-spot/safe-spot/translations</argument>
+          <argument>/var/safe-spot/safe-spot/vendor/symfony/framework-bundle/translations</argument>
+          <argument>/var/safe-spot/safe-spot/vendor/doctrine/doctrine-bundle/translations</argument>
+          <argument>/var/safe-spot/safe-spot/vendor/doctrine/doctrine-migrations-bundle/translations</argument>
+          <argument>/var/safe-spot/safe-spot/vendor/symfony/debug-bundle/translations</argument>
+          <argument>/var/safe-spot/safe-spot/vendor/symfony/twig-bundle/translations</argument>
+          <argument>/var/safe-spot/safe-spot/vendor/symfony/web-profiler-bundle/translations</argument>
+          <argument>/var/safe-spot/safe-spot/vendor/symfony/stimulus-bundle/translations</argument>
+          <argument>/var/safe-spot/safe-spot/vendor/symfony/ux-turbo/translations</argument>
+          <argument>/var/safe-spot/safe-spot/vendor/twig/extra-bundle/translations</argument>
+          <argument>/var/safe-spot/safe-spot/vendor/symfony/security-bundle/translations</argument>
+          <argument>/var/safe-spot/safe-spot/vendor/symfony/monolog-bundle/translations</argument>
+          <argument>/var/safe-spot/safe-spot/vendor/symfony/maker-bundle/src/translations</argument>
         </argument>
         <argument key="cache_vary" type="collection">
           <argument key="scanned_directories" type="collection">
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\validator/Resources/translations</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/translations</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-core/Resources/translations</argument>
+            <argument>vendor/symfony/validator/Resources/translations</argument>
+            <argument>vendor/symfony/form/Resources/translations</argument>
+            <argument>vendor/symfony/security-core/Resources/translations</argument>
             <argument>translations</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\framework-bundle/translations</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\doctrine\doctrine-bundle/translations</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\doctrine\doctrine-migrations-bundle/translations</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\debug-bundle/translations</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\twig-bundle/translations</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\web-profiler-bundle/translations</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\stimulus-bundle/translations</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\ux-turbo/translations</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\twig\extra-bundle/translations</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-bundle/translations</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\monolog-bundle/translations</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\maker-bundle\src/translations</argument>
+            <argument>vendor/symfony/framework-bundle/translations</argument>
+            <argument>vendor/doctrine/doctrine-bundle/translations</argument>
+            <argument>vendor/doctrine/doctrine-migrations-bundle/translations</argument>
+            <argument>vendor/symfony/debug-bundle/translations</argument>
+            <argument>vendor/symfony/twig-bundle/translations</argument>
+            <argument>vendor/symfony/web-profiler-bundle/translations</argument>
+            <argument>vendor/symfony/stimulus-bundle/translations</argument>
+            <argument>vendor/symfony/ux-turbo/translations</argument>
+            <argument>vendor/twig/extra-bundle/translations</argument>
+            <argument>vendor/symfony/security-bundle/translations</argument>
+            <argument>vendor/symfony/monolog-bundle/translations</argument>
+            <argument>vendor/symfony/maker-bundle/src/translations</argument>
           </argument>
         </argument>
       </argument>
@@ -2719,7 +2742,7 @@
     <service id="debug.file_link_formatter" class="Symfony\Component\ErrorHandler\ErrorRenderer\FileLinkFormatter">
       <argument>%env(default::SYMFONY_IDE)%</argument>
       <argument type="service" id="request_stack" on-invalid="ignore"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1</argument>
+      <argument>/var/safe-spot/safe-spot</argument>
       <argument type="service_closure" id="debug.file_link_formatter.url_format"/>
     </service>
     <service id="debug.stopwatch" class="Symfony\Component\Stopwatch\Stopwatch" public="true">
@@ -3302,7 +3325,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.oTiQKeL"/>
+      <argument type="service" id=".service_locator.AbXNv5v"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -3405,7 +3428,7 @@
       <argument type="service" id=".service_locator.bN.V_Nq.router.default"/>
       <argument>kernel::loadRoutes</argument>
       <argument type="collection">
-        <argument key="cache_dir">C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev</argument>
+        <argument key="cache_dir">/var/safe-spot/safe-spot/var/cache/dev</argument>
         <argument key="debug">true</argument>
         <argument key="generator_class">Symfony\Component\Routing\Generator\CompiledUrlGenerator</argument>
         <argument key="generator_dumper_class">Symfony\Component\Routing\Generator\Dumper\CompiledUrlGeneratorDumper</argument>
@@ -3454,7 +3477,7 @@
       <argument type="service" id="request_stack"/>
       <argument type="service" id="router.request_context" on-invalid="ignore"/>
       <argument type="service" id="monolog.logger.request" on-invalid="ignore"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1</argument>
+      <argument>/var/safe-spot/safe-spot</argument>
       <argument>true</argument>
     </service>
     <service id="Symfony\Bundle\FrameworkBundle\Controller\RedirectController" class="Symfony\Bundle\FrameworkBundle\Controller\RedirectController" public="true">
@@ -3482,7 +3505,7 @@
     </service>
     <service id="secrets.vault" class="Symfony\Bundle\FrameworkBundle\Secrets\SodiumVault">
       <tag name="container.env_var_loader"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1/config/secrets/%env(default:kernel.environment:APP_RUNTIME_ENV)%</argument>
+      <argument>/var/safe-spot/safe-spot/config/secrets/%env(default:kernel.environment:APP_RUNTIME_ENV)%</argument>
       <argument type="service" id="secrets.decryption_key" on-invalid="ignore"/>
     </service>
     <service id="secrets.decryption_key" class="Symfony\Component\String\LazyString" constructor="fromCallable">
@@ -3490,7 +3513,7 @@
       <argument>base64:default::SYMFONY_DECRYPTION_SECRET</argument>
     </service>
     <service id="secrets.local_vault" class="Symfony\Bundle\FrameworkBundle\Secrets\DotenvVault">
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1/.env.dev.local</argument>
+      <argument>/var/safe-spot/safe-spot/.env.dev.local</argument>
     </service>
     <service id="serializer.mapping.class_discriminator_resolver" class="Symfony\Component\Serializer\Mapping\ClassDiscriminatorFromClassMetadata">
       <argument type="service" id="serializer.mapping.class_metadata_factory"/>
@@ -3581,10 +3604,10 @@
           </service>
         </argument>
       </argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/serialization.php</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/serialization.php</argument>
     </service>
     <service id="serializer.mapping.cache.symfony" class="Psr\Cache\CacheItemPoolInterface">
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/serialization.php</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/serialization.php</argument>
       <argument type="service" id="cache.serializer"/>
       <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
     </service>
@@ -3720,7 +3743,7 @@
       <argument>true</argument>
     </service>
     <service id="session.storage.factory.mock_file" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorageFactory">
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/sessions</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/sessions</argument>
       <argument>MOCKSESSID</argument>
       <argument type="service">
         <service class="Symfony\Component\HttpFoundation\Session\Storage\MetadataBag">
@@ -3788,7 +3811,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.lyBo9bF"/>
+      <argument type="service" id=".service_locator.BYhEYGi"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -3900,7 +3923,7 @@
       </call>
       <call method="addXmlMappings">
         <argument type="collection">
-          <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\form/Resources/config/validation.xml</argument>
+          <argument>/var/safe-spot/safe-spot/vendor/symfony/form/Resources/config/validation.xml</argument>
         </argument>
       </call>
       <call method="enableAttributeMapping">
@@ -3925,10 +3948,10 @@
     <service id="validator.mapping.cache_warmer" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\ValidatorCacheWarmer">
       <tag name="kernel.cache_warmer"/>
       <argument type="service" id="validator.builder"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/validation.php</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/validation.php</argument>
     </service>
     <service id="validator.mapping.cache.adapter" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" constructor="create">
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/validation.php</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/validation.php</argument>
       <argument type="service" id="cache.validator"/>
     </service>
     <service id="validator.validator_factory" class="Symfony\Component\Validator\ContainerConstraintValidatorFactory">
@@ -4588,7 +4611,7 @@
       </call>
     </service>
     <service id="profiler.storage" class="Symfony\Component\HttpKernel\Profiler\FileProfilerStorage">
-      <argument>file:C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/profiler</argument>
+      <argument>file:/var/safe-spot/safe-spot/var/cache/dev/profiler</argument>
     </service>
     <service id="profiler_listener" class="Symfony\Component\HttpKernel\EventListener\ProfilerListener">
       <tag name="kernel.event_subscriber"/>
@@ -4647,7 +4670,7 @@
       <tag name="monolog.logger" channel="profiler"/>
       <tag name="data_collector" template="@WebProfiler/Collector/logger.html.twig" id="logger" priority="300"/>
       <argument type="service" id="monolog.logger.profiler" on-invalid="ignore"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/App_KernelDevDebugContainer</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/App_KernelDevDebugContainer</argument>
       <argument type="service" id=".virtual_request_stack" on-invalid="ignore"/>
     </service>
     <service id="data_collector.time" class="Symfony\Component\HttpKernel\DataCollector\TimeDataCollector">
@@ -5026,7 +5049,7 @@
       <tag name="doctrine.event_listener" event="onSchemaCreateTable"/>
       <argument type="tagged_iterator" tag="messenger.receiver"/>
     </service>
-    <service id=".1_ServiceLocator~P7Fg_ks" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".1_ServiceLocator~Z86HFrN" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <argument type="collection"/>
     </service>
     <service id="doctrine.orm.proxy_cache_warmer" class="Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer">
@@ -5045,7 +5068,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.H77hOVX"/>
+      <argument type="service" id=".service_locator.Cgzmyej"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -5220,7 +5243,7 @@
         <argument type="service" id=".doctrine.orm.default_metadata_driver"/>
       </call>
       <call method="setProxyDir">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/doctrine/orm/Proxies</argument>
+        <argument>/var/safe-spot/safe-spot/var/cache/dev/doctrine/orm/Proxies</argument>
       </call>
       <call method="setProxyNamespace">
         <argument>Proxies</argument>
@@ -5255,7 +5278,7 @@
     </service>
     <service id="doctrine.orm.default_attribute_metadata_driver" class="Doctrine\ORM\Mapping\Driver\AttributeDriver">
       <argument type="collection">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\src\Entity</argument>
+        <argument>/var/safe-spot/safe-spot/src/Entity</argument>
       </argument>
       <argument>true</argument>
     </service>
@@ -5319,7 +5342,7 @@
     <service id="doctrine.migrations.configuration" class="Doctrine\Migrations\Configuration\Configuration">
       <call method="addMigrationsDirectory">
         <argument>DoctrineMigrations</argument>
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1/migrations</argument>
+        <argument>/var/safe-spot/safe-spot/migrations</argument>
       </call>
       <call method="setAllOrNothing">
         <argument>false</argument>
@@ -5539,7 +5562,7 @@
         <argument key="source" type="service">
           <service class="Symfony\Component\VarDumper\Dumper\ContextProvider\SourceContextProvider">
             <argument>UTF-8</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1</argument>
+            <argument>/var/safe-spot/safe-spot</argument>
             <argument type="service" id="debug.file_link_formatter" on-invalid="null"/>
           </service>
         </argument>
@@ -5561,7 +5584,7 @@
         <argument key="source" type="service">
           <service class="Symfony\Component\VarDumper\Dumper\ContextProvider\SourceContextProvider">
             <argument>UTF-8</argument>
-            <argument>C:\Users\elgay\IdeaProjects\safe-spot1</argument>
+            <argument>/var/safe-spot/safe-spot</argument>
             <argument type="service" id="debug.file_link_formatter" on-invalid="null"/>
           </service>
         </argument>
@@ -5625,7 +5648,7 @@
       <argument type="service" id="twig.loader.native_filesystem"/>
       <argument type="collection">
         <argument key="autoescape">name</argument>
-        <argument key="cache">C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/twig</argument>
+        <argument key="cache">/var/safe-spot/safe-spot/var/cache/dev/twig</argument>
         <argument key="charset">UTF-8</argument>
         <argument key="debug">true</argument>
         <argument key="strict_variables">true</argument>
@@ -5749,10 +5772,10 @@
     <service id="twig.template_iterator" class="Symfony\Bundle\TwigBundle\TemplateIterator">
       <argument type="service" id="kernel"/>
       <argument type="collection">
-        <argument key="C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\twig-bridge/Resources/views/Email">email</argument>
-        <argument key="C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\twig-bridge/Resources/views/Form">null</argument>
+        <argument key="/var/safe-spot/safe-spot/vendor/symfony/twig-bridge/Resources/views/Email">email</argument>
+        <argument key="/var/safe-spot/safe-spot/vendor/symfony/twig-bridge/Resources/views/Form">null</argument>
       </argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1/templates</argument>
+      <argument>/var/safe-spot/safe-spot/templates</argument>
       <argument type="collection">
         <argument>*.twig</argument>
       </argument>
@@ -5766,60 +5789,60 @@
     <service id="twig.loader.native_filesystem" class="Twig\Loader\FilesystemLoader">
       <tag name="twig.loader"/>
       <argument type="collection"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1</argument>
+      <argument>/var/safe-spot/safe-spot</argument>
       <call method="addPath">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\doctrine\doctrine-bundle/Resources/views</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/doctrine/doctrine-bundle/Resources/views</argument>
         <argument>Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\doctrine\doctrine-bundle/Resources/views</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/doctrine/doctrine-bundle/Resources/views</argument>
         <argument>!Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\doctrine\doctrine-migrations-bundle/Resources/views</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/doctrine/doctrine-migrations-bundle/Resources/views</argument>
         <argument>DoctrineMigrations</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\doctrine\doctrine-migrations-bundle/Resources/views</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/doctrine/doctrine-migrations-bundle/Resources/views</argument>
         <argument>!DoctrineMigrations</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\debug-bundle/Resources/views</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/symfony/debug-bundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\debug-bundle/Resources/views</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/symfony/debug-bundle/Resources/views</argument>
         <argument>!Debug</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\web-profiler-bundle/Resources/views</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/symfony/web-profiler-bundle/Resources/views</argument>
         <argument>WebProfiler</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\web-profiler-bundle/Resources/views</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/symfony/web-profiler-bundle/Resources/views</argument>
         <argument>!WebProfiler</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-bundle/Resources/views</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/symfony/security-bundle/Resources/views</argument>
         <argument>Security</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\security-bundle/Resources/views</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/symfony/security-bundle/Resources/views</argument>
         <argument>!Security</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1/templates</argument>
+        <argument>/var/safe-spot/safe-spot/templates</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\twig-bridge/Resources/views/Email</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/symfony/twig-bridge/Resources/views/Email</argument>
         <argument>email</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\twig-bridge/Resources/views/Email</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/symfony/twig-bridge/Resources/views/Email</argument>
         <argument>!email</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1\vendor\symfony\twig-bridge/Resources/views/Form</argument>
+        <argument>/var/safe-spot/safe-spot/vendor/symfony/twig-bridge/Resources/views/Form</argument>
       </call>
     </service>
     <service id="twig.loader.chain" class="Twig\Loader\ChainLoader"/>
@@ -5845,7 +5868,7 @@
     <service id="twig.extension.code" class="Symfony\Bridge\Twig\Extension\CodeExtension">
       <tag name="twig.extension"/>
       <argument type="service" id="debug.file_link_formatter" on-invalid="ignore"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1</argument>
+      <argument>/var/safe-spot/safe-spot</argument>
       <argument>UTF-8</argument>
     </service>
     <service id="twig.extension.routing" class="Symfony\Bridge\Twig\Extension\RoutingExtension">
@@ -5938,9 +5961,9 @@
       <tag name="console.command"/>
       <tag name="container.no_preload"/>
       <argument type="service" id="twig"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1</argument>
+      <argument>/var/safe-spot/safe-spot</argument>
       <argument>%kernel.bundles_metadata%</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1/templates</argument>
+      <argument>/var/safe-spot/safe-spot/templates</argument>
       <argument type="service" id="debug.file_link_formatter" on-invalid="null"/>
       <call method="setName">
         <argument>debug:twig</argument>
@@ -5985,7 +6008,7 @@
       <argument type="service" id="twig"/>
       <argument>%data_collector.templates%</argument>
       <argument type="service" id="web_profiler.csp.handler"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1</argument>
+      <argument>/var/safe-spot/safe-spot</argument>
     </service>
     <service id="web_profiler.controller.router" class="Symfony\Bundle\WebProfilerBundle\Controller\RouterController" public="true">
       <argument type="service" id="profiler" on-invalid="null"/>
@@ -6044,7 +6067,7 @@
       <argument type="service" id="stimulus.helper"/>
     </service>
     <service id="stimulus.asset_mapper.ux_package_reader" class="Symfony\UX\StimulusBundle\Ux\UxPackageReader">
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1</argument>
+      <argument>/var/safe-spot/safe-spot</argument>
     </service>
     <service id="stimulus.ux_controllers_twig_extension" class="Symfony\UX\StimulusBundle\Twig\UxControllersTwigExtension">
       <tag name="twig.extension"/>
@@ -6054,15 +6077,15 @@
       <argument type="service" id="stimulus.asset_mapper.controllers_map_generator"/>
       <argument type="service" id="asset_mapper"/>
       <argument type="service" id="stimulus.asset_mapper.ux_package_reader"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1</argument>
+      <argument>/var/safe-spot/safe-spot</argument>
     </service>
     <service id="stimulus.asset_mapper.controllers_map_generator" class="Symfony\UX\StimulusBundle\AssetMapper\ControllersMapGenerator">
       <argument type="service" id="asset_mapper"/>
       <argument type="service" id="stimulus.asset_mapper.ux_package_reader"/>
       <argument type="collection">
-        <argument>C:\Users\elgay\IdeaProjects\safe-spot1/assets/controllers</argument>
+        <argument>/var/safe-spot/safe-spot/assets/controllers</argument>
       </argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1/assets/controllers.json</argument>
+      <argument>/var/safe-spot/safe-spot/assets/controllers.json</argument>
       <argument type="service" id="stimulus.asset_mapper.auto_import_locator" on-invalid="null"/>
     </service>
     <service id="stimulus.asset_mapper.auto_import_locator" class="Symfony\UX\StimulusBundle\AssetMapper\AutoImportLocator">
@@ -6773,7 +6796,7 @@
     <service id="monolog.processor.psr_log_message" class="Monolog\Processor\PsrLogMessageProcessor"/>
     <service id="monolog.handler.main" class="Monolog\Handler\StreamHandler">
       <tag name="kernel.reset" method="reset"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\log/dev.log</argument>
+      <argument>/var/safe-spot/safe-spot/var/log/dev.log</argument>
       <argument>debug</argument>
       <argument>true</argument>
       <argument>null</argument>
@@ -6795,8 +6818,8 @@
       <argument type="service" id="filesystem"/>
       <argument type="service" id="maker.autoloader_util"/>
       <argument type="service" id="maker.file_link_formatter"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1/templates</argument>
+      <argument>/var/safe-spot/safe-spot</argument>
+      <argument>/var/safe-spot/safe-spot/templates</argument>
     </service>
     <service id="maker.autoloader_finder" class="Symfony\Bundle\MakerBundle\Util\ComposerAutoloaderFinder">
       <argument>App</argument>
@@ -6966,7 +6989,7 @@
     </service>
     <service id="maker.maker.make_migration" class="Symfony\Bundle\MakerBundle\Maker\MakeMigration">
       <tag name="maker.command"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1</argument>
+      <argument>/var/safe-spot/safe-spot</argument>
       <argument type="service" id="maker.file_link_formatter"/>
     </service>
     <service id="maker.maker.make_stimulus_controller" class="Symfony\Bundle\MakerBundle\Maker\MakeStimulusController">
@@ -6978,19 +7001,30 @@
       <argument type="service" id="maker.security_config_updater"/>
       <argument type="service" id="maker.security_controller_builder"/>
     </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AutomationController" class="App\Controller\AutomationController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AutomationController" class="App\Controller\AutomationController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\AutomationController" class="App\Controller\AutomationController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\BidController" class="App\Controller\BidController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\BidController" class="App\Controller\BidController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\BidController" class="App\Controller\BidController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LoansListController" class="App\Controller\LoansListController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LoansListController" class="App\Controller\LoansListController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\LoansListController" class="App\Controller\LoansListController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LoansController" class="App\Controller\LoansController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LoansController" class="App\Controller\LoansController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\LoansController" class="App\Controller\LoansController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LoginController" class="App\Controller\LoginController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LoginController" class="App\Controller\LoginController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\LoginController" class="App\Controller\LoginController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\AutomationRuleType" class="App\Form\AutomationRuleType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\AutomationRuleType" class="App\Form\AutomationRuleType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\AutomationType" class="App\Form\AutomationType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\AutomationType" class="App\Form\AutomationType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\BidType" class="App\Form\BidType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\BidType" class="App\Form\BidType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\LoanType" class="App\Form\LoanType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\LoanType" class="App\Form\LoanType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AutomationRepository" class="App\Repository\AutomationRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\AutomationRepository" class="App\Repository\AutomationRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AutomationRuleRepository" class="App\Repository\AutomationRuleRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\AutomationRuleRepository" class="App\Repository\AutomationRuleRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\BidRepository" class="App\Repository\BidRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\BidRepository" class="App\Repository\BidRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CommentaireRepository" class="App\Repository\CommentaireRepository" autowire="true" abstract="true"/>
@@ -7408,6 +7442,14 @@
         <argument key="repo" type="service_closure" id="App\Repository\BidRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.a6fQVqZ" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="bid" type="service_closure" id=".errored..service_locator.a6fQVqZ.App\Entity\Bid"/>
+        <argument key="bidRepo" type="service_closure" id="App\Repository\BidRepository"/>
+        <argument key="loanRepo" type="service_closure" id="App\Repository\LoanRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.JmgQ6AO" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7427,31 +7469,35 @@
         <argument key="repository" type="service_closure" id="App\Repository\LoanRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.oTiQKeL" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.AbXNv5v" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Controller\BidController::approve" type="service_closure" id=".service_locator.w9_6ZZP"/>
+        <argument key="App\Controller\BidController::approve" type="service_closure" id=".service_locator.a6fQVqZ"/>
         <argument key="App\Controller\BidController::delete" type="service_closure" id=".service_locator.w9_6ZZP"/>
         <argument key="App\Controller\BidController::index" type="service_closure" id=".service_locator.8Xaq0c0"/>
         <argument key="App\Controller\BidController::new" type="service_closure" id=".service_locator.bLofnxd"/>
         <argument key="App\Controller\BidController::reject" type="service_closure" id=".service_locator.w9_6ZZP"/>
-        <argument key="App\Controller\LoansListController::delete" type="service_closure" id=".service_locator.119gtIa"/>
-        <argument key="App\Controller\LoansListController::index" type="service_closure" id=".service_locator.JmgQ6AO"/>
-        <argument key="App\Controller\LoansListController::myLoans" type="service_closure" id=".service_locator.JmgQ6AO"/>
-        <argument key="App\Controller\LoansListController::new" type="service_closure" id=".service_locator.b_SENms"/>
+        <argument key="App\Controller\LoansController::adminList" type="service_closure" id=".service_locator.JmgQ6AO"/>
+        <argument key="App\Controller\LoansController::adminStats" type="service_closure" id=".service_locator.JmgQ6AO"/>
+        <argument key="App\Controller\LoansController::delete" type="service_closure" id=".service_locator.119gtIa"/>
+        <argument key="App\Controller\LoansController::list" type="service_closure" id=".service_locator.JmgQ6AO"/>
+        <argument key="App\Controller\LoansController::myLoans" type="service_closure" id=".service_locator.JmgQ6AO"/>
+        <argument key="App\Controller\LoansController::new" type="service_closure" id=".service_locator.b_SENms"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
-        <argument key="App\Controller\BidController:approve" type="service_closure" id=".service_locator.w9_6ZZP"/>
+        <argument key="App\Controller\BidController:approve" type="service_closure" id=".service_locator.a6fQVqZ"/>
         <argument key="App\Controller\BidController:delete" type="service_closure" id=".service_locator.w9_6ZZP"/>
         <argument key="App\Controller\BidController:index" type="service_closure" id=".service_locator.8Xaq0c0"/>
         <argument key="App\Controller\BidController:new" type="service_closure" id=".service_locator.bLofnxd"/>
         <argument key="App\Controller\BidController:reject" type="service_closure" id=".service_locator.w9_6ZZP"/>
-        <argument key="App\Controller\LoansListController:delete" type="service_closure" id=".service_locator.119gtIa"/>
-        <argument key="App\Controller\LoansListController:index" type="service_closure" id=".service_locator.JmgQ6AO"/>
-        <argument key="App\Controller\LoansListController:myLoans" type="service_closure" id=".service_locator.JmgQ6AO"/>
-        <argument key="App\Controller\LoansListController:new" type="service_closure" id=".service_locator.b_SENms"/>
+        <argument key="App\Controller\LoansController:adminList" type="service_closure" id=".service_locator.JmgQ6AO"/>
+        <argument key="App\Controller\LoansController:adminStats" type="service_closure" id=".service_locator.JmgQ6AO"/>
+        <argument key="App\Controller\LoansController:delete" type="service_closure" id=".service_locator.119gtIa"/>
+        <argument key="App\Controller\LoansController:list" type="service_closure" id=".service_locator.JmgQ6AO"/>
+        <argument key="App\Controller\LoansController:myLoans" type="service_closure" id=".service_locator.JmgQ6AO"/>
+        <argument key="App\Controller\LoansController:new" type="service_closure" id=".service_locator.b_SENms"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
       </argument>
@@ -7613,9 +7659,11 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.lyBo9bF" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.BYhEYGi" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\AutomationRuleType" type="service_closure" id="App\Form\AutomationRuleType"/>
+        <argument key="App\Form\AutomationType" type="service_closure" id="App\Form\AutomationType"/>
         <argument key="App\Form\BidType" type="service_closure" id="App\Form\BidType"/>
         <argument key="App\Form\LoanType" type="service_closure" id="App\Form\LoanType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
@@ -7743,9 +7791,11 @@
         <argument key="turbo.doctrine.event_listener" type="service_closure" id="turbo.doctrine.event_listener"/>
       </argument>
     </service>
-    <service id=".service_locator.H77hOVX" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.Cgzmyej" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Repository\AutomationRepository" type="service_closure" id="App\Repository\AutomationRepository"/>
+        <argument key="App\Repository\AutomationRuleRepository" type="service_closure" id="App\Repository\AutomationRuleRepository"/>
         <argument key="App\Repository\BidRepository" type="service_closure" id="App\Repository\BidRepository"/>
         <argument key="App\Repository\CommentaireRepository" type="service_closure" id="App\Repository\CommentaireRepository"/>
         <argument key="App\Repository\InvestissementRepository" type="service_closure" id="App\Repository\InvestissementRepository"/>
@@ -8065,15 +8115,21 @@
         <argument key="web_link.http_header_serializer" type="service_closure" id="web_link.http_header_serializer" on-invalid="ignore"/>
       </argument>
     </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\AutomationController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\AutomationController"/>
+      <argument>App\Controller\AutomationController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
     <service id=".service_locator.O2p6Lk7.App\Controller\BidController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\BidController"/>
       <argument>App\Controller\BidController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
-    <service id=".service_locator.O2p6Lk7.App\Controller\LoansListController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\LoansListController"/>
-      <argument>App\Controller\LoansListController</argument>
+    <service id=".service_locator.O2p6Lk7.App\Controller\LoansController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\LoansController"/>
+      <argument>App\Controller\LoansController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
@@ -8236,7 +8292,7 @@
     <service id="asset_mapper.cached_mapped_asset_factory.inner" class="Symfony\Component\AssetMapper\Factory\MappedAssetFactory">
       <argument type="service" id="asset_mapper.public_assets_path_resolver"/>
       <argument type="service" id="asset_mapper_compiler"/>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1/assets/vendor</argument>
+      <argument>/var/safe-spot/safe-spot/assets/vendor</argument>
     </service>
     <service id="asset_mapper.asset_package.inner" class="Symfony\Component\Asset\PathPackage">
       <argument></argument>
@@ -8455,6 +8511,9 @@
     </service>
     <service id=".errored..service_locator.w9_6ZZP.App\Entity\Bid" class="App\Entity\Bid">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.w9_6ZZP&quot;: it needs an instance of &quot;App\Entity\Bid&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.a6fQVqZ.App\Entity\Bid" class="App\Entity\Bid">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.a6fQVqZ&quot;: it needs an instance of &quot;App\Entity\Bid&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
     <service id=".errored..service_locator.119gtIa.App\Entity\Loan" class="App\Entity\Loan">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.119gtIa&quot;: it needs an instance of &quot;App\Entity\Loan&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
@@ -9348,94 +9407,94 @@
       </argument>
     </service>
     <service id="cache.app.recorder_inner" class="Symfony\Component\Cache\Adapter\FilesystemAdapter">
-      <argument>Ougn7VU6RW</argument>
+      <argument>CMeiGDhOrO</argument>
       <argument>0</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/pools/app</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/pools/app</argument>
       <argument type="service" id="cache.default_marshaller" on-invalid="ignore"/>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
     </service>
     <service id="cache.system.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface">
-      <argument>qqtOFcRbUs</argument>
+      <argument>oF-PRdAEWW</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/pools/system</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/pools/system</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.validator.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface">
-      <argument>fUsT8AZM2w</argument>
+      <argument>M6lMbjBPK9</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/pools/system</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/pools/system</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.serializer.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface">
-      <argument>MzxdnWkGWZ</argument>
+      <argument>AIDFG4x06t</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/pools/system</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/pools/system</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.annotations.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface">
-      <argument>ufWPaga1kI</argument>
+      <argument>1xwpLMlkyM</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/pools/system</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/pools/system</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.property_info.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface">
-      <argument>Q1xZvyUhs-</argument>
+      <argument>vrWjrnxMiS</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/pools/system</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/pools/system</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.asset_mapper.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface">
-      <argument>-tabCaJVVG</argument>
+      <argument>Mab2cob74m</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/pools/system</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/pools/system</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.messenger.restart_workers_signal.recorder_inner" class="Symfony\Component\Cache\Adapter\FilesystemAdapter">
-      <argument>0wG9TjhtcI</argument>
+      <argument>prpFTKHu2B</argument>
       <argument>0</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/pools/app</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/pools/app</argument>
       <argument type="service" id="cache.default_marshaller" on-invalid="ignore"/>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
     </service>
     <service id="cache.validator_expression_language.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface">
-      <argument>AvYSAu+JFb</argument>
+      <argument>ouJqp+0aUs</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/pools/system</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/pools/system</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.doctrine.orm.default.result.recorder_inner" class="Symfony\Component\Cache\Adapter\ArrayAdapter"/>
     <service id="cache.doctrine.orm.default.query.recorder_inner" class="Symfony\Component\Cache\Adapter\ArrayAdapter"/>
     <service id="cache.security_expression_language.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface">
-      <argument>1Qm9zpSKt+</argument>
+      <argument>FjULshuc6l</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/pools/system</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/pools/system</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.security_is_granted_attribute_expression_language.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface">
-      <argument>j6loPwFBy+</argument>
+      <argument>Gd3m6NUcmj</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\Users\elgay\IdeaProjects\safe-spot1\var\cache\dev/pools/system</argument>
+      <argument>/var/safe-spot/safe-spot/var/cache/dev/pools/system</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -9615,7 +9674,7 @@
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.oTiQKeL"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.AbXNv5v"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -9639,9 +9698,9 @@
     <service id=".service_locator.80edgLI" alias="messenger.receiver_locator"/>
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.bJ.4HC5" alias=".service_locator.w7.f4fT"/>
-    <service id=".service_locator.3EmTA_B" alias=".service_locator.oTiQKeL"/>
+    <service id=".service_locator.UASpzI4" alias=".service_locator.AbXNv5v"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
-    <service id=".service_locator.YCHaVeF" alias=".service_locator.lyBo9bF"/>
+    <service id=".service_locator.Qw.ps7s" alias=".service_locator.BYhEYGi"/>
     <service id=".service_locator.XtmiKbi" alias=".service_locator.MfxSDRP"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator.jUv.zyj" alias=".service_locator.O2p6Lk7"/>
@@ -9668,6 +9727,7 @@
     <service id=".service_locator.0fip7sR" alias=".service_locator.8Xaq0c0"/>
     <service id=".service_locator.TzWoAFv" alias=".service_locator.bLofnxd"/>
     <service id=".service_locator.y9QSG.d" alias=".service_locator.w9_6ZZP"/>
+    <service id=".service_locator.Sg45Vbj" alias=".service_locator.a6fQVqZ"/>
     <service id=".service_locator.NqRJ3FA" alias=".service_locator.JmgQ6AO"/>
     <service id=".service_locator.y72syCD" alias=".service_locator.b_SENms"/>
     <service id=".service_locator.sOHCMIv" alias=".service_locator.119gtIa"/>

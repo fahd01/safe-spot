@@ -86,7 +86,7 @@ class __TwigTemplate_55d4f46e8b37170097074241465eee7c extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navigation"));
 
         // line 6
-        echo twig_include($this->env, $context, "loans_list/_loanNavMenu.html.twig");
+        echo twig_include($this->env, $context, "loans/_loanNavMenu.html.twig");
         echo "
 ";
         
@@ -162,6 +162,8 @@ class __TwigTemplate_55d4f46e8b37170097074241465eee7c extends Template
                         <td> ";
             // line 34
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "loan", [], "any", false, false, false, 34), "id", [], "any", false, false, false, 34), "html", null, true);
+            echo " ";
+            echo twig_include($this->env, $context, "loans/_loanStatus.html.twig", ["status" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "loan", [], "any", false, false, false, 34), "status", [], "any", false, false, false, 34)]);
             echo " </td>
                         <td>
                             <a href=\"\"
@@ -172,24 +174,26 @@ class __TwigTemplate_55d4f46e8b37170097074241465eee7c extends Template
                 echo " disabled ";
             }
             echo "\"
-                               title=\"edit this bid\"
+                               data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+                               title=\"Edit this bid\"
                                 >
                                 <i class=\"mdi mdi-pencil btn-icon-prepend\"></i>
                                 Edit
                             </a>
                             <button onclick=\"triggerDeleteBidModal(";
-            // line 44
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 44), "html", null, true);
+            // line 45
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 45), "html", null, true);
             echo ")\"
                                     type=\"button\"
                                     class=\"btn btn-danger btn-sm btn-icon-text mr-3\"
-                                    title=\"delete this bid\"
+                                    data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+                                    title=\"Delete this bid\"
                                     ";
-            // line 48
-            if (((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "status", [], "any", false, false, false, 48), "value", [], "any", false, false, false, 48) != "PENDING") && (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "status", [], "any", false, false, false, 48), "value", [], "any", false, false, false, 48) != "REJECTED"))) {
+            // line 50
+            if (((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "status", [], "any", false, false, false, 50), "value", [], "any", false, false, false, 50) != "PENDING") && (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "status", [], "any", false, false, false, 50), "value", [], "any", false, false, false, 50) != "REJECTED"))) {
                 echo " disabled ";
             }
-            // line 49
+            // line 51
             echo "                                    >
                                 <i class=\"mdi mdi-delete-forever btn-icon-prepend\"></i>
                                 Delete
@@ -211,7 +215,7 @@ class __TwigTemplate_55d4f46e8b37170097074241465eee7c extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['item'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 58
+        // line 60
         echo "
                     </tbody>
                 </table>
@@ -282,7 +286,7 @@ function triggerDeleteBidModal(bidId){
      */
     public function getDebugInfo()
     {
-        return array (  215 => 58,  193 => 49,  189 => 48,  182 => 44,  171 => 38,  164 => 34,  160 => 33,  156 => 32,  152 => 31,  148 => 29,  131 => 28,  111 => 10,  101 => 9,  89 => 6,  79 => 5,  60 => 3,  37 => 1,);
+        return array (  219 => 60,  197 => 51,  193 => 50,  185 => 45,  173 => 38,  164 => 34,  160 => 33,  156 => 32,  152 => 31,  148 => 29,  131 => 28,  111 => 10,  101 => 9,  89 => 6,  79 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -292,7 +296,7 @@ function triggerDeleteBidModal(bidId){
 {% block title %}My Bids{% endblock %}
 
 {% block navigation %}
-{{ include('loans_list/_loanNavMenu.html.twig')}}
+{{ include('loans/_loanNavMenu.html.twig')}}
 {% endblock %}
 
 {% block body %}
@@ -320,12 +324,13 @@ function triggerDeleteBidModal(bidId){
                         <td> {{ item.id }}    </td>
                         <td> {{ item.amount }} TND </td>
                         <td> {{ include ('bid/_bidStatus.html.twig',{'status':item.status}) }}  </td>
-                        <td> {{ item.loan.id }} </td>
+                        <td> {{ item.loan.id }} {{ include ('loans/_loanStatus.html.twig',{'status':item.loan.status}) }} </td>
                         <td>
                             <a href=\"\"
                                role=\"button\"
                                class=\"btn btn-warning btn-sm btn-icon-text mr-3 {% if item.status.value != 'PENDING' %} disabled {% endif %}\"
-                               title=\"edit this bid\"
+                               data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+                               title=\"Edit this bid\"
                                 >
                                 <i class=\"mdi mdi-pencil btn-icon-prepend\"></i>
                                 Edit
@@ -333,7 +338,8 @@ function triggerDeleteBidModal(bidId){
                             <button onclick=\"triggerDeleteBidModal({{ item.id }})\"
                                     type=\"button\"
                                     class=\"btn btn-danger btn-sm btn-icon-text mr-3\"
-                                    title=\"delete this bid\"
+                                    data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+                                    title=\"Delete this bid\"
                                     {% if item.status.value != 'PENDING' and item.status.value != 'REJECTED' %} disabled {% endif %}
                                     >
                                 <i class=\"mdi mdi-delete-forever btn-icon-prepend\"></i>

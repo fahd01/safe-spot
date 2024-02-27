@@ -63,20 +63,27 @@ class __TwigTemplate_c4c5fb92238f8f4c0dd4babf350b0bb1 extends Template
         }
         // line 12
         echo "        -stripped\"
+         data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+         title=\"Collected Amount: ";
+        // line 14
+        echo twig_escape_filter($this->env, (isset($context["collectedAmount"]) || array_key_exists("collectedAmount", $context) ? $context["collectedAmount"] : (function () { throw new RuntimeError('Variable "collectedAmount" does not exist.', 14, $this->source); })()), "html", null, true);
+        echo " TND<br/>Remaining Amount: ";
+        echo twig_escape_filter($this->env, (isset($context["remainingAmount"]) || array_key_exists("remainingAmount", $context) ? $context["remainingAmount"] : (function () { throw new RuntimeError('Variable "remainingAmount" does not exist.', 14, $this->source); })()), "html", null, true);
+        echo " TND\"
          role=\"progressbar\"
          style=\"width: ";
-        // line 14
-        echo twig_escape_filter($this->env, (isset($context["progressValue"]) || array_key_exists("progressValue", $context) ? $context["progressValue"] : (function () { throw new RuntimeError('Variable "progressValue" does not exist.', 14, $this->source); })()), "html", null, true);
+        // line 16
+        echo twig_escape_filter($this->env, (isset($context["progressValue"]) || array_key_exists("progressValue", $context) ? $context["progressValue"] : (function () { throw new RuntimeError('Variable "progressValue" does not exist.', 16, $this->source); })()), "html", null, true);
         echo "%\"
          aria-valuenow=\"";
-        // line 15
-        echo twig_escape_filter($this->env, (isset($context["progressValue"]) || array_key_exists("progressValue", $context) ? $context["progressValue"] : (function () { throw new RuntimeError('Variable "progressValue" does not exist.', 15, $this->source); })()), "html", null, true);
+        // line 17
+        echo twig_escape_filter($this->env, (isset($context["progressValue"]) || array_key_exists("progressValue", $context) ? $context["progressValue"] : (function () { throw new RuntimeError('Variable "progressValue" does not exist.', 17, $this->source); })()), "html", null, true);
         echo "\"
          aria-valuemin=\"0\"
          aria-valuemax=\"100\">
         ";
-        // line 18
-        echo twig_escape_filter($this->env, (isset($context["progressValue"]) || array_key_exists("progressValue", $context) ? $context["progressValue"] : (function () { throw new RuntimeError('Variable "progressValue" does not exist.', 18, $this->source); })()), "html", null, true);
+        // line 20
+        echo twig_escape_filter($this->env, (isset($context["progressValue"]) || array_key_exists("progressValue", $context) ? $context["progressValue"] : (function () { throw new RuntimeError('Variable "progressValue" does not exist.', 20, $this->source); })()), "html", null, true);
         echo "%
     </div>
 </div>
@@ -111,7 +118,7 @@ class __TwigTemplate_c4c5fb92238f8f4c0dd4babf350b0bb1 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  79 => 18,  73 => 15,  69 => 14,  65 => 12,  61 => 10,  57 => 8,  55 => 7,  52 => 6,  50 => 5,  45 => 2,  43 => 1,);
+        return array (  86 => 20,  80 => 17,  76 => 16,  69 => 14,  65 => 12,  61 => 10,  57 => 8,  55 => 7,  52 => 6,  50 => 5,  45 => 2,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -128,6 +135,8 @@ class __TwigTemplate_c4c5fb92238f8f4c0dd4babf350b0bb1 extends Template
         bg-success
         {% endif %}
         -stripped\"
+         data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+         title=\"Collected Amount: {{ collectedAmount }} TND<br/>Remaining Amount: {{ remainingAmount }} TND\"
          role=\"progressbar\"
          style=\"width: {{ progressValue }}%\"
          aria-valuenow=\"{{ progressValue }}\"
