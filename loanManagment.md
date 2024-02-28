@@ -54,3 +54,6 @@ Once the loan is `PAID`, all chosen bids are set to `PAID` as well.
 - [x] User can  delete his bid, only if it is in `PENDING` or `REJECTED`
 - [x] add data-bs-toggle="tooltip" data-bs-placement="bottom" to remaining titles
 - [x] user can not aprove `PENDING` bids when loan is `ACTIVE` (but can still reject them)
+
+- [ ] display number of bids placed and bids approved for every automation
+  - [ ] style the automation accordingly

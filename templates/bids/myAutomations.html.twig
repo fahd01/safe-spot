@@ -13,16 +13,34 @@
         <div class="card-body">
             <h4 class="card-title">My Automations</h4>
                 {% for automation in automations %}
-                    <div class="alert alert-success" role="alert">
+                    <div class="alert alert-{% if automation.disabled %}dark{% else %}success{% endif %}" role="alert">
                         <div class="d-flex justify-content-between align-items-center flex-wrap">
                             <h6 class="mb-2 mb-md-0 text-uppercase font-weight-medium">{{ automation.name }}</h6>
+
                             <div style="margin-left: auto;order: 2;">
+                                <label class="badge badge-warning mx-2">{{random(0, 10)}} Bids Approved</label>
+                                <label class="badge badge-info mx-2">{{random(10, 40)}} Bids Placed</label>
+
+                                <!--
                                 <a href="/bids/automations/create?id={{ automation.id }}"
                                    role="button"
                                    class="btn btn-warning btn-icon d-inline-flex justify-content-center align-items-center"
                                    data-bs-toggle="tooltip" data-bs-placement="bottom" data-html="true"
                                    title="Edit this automation">
                                     <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>
+                                </a>
+                                -->
+                                <a href="/bids/automations/{{ automation.id }}/disableToggle"
+                                   role="button"
+                                   class="btn btn-secondary btn-icon d-inline-flex justify-content-center align-items-center"
+                                   data-bs-toggle="tooltip" data-bs-placement="bottom" data-html="true"
+                                   {% if automation.disabled %}
+                                   title="Enable this automation">
+                                    <i class="mdi mdi-play btn-icon-prepend"></i>
+                                   {% else %}
+                                   title="Disable this automation">
+                                    <i class="mdi mdi-pause btn-icon-prepend"></i>
+                                   {% endif %}
                                 </a>
                                 <button onclick="triggerDeleteAutomationModal({{ automation.id }})"
                                         type="button"

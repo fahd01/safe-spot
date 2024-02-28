@@ -119,16 +119,33 @@ class __TwigTemplate_407fe4e400210b9babffb6017fe51847 extends Template
         $context['_seq'] = twig_ensure_traversable((isset($context["automations"]) || array_key_exists("automations", $context) ? $context["automations"] : (function () { throw new RuntimeError('Variable "automations" does not exist.', 15, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["automation"]) {
             // line 16
-            echo "                    <div class=\"alert alert-success\" role=\"alert\">
+            echo "                    <div class=\"alert alert-";
+            if (twig_get_attribute($this->env, $this->source, $context["automation"], "disabled", [], "any", false, false, false, 16)) {
+                echo "dark";
+            } else {
+                echo "success";
+            }
+            echo "\" role=\"alert\">
                         <div class=\"d-flex justify-content-between align-items-center flex-wrap\">
                             <h6 class=\"mb-2 mb-md-0 text-uppercase font-weight-medium\">";
             // line 18
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["automation"], "name", [], "any", false, false, false, 18), "html", null, true);
             echo "</h6>
+
                             <div style=\"margin-left: auto;order: 2;\">
+                                <label class=\"badge badge-warning mx-2\">";
+            // line 21
+            echo twig_escape_filter($this->env, twig_random($this->env, 0, 10), "html", null, true);
+            echo " Bids Approved</label>
+                                <label class=\"badge badge-info mx-2\">";
+            // line 22
+            echo twig_escape_filter($this->env, twig_random($this->env, 10, 40), "html", null, true);
+            echo " Bids Placed</label>
+
+                                <!--
                                 <a href=\"/bids/automations/create?id=";
-            // line 20
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["automation"], "id", [], "any", false, false, false, 20), "html", null, true);
+            // line 25
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["automation"], "id", [], "any", false, false, false, 25), "html", null, true);
             echo "\"
                                    role=\"button\"
                                    class=\"btn btn-warning btn-icon d-inline-flex justify-content-center align-items-center\"
@@ -136,9 +153,32 @@ class __TwigTemplate_407fe4e400210b9babffb6017fe51847 extends Template
                                    title=\"Edit this automation\">
                                     <i class=\"mdi mdi-lead-pencil btn-icon-prepend\"></i>
                                 </a>
+                                -->
+                                <a href=\"/bids/automations/";
+            // line 33
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["automation"], "id", [], "any", false, false, false, 33), "html", null, true);
+            echo "/disableToggle\"
+                                   role=\"button\"
+                                   class=\"btn btn-secondary btn-icon d-inline-flex justify-content-center align-items-center\"
+                                   data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+                                   ";
+            // line 37
+            if (twig_get_attribute($this->env, $this->source, $context["automation"], "disabled", [], "any", false, false, false, 37)) {
+                // line 38
+                echo "                                   title=\"Enable this automation\">
+                                    <i class=\"mdi mdi-play btn-icon-prepend\"></i>
+                                   ";
+            } else {
+                // line 41
+                echo "                                   title=\"Disable this automation\">
+                                    <i class=\"mdi mdi-pause btn-icon-prepend\"></i>
+                                   ";
+            }
+            // line 44
+            echo "                                </a>
                                 <button onclick=\"triggerDeleteAutomationModal(";
-            // line 27
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["automation"], "id", [], "any", false, false, false, 27), "html", null, true);
+            // line 45
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["automation"], "id", [], "any", false, false, false, 45), "html", null, true);
             echo ")\"
                                         type=\"button\"
                                         class=\"btn btn-danger btn-icon\"
@@ -151,26 +191,26 @@ class __TwigTemplate_407fe4e400210b9babffb6017fe51847 extends Template
 
                         <p>
                             Automatically bid <b>";
-            // line 38
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["automation"], "bidAmount", [], "any", false, false, false, 38), "html", null, true);
+            // line 56
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["automation"], "bidAmount", [], "any", false, false, false, 56), "html", null, true);
             echo " TND</b> if a newly created loan satisfies <b>ALL</b> the following conditions:
                                 <ul>
                                     ";
-            // line 40
+            // line 58
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["automation"], "rules", [], "any", false, false, false, 40));
+            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["automation"], "rules", [], "any", false, false, false, 58));
             foreach ($context['_seq'] as $context["_key"] => $context["rule"]) {
-                // line 41
+                // line 59
                 echo "                                        <li>
                                             <b>";
-                // line 42
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["rule"], "attribute", [], "any", false, false, false, 42), "name", [], "any", false, false, false, 42), "html", null, true);
+                // line 60
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["rule"], "attribute", [], "any", false, false, false, 60), "name", [], "any", false, false, false, 60), "html", null, true);
                 echo " ";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["rule"], "operator", [], "any", false, false, false, 42), "value", [], "any", false, false, false, 42), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["rule"], "operator", [], "any", false, false, false, 60), "value", [], "any", false, false, false, 60), "html", null, true);
                 echo " ";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rule"], "value", [], "any", false, false, false, 42), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rule"], "value", [], "any", false, false, false, 60), "html", null, true);
                 echo " ";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rule"], "getValueUnit", [], "method", false, false, false, 42), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rule"], "getValueUnit", [], "method", false, false, false, 60), "html", null, true);
                 echo "</b>
                                         </li>
                                     ";
@@ -178,7 +218,7 @@ class __TwigTemplate_407fe4e400210b9babffb6017fe51847 extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['rule'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 45
+            // line 63
             echo "                                </ul>
                         </p>
                     </div>
@@ -187,7 +227,7 @@ class __TwigTemplate_407fe4e400210b9babffb6017fe51847 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['automation'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 49
+        // line 67
         echo "        </div>
     </div>
 </div>
@@ -253,7 +293,7 @@ function triggerDeleteAutomationModal(id){
      */
     public function getDebugInfo()
     {
-        return array (  191 => 49,  182 => 45,  167 => 42,  164 => 41,  160 => 40,  155 => 38,  141 => 27,  131 => 20,  126 => 18,  122 => 16,  118 => 15,  111 => 10,  101 => 9,  89 => 6,  79 => 5,  60 => 3,  37 => 1,);
+        return array (  231 => 67,  222 => 63,  207 => 60,  204 => 59,  200 => 58,  195 => 56,  181 => 45,  178 => 44,  173 => 41,  168 => 38,  166 => 37,  159 => 33,  148 => 25,  142 => 22,  138 => 21,  132 => 18,  122 => 16,  118 => 15,  111 => 10,  101 => 9,  89 => 6,  79 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -273,16 +313,34 @@ function triggerDeleteAutomationModal(id){
         <div class=\"card-body\">
             <h4 class=\"card-title\">My Automations</h4>
                 {% for automation in automations %}
-                    <div class=\"alert alert-success\" role=\"alert\">
+                    <div class=\"alert alert-{% if automation.disabled %}dark{% else %}success{% endif %}\" role=\"alert\">
                         <div class=\"d-flex justify-content-between align-items-center flex-wrap\">
                             <h6 class=\"mb-2 mb-md-0 text-uppercase font-weight-medium\">{{ automation.name }}</h6>
+
                             <div style=\"margin-left: auto;order: 2;\">
+                                <label class=\"badge badge-warning mx-2\">{{random(0, 10)}} Bids Approved</label>
+                                <label class=\"badge badge-info mx-2\">{{random(10, 40)}} Bids Placed</label>
+
+                                <!--
                                 <a href=\"/bids/automations/create?id={{ automation.id }}\"
                                    role=\"button\"
                                    class=\"btn btn-warning btn-icon d-inline-flex justify-content-center align-items-center\"
                                    data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
                                    title=\"Edit this automation\">
                                     <i class=\"mdi mdi-lead-pencil btn-icon-prepend\"></i>
+                                </a>
+                                -->
+                                <a href=\"/bids/automations/{{ automation.id }}/disableToggle\"
+                                   role=\"button\"
+                                   class=\"btn btn-secondary btn-icon d-inline-flex justify-content-center align-items-center\"
+                                   data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+                                   {% if automation.disabled %}
+                                   title=\"Enable this automation\">
+                                    <i class=\"mdi mdi-play btn-icon-prepend\"></i>
+                                   {% else %}
+                                   title=\"Disable this automation\">
+                                    <i class=\"mdi mdi-pause btn-icon-prepend\"></i>
+                                   {% endif %}
                                 </a>
                                 <button onclick=\"triggerDeleteAutomationModal({{ automation.id }})\"
                                         type=\"button\"

@@ -18,20 +18,31 @@
                     <thead>
                     <tr>
                         <th>ID</th>
+                        <th></th>
                         <th>Amount</th>
                         <th>Status</th>
-                        <th>Loan</th>
+                        <th>Loan Status</th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for item in bids %}
                     <tr>
-
-                        <td> {{ item.id }}    </td>
+                        <td>
+                            {{ item.id }}
+                        </td>
+                        <td>
+                            {% if item.automation != null %}
+                            <a href="/bids/automations/create?id={{ item.automation.id }}" title="Placed by '{{ item.automation.name }}' automation"
+                               data-bs-toggle="tooltip" data-bs-placement="bottom" data-html="true"
+                            >
+                                <i class="mdi mdi-flash-auto menu-icon"></i>
+                            </a>
+                            {% endif %}
+                        </td>
                         <td> {{ item.amount }} TND </td>
                         <td> {{ include ('bids/_bidStatus.html.twig',{'status':item.status}) }}  </td>
-                        <td> {{ item.loan.id }} {{ include ('loans/_loanStatus.html.twig',{'status':item.loan.status}) }} </td>
+                        <td> {{ include ('loans/_loanStatus.html.twig',{'status':item.loan.status}) }} </td>
                         <td>
                             <a href=""
                                role="button"

@@ -115,10 +115,17 @@ class __TwigTemplate_12241e375dd61667329d01fc0034867a extends Template
 <div>
     <div class=\"card\">
         <div class=\"card-body\">
-            <h4 class=\"card-title\">Create Bid Automation</h4>
+            <h4 class=\"card-title\">";
+        // line 16
+        if (((isset($context["detailsView"]) || array_key_exists("detailsView", $context) ? $context["detailsView"] : (function () { throw new RuntimeError('Variable "detailsView" does not exist.', 16, $this->source); })()) == false)) {
+            echo "Create Bid Automation";
+        } else {
+            echo " Bid Automation Details";
+        }
+        echo "</h4>
             ";
         // line 17
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 17, $this->source); })()), 'form_start');
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 17, $this->source); })()), 'form_start', ((((isset($context["detailsView"]) || array_key_exists("detailsView", $context) ? $context["detailsView"] : (function () { throw new RuntimeError('Variable "detailsView" does not exist.', 17, $this->source); })()) == true)) ? (["attr" => ["inert" => "true"]]) : ([])));
         echo "
 
                 ";
@@ -162,7 +169,11 @@ class __TwigTemplate_12241e375dd61667329d01fc0034867a extends Template
                     </div>
                 </fieldset>
 
-                <div class=\"text-center\">
+                ";
+        // line 36
+        if (((isset($context["detailsView"]) || array_key_exists("detailsView", $context) ? $context["detailsView"] : (function () { throw new RuntimeError('Variable "detailsView" does not exist.', 36, $this->source); })()) == false)) {
+            // line 37
+            echo "                <div class=\"text-center\">
                     <button
                             type=\"button\"
                             class=\"add_rule_link btn btn-inverse-info btn-rounded btn-icon\"
@@ -174,21 +185,27 @@ class __TwigTemplate_12241e375dd61667329d01fc0034867a extends Template
                         <i class=\"mdi mdi-plus btn-icon-prepend\"></i>
                     </button>
                 </div>
-            ";
-        // line 48
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 48, $this->source); })()), 'form_end');
+                ";
+        }
+        // line 50
+        echo "            ";
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 50, $this->source); })()), 'form_end');
         echo "
         </div>
     </div>
 </div>
 
 ";
-        // line 66
+        // line 68
         echo "
 
 
 <script>
-document
+";
+        // line 72
+        if (((isset($context["detailsView"]) || array_key_exists("detailsView", $context) ? $context["detailsView"] : (function () { throw new RuntimeError('Variable "detailsView" does not exist.', 72, $this->source); })()) == false)) {
+            // line 73
+            echo "document
   .querySelectorAll('.add_rule_link')
   .forEach(btn => {
       btn.addEventListener(\"click\", addFormToCollection)
@@ -236,7 +253,18 @@ function addFormRemoveLink(item) {
         item.remove();
     });
 }
-
+";
+        } else {
+            // line 122
+            echo "document
+  .querySelectorAll('button#automation_submit')
+  .forEach(btn => {
+      btn.setAttribute('hidden', 'true');
+  });
+";
+        }
+        // line 128
+        echo "
 </script>
 ";
         
@@ -247,7 +275,7 @@ function addFormRemoveLink(item) {
 
     }
 
-    // line 53
+    // line 55
     public function macro_printAutomationRuleRow($__ruleForm__ = null, ...$__varargs__)
     {
         $macros = $this->macros;
@@ -266,24 +294,24 @@ function addFormRemoveLink(item) {
             $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
             $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "macro", "printAutomationRuleRow"));
 
-            // line 54
+            // line 56
             echo "<div class=\"row align-items-center\">
     <div class=\"col\">
         ";
-            // line 56
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["ruleForm"]) || array_key_exists("ruleForm", $context) ? $context["ruleForm"] : (function () { throw new RuntimeError('Variable "ruleForm" does not exist.', 56, $this->source); })()), "attribute", [], "any", false, false, false, 56), 'row');
+            // line 58
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["ruleForm"]) || array_key_exists("ruleForm", $context) ? $context["ruleForm"] : (function () { throw new RuntimeError('Variable "ruleForm" does not exist.', 58, $this->source); })()), "attribute", [], "any", false, false, false, 58), 'row');
             echo "
     </div>
     <div class=\"col\">
         ";
-            // line 59
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["ruleForm"]) || array_key_exists("ruleForm", $context) ? $context["ruleForm"] : (function () { throw new RuntimeError('Variable "ruleForm" does not exist.', 59, $this->source); })()), "operator", [], "any", false, false, false, 59), 'row');
+            // line 61
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["ruleForm"]) || array_key_exists("ruleForm", $context) ? $context["ruleForm"] : (function () { throw new RuntimeError('Variable "ruleForm" does not exist.', 61, $this->source); })()), "operator", [], "any", false, false, false, 61), 'row');
             echo "
     </div>
     <div class=\"col\">
         ";
-            // line 62
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["ruleForm"]) || array_key_exists("ruleForm", $context) ? $context["ruleForm"] : (function () { throw new RuntimeError('Variable "ruleForm" does not exist.', 62, $this->source); })()), "value", [], "any", false, false, false, 62), 'row');
+            // line 64
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["ruleForm"]) || array_key_exists("ruleForm", $context) ? $context["ruleForm"] : (function () { throw new RuntimeError('Variable "ruleForm" does not exist.', 64, $this->source); })()), "value", [], "any", false, false, false, 64), 'row');
             echo "
     </div>
 </div>
@@ -322,7 +350,7 @@ function addFormRemoveLink(item) {
      */
     public function getDebugInfo()
     {
-        return array (  286 => 62,  280 => 59,  274 => 56,  270 => 54,  251 => 53,  187 => 66,  179 => 48,  161 => 32,  152 => 30,  148 => 29,  142 => 26,  138 => 25,  130 => 20,  126 => 19,  121 => 17,  114 => 12,  104 => 11,  92 => 8,  82 => 7,  63 => 5,  52 => 3,  50 => 1,  37 => 3,);
+        return array (  314 => 64,  308 => 61,  302 => 58,  298 => 56,  279 => 55,  267 => 128,  259 => 122,  208 => 73,  206 => 72,  200 => 68,  191 => 50,  176 => 37,  174 => 36,  168 => 32,  159 => 30,  155 => 29,  149 => 26,  145 => 25,  137 => 20,  133 => 19,  128 => 17,  120 => 16,  114 => 12,  104 => 11,  92 => 8,  82 => 7,  63 => 5,  52 => 3,  50 => 1,  37 => 3,);
     }
 
     public function getSourceContext()
@@ -342,8 +370,8 @@ function addFormRemoveLink(item) {
 <div>
     <div class=\"card\">
         <div class=\"card-body\">
-            <h4 class=\"card-title\">Create Bid Automation</h4>
-            {{ form_start(form) }}
+            <h4 class=\"card-title\">{% if detailsView == false %}Create Bid Automation{% else %} Bid Automation Details{% endif %}</h4>
+            {{ form_start(form, detailsView == true ? {'attr': {'inert': 'true'}}:{} ) }}
 
                 {{ form_row(form.name) }}
                 {{ form_row(form.bidAmount) }}
@@ -362,6 +390,7 @@ function addFormRemoveLink(item) {
                     </div>
                 </fieldset>
 
+                {% if detailsView == false %}
                 <div class=\"text-center\">
                     <button
                             type=\"button\"
@@ -374,6 +403,7 @@ function addFormRemoveLink(item) {
                         <i class=\"mdi mdi-plus btn-icon-prepend\"></i>
                     </button>
                 </div>
+                {% endif %}
             {{ form_end(form) }}
         </div>
     </div>
@@ -396,6 +426,7 @@ function addFormRemoveLink(item) {
 
 
 <script>
+{% if detailsView == false %}
 document
   .querySelectorAll('.add_rule_link')
   .forEach(btn => {
@@ -444,6 +475,13 @@ function addFormRemoveLink(item) {
         item.remove();
     });
 }
+{% else %}
+document
+  .querySelectorAll('button#automation_submit')
+  .forEach(btn => {
+      btn.setAttribute('hidden', 'true');
+  });
+{% endif %}
 
 </script>
 {% endblock %}

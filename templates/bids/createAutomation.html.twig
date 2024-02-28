@@ -13,8 +13,8 @@
 <div>
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Create Bid Automation</h4>
-            {{ form_start(form) }}
+            <h4 class="card-title">{% if detailsView == false %}Create Bid Automation{% else %} Bid Automation Details{% endif %}</h4>
+            {{ form_start(form, detailsView == true ? {'attr': {'inert': 'true'}}:{} ) }}
 
                 {{ form_row(form.name) }}
                 {{ form_row(form.bidAmount) }}
@@ -33,6 +33,7 @@
                     </div>
                 </fieldset>
 
+                {% if detailsView == false %}
                 <div class="text-center">
                     <button
                             type="button"
@@ -45,6 +46,7 @@
                         <i class="mdi mdi-plus btn-icon-prepend"></i>
                     </button>
                 </div>
+                {% endif %}
             {{ form_end(form) }}
         </div>
     </div>
@@ -67,6 +69,7 @@
 
 
 <script>
+{% if detailsView == false %}
 document
   .querySelectorAll('.add_rule_link')
   .forEach(btn => {
@@ -115,6 +118,13 @@ function addFormRemoveLink(item) {
         item.remove();
     });
 }
+{% else %}
+document
+  .querySelectorAll('button#automation_submit')
+  .forEach(btn => {
+      btn.setAttribute('hidden', 'true');
+  });
+{% endif %}
 
 </script>
 {% endblock %}

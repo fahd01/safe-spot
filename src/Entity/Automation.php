@@ -29,6 +29,9 @@ class Automation
     #[ORM\JoinColumn(nullable: false)]
     private ?User $owner = null;
 
+    #[ORM\Column]
+    private ?bool $disabled = false;
+
     public function __construct()
     {
         $this->rules = new ArrayCollection();
@@ -101,6 +104,18 @@ class Automation
     public function setOwner(?User $owner): static
     {
         $this->owner = $owner;
+
+        return $this;
+    }
+
+    public function isDisabled(): ?bool
+    {
+        return $this->disabled;
+    }
+
+    public function setDisabled(bool $disabled): static
+    {
+        $this->disabled = $disabled;
 
         return $this;
     }

@@ -28,6 +28,9 @@ class Bid
     #[ORM\JoinColumn(nullable: false)]
     private ?Loan $loan = null;
 
+    #[ORM\ManyToOne]
+    private ?Automation $automation = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +77,18 @@ class Bid
     public function setLoan(?Loan $loan): static
     {
         $this->loan = $loan;
+
+        return $this;
+    }
+
+    public function getAutomation(): ?Automation
+    {
+        return $this->automation;
+    }
+
+    public function setAutomation(?Automation $automation): static
+    {
+        $this->automation = $automation;
 
         return $this;
     }

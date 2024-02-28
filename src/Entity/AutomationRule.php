@@ -77,8 +77,9 @@ class AutomationRule
             AutomationRuleAttribute::Amount => "TND",
             AutomationRuleAttribute::Interest => "%",
             AutomationRuleAttribute::Term => "months",
-            AutomationRuleAttribute::BorrowerRating => "stars",
+            # AutomationRuleAttribute::BorrowerRating => "stars",
             default => "",
         };
     }
+
 }

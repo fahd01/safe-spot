@@ -24,7 +24,8 @@ class AutomationController extends AbstractController {
     #[Route('/bids/automations/create', name: 'app_bids_automations_create')]
     public function new(Request $request, AutomationRepository $repo, UserRepository $userRepo): Response {
         $id = $request->query->get('id');
-        if ( ctype_digit($id) ) { $automation=$repo->find($id); }
+        $detailsView = false;
+        if ( ctype_digit($id) ) { $automation=$repo->find($id); $detailsView=true;}
         else {
             $automation = new Automation();
             # TODO inject and use current user instead
@@ -42,7 +43,8 @@ class AutomationController extends AbstractController {
         }
 
         return $this->render('bids/createAutomation.html.twig', [
-            'form' => $form
+            'form' => $form,
+            'detailsView' => $detailsView,
         ]);
     }
 
@@ -59,6 +61,13 @@ class AutomationController extends AbstractController {
     #[Route('/bids/automations/{id}/delete', name: 'app_automations_delete')]
     public function delete (Automation $automation, AutomationRepository $repo){
         $repo->delete($automation);
+        return $this->redirectToRoute('app_bids_automations_mine');
+    }
+
+    #[Route('/bids/automations/{id}/disableToggle', name: 'app_automations_disable')]
+    public function disableToggle (Automation $automation, AutomationRepository $repo){
+        $automation->setDisabled(!$automation->isDisabled());
+        $repo->save($automation);
         return $this->redirectToRoute('app_bids_automations_mine');
     }
 }

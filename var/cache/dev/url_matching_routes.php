@@ -45,16 +45,19 @@ return [
                     .')'
                 .')'
                 .'|/bids/(?'
-                    .'|automations/([^/]++)/delete(*:238)'
+                    .'|automations/([^/]++)/d(?'
+                        .'|elete(*:241)'
+                        .'|isableToggle(*:261)'
+                    .')'
                     .'|([^/]++)/(?'
-                        .'|delete(*:264)'
-                        .'|approve(*:279)'
-                        .'|reject(*:293)'
+                        .'|delete(*:288)'
+                        .'|approve(*:303)'
+                        .'|reject(*:317)'
                     .')'
                 .')'
                 .'|/loans/([^/]++)/(?'
-                    .'|bids/create(*:333)'
-                    .'|delete(*:347)'
+                    .'|bids/create(*:357)'
+                    .'|delete(*:371)'
                 .')'
             .')/?$}sDu',
     ],
@@ -67,12 +70,13 @@ return [
         168 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         181 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         191 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        238 => [[['_route' => 'app_automations_delete', '_controller' => 'App\\Controller\\AutomationController::delete'], ['id'], null, null, false, false, null]],
-        264 => [[['_route' => 'app_delete_bid', '_controller' => 'App\\Controller\\BidController::delete'], ['id'], null, null, false, false, null]],
-        279 => [[['_route' => 'app_approve_bid', '_controller' => 'App\\Controller\\BidController::approve'], ['id'], null, null, false, false, null]],
-        293 => [[['_route' => 'app_reject_bid', '_controller' => 'App\\Controller\\BidController::reject'], ['id'], null, null, false, false, null]],
-        333 => [[['_route' => 'app_bids_create', '_controller' => 'App\\Controller\\BidController::new'], ['id'], null, null, false, false, null]],
-        347 => [
+        241 => [[['_route' => 'app_automations_delete', '_controller' => 'App\\Controller\\AutomationController::delete'], ['id'], null, null, false, false, null]],
+        261 => [[['_route' => 'app_automations_disable', '_controller' => 'App\\Controller\\AutomationController::disableToggle'], ['id'], null, null, false, false, null]],
+        288 => [[['_route' => 'app_delete_bid', '_controller' => 'App\\Controller\\BidController::delete'], ['id'], null, null, false, false, null]],
+        303 => [[['_route' => 'app_approve_bid', '_controller' => 'App\\Controller\\BidController::approve'], ['id'], null, null, false, false, null]],
+        317 => [[['_route' => 'app_reject_bid', '_controller' => 'App\\Controller\\BidController::reject'], ['id'], null, null, false, false, null]],
+        357 => [[['_route' => 'app_bids_create', '_controller' => 'App\\Controller\\BidController::new'], ['id'], null, null, false, false, null]],
+        371 => [
             [['_route' => 'app_loans_delete', '_controller' => 'App\\Controller\\LoansController::delete'], ['id'], null, null, false, false, null],
             [null, null, null, null, false, false, 0],
         ],

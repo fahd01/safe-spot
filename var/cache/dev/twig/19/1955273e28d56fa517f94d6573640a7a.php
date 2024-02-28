@@ -203,7 +203,7 @@ class __TwigTemplate_6989d28d206e51afa2a56e8d63702d12 extends Template
                                 <td>";
             // line 54
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "term", [], "any", false, false, false, 54), "html", null, true);
-            echo " % </td>
+            echo " months </td>
                             </tr>
                             <tr>
                                 <td class=\"text-muted\">Purpose: </td>
@@ -499,7 +499,7 @@ function triggerDeleteLoanModal(loanId){
                             </tr>
                             <tr>
                                 <td class=\"text-muted\">Term: </td>
-                                <td>{{ item.term }} % </td>
+                                <td>{{ item.term }} months </td>
                             </tr>
                             <tr>
                                 <td class=\"text-muted\">Purpose: </td>
