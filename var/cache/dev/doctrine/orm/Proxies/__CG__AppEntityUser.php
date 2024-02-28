@@ -16,9 +16,11 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\InternalProxy
     }
 
     private const LAZY_OBJECT_PROPERTY_SCOPES = [
+        "\0".parent::class."\0".'email' => [parent::class, 'email', null],
         "\0".parent::class."\0".'firstName' => [parent::class, 'firstName', null],
         "\0".parent::class."\0".'id' => [parent::class, 'id', null],
         "\0".parent::class."\0".'lastName' => [parent::class, 'lastName', null],
+        'email' => [parent::class, 'email', null],
         'firstName' => [parent::class, 'firstName', null],
         'id' => [parent::class, 'id', null],
         'lastName' => [parent::class, 'lastName', null],
