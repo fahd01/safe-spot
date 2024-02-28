@@ -71,4 +71,14 @@ class AutomationRule
 
         return $this;
     }
+
+    public function getValueUnit(): string {
+        return match ( $this->attribute ) {
+            AutomationRuleAttribute::Amount => "TND",
+            AutomationRuleAttribute::Interest => "%",
+            AutomationRuleAttribute::Term => "months",
+            AutomationRuleAttribute::BorrowerRating => "stars",
+            default => "",
+        };
+    }
 }

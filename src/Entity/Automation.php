@@ -19,7 +19,7 @@ class Automation
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\OneToMany(targetEntity: AutomationRule::class, mappedBy: 'automation', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: AutomationRule::class, mappedBy: 'automation', cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $rules;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 3)]

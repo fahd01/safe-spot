@@ -60,7 +60,7 @@ class LoansController extends AbstractController
     {
         # TODO inject and use current user
         $userId = 1;
-        $loans=$repo->findBy(['borrower' => $userId]);;
+        $loans=$repo->findBy(['borrower' => $userId]);
 
         return $this->render('loans/myLoans.html.twig', [
             'controller_name' => 'LoansListController',
