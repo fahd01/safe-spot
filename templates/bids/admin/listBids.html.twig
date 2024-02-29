@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Bids{% endblock %}
+
+{% block navigation %}
+{{ include('loans/_loanNavMenu.html.twig')}}
+{% endblock %}
+
+{% block body %}
+
+<div>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">My Bids</h4>
+
+            <div class="table-responsive pt-3">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th></th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Loan ID</th>
+                        <th>Loan Status</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in bids %}
+                    <tr>
+                        <td>
+                            {{ item.id }}
+                        </td>
+                        <td>
+                            {% if item.automation != null %}
+                            <a href="/bids/automations/create?id={{ item.automation.id }}" title="Placed by '{{ item.automation.name }}' automation"
+                               data-bs-toggle="tooltip" data-bs-placement="bottom" data-html="true"
+                            >
+                                <i class="mdi mdi-flash-auto menu-icon"></i>
+                            </a>
+                            {% endif %}
+                        </td>
+                        <td> {{ item.amount }} TND </td>
+                        <td> {{ include ('bids/_bidStatus.html.twig',{'status':item.status}) }}  </td>
+                        <td> {{ item.loan.id }} </td>
+                        <td> {{ include ('loans/_loanStatus.html.twig',{'status':item.loan.status}) }} </td>
+                        <td>
+                            <a href=""
+                               role="button"
+                               class="btn btn-warning btn-sm btn-icon-text mr-3 {% if item.status.value != 'PENDING' %} disabled {% endif %}"
+                               data-bs-toggle="tooltip" data-bs-placement="bottom" data-html="true"
+                               title="Edit this bid"
+                                >
+                                <i class="mdi mdi-pencil btn-icon-prepend"></i>
+                                Edit
+                            </a>
+                            <button onclick="triggerDeleteBidModal({{ item.id }})"
+                                    type="button"
+                                    class="btn btn-danger btn-sm btn-icon-text mr-3"
+                                    data-bs-toggle="tooltip" data-bs-placement="bottom" data-html="true"
+                                    title="Delete this bid"
+                                    {% if item.status.value != 'PENDING' and item.status.value != 'REJECTED' %} disabled {% endif %}
+                                    >
+                                <i class="mdi mdi-delete-forever btn-icon-prepend"></i>
+                                Delete
+                            </button>
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div id="delete-bid-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Delete Bid</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this bid
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a role="button" id="delete-bid-link" href="/bids/id/delete" class="btn btn-danger">Yes, delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function triggerDeleteBidModal(bidId){
+  $('#delete-bid-link').attr('href', `/bids/${bidId}/delete`);
+  $('#delete-bid-modal').modal();
+}
+</script>
+
+
+
+{% endblock %}

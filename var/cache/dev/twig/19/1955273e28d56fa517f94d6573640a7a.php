@@ -130,7 +130,7 @@ class __TwigTemplate_6989d28d206e51afa2a56e8d63702d12 extends Template
         }
         foreach ($context['_seq'] as $context["_key"] => $context["item"]) {
             // line 12
-            echo "        <div class=\"col-xl-5 grid-margin stretch-card\">
+            echo "        <div class=\"col-lg-6 grid-margin stretch-card\">
             <div class=\"card\">
                 <div class=\"card-body border-bottom\">
                     <div class=\"d-flex-column justify-content-between align-items-center flex-wrap\">
@@ -457,7 +457,7 @@ function triggerDeleteLoanModal(loanId){
 <div>
     <div class=\"row\">
     {% for item in loans %}
-        <div class=\"col-xl-5 grid-margin stretch-card\">
+        <div class=\"col-lg-6 grid-margin stretch-card\">
             <div class=\"card\">
                 <div class=\"card-body border-bottom\">
                     <div class=\"d-flex-column justify-content-between align-items-center flex-wrap\">

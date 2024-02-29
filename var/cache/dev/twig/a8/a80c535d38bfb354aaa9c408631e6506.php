@@ -110,6 +110,44 @@ class __TwigTemplate_286a8f04c286c4fdf127839ac4f14529 extends Template
         // line 11
         echo "
 <div class=\"row\">
+
+  <div class=\"col-lg-6 grid-margin stretch-card\">
+    <div class=\"card\">
+      <div class=\"card-body\">
+        <h4 class=\"card-title\">Placed / Approved Bids per Automation</h4>
+        <canvas id=\"stackedBarChart\"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class=\"col-lg-6 grid-margin stretch-card\">
+    <div class=\"card\">
+      <div class=\"card-body\">
+        <h4 class=\"card-title\">Loans Distribution</h4>
+        <canvas id=\"radarChart\"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class=\"col-lg-6 grid-margin stretch-card\">
+    <div class=\"card\">
+      <div class=\"card-body\">
+        <h4 class=\"card-title\">Loan Statuses</h4>
+        <canvas id=\"doughnutChart1\"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class=\"col-lg-6 grid-margin stretch-card\">
+    <div class=\"card\">
+      <div class=\"card-body\">
+        <h4 class=\"card-title\">Bid Statuses</h4>
+        <canvas id=\"polarAreaChart\"></canvas>
+      </div>
+    </div>
+  </div>
+
+
   <div class=\"col-lg-6 grid-margin stretch-card\">
     <div class=\"card\">
       <div class=\"card-body\">
@@ -127,7 +165,6 @@ class __TwigTemplate_286a8f04c286c4fdf127839ac4f14529 extends Template
     </div>
   </div>
 </div>
-<div class=\"row\">
   <div class=\"col-lg-6 grid-margin stretch-card\">
     <div class=\"card\">
       <div class=\"card-body\">
@@ -136,16 +173,6 @@ class __TwigTemplate_286a8f04c286c4fdf127839ac4f14529 extends Template
       </div>
     </div>
   </div>
-  <div class=\"col-lg-6 grid-margin stretch-card\">
-    <div class=\"card\">
-      <div class=\"card-body\">
-        <h4 class=\"card-title\">Doughnut chart</h4>
-        <canvas id=\"doughnutChart\"></canvas>
-      </div>
-    </div>
-  </div>
-</div>
-<div class=\"row\">
   <div class=\"col-lg-6 grid-margin grid-margin-lg-0 stretch-card\">
     <div class=\"card\">
       <div class=\"card-body\">
@@ -162,12 +189,184 @@ class __TwigTemplate_286a8f04c286c4fdf127839ac4f14529 extends Template
       </div>
     </div>
   </div>
-</div>
 
 
 <script src=\"/dashboard-template/vendors/js/vendor.bundle.base.js\"></script>
 <script src=\"/dashboard-template/vendors/chart.js/Chart.min.js\"></script>
 <script src=\"/dashboard-template/js/chart.js\"></script>
+
+<script>
+
+\$(function() {
+  'use strict';
+
+const labels = [ 'automation_1', 'automation_2', 'automation_3' ];
+const data = {
+  labels: labels,
+  datasets: [
+    {
+      label: 'Approved Bids',
+      data: [60, 80, 70],
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    },
+    {
+      label: 'Placed Bids',
+      data: [30, 20, 10],
+      backgroundColor: 'rgba(153, 102, 255, 0.2)',
+    }
+  ]
+};
+
+
+const config = {
+  type: 'bar',
+  data: data,
+  options: {
+    plugins: {
+      title: {
+        display: true,
+        text: 'Chart.js Bar Chart - Stacked'
+      },
+    },
+    responsive: true,
+    scales: {
+      x: {
+        stacked: true,
+      },
+      y: {
+        stacked: true
+      }
+    }
+  }
+};
+
+  if (\$(\"#stackedBarChart\").length) {
+    var stackedBarChartCanvas = \$(\"#stackedBarChart\").get(0).getContext(\"2d\");
+    var stackedBarChart = new Chart(stackedBarChartCanvas, config);
+  }
+
+/* ------------ Radar chart ---------- */
+
+const radarChartData = {
+  labels: ['amount', 'interest', 'term'],
+  datasets: [
+    {
+      label: 'Loans',
+      data: [300000, 18, 120],
+      borderColor: 'red',
+      backgroundColor: 'red',
+    },
+  ]
+};
+
+const radarChartConfig = {
+  type: 'radar',
+  data: radarChartData,
+  options: {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Chart.js Radar Chart'
+      }
+    }
+  },
+};
+
+  if (\$(\"#radarChart\").length) {
+    var radarChartCanvas = \$(\"#radarChart\").get(0).getContext(\"2d\");
+    var radarChart = new Chart(radarChartCanvas, radarChartConfig);
+  }
+
+/* ------------ Doughnut Chart ---------- */
+
+const doughnutChartData = {
+  labels: ['In Bidding', 'Active', 'Paid'],
+  datasets: [
+    {
+      label: 'Loans Statuses',
+      data: [100, 200, 200],
+      backgroundColor: ['rgba(54, 162, 235, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+    }
+  ]
+};
+const doughnutChartConfig = {
+  type: 'doughnut',
+  data: doughnutChartData,
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Doughnut Chart'
+      }
+    }
+  },
+};
+  if (\$(\"#doughnutChart1\").length) {
+    var doughnutCharCanvas1 = \$(\"#doughnutChart1\").get(0).getContext(\"2d\");
+    var doughnutChart1 = new Chart(doughnutCharCanvas1, doughnutChartConfig);
+  }
+
+/* ------------ polarAreaChart ---------- */
+
+const polarAreaChartData = {
+  labels:  ['Pending', 'Approved', 'Rejected', 'Active', 'Completed'],
+  datasets: [
+    {
+      label: 'Bids Statuses',
+      data: [1000, 400, 700, 400, 1000],
+      backgroundColor: [
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(201, 203, 207, 0.2)'
+      ]
+    }
+  ]
+};
+
+const polarAreaChartConfig = {
+  type: 'polarArea',
+  data: polarAreaChartData,
+  options: {
+    responsive: true,
+    scales: {
+      r: {
+        pointLabels: {
+          display: true,
+          centerPointLabels: true,
+          font: {
+            size: 18
+          }
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Polar Area Chart With Centered Point Labels'
+      }
+    }
+  },
+};
+
+  if (\$(\"#polarAreaChart\").length) {
+    var polarAreaChartCanvas = \$(\"#polarAreaChart\").get(0).getContext(\"2d\");
+    var polarAreaChart = new Chart(polarAreaChartCanvas, polarAreaChartConfig);
+  }
+
+});
+
+</script>
+
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -215,6 +414,44 @@ class __TwigTemplate_286a8f04c286c4fdf127839ac4f14529 extends Template
 {% block body %}
 
 <div class=\"row\">
+
+  <div class=\"col-lg-6 grid-margin stretch-card\">
+    <div class=\"card\">
+      <div class=\"card-body\">
+        <h4 class=\"card-title\">Placed / Approved Bids per Automation</h4>
+        <canvas id=\"stackedBarChart\"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class=\"col-lg-6 grid-margin stretch-card\">
+    <div class=\"card\">
+      <div class=\"card-body\">
+        <h4 class=\"card-title\">Loans Distribution</h4>
+        <canvas id=\"radarChart\"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class=\"col-lg-6 grid-margin stretch-card\">
+    <div class=\"card\">
+      <div class=\"card-body\">
+        <h4 class=\"card-title\">Loan Statuses</h4>
+        <canvas id=\"doughnutChart1\"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class=\"col-lg-6 grid-margin stretch-card\">
+    <div class=\"card\">
+      <div class=\"card-body\">
+        <h4 class=\"card-title\">Bid Statuses</h4>
+        <canvas id=\"polarAreaChart\"></canvas>
+      </div>
+    </div>
+  </div>
+
+
   <div class=\"col-lg-6 grid-margin stretch-card\">
     <div class=\"card\">
       <div class=\"card-body\">
@@ -232,7 +469,6 @@ class __TwigTemplate_286a8f04c286c4fdf127839ac4f14529 extends Template
     </div>
   </div>
 </div>
-<div class=\"row\">
   <div class=\"col-lg-6 grid-margin stretch-card\">
     <div class=\"card\">
       <div class=\"card-body\">
@@ -241,16 +477,6 @@ class __TwigTemplate_286a8f04c286c4fdf127839ac4f14529 extends Template
       </div>
     </div>
   </div>
-  <div class=\"col-lg-6 grid-margin stretch-card\">
-    <div class=\"card\">
-      <div class=\"card-body\">
-        <h4 class=\"card-title\">Doughnut chart</h4>
-        <canvas id=\"doughnutChart\"></canvas>
-      </div>
-    </div>
-  </div>
-</div>
-<div class=\"row\">
   <div class=\"col-lg-6 grid-margin grid-margin-lg-0 stretch-card\">
     <div class=\"card\">
       <div class=\"card-body\">
@@ -267,12 +493,184 @@ class __TwigTemplate_286a8f04c286c4fdf127839ac4f14529 extends Template
       </div>
     </div>
   </div>
-</div>
 
 
 <script src=\"/dashboard-template/vendors/js/vendor.bundle.base.js\"></script>
 <script src=\"/dashboard-template/vendors/chart.js/Chart.min.js\"></script>
 <script src=\"/dashboard-template/js/chart.js\"></script>
+
+<script>
+
+\$(function() {
+  'use strict';
+
+const labels = [ 'automation_1', 'automation_2', 'automation_3' ];
+const data = {
+  labels: labels,
+  datasets: [
+    {
+      label: 'Approved Bids',
+      data: [60, 80, 70],
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    },
+    {
+      label: 'Placed Bids',
+      data: [30, 20, 10],
+      backgroundColor: 'rgba(153, 102, 255, 0.2)',
+    }
+  ]
+};
+
+
+const config = {
+  type: 'bar',
+  data: data,
+  options: {
+    plugins: {
+      title: {
+        display: true,
+        text: 'Chart.js Bar Chart - Stacked'
+      },
+    },
+    responsive: true,
+    scales: {
+      x: {
+        stacked: true,
+      },
+      y: {
+        stacked: true
+      }
+    }
+  }
+};
+
+  if (\$(\"#stackedBarChart\").length) {
+    var stackedBarChartCanvas = \$(\"#stackedBarChart\").get(0).getContext(\"2d\");
+    var stackedBarChart = new Chart(stackedBarChartCanvas, config);
+  }
+
+/* ------------ Radar chart ---------- */
+
+const radarChartData = {
+  labels: ['amount', 'interest', 'term'],
+  datasets: [
+    {
+      label: 'Loans',
+      data: [300000, 18, 120],
+      borderColor: 'red',
+      backgroundColor: 'red',
+    },
+  ]
+};
+
+const radarChartConfig = {
+  type: 'radar',
+  data: radarChartData,
+  options: {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Chart.js Radar Chart'
+      }
+    }
+  },
+};
+
+  if (\$(\"#radarChart\").length) {
+    var radarChartCanvas = \$(\"#radarChart\").get(0).getContext(\"2d\");
+    var radarChart = new Chart(radarChartCanvas, radarChartConfig);
+  }
+
+/* ------------ Doughnut Chart ---------- */
+
+const doughnutChartData = {
+  labels: ['In Bidding', 'Active', 'Paid'],
+  datasets: [
+    {
+      label: 'Loans Statuses',
+      data: [100, 200, 200],
+      backgroundColor: ['rgba(54, 162, 235, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+    }
+  ]
+};
+const doughnutChartConfig = {
+  type: 'doughnut',
+  data: doughnutChartData,
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Doughnut Chart'
+      }
+    }
+  },
+};
+  if (\$(\"#doughnutChart1\").length) {
+    var doughnutCharCanvas1 = \$(\"#doughnutChart1\").get(0).getContext(\"2d\");
+    var doughnutChart1 = new Chart(doughnutCharCanvas1, doughnutChartConfig);
+  }
+
+/* ------------ polarAreaChart ---------- */
+
+const polarAreaChartData = {
+  labels:  ['Pending', 'Approved', 'Rejected', 'Active', 'Completed'],
+  datasets: [
+    {
+      label: 'Bids Statuses',
+      data: [1000, 400, 700, 400, 1000],
+      backgroundColor: [
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(201, 203, 207, 0.2)'
+      ]
+    }
+  ]
+};
+
+const polarAreaChartConfig = {
+  type: 'polarArea',
+  data: polarAreaChartData,
+  options: {
+    responsive: true,
+    scales: {
+      r: {
+        pointLabels: {
+          display: true,
+          centerPointLabels: true,
+          font: {
+            size: 18
+          }
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Polar Area Chart With Centered Point Labels'
+      }
+    }
+  },
+};
+
+  if (\$(\"#polarAreaChart\").length) {
+    var polarAreaChartCanvas = \$(\"#polarAreaChart\").get(0).getContext(\"2d\");
+    var polarAreaChart = new Chart(polarAreaChartCanvas, polarAreaChartConfig);
+  }
+
+});
+
+</script>
+
 {% endblock %}
 ", "loans/admin/stats.html.twig", "/var/safe-spot/safe-spot/templates/loans/admin/stats.html.twig");
     }
