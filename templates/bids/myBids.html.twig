@@ -21,6 +21,7 @@
                         <th></th>
                         <th>Amount</th>
                         <th>Status</th>
+                        <th>Loan ID</th>
                         <th>Loan Status</th>
                         <th></th>
                     </tr>
@@ -42,9 +43,10 @@
                         </td>
                         <td> {{ item.amount }} TND </td>
                         <td> {{ include ('bids/_bidStatus.html.twig',{'status':item.status}) }}  </td>
+                        <td> {{ item.loan.id }} </td>
                         <td> {{ include ('loans/_loanStatus.html.twig',{'status':item.loan.status}) }} </td>
                         <td>
-                            <a href=""
+                            <a href="/loans/{{item.loan.id}}/bids/create?id={{item.id}}"
                                role="button"
                                class="btn btn-warning btn-sm btn-icon-text mr-3 {% if item.status.value != 'PENDING' %} disabled {% endif %}"
                                data-bs-toggle="tooltip" data-bs-placement="bottom" data-html="true"

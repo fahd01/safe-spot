@@ -39,7 +39,7 @@ class Loan
     #[ORM\JoinColumn(nullable: false)]
     private ?User $borrower = null;
 
-    #[ORM\OneToMany(targetEntity: Bid::class, mappedBy: 'loan')]
+    #[ORM\OneToMany(targetEntity: Bid::class, mappedBy: 'loan', cascade: ['remove'], orphanRemoval: true)]
     private Collection $bids;
 
     public function __construct()

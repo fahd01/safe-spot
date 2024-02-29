@@ -3,7 +3,7 @@
 {% block title %}My Bids{% endblock %}
 
 {% block navigation %}
-{{ include('loans/_loanNavMenu.html.twig')}}
+{{ include('loans/admin/_navMenu.html.twig')}}
 {% endblock %}
 
 {% block body %}
@@ -11,7 +11,7 @@
 <div>
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">My Bids</h4>
+            <h4 class="card-title">List of All Bids</h4>
 
             <div class="table-responsive pt-3">
                 <table class="table table-striped">
@@ -34,7 +34,7 @@
                         </td>
                         <td>
                             {% if item.automation != null %}
-                            <a href="/bids/automations/create?id={{ item.automation.id }}" title="Placed by '{{ item.automation.name }}' automation"
+                            <a href="#" title="Placed by '{{ item.automation.name }}' automation"
                                data-bs-toggle="tooltip" data-bs-placement="bottom" data-html="true"
                             >
                                 <i class="mdi mdi-flash-auto menu-icon"></i>
@@ -46,7 +46,7 @@
                         <td> {{ item.loan.id }} </td>
                         <td> {{ include ('loans/_loanStatus.html.twig',{'status':item.loan.status}) }} </td>
                         <td>
-                            <a href=""
+                            <a href="/admin/loans/{{ item.loan.id }}/bids/edit?id={{ item.id }}"
                                role="button"
                                class="btn btn-warning btn-sm btn-icon-text mr-3 {% if item.status.value != 'PENDING' %} disabled {% endif %}"
                                data-bs-toggle="tooltip" data-bs-placement="bottom" data-html="true"
@@ -95,7 +95,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <a role="button" id="delete-bid-link" href="/bids/id/delete" class="btn btn-danger">Yes, delete</a>
+                <a role="button" id="delete-bid-link" href="/admin/bids/id/delete" class="btn btn-danger">Yes, delete</a>
             </div>
         </div>
     </div>
@@ -103,7 +103,7 @@
 
 <script>
 function triggerDeleteBidModal(bidId){
-  $('#delete-bid-link').attr('href', `/bids/${bidId}/delete`);
+  $('#delete-bid-link').attr('href', `/admin/bids/${bidId}/delete`);
   $('#delete-bid-modal').modal();
 }
 </script>

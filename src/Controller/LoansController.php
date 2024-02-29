@@ -67,26 +67,4 @@ class LoansController extends AbstractController
             'loans'=>$loans,
         ]);
     }
-
-    #[Route('/admin/loans/list', name: 'app_admin_loans_list')]
-    public function adminList(LoanRepository $repo): Response
-    {
-        $loans=$repo->findAll();
-
-        return $this->render('loans/admin/listLoans.html.twig', [
-            'controller_name' => 'LoansListController',
-            'loanskey'=>$loans,
-        ]);
-    }
-
-    #[Route('/admin/loans/stats', name: 'app_admin_loans_stats')]
-    public function adminStats(LoanRepository $repo): Response
-    {
-        $loans=$repo->findAll();
-
-        return $this->render('loans/admin/stats.html.twig', [
-            'controller_name' => 'LoansListController',
-            'loanskey'=>$loans,
-        ]);
-    }
 }
