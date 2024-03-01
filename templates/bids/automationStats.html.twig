@@ -1,102 +1,196 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}My Automations{% endblock %}
+{% block title %}Automations Performance Overview{% endblock %}
 
 {% block navigation %}
 {{ include('loans/_loanNavMenu.html.twig')}}
 {% endblock %}
 
 {% block body %}
+<div class="row">
 
-<div>
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">My Automations</h4>
-                {% for automation in automations %}
-                    <div class="alert alert-{% if automation.disabled %}dark{% else %}success{% endif %}" role="alert">
-                        <div class="d-flex justify-content-between align-items-center flex-wrap">
-                            <h6 class="mb-2 mb-md-0 text-uppercase font-weight-medium">{{ automation.name }}</h6>
-
-                            <div style="margin-left: auto;order: 2;">
-                                <label class="badge badge-warning mx-2">{{ getApprovedBids(automation) }} Bids Approved</label>
-                                <label class="badge badge-info mx-2">{{ getPlacedBids(automation) }} Bids Placed</label>
-
-                                <!--
-                                <a href="/bids/automations/create?id={{ automation.id }}"
-                                   role="button"
-                                   class="btn btn-warning btn-icon d-inline-flex justify-content-center align-items-center"
-                                   data-bs-toggle="tooltip" data-bs-placement="bottom" data-html="true"
-                                   title="Edit this automation">
-                                    <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>
-                                </a>
-                                -->
-                                <a href="/bids/automations/{{ automation.id }}/disableToggle"
-                                   role="button"
-                                   class="btn btn-secondary btn-icon d-inline-flex justify-content-center align-items-center"
-                                   data-bs-toggle="tooltip" data-bs-placement="bottom" data-html="true"
-                                   {% if automation.disabled %}
-                                   title="Enable this automation">
-                                    <i class="mdi mdi-play btn-icon-prepend"></i>
-                                   {% else %}
-                                   title="Disable this automation">
-                                    <i class="mdi mdi-pause btn-icon-prepend"></i>
-                                   {% endif %}
-                                </a>
-                                <button onclick="triggerDeleteAutomationModal({{ automation.id }})"
-                                        type="button"
-                                        class="btn btn-danger btn-icon"
-                                        data-bs-toggle="tooltip" data-bs-placement="bottom" data-html="true"
-                                        title="Delete this automation">
-                                    <i class="mdi mdi-delete-forever btn-icon-prepend"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <p>
-                            Automatically bid <b>{{ automation.bidAmount }} TND</b> if a newly created loan satisfies <b>ALL</b> the following conditions:
-                                <ul>
-                                    {% for rule in automation.rules %}
-                                        <li>
-                                            <b>{{ rule.attribute.name }} {{ rule.operator.value }} {{ rule.value }} {{rule.getValueUnit()}}</b>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                        </p>
-                    </div>
-                {% endfor %}
-        </div>
-    </div>
-</div>
-
-
-
-<!-- Modal -->
-<div id="delete-automation-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Delete Automation</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to delete this automation
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <a role="button" id="delete-automation-link" href="/bids/automations/id/delete" class="btn btn-danger">Yes, delete</a>
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Placed / Approved Bids per Automation</h4>
+                <canvas id="stackedBarChart"></canvas>
             </div>
         </div>
     </div>
+
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Automations Performance</h4>
+                <canvas id="radarChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Conversion Rate</h4>
+                <canvas id="barLineChart"></canvas>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+<script src="/dashboard-template/vendors/js/vendor.bundle.base.js"></script>
+<script src="/dashboard-template/vendors/chart.js/Chart.min.js"></script>
+<script src="/dashboard-template/js/chart.js"></script>
 
 <script>
-function triggerDeleteAutomationModal(id){
-  $('#delete-automation-link').attr('href', `/bids/automations/${id}/delete`);
-  $('#delete-automation-modal').modal();
-}
-</script>
 
+$(function() {
+  'use strict';
+
+const labels = [{% for automation in automations %}'{{ automation.name }}', {% endfor %}];
+const data = {
+  labels: labels,
+  datasets: [
+    {
+      label: 'Placed Bids',
+      data: [{% for automation in automations %}{{ getPlacedBids(automation) }}, {% endfor %}],
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 1,
+      fill: false
+    },
+    {
+      label: 'Approved Bids',
+      data: [{% for automation in automations %}{{ getApprovedBids(automation) }}, {% endfor %}],
+      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+      borderColor: 'rgba(75, 192, 192, 1)',
+      borderWidth: 1,
+      fill: false
+    },
+  ]
+};
+
+
+const config = {
+  type: 'bar',
+  data: data,
+  options: {
+    plugins: {
+      title: {
+        display: true,
+        text: 'Chart.js Bar Chart - Stacked'
+      },
+    },
+    responsive: true,
+    scales: {
+      x: {
+        stacked: true,
+      },
+      y: {
+        stacked: true
+      }
+    }
+  }
+};
+
+  if ($("#stackedBarChart").length) {
+    var stackedBarChartCanvas = $("#stackedBarChart").get(0).getContext("2d");
+    var stackedBarChart = new Chart(stackedBarChartCanvas, config);
+  }
+
+/* ------------ Radar chart ---------- */
+
+const radarChartData = {
+  labels: ['placed', 'approved', 'rejected'],
+  datasets: [
+    {
+      label: 'automation 1',
+      data: [90, 50, 20],
+      borderColor: 'rgba(54, 162, 235, 0.2)',
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    },
+        {
+      label: 'automation 2',
+      data: [81, 18, 60],
+      borderColor: 'rgba(75, 192, 192, 0.2)',
+      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+    },
+        {
+      label: 'automation 3',
+      data: [10, 2, 0],
+      borderColor: 'rgba(255, 99, 132, 0.2)',
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+    },
+  ]
+};
+
+const radarChartConfig = {
+  type: 'radar',
+  data: radarChartData,
+  options: {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Chart.js Radar Chart'
+      }
+    }
+  },
+};
+
+  if ($("#radarChart").length) {
+    var radarChartCanvas = $("#radarChart").get(0).getContext("2d");
+    var radarChart = new Chart(radarChartCanvas, radarChartConfig);
+  }
+
+/* ------------ barLineChart ---------- */
+
+const barLineChartData = {
+  labels: [{% for automation in automations %}'{{ automation.name }}', {% endfor %}],
+  datasets: [
+    {
+      label: 'Placed Bids',
+      data: [{% for automation in automations %}{{ getPlacedBids(automation) }}, {% endfor %}],
+      borderColor: 'rgba(255, 99, 132, 0.2)',
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      stack: 'combined',
+      type: 'bar'
+    },
+    {
+      label: 'Conversion Rate',
+      data: [{% for automation in automations %}{{ getPlacedBids(automation) == 0 ? 0 : (getPlacedBids(automation) / getPlacedBids(automation)) * 100 }}, {% endfor %}],
+      borderColor: 'rgba(54, 162, 235, 0.2)',
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      stack: 'combined'
+    }
+  ]
+};
+
+const barLineChartConfig = {
+  type: 'line',
+  data: barLineChartData,
+  options: {
+    plugins: {
+      title: {
+        display: true,
+        text: 'Chart.js Stacked Line/Bar Chart'
+      }
+    },
+    scales: {
+      y: {
+        stacked: true
+      }
+    }
+  },
+};
+
+  if ($("#barLineChart").length) {
+    var barLineChartCanvas = $("#barLineChart").get(0).getContext("2d");
+    var barLineChart = new Chart(barLineChartCanvas, barLineChartConfig);
+  }
+
+});
+
+</script>
 
 {% endblock %}

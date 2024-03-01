@@ -25,7 +25,13 @@
                 <span class="menu-title">My Bids</span>
             </a>
         </li>
-        <li class="nav-item {% if (app.request.requesturi == '/bids/automations/create') or (app.request.requesturi == '/bids/automations/mine') %}active{% endif %}">
+        <li class="nav-item
+        {% if (app.request.requesturi == '/bids/automations/create') or
+              (app.request.requesturi == '/bids/automations/mine') or
+              (app.request.requesturi == '/bids/automations/stats')
+        %}
+        active
+        {% endif %}">
             <a class="nav-link"
                data-toggle="collapse"
                href="#bids-automation"
@@ -35,11 +41,18 @@
                 <span class="menu-title">Bids Automation</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse {% if (app.request.requesturi == '/bids/automations/create') or (app.request.requesturi == '/bids/automations/mine') %}show{% endif %}"
+            <div class="collapse
+            {% if (app.request.requesturi == '/bids/automations/create') or
+                  (app.request.requesturi == '/bids/automations/mine') or
+                  (app.request.requesturi == '/bids/automations/stats')
+            %}
+            show
+            {% endif %}"
                  id="bids-automation">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="/bids/automations/create"> Create Automation </a></li>
                     <li class="nav-item"> <a class="nav-link" href="/bids/automations/mine"> My Automations </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/bids/automations/stats"> Overview </a></li>
                 </ul>
             </div>
         </li>

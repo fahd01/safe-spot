@@ -63,3 +63,7 @@ Once the loan is `PAID`, all chosen bids are set to `PAID` as well.
   - [x] trim last bids amount to match needed amount
   - [ ] notify bidder that his bid was trimmed
   - [ ] add checkbox on placed bid to allow trimming your bid to match remaining amount 
+
+- [ ] report page with pdf integration https://github.com/KnpLabs/KnpSnappyBundle
+  - displays returns from all you bids
+  - download pdf for tax
