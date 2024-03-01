@@ -67,3 +67,7 @@ Once the loan is `PAID`, all chosen bids are set to `PAID` as well.
 - [ ] report page with pdf integration https://github.com/KnpLabs/KnpSnappyBundle
   - displays returns from all you bids
   - download pdf for tax
+- pagination 
+  - [x] frontend: https://datatables.net/examples/styling/bootstrap5.html
+  - [ ] backend ?
+- [ ] loan details in email

@@ -77,9 +77,9 @@ class LoanPersistedNotifier {
                 ->to($user->getEmail())
                 ->subject('Automated Bid Placed')
                 ->text('Sending emails is fun again!')
-                ->html('<p>A loan newly created did match one of you bid automations
+                ->html('<p>A loan newly created did match one of your bid automations
                 (<a href="http://localhost:8080/bids/automations/create?id=' . $automation->getId() . '">' .$automation->getName() . '</a>),
-                therefore a bid was automatically placed.</p>');
+                therefore a bid of ' . $bid->getAmount() . ' TND was automatically placed.</p>');
 
             $this->mailer->send($email);
     }

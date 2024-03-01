@@ -133,28 +133,19 @@ class __TwigTemplate_0dc56d1374ff46e7c73c63d6ef339cf4 extends Template
             echo "</h6>
 
                             <div style=\"margin-left: auto;order: 2;\">
-                                ";
+                                <label class=\"badge badge-warning mx-2\">";
             // line 21
-            if (($this->extensions['App\Twig\TwigExtensions']->getPlacedBids($context["automation"]) != 0)) {
-                // line 22
-                echo "                                <label class=\"badge badge-info mx-2\">";
-                echo twig_escape_filter($this->env, (($this->extensions['App\Twig\TwigExtensions']->getApprovedBids($context["automation"]) / $this->extensions['App\Twig\TwigExtensions']->getPlacedBids($context["automation"])) * 100), "html", null, true);
-                echo " % Conversion Rate</label>
-                                ";
-            }
-            // line 24
-            echo "                                <label class=\"badge badge-warning mx-2\">";
             echo twig_escape_filter($this->env, $this->extensions['App\Twig\TwigExtensions']->getApprovedBids($context["automation"]), "html", null, true);
             echo " Bids Approved</label>
                                 <label class=\"badge badge-info mx-2\">";
-            // line 25
+            // line 22
             echo twig_escape_filter($this->env, $this->extensions['App\Twig\TwigExtensions']->getPlacedBids($context["automation"]), "html", null, true);
             echo " Bids Placed</label>
 
                                 <!--
                                 <a href=\"/bids/automations/create?id=";
-            // line 28
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["automation"], "id", [], "any", false, false, false, 28), "html", null, true);
+            // line 25
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["automation"], "id", [], "any", false, false, false, 25), "html", null, true);
             echo "\"
                                    role=\"button\"
                                    class=\"btn btn-warning btn-icon d-inline-flex justify-content-center align-items-center\"
@@ -164,30 +155,30 @@ class __TwigTemplate_0dc56d1374ff46e7c73c63d6ef339cf4 extends Template
                                 </a>
                                 -->
                                 <a href=\"/bids/automations/";
-            // line 36
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["automation"], "id", [], "any", false, false, false, 36), "html", null, true);
+            // line 33
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["automation"], "id", [], "any", false, false, false, 33), "html", null, true);
             echo "/disableToggle\"
                                    role=\"button\"
                                    class=\"btn btn-secondary btn-icon d-inline-flex justify-content-center align-items-center\"
                                    data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
                                    ";
-            // line 40
-            if (twig_get_attribute($this->env, $this->source, $context["automation"], "disabled", [], "any", false, false, false, 40)) {
-                // line 41
+            // line 37
+            if (twig_get_attribute($this->env, $this->source, $context["automation"], "disabled", [], "any", false, false, false, 37)) {
+                // line 38
                 echo "                                   title=\"Enable this automation\">
                                     <i class=\"mdi mdi-play btn-icon-prepend\"></i>
                                    ";
             } else {
-                // line 44
+                // line 41
                 echo "                                   title=\"Disable this automation\">
                                     <i class=\"mdi mdi-pause btn-icon-prepend\"></i>
                                    ";
             }
-            // line 47
+            // line 44
             echo "                                </a>
                                 <button onclick=\"triggerDeleteAutomationModal(";
-            // line 48
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["automation"], "id", [], "any", false, false, false, 48), "html", null, true);
+            // line 45
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["automation"], "id", [], "any", false, false, false, 45), "html", null, true);
             echo ")\"
                                         type=\"button\"
                                         class=\"btn btn-danger btn-icon\"
@@ -200,26 +191,26 @@ class __TwigTemplate_0dc56d1374ff46e7c73c63d6ef339cf4 extends Template
 
                         <p>
                             Automatically bid <b>";
-            // line 59
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["automation"], "bidAmount", [], "any", false, false, false, 59), "html", null, true);
+            // line 56
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["automation"], "bidAmount", [], "any", false, false, false, 56), "html", null, true);
             echo " TND</b> if a newly created loan satisfies <b>ALL</b> the following conditions:
                                 <ul>
                                     ";
-            // line 61
+            // line 58
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["automation"], "rules", [], "any", false, false, false, 61));
+            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["automation"], "rules", [], "any", false, false, false, 58));
             foreach ($context['_seq'] as $context["_key"] => $context["rule"]) {
-                // line 62
+                // line 59
                 echo "                                        <li>
                                             <b>";
-                // line 63
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["rule"], "attribute", [], "any", false, false, false, 63), "name", [], "any", false, false, false, 63), "html", null, true);
+                // line 60
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["rule"], "attribute", [], "any", false, false, false, 60), "name", [], "any", false, false, false, 60), "html", null, true);
                 echo " ";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["rule"], "operator", [], "any", false, false, false, 63), "value", [], "any", false, false, false, 63), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["rule"], "operator", [], "any", false, false, false, 60), "value", [], "any", false, false, false, 60), "html", null, true);
                 echo " ";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rule"], "value", [], "any", false, false, false, 63), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rule"], "value", [], "any", false, false, false, 60), "html", null, true);
                 echo " ";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rule"], "getValueUnit", [], "method", false, false, false, 63), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rule"], "getValueUnit", [], "method", false, false, false, 60), "html", null, true);
                 echo "</b>
                                         </li>
                                     ";
@@ -227,7 +218,7 @@ class __TwigTemplate_0dc56d1374ff46e7c73c63d6ef339cf4 extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['rule'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 66
+            // line 63
             echo "                                </ul>
                         </p>
                     </div>
@@ -236,7 +227,7 @@ class __TwigTemplate_0dc56d1374ff46e7c73c63d6ef339cf4 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['automation'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 70
+        // line 67
         echo "        </div>
     </div>
 </div>
@@ -302,7 +293,7 @@ function triggerDeleteAutomationModal(id){
      */
     public function getDebugInfo()
     {
-        return array (  240 => 70,  231 => 66,  216 => 63,  213 => 62,  209 => 61,  204 => 59,  190 => 48,  187 => 47,  182 => 44,  177 => 41,  175 => 40,  168 => 36,  157 => 28,  151 => 25,  146 => 24,  140 => 22,  138 => 21,  132 => 18,  122 => 16,  118 => 15,  111 => 10,  101 => 9,  89 => 6,  79 => 5,  60 => 3,  37 => 1,);
+        return array (  231 => 67,  222 => 63,  207 => 60,  204 => 59,  200 => 58,  195 => 56,  181 => 45,  178 => 44,  173 => 41,  168 => 38,  166 => 37,  159 => 33,  148 => 25,  142 => 22,  138 => 21,  132 => 18,  122 => 16,  118 => 15,  111 => 10,  101 => 9,  89 => 6,  79 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -327,9 +318,6 @@ function triggerDeleteAutomationModal(id){
                             <h6 class=\"mb-2 mb-md-0 text-uppercase font-weight-medium\">{{ automation.name }}</h6>
 
                             <div style=\"margin-left: auto;order: 2;\">
-                                {% if getPlacedBids(automation) != 0 %}
-                                <label class=\"badge badge-info mx-2\">{{ (getApprovedBids(automation) / getPlacedBids(automation))*100 }} % Conversion Rate</label>
-                                {% endif %}
                                 <label class=\"badge badge-warning mx-2\">{{ getApprovedBids(automation) }} Bids Approved</label>
                                 <label class=\"badge badge-info mx-2\">{{ getPlacedBids(automation) }} Bids Placed</label>
 

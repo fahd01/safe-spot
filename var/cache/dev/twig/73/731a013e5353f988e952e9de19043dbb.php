@@ -185,26 +185,31 @@ class __TwigTemplate_b498de32b6b895be2b76b5eef87998ca extends Template
                         <i class=\"mdi mdi-plus btn-icon-prepend\"></i>
                     </button>
                 </div>
+                <br/>
+                ";
+            // line 50
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 50, $this->source); })()), 'errors');
+            echo "
                 ";
         }
-        // line 50
+        // line 52
         echo "            ";
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 50, $this->source); })()), 'form_end');
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 52, $this->source); })()), 'form_end');
         echo "
         </div>
     </div>
 </div>
 
 ";
-        // line 68
+        // line 70
         echo "
 
 
 <script>
 ";
-        // line 72
-        if (((isset($context["detailsView"]) || array_key_exists("detailsView", $context) ? $context["detailsView"] : (function () { throw new RuntimeError('Variable "detailsView" does not exist.', 72, $this->source); })()) == false)) {
-            // line 73
+        // line 74
+        if (((isset($context["detailsView"]) || array_key_exists("detailsView", $context) ? $context["detailsView"] : (function () { throw new RuntimeError('Variable "detailsView" does not exist.', 74, $this->source); })()) == false)) {
+            // line 75
             echo "document
   .querySelectorAll('.add_rule_link')
   .forEach(btn => {
@@ -255,7 +260,7 @@ function addFormRemoveLink(item) {
 }
 ";
         } else {
-            // line 122
+            // line 124
             echo "document
   .querySelectorAll('button#automation_submit')
   .forEach(btn => {
@@ -263,7 +268,7 @@ function addFormRemoveLink(item) {
   });
 ";
         }
-        // line 128
+        // line 130
         echo "
 </script>
 ";
@@ -275,7 +280,7 @@ function addFormRemoveLink(item) {
 
     }
 
-    // line 55
+    // line 57
     public function macro_printAutomationRuleRow($__ruleForm__ = null, ...$__varargs__)
     {
         $macros = $this->macros;
@@ -294,24 +299,24 @@ function addFormRemoveLink(item) {
             $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
             $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "macro", "printAutomationRuleRow"));
 
-            // line 56
+            // line 58
             echo "<div class=\"row align-items-center\">
     <div class=\"col\">
         ";
-            // line 58
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["ruleForm"]) || array_key_exists("ruleForm", $context) ? $context["ruleForm"] : (function () { throw new RuntimeError('Variable "ruleForm" does not exist.', 58, $this->source); })()), "attribute", [], "any", false, false, false, 58), 'row');
+            // line 60
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["ruleForm"]) || array_key_exists("ruleForm", $context) ? $context["ruleForm"] : (function () { throw new RuntimeError('Variable "ruleForm" does not exist.', 60, $this->source); })()), "attribute", [], "any", false, false, false, 60), 'row');
             echo "
     </div>
     <div class=\"col\">
         ";
-            // line 61
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["ruleForm"]) || array_key_exists("ruleForm", $context) ? $context["ruleForm"] : (function () { throw new RuntimeError('Variable "ruleForm" does not exist.', 61, $this->source); })()), "operator", [], "any", false, false, false, 61), 'row');
+            // line 63
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["ruleForm"]) || array_key_exists("ruleForm", $context) ? $context["ruleForm"] : (function () { throw new RuntimeError('Variable "ruleForm" does not exist.', 63, $this->source); })()), "operator", [], "any", false, false, false, 63), 'row');
             echo "
     </div>
     <div class=\"col\">
         ";
-            // line 64
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["ruleForm"]) || array_key_exists("ruleForm", $context) ? $context["ruleForm"] : (function () { throw new RuntimeError('Variable "ruleForm" does not exist.', 64, $this->source); })()), "value", [], "any", false, false, false, 64), 'row');
+            // line 66
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["ruleForm"]) || array_key_exists("ruleForm", $context) ? $context["ruleForm"] : (function () { throw new RuntimeError('Variable "ruleForm" does not exist.', 66, $this->source); })()), "value", [], "any", false, false, false, 66), 'row');
             echo "
     </div>
 </div>
@@ -350,7 +355,7 @@ function addFormRemoveLink(item) {
      */
     public function getDebugInfo()
     {
-        return array (  314 => 64,  308 => 61,  302 => 58,  298 => 56,  279 => 55,  267 => 128,  259 => 122,  208 => 73,  206 => 72,  200 => 68,  191 => 50,  176 => 37,  174 => 36,  168 => 32,  159 => 30,  155 => 29,  149 => 26,  145 => 25,  137 => 20,  133 => 19,  128 => 17,  120 => 16,  114 => 12,  104 => 11,  92 => 8,  82 => 7,  63 => 5,  52 => 3,  50 => 1,  37 => 3,);
+        return array (  319 => 66,  313 => 63,  307 => 60,  303 => 58,  284 => 57,  272 => 130,  264 => 124,  213 => 75,  211 => 74,  205 => 70,  196 => 52,  191 => 50,  176 => 37,  174 => 36,  168 => 32,  159 => 30,  155 => 29,  149 => 26,  145 => 25,  137 => 20,  133 => 19,  128 => 17,  120 => 16,  114 => 12,  104 => 11,  92 => 8,  82 => 7,  63 => 5,  52 => 3,  50 => 1,  37 => 3,);
     }
 
     public function getSourceContext()
@@ -403,6 +408,8 @@ function addFormRemoveLink(item) {
                         <i class=\"mdi mdi-plus btn-icon-prepend\"></i>
                     </button>
                 </div>
+                <br/>
+                {{ form_errors(form)}}
                 {% endif %}
             {{ form_end(form) }}
         </div>

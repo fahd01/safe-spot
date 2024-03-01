@@ -390,6 +390,17 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\BidController"/>
       </call>
     </service>
+    <service id="App\Controller\LendingReportController" class="App\Controller\LendingReportController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="App\Repository\AutomationRepository"/>
+      <argument type="service" id="App\Repository\LoanRepository"/>
+      <argument type="service" id="App\Repository\BidRepository"/>
+      <argument type="service" id="App\Repository\UserRepository"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\LendingReportController"/>
+      </call>
+    </service>
     <service id="App\Controller\LendingStatsController" class="App\Controller\LendingStatsController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -7098,6 +7109,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\BidController" class="App\Controller\BidController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\BidController" class="App\Controller\BidController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\BidController" class="App\Controller\BidController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LendingReportController" class="App\Controller\LendingReportController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LendingReportController" class="App\Controller\LendingReportController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\LendingReportController" class="App\Controller\LendingReportController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LendingStatsController" class="App\Controller\LendingStatsController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LendingStatsController" class="App\Controller\LendingStatsController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\LendingStatsController" class="App\Controller\LendingStatsController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -8286,6 +8300,12 @@
     <service id=".service_locator.O2p6Lk7.App\Controller\BidController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\BidController"/>
       <argument>App\Controller\BidController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\LendingReportController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\LendingReportController"/>
+      <argument>App\Controller\LendingReportController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>

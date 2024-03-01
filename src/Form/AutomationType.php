@@ -25,7 +25,6 @@ class AutomationType extends AbstractType
                 'by_reference' => false,
                 'allow_delete' => true,
                 'label' => false,
-                # TODO when submitting the form with 0 rules, this error message is not displayed
                 'constraints' => [
                     new Assert\Count([
                       'min' => 1,
