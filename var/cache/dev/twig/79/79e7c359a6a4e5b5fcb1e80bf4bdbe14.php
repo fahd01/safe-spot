@@ -87,11 +87,17 @@ class __TwigTemplate_69754c9e93badf9958d70e5bdc632673 extends Template
                 <span class=\"menu-title\">My Bids</span>
             </a>
         </li>
-        <li class=\"nav-item ";
-        // line 28
-        if (((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 28, $this->source); })()), "request", [], "any", false, false, false, 28), "requesturi", [], "any", false, false, false, 28) == "/bids/automations/create") || (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 28, $this->source); })()), "request", [], "any", false, false, false, 28), "requesturi", [], "any", false, false, false, 28) == "/bids/automations/mine"))) {
-            echo "active";
+        <li class=\"nav-item
+        ";
+        // line 29
+        if ((((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 29, $this->source); })()), "request", [], "any", false, false, false, 29), "requesturi", [], "any", false, false, false, 29) == "/bids/automations/create") || (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source,         // line 30
+(isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 30, $this->source); })()), "request", [], "any", false, false, false, 30), "requesturi", [], "any", false, false, false, 30) == "/bids/automations/mine")) || (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source,         // line 31
+(isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 31, $this->source); })()), "request", [], "any", false, false, false, 31), "requesturi", [], "any", false, false, false, 31) == "/bids/automations/stats"))) {
+            // line 33
+            echo "        active
+        ";
         }
+        // line 34
         echo "\">
             <a class=\"nav-link\"
                data-toggle=\"collapse\"
@@ -102,16 +108,23 @@ class __TwigTemplate_69754c9e93badf9958d70e5bdc632673 extends Template
                 <span class=\"menu-title\">Bids Automation</span>
                 <i class=\"menu-arrow\"></i>
             </a>
-            <div class=\"collapse ";
-        // line 38
-        if (((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 38, $this->source); })()), "request", [], "any", false, false, false, 38), "requesturi", [], "any", false, false, false, 38) == "/bids/automations/create") || (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 38, $this->source); })()), "request", [], "any", false, false, false, 38), "requesturi", [], "any", false, false, false, 38) == "/bids/automations/mine"))) {
-            echo "show";
+            <div class=\"collapse
+            ";
+        // line 45
+        if ((((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 45, $this->source); })()), "request", [], "any", false, false, false, 45), "requesturi", [], "any", false, false, false, 45) == "/bids/automations/create") || (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source,         // line 46
+(isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 46, $this->source); })()), "request", [], "any", false, false, false, 46), "requesturi", [], "any", false, false, false, 46) == "/bids/automations/mine")) || (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source,         // line 47
+(isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 47, $this->source); })()), "request", [], "any", false, false, false, 47), "requesturi", [], "any", false, false, false, 47) == "/bids/automations/stats"))) {
+            // line 49
+            echo "            show
+            ";
         }
+        // line 50
         echo "\"
                  id=\"bids-automation\">
                 <ul class=\"nav flex-column sub-menu\">
                     <li class=\"nav-item\"> <a class=\"nav-link\" href=\"/bids/automations/create\"> Create Automation </a></li>
                     <li class=\"nav-item\"> <a class=\"nav-link\" href=\"/bids/automations/mine\"> My Automations </a></li>
+                    <li class=\"nav-item\"> <a class=\"nav-link\" href=\"/bids/automations/stats\"> Overview </a></li>
                 </ul>
             </div>
         </li>
@@ -146,7 +159,7 @@ class __TwigTemplate_69754c9e93badf9958d70e5bdc632673 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  107 => 38,  92 => 28,  81 => 22,  70 => 16,  59 => 10,  47 => 3,  43 => 1,);
+        return array (  122 => 50,  118 => 49,  116 => 47,  115 => 46,  114 => 45,  101 => 34,  97 => 33,  95 => 31,  94 => 30,  93 => 29,  81 => 22,  70 => 16,  59 => 10,  47 => 3,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -178,7 +191,13 @@ class __TwigTemplate_69754c9e93badf9958d70e5bdc632673 extends Template
                 <span class=\"menu-title\">My Bids</span>
             </a>
         </li>
-        <li class=\"nav-item {% if (app.request.requesturi == '/bids/automations/create') or (app.request.requesturi == '/bids/automations/mine') %}active{% endif %}\">
+        <li class=\"nav-item
+        {% if (app.request.requesturi == '/bids/automations/create') or
+              (app.request.requesturi == '/bids/automations/mine') or
+              (app.request.requesturi == '/bids/automations/stats')
+        %}
+        active
+        {% endif %}\">
             <a class=\"nav-link\"
                data-toggle=\"collapse\"
                href=\"#bids-automation\"
@@ -188,11 +207,18 @@ class __TwigTemplate_69754c9e93badf9958d70e5bdc632673 extends Template
                 <span class=\"menu-title\">Bids Automation</span>
                 <i class=\"menu-arrow\"></i>
             </a>
-            <div class=\"collapse {% if (app.request.requesturi == '/bids/automations/create') or (app.request.requesturi == '/bids/automations/mine') %}show{% endif %}\"
+            <div class=\"collapse
+            {% if (app.request.requesturi == '/bids/automations/create') or
+                  (app.request.requesturi == '/bids/automations/mine') or
+                  (app.request.requesturi == '/bids/automations/stats')
+            %}
+            show
+            {% endif %}\"
                  id=\"bids-automation\">
                 <ul class=\"nav flex-column sub-menu\">
                     <li class=\"nav-item\"> <a class=\"nav-link\" href=\"/bids/automations/create\"> Create Automation </a></li>
                     <li class=\"nav-item\"> <a class=\"nav-link\" href=\"/bids/automations/mine\"> My Automations </a></li>
+                    <li class=\"nav-item\"> <a class=\"nav-link\" href=\"/bids/automations/stats\"> Overview </a></li>
                 </ul>
             </div>
         </li>

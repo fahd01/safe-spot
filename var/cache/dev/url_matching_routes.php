@@ -19,6 +19,7 @@ return [
         '/admin/loans/list' => [[['_route' => 'app_admin_loans_list', '_controller' => 'App\\Controller\\AdminLoansController::adminList'], null, null, null, false, false, null]],
         '/bids/automations/create' => [[['_route' => 'app_bids_automations_create', '_controller' => 'App\\Controller\\AutomationController::new'], null, null, null, false, false, null]],
         '/bids/automations/mine' => [[['_route' => 'app_bids_automations_mine', '_controller' => 'App\\Controller\\AutomationController::myBidsAutomation'], null, null, null, false, false, null]],
+        '/bids/automations/stats' => [[['_route' => 'app_automations_stats', '_controller' => 'App\\Controller\\AutomationController::stats'], null, null, null, false, false, null]],
         '/bids/mine' => [[['_route' => 'app_my_bids', '_controller' => 'App\\Controller\\BidController::index'], null, null, null, false, false, null]],
         '/admin/loans/stats' => [[['_route' => 'app_admin_loans_stats', '_controller' => 'App\\Controller\\LendingStatsController::adminStats'], null, null, null, false, false, null]],
         '/loans/list' => [[['_route' => 'app_loans_list', '_controller' => 'App\\Controller\\LoansController::list'], null, null, null, false, false, null]],

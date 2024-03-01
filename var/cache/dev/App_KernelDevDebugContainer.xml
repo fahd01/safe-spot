@@ -25,6 +25,7 @@
       <parameter key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</parameter>
       <parameter key="MonologBundle">Symfony\Bundle\MonologBundle\MonologBundle</parameter>
       <parameter key="MakerBundle">Symfony\Bundle\MakerBundle\MakerBundle</parameter>
+      <parameter key="KnpSnappyBundle">Knp\Bundle\SnappyBundle\KnpSnappyBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -74,6 +75,10 @@
       <parameter key="MakerBundle" type="collection">
         <parameter key="path">/var/safe-spot/safe-spot/vendor/symfony/maker-bundle/src</parameter>
         <parameter key="namespace">Symfony\Bundle\MakerBundle</parameter>
+      </parameter>
+      <parameter key="KnpSnappyBundle" type="collection">
+        <parameter key="path">/var/safe-spot/safe-spot/vendor/knplabs/knp-snappy-bundle/src</parameter>
+        <parameter key="namespace">Knp\Bundle\SnappyBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -246,6 +251,12 @@
         </parameter>
       </parameter>
     </parameter>
+    <parameter key="knp_snappy.pdf.binary">%env(WKHTMLTOPDF_PATH)%</parameter>
+    <parameter key="knp_snappy.pdf.options" type="collection"/>
+    <parameter key="knp_snappy.pdf.env" type="collection"/>
+    <parameter key="knp_snappy.image.binary">%env(WKHTMLTOIMAGE_PATH)%</parameter>
+    <parameter key="knp_snappy.image.options" type="collection"/>
+    <parameter key="knp_snappy.image.env" type="collection"/>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
         <parameter>request</parameter>
@@ -496,7 +507,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.cDGIiUe"/>
+      <argument type="service" id=".service_locator.K5EGh4j"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -2437,6 +2448,7 @@
           <argument>/var/safe-spot/safe-spot/vendor/symfony/security-bundle/translations</argument>
           <argument>/var/safe-spot/safe-spot/vendor/symfony/monolog-bundle/translations</argument>
           <argument>/var/safe-spot/safe-spot/vendor/symfony/maker-bundle/src/translations</argument>
+          <argument>/var/safe-spot/safe-spot/vendor/knplabs/knp-snappy-bundle/src/translations</argument>
         </argument>
         <argument key="cache_vary" type="collection">
           <argument key="scanned_directories" type="collection">
@@ -2456,6 +2468,7 @@
             <argument>vendor/symfony/security-bundle/translations</argument>
             <argument>vendor/symfony/monolog-bundle/translations</argument>
             <argument>vendor/symfony/maker-bundle/src/translations</argument>
+            <argument>vendor/knplabs/knp-snappy-bundle/src/translations</argument>
           </argument>
         </argument>
       </argument>
@@ -3369,7 +3382,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.cDGIiUe"/>
+      <argument type="service" id=".service_locator.K5EGh4j"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -7055,6 +7068,24 @@
       <argument type="service" id="maker.security_config_updater"/>
       <argument type="service" id="maker.security_controller_builder"/>
     </service>
+    <service id="knp_snappy.pdf" class="Knp\Snappy\Pdf" public="true">
+      <tag name="monolog.logger" channel="snappy"/>
+      <argument>%env(WKHTMLTOPDF_PATH)%</argument>
+      <argument type="collection"/>
+      <argument type="collection"/>
+      <call method="setLogger">
+        <argument type="service" id="monolog.logger.snappy" on-invalid="ignore"/>
+      </call>
+    </service>
+    <service id="knp_snappy.image" class="Knp\Snappy\Image" public="true">
+      <tag name="monolog.logger" channel="snappy"/>
+      <argument>%env(WKHTMLTOIMAGE_PATH)%</argument>
+      <argument type="collection"/>
+      <argument type="collection"/>
+      <call method="setLogger">
+        <argument type="service" id="monolog.logger.snappy" on-invalid="ignore"/>
+      </call>
+    </service>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminBidsController" class="App\Controller\AdminBidsController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminBidsController" class="App\Controller\AdminBidsController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdminBidsController" class="App\Controller\AdminBidsController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -7554,7 +7585,7 @@
         <argument key="loanRepo" type="service_closure" id="App\Repository\LoanRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.cDGIiUe" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.K5EGh4j" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminBidsController::delete" type="service_closure" id=".service_locator.w9_6ZZP"/>
@@ -7567,6 +7598,7 @@
         <argument key="App\Controller\AutomationController::disableToggle" type="service_closure" id=".service_locator.TC.WhAu"/>
         <argument key="App\Controller\AutomationController::myBidsAutomation" type="service_closure" id=".service_locator.vYQUVyq"/>
         <argument key="App\Controller\AutomationController::new" type="service_closure" id=".service_locator.sGA0s.d"/>
+        <argument key="App\Controller\AutomationController::stats" type="service_closure" id=".service_locator.vYQUVyq"/>
         <argument key="App\Controller\BidController::approve" type="service_closure" id=".service_locator.a6fQVqZ"/>
         <argument key="App\Controller\BidController::delete" type="service_closure" id=".service_locator.w9_6ZZP"/>
         <argument key="App\Controller\BidController::index" type="service_closure" id=".service_locator.8Xaq0c0"/>
@@ -7590,6 +7622,7 @@
         <argument key="App\Controller\AutomationController:disableToggle" type="service_closure" id=".service_locator.TC.WhAu"/>
         <argument key="App\Controller\AutomationController:myBidsAutomation" type="service_closure" id=".service_locator.vYQUVyq"/>
         <argument key="App\Controller\AutomationController:new" type="service_closure" id=".service_locator.sGA0s.d"/>
+        <argument key="App\Controller\AutomationController:stats" type="service_closure" id=".service_locator.vYQUVyq"/>
         <argument key="App\Controller\BidController:approve" type="service_closure" id=".service_locator.a6fQVqZ"/>
         <argument key="App\Controller\BidController:delete" type="service_closure" id=".service_locator.w9_6ZZP"/>
         <argument key="App\Controller\BidController:index" type="service_closure" id=".service_locator.8Xaq0c0"/>
@@ -8091,6 +8124,16 @@
     </service>
     <service id="monolog.logger.security" class="Monolog\Logger">
       <argument>security</argument>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.console"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.main"/>
+      </call>
+      <configurator service="debug.debug_logger_configurator" method="pushDebugLogger"/>
+    </service>
+    <service id="monolog.logger.snappy" class="Monolog\Logger">
+      <argument>snappy</argument>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.console"/>
       </call>
@@ -9800,9 +9843,11 @@
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker"/>
     <service id="logger" alias="monolog.logger"/>
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger"/>
+    <service id="Knp\Snappy\Pdf" alias="knp_snappy.pdf"/>
+    <service id="Knp\Snappy\Image" alias="knp_snappy.image"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.cDGIiUe"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.K5EGh4j"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -9822,11 +9867,12 @@
     <service id="Psr\Log\LoggerInterface $doctrineLogger" alias="monolog.logger.doctrine"/>
     <service id="Psr\Log\LoggerInterface $debugLogger" alias="monolog.logger.debug"/>
     <service id="Psr\Log\LoggerInterface $securityLogger" alias="monolog.logger.security"/>
+    <service id="Psr\Log\LoggerInterface $snappyLogger" alias="monolog.logger.snappy"/>
     <service id="Psr\Log\LoggerInterface $deprecationLogger" alias="monolog.logger.deprecation"/>
     <service id=".service_locator.80edgLI" alias="messenger.receiver_locator"/>
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.bJ.4HC5" alias=".service_locator.w7.f4fT"/>
-    <service id=".service_locator.5SWdkHE" alias=".service_locator.cDGIiUe"/>
+    <service id=".service_locator.kfPyvDj" alias=".service_locator.K5EGh4j"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.Qw.ps7s" alias=".service_locator.BYhEYGi"/>
     <service id=".service_locator.XtmiKbi" alias=".service_locator.MfxSDRP"/>

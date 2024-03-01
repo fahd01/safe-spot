@@ -20,6 +20,7 @@ class TwigExtensions extends AbstractExtension {
       return [
         new TwigFunction('getPlacedBids', [$this, 'getPlacedBids']),
         new TwigFunction('getApprovedBids', [$this, 'getApprovedBids']),
+        new TwigFunction('getRejectedBids', [$this, 'getRejectedBids']),
       ];
     }
 
@@ -29,5 +30,9 @@ class TwigExtensions extends AbstractExtension {
 
     public function getApprovedBids(Automation $automation): int {
         return $this->bidRepository->count(['automation' => $automation->getId(), 'status' => BidStatus::Approved->value]);
+    }
+
+    public function getRejectedBids(Automation $automation): int {
+        return $this->bidRepository->count(['automation' => $automation->getId(), 'status' => BidStatus::Rejected->value]);
     }
 }

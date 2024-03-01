@@ -114,6 +114,24 @@ class __TwigTemplate_6feeef31ce56571af7364c3cd93d1650 extends Template
   <div class=\"col-lg-6 grid-margin stretch-card\">
     <div class=\"card\">
       <div class=\"card-body\">
+        <h4 class=\"card-title\">Loans Distribution</h4>
+        <canvas id=\"doughnutChart1\"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class=\"col-lg-6 grid-margin stretch-card\">
+    <div class=\"card\">
+      <div class=\"card-body\">
+        <h4 class=\"card-title\">Bids Distribution</h4>
+        <canvas id=\"polarAreaChart\"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class=\"col-lg-6 grid-margin stretch-card\">
+    <div class=\"card\">
+      <div class=\"card-body\">
         <h4 class=\"card-title\">Placed / Approved Bids per Automation</h4>
         <canvas id=\"stackedBarChart\"></canvas>
       </div>
@@ -123,30 +141,11 @@ class __TwigTemplate_6feeef31ce56571af7364c3cd93d1650 extends Template
   <div class=\"col-lg-6 grid-margin stretch-card\">
     <div class=\"card\">
       <div class=\"card-body\">
-        <h4 class=\"card-title\">Loans Distribution</h4>
+        <h4 class=\"card-title\">Automations Performance</h4>
         <canvas id=\"radarChart\"></canvas>
       </div>
     </div>
   </div>
-
-  <div class=\"col-lg-6 grid-margin stretch-card\">
-    <div class=\"card\">
-      <div class=\"card-body\">
-        <h4 class=\"card-title\">Loan Statuses</h4>
-        <canvas id=\"doughnutChart1\"></canvas>
-      </div>
-    </div>
-  </div>
-
-  <div class=\"col-lg-6 grid-margin stretch-card\">
-    <div class=\"card\">
-      <div class=\"card-body\">
-        <h4 class=\"card-title\">Bid Statuses</h4>
-        <canvas id=\"polarAreaChart\"></canvas>
-      </div>
-    </div>
-  </div>
-
 
   <div class=\"col-lg-6 grid-margin stretch-card\">
     <div class=\"card\">
@@ -164,7 +163,7 @@ class __TwigTemplate_6feeef31ce56571af7364c3cd93d1650 extends Template
       </div>
     </div>
   </div>
-</div>
+
   <div class=\"col-lg-6 grid-margin stretch-card\">
     <div class=\"card\">
       <div class=\"card-body\">
@@ -176,20 +175,12 @@ class __TwigTemplate_6feeef31ce56571af7364c3cd93d1650 extends Template
   <div class=\"col-lg-6 grid-margin grid-margin-lg-0 stretch-card\">
     <div class=\"card\">
       <div class=\"card-body\">
-        <h4 class=\"card-title\">Pie chart</h4>
-        <canvas id=\"pieChart\"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class=\"col-lg-6 grid-margin grid-margin-lg-0 stretch-card\">
-    <div class=\"card\">
-      <div class=\"card-body\">
         <h4 class=\"card-title\">Scatter chart</h4>
         <canvas id=\"scatterChart\"></canvas>
       </div>
     </div>
   </div>
-
+</div>
 
 <script src=\"/dashboard-template/vendors/js/vendor.bundle.base.js\"></script>
 <script src=\"/dashboard-template/vendors/chart.js/Chart.min.js\"></script>
@@ -205,15 +196,21 @@ const data = {
   labels: labels,
   datasets: [
     {
-      label: 'Approved Bids',
-      data: [60, 80, 70],
+      label: 'Placed Bids',
+      data: [90, 81, 10],
       backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 1,
+      fill: false
     },
     {
-      label: 'Placed Bids',
-      data: [30, 20, 10],
-      backgroundColor: 'rgba(153, 102, 255, 0.2)',
-    }
+      label: 'Approved Bids',
+      data: [50, 18, 2],
+      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+      borderColor: 'rgba(75, 192, 192, 1)',
+      borderWidth: 1,
+      fill: false
+    },
   ]
 };
 
@@ -248,13 +245,25 @@ const config = {
 /* ------------ Radar chart ---------- */
 
 const radarChartData = {
-  labels: ['amount', 'interest', 'term'],
+  labels: ['placed', 'approved', 'rejected'],
   datasets: [
     {
-      label: 'Loans',
-      data: [300000, 18, 120],
-      borderColor: 'red',
-      backgroundColor: 'red',
+      label: 'automation 1',
+      data: [90, 50, 20],
+      borderColor: 'rgba(54, 162, 235, 0.2)',
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    },
+        {
+      label: 'automation 2',
+      data: [81, 18, 60],
+      borderColor: 'rgba(75, 192, 192, 0.2)',
+      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+    },
+        {
+      label: 'automation 3',
+      data: [10, 2, 0],
+      borderColor: 'rgba(255, 99, 132, 0.2)',
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
     },
   ]
 };
@@ -285,7 +294,10 @@ const doughnutChartData = {
   datasets: [
     {
       label: 'Loans Statuses',
-      data: [100, 200, 200],
+      data: [ ";
+        // line 197
+        echo twig_escape_filter($this->env, twig_join_filter((isset($context["loanStatusesData"]) || array_key_exists("loanStatusesData", $context) ? $context["loanStatusesData"] : (function () { throw new RuntimeError('Variable "loanStatusesData" does not exist.', 197, $this->source); })()), ", "), "html", null, true);
+        echo " ],
       backgroundColor: ['rgba(54, 162, 235, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(75, 192, 192, 0.2)'],
     }
   ]
@@ -318,7 +330,10 @@ const polarAreaChartData = {
   datasets: [
     {
       label: 'Bids Statuses',
-      data: [1000, 400, 700, 400, 1000],
+      data: [ ";
+        // line 230
+        echo twig_escape_filter($this->env, twig_join_filter((isset($context["bidStatusesData"]) || array_key_exists("bidStatusesData", $context) ? $context["bidStatusesData"] : (function () { throw new RuntimeError('Variable "bidStatusesData" does not exist.', 230, $this->source); })()), ", "), "html", null, true);
+        echo " ],
       backgroundColor: [
         'rgba(54, 162, 235, 0.2)',
         'rgba(75, 192, 192, 0.2)',
@@ -397,7 +412,7 @@ const polarAreaChartConfig = {
      */
     public function getDebugInfo()
     {
-        return array (  111 => 11,  101 => 10,  89 => 7,  79 => 6,  60 => 4,  37 => 2,);
+        return array (  335 => 230,  299 => 197,  111 => 11,  101 => 10,  89 => 7,  79 => 6,  60 => 4,  37 => 2,);
     }
 
     public function getSourceContext()
@@ -418,6 +433,24 @@ const polarAreaChartConfig = {
   <div class=\"col-lg-6 grid-margin stretch-card\">
     <div class=\"card\">
       <div class=\"card-body\">
+        <h4 class=\"card-title\">Loans Distribution</h4>
+        <canvas id=\"doughnutChart1\"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class=\"col-lg-6 grid-margin stretch-card\">
+    <div class=\"card\">
+      <div class=\"card-body\">
+        <h4 class=\"card-title\">Bids Distribution</h4>
+        <canvas id=\"polarAreaChart\"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class=\"col-lg-6 grid-margin stretch-card\">
+    <div class=\"card\">
+      <div class=\"card-body\">
         <h4 class=\"card-title\">Placed / Approved Bids per Automation</h4>
         <canvas id=\"stackedBarChart\"></canvas>
       </div>
@@ -427,30 +460,11 @@ const polarAreaChartConfig = {
   <div class=\"col-lg-6 grid-margin stretch-card\">
     <div class=\"card\">
       <div class=\"card-body\">
-        <h4 class=\"card-title\">Loans Distribution</h4>
+        <h4 class=\"card-title\">Automations Performance</h4>
         <canvas id=\"radarChart\"></canvas>
       </div>
     </div>
   </div>
-
-  <div class=\"col-lg-6 grid-margin stretch-card\">
-    <div class=\"card\">
-      <div class=\"card-body\">
-        <h4 class=\"card-title\">Loan Statuses</h4>
-        <canvas id=\"doughnutChart1\"></canvas>
-      </div>
-    </div>
-  </div>
-
-  <div class=\"col-lg-6 grid-margin stretch-card\">
-    <div class=\"card\">
-      <div class=\"card-body\">
-        <h4 class=\"card-title\">Bid Statuses</h4>
-        <canvas id=\"polarAreaChart\"></canvas>
-      </div>
-    </div>
-  </div>
-
 
   <div class=\"col-lg-6 grid-margin stretch-card\">
     <div class=\"card\">
@@ -468,7 +482,7 @@ const polarAreaChartConfig = {
       </div>
     </div>
   </div>
-</div>
+
   <div class=\"col-lg-6 grid-margin stretch-card\">
     <div class=\"card\">
       <div class=\"card-body\">
@@ -480,20 +494,12 @@ const polarAreaChartConfig = {
   <div class=\"col-lg-6 grid-margin grid-margin-lg-0 stretch-card\">
     <div class=\"card\">
       <div class=\"card-body\">
-        <h4 class=\"card-title\">Pie chart</h4>
-        <canvas id=\"pieChart\"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class=\"col-lg-6 grid-margin grid-margin-lg-0 stretch-card\">
-    <div class=\"card\">
-      <div class=\"card-body\">
         <h4 class=\"card-title\">Scatter chart</h4>
         <canvas id=\"scatterChart\"></canvas>
       </div>
     </div>
   </div>
-
+</div>
 
 <script src=\"/dashboard-template/vendors/js/vendor.bundle.base.js\"></script>
 <script src=\"/dashboard-template/vendors/chart.js/Chart.min.js\"></script>
@@ -509,15 +515,21 @@ const data = {
   labels: labels,
   datasets: [
     {
-      label: 'Approved Bids',
-      data: [60, 80, 70],
+      label: 'Placed Bids',
+      data: [90, 81, 10],
       backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 1,
+      fill: false
     },
     {
-      label: 'Placed Bids',
-      data: [30, 20, 10],
-      backgroundColor: 'rgba(153, 102, 255, 0.2)',
-    }
+      label: 'Approved Bids',
+      data: [50, 18, 2],
+      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+      borderColor: 'rgba(75, 192, 192, 1)',
+      borderWidth: 1,
+      fill: false
+    },
   ]
 };
 
@@ -552,13 +564,25 @@ const config = {
 /* ------------ Radar chart ---------- */
 
 const radarChartData = {
-  labels: ['amount', 'interest', 'term'],
+  labels: ['placed', 'approved', 'rejected'],
   datasets: [
     {
-      label: 'Loans',
-      data: [300000, 18, 120],
-      borderColor: 'red',
-      backgroundColor: 'red',
+      label: 'automation 1',
+      data: [90, 50, 20],
+      borderColor: 'rgba(54, 162, 235, 0.2)',
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    },
+        {
+      label: 'automation 2',
+      data: [81, 18, 60],
+      borderColor: 'rgba(75, 192, 192, 0.2)',
+      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+    },
+        {
+      label: 'automation 3',
+      data: [10, 2, 0],
+      borderColor: 'rgba(255, 99, 132, 0.2)',
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
     },
   ]
 };
@@ -589,7 +613,7 @@ const doughnutChartData = {
   datasets: [
     {
       label: 'Loans Statuses',
-      data: [100, 200, 200],
+      data: [ {{ loanStatusesData | join(', ') }} ],
       backgroundColor: ['rgba(54, 162, 235, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(75, 192, 192, 0.2)'],
     }
   ]
@@ -622,7 +646,7 @@ const polarAreaChartData = {
   datasets: [
     {
       label: 'Bids Statuses',
-      data: [1000, 400, 700, 400, 1000],
+      data: [ {{ bidStatusesData | join(', ') }} ],
       backgroundColor: [
         'rgba(54, 162, 235, 0.2)',
         'rgba(75, 192, 192, 0.2)',

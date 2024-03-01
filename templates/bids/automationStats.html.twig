@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Automations{% endblock %}
+
+{% block navigation %}
+{{ include('loans/_loanNavMenu.html.twig')}}
+{% endblock %}
+
+{% block body %}
+
+<div>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">My Automations</h4>
+                {% for automation in automations %}
+                    <div class="alert alert-{% if automation.disabled %}dark{% else %}success{% endif %}" role="alert">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap">
+                            <h6 class="mb-2 mb-md-0 text-uppercase font-weight-medium">{{ automation.name }}</h6>
+
+                            <div style="margin-left: auto;order: 2;">
+                                <label class="badge badge-warning mx-2">{{ getApprovedBids(automation) }} Bids Approved</label>
+                                <label class="badge badge-info mx-2">{{ getPlacedBids(automation) }} Bids Placed</label>
+
+                                <!--
+                                <a href="/bids/automations/create?id={{ automation.id }}"
+                                   role="button"
+                                   class="btn btn-warning btn-icon d-inline-flex justify-content-center align-items-center"
+                                   data-bs-toggle="tooltip" data-bs-placement="bottom" data-html="true"
+                                   title="Edit this automation">
+                                    <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>
+                                </a>
+                                -->
+                                <a href="/bids/automations/{{ automation.id }}/disableToggle"
+                                   role="button"
+                                   class="btn btn-secondary btn-icon d-inline-flex justify-content-center align-items-center"
+                                   data-bs-toggle="tooltip" data-bs-placement="bottom" data-html="true"
+                                   {% if automation.disabled %}
+                                   title="Enable this automation">
+                                    <i class="mdi mdi-play btn-icon-prepend"></i>
+                                   {% else %}
+                                   title="Disable this automation">
+                                    <i class="mdi mdi-pause btn-icon-prepend"></i>
+                                   {% endif %}
+                                </a>
+                                <button onclick="triggerDeleteAutomationModal({{ automation.id }})"
+                                        type="button"
+                                        class="btn btn-danger btn-icon"
+                                        data-bs-toggle="tooltip" data-bs-placement="bottom" data-html="true"
+                                        title="Delete this automation">
+                                    <i class="mdi mdi-delete-forever btn-icon-prepend"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <p>
+                            Automatically bid <b>{{ automation.bidAmount }} TND</b> if a newly created loan satisfies <b>ALL</b> the following conditions:
+                                <ul>
+                                    {% for rule in automation.rules %}
+                                        <li>
+                                            <b>{{ rule.attribute.name }} {{ rule.operator.value }} {{ rule.value }} {{rule.getValueUnit()}}</b>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                        </p>
+                    </div>
+                {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div id="delete-automation-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Delete Automation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this automation
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a role="button" id="delete-automation-link" href="/bids/automations/id/delete" class="btn btn-danger">Yes, delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function triggerDeleteAutomationModal(id){
+  $('#delete-automation-link').attr('href', `/bids/automations/${id}/delete`);
+  $('#delete-automation-modal').modal();
+}
+</script>
+
+
+{% endblock %}

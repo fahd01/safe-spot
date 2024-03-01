@@ -19,8 +19,6 @@ use App\Repository\UserRepository;
 
 class AutomationController extends AbstractController {
 
-    ## TODO editing automation rules, the new added rule overrides the last rule in rules array
-
     #[Route('/bids/automations/create', name: 'app_bids_automations_create')]
     public function new(Request $request, AutomationRepository $repo, UserRepository $userRepo): Response {
         $id = $request->query->get('id');
@@ -69,5 +67,15 @@ class AutomationController extends AbstractController {
         $automation->setDisabled(!$automation->isDisabled());
         $repo->save($automation);
         return $this->redirectToRoute('app_bids_automations_mine');
+    }
+
+    #[Route('/bids/automations/stats', name: 'app_automations_stats')]
+    public function stats (AutomationRepository $repo){
+        # TODO inject and use current user
+        $userId = 1;
+        $automations=$repo->findBy(['owner' => $userId]);
+        return $this->render('bids/automationStats.html.twig', [
+            'automations' => $automations,
+        ]);
     }
 }
