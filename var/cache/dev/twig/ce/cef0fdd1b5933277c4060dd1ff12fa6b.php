@@ -112,29 +112,31 @@ class __TwigTemplate_e848f31dd4c4b359076ac30a31ab8fae extends Template
                             </div>
 
                             <div class=\"form-group\">
-                                <input type=\"text\" class=\"form-control form-control-lg\" id=\"exampleInputUsername1\" placeholder=\"Username\">
                                 ";
-        // line 50
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 50, $this->source); })()), "email", [], "any", false, false, false, 50), 'row');
+        // line 49
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 49, $this->source); })()), "email", [], "any", false, false, false, 49), 'widget', ["attr" => ["class" => "form-control form-control-lg", "placeholder" => "Email"]]);
         echo "
                             </div>
                             <div class=\"form-group\">
-                                <input type=\"password\" class=\"form-control form-control-lg\" id=\"exampleInputPassword1\" placeholder=\"Password\">
                                 ";
-        // line 54
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 54, $this->source); })()), "plainPassword", [], "any", false, false, false, 54), 'row', ["label" => "Password"]);
-        // line 56
+        // line 52
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 52, $this->source); })()), "plainPassword", [], "any", false, false, false, 52), 'widget', ["label" => "Password", "attr" => ["class" => "form-control form-control-lg", "placeholder" => "Password"]]);
+        echo "
+                                ";
+        // line 53
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 53, $this->source); })()), "plainPassword", [], "any", false, false, false, 53), 'help');
         echo "
                             </div>
                             <div class=\"mb-4\">
-                                ";
-        // line 59
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 59, $this->source); })()), "agreeTerms", [], "any", false, false, false, 59), 'row');
+                                        ";
+        // line 56
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 56, $this->source); })()), "agreeTerms", [], "any", false, false, false, 56), 'widget');
         echo "
                                 <div class=\"form-check\">
-                                    <label class=\"form-check-label text-muted\">
-                                        <input type=\"checkbox\" class=\"form-check-input\">
-                                        I agree to all Terms & Conditions
+                                    <label class=\"form-check-label required\" for=\"registration_form_agreeTerms\">
+                                        <input type=\"checkbox\" id=\"registration_form_agreeTerms\" name=\"registration_form[agreeTerms]\" required=\"required\" class=\"form-check-input\" value=\"1\">
+                                        I agree to all Terms &amp; Conditions
+                                        <i class=\"input-helper\"></i>
                                     </label>
                                 </div>
                             </div>
@@ -142,13 +144,12 @@ class __TwigTemplate_e848f31dd4c4b359076ac30a31ab8fae extends Template
                                 <button type=\"submit\" class=\"btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn\">SIGN UP</button>
                             </div>
                         ";
-        // line 70
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 70, $this->source); })()), 'form_end');
+        // line 68
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 68, $this->source); })()), 'form_end');
         echo "
                             <div class=\"text-center mt-4 font-weight-light\">
                                 Already have an account? <a href=\"login\" class=\"text-primary\">Login</a>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -168,6 +169,18 @@ class __TwigTemplate_e848f31dd4c4b359076ac30a31ab8fae extends Template
 <script src=\"dashboard-template/js/settings.js\"></script>
 <script src=\"dashboard-template/js/todolist.js\"></script>
 <!-- endinject -->
+
+<script>
+document
+  .querySelectorAll('body > div.container-scroller > div > div > div > div > div > form > div.mb-4 > div:nth-child(1)')
+  .forEach(item => {
+      item.remove();
+  });
+
+
+</script>
+
+
 </body>
 
 </html>
@@ -202,7 +215,7 @@ class __TwigTemplate_e848f31dd4c4b359076ac30a31ab8fae extends Template
      */
     public function getDebugInfo()
     {
-        return array (  146 => 70,  132 => 59,  127 => 56,  125 => 54,  118 => 50,  110 => 45,  104 => 42,  99 => 40,  94 => 38,  91 => 37,  82 => 35,  78 => 34,  43 => 1,);
+        return array (  148 => 68,  133 => 56,  127 => 53,  123 => 52,  117 => 49,  110 => 45,  104 => 42,  99 => 40,  94 => 38,  91 => 37,  82 => 35,  78 => 34,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -255,21 +268,19 @@ class __TwigTemplate_e848f31dd4c4b359076ac30a31ab8fae extends Template
                             </div>
 
                             <div class=\"form-group\">
-                                <input type=\"text\" class=\"form-control form-control-lg\" id=\"exampleInputUsername1\" placeholder=\"Username\">
-                                {{ form_row(registrationForm.email) }}
+                                {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control form-control-lg', 'placeholder': 'Email'}}) }}
                             </div>
                             <div class=\"form-group\">
-                                <input type=\"password\" class=\"form-control form-control-lg\" id=\"exampleInputPassword1\" placeholder=\"Password\">
-                                {{ form_row(registrationForm.plainPassword, {
-                                label: 'Password'
-                                }) }}
+                                {{ form_widget(registrationForm.plainPassword, { 'label': 'Password', 'attr': {'class': 'form-control form-control-lg', 'placeholder': 'Password'} } ) }}
+                                {{ form_help(registrationForm.plainPassword) }}
                             </div>
                             <div class=\"mb-4\">
-                                {{ form_row(registrationForm.agreeTerms) }}
+                                        {{ form_widget(registrationForm.agreeTerms) }}
                                 <div class=\"form-check\">
-                                    <label class=\"form-check-label text-muted\">
-                                        <input type=\"checkbox\" class=\"form-check-input\">
-                                        I agree to all Terms & Conditions
+                                    <label class=\"form-check-label required\" for=\"registration_form_agreeTerms\">
+                                        <input type=\"checkbox\" id=\"registration_form_agreeTerms\" name=\"registration_form[agreeTerms]\" required=\"required\" class=\"form-check-input\" value=\"1\">
+                                        I agree to all Terms &amp; Conditions
+                                        <i class=\"input-helper\"></i>
                                     </label>
                                 </div>
                             </div>
@@ -280,7 +291,6 @@ class __TwigTemplate_e848f31dd4c4b359076ac30a31ab8fae extends Template
                             <div class=\"text-center mt-4 font-weight-light\">
                                 Already have an account? <a href=\"login\" class=\"text-primary\">Login</a>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -300,6 +310,18 @@ class __TwigTemplate_e848f31dd4c4b359076ac30a31ab8fae extends Template
 <script src=\"dashboard-template/js/settings.js\"></script>
 <script src=\"dashboard-template/js/todolist.js\"></script>
 <!-- endinject -->
+
+<script>
+document
+  .querySelectorAll('body > div.container-scroller > div > div > div > div > div > form > div.mb-4 > div:nth-child(1)')
+  .forEach(item => {
+      item.remove();
+  });
+
+
+</script>
+
+
 </body>
 
 </html>

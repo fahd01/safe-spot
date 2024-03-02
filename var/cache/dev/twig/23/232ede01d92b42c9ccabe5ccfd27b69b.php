@@ -101,7 +101,16 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
           <li class=\"nav-item nav-profile dropdown\">
             <a class=\"nav-link\" href=\"#\" data-toggle=\"dropdown\" id=\"profileDropdown\">
               <img src=\"/dashboard-template/images/faces/face5.jpg\" alt=\"profile\"/>
-              <span class=\"nav-profile-name\">Eugenia Mullins</span>
+              <span class=\"nav-profile-name\">
+                ";
+        // line 51
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_FULLY")) {
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 51, $this->source); })()), "user", [], "any", false, false, false, 51), "firstName", [], "any", false, false, false, 51), "html", null, true);
+            echo " ";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 51, $this->source); })()), "user", [], "any", false, false, false, 51), "lastName", [], "any", false, false, false, 51), "html", null, true);
+        }
+        // line 52
+        echo "              </span>
             </a>
             <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown\" aria-labelledby=\"profileDropdown\">
               <a class=\"dropdown-item\">
@@ -122,7 +131,7 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
           <li class=\"nav-item nav-date dropdown\">
             <a class=\"nav-link d-flex justify-content-center align-items-center\" href=\"javascript:;\">
               <h6 class=\"date mb-0\">Today : ";
-        // line 70
+        // line 72
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "M d"), "html", null, true);
         echo "</h6>
               <i class=\"typcn typcn-calendar\"></i>
@@ -173,6 +182,7 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
               </a>
             </div>
           </li>
+
           <li class=\"nav-item dropdown mr-0\">
             <a class=\"nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center\" id=\"notificationDropdown\" href=\"#\" data-toggle=\"dropdown\">
               <i class=\"typcn typcn-bell mx-0\"></i>
@@ -220,6 +230,16 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
                 </div>
               </a>
             </div>
+          </li>
+          <li class=\"nav-item dropdown mr-0\">
+            <a id=\"logout\"
+               title=\"Logout\"
+               data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+               href=\"/logout\"
+               class=\"nav-link count-indicator d-flex align-items-center justify-content-center\"
+            >
+              <i class=\"mdi mdi-logout mx-0\"></i>
+            </a>
           </li>
         </ul>
         <button class=\"navbar-toggler navbar-toggler-right d-lg-none align-self-center\" type=\"button\" data-toggle=\"offcanvas\">
@@ -444,18 +464,18 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
       ";
-        // line 389
+        // line 402
         $this->displayBlock('navigation', $context, $blocks);
-        // line 390
+        // line 403
         echo "
       <!-- partial -->
       <div class=\"main-panel\">
         <div class=\"content-wrapper\">
           <!-- twig page bodies will be inserted here -->
            ";
-        // line 395
+        // line 408
         $this->displayBlock('body', $context, $blocks);
-        // line 396
+        // line 409
         echo "        </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -594,7 +614,7 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
 
     }
 
-    // line 389
+    // line 402
     public function block_navigation($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -612,7 +632,7 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
 
     }
 
-    // line 395
+    // line 408
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -651,7 +671,7 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  616 => 395,  598 => 389,  579 => 26,  569 => 27,  566 => 26,  556 => 25,  546 => 23,  536 => 22,  517 => 20,  459 => 396,  457 => 395,  450 => 390,  448 => 389,  126 => 70,  82 => 28,  80 => 25,  77 => 24,  75 => 22,  70 => 20,  49 => 1,);
+        return array (  636 => 408,  618 => 402,  599 => 26,  589 => 27,  586 => 26,  576 => 25,  566 => 23,  556 => 22,  537 => 20,  479 => 409,  477 => 408,  470 => 403,  468 => 402,  135 => 72,  113 => 52,  107 => 51,  82 => 28,  80 => 25,  77 => 24,  75 => 22,  70 => 20,  49 => 1,);
     }
 
     public function getSourceContext()
@@ -705,7 +725,9 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
           <li class=\"nav-item nav-profile dropdown\">
             <a class=\"nav-link\" href=\"#\" data-toggle=\"dropdown\" id=\"profileDropdown\">
               <img src=\"/dashboard-template/images/faces/face5.jpg\" alt=\"profile\"/>
-              <span class=\"nav-profile-name\">Eugenia Mullins</span>
+              <span class=\"nav-profile-name\">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}{{ app.user.firstName }} {{ app.user.lastName }}{% endif %}
+              </span>
             </a>
             <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown\" aria-labelledby=\"profileDropdown\">
               <a class=\"dropdown-item\">
@@ -774,6 +796,7 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
               </a>
             </div>
           </li>
+
           <li class=\"nav-item dropdown mr-0\">
             <a class=\"nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center\" id=\"notificationDropdown\" href=\"#\" data-toggle=\"dropdown\">
               <i class=\"typcn typcn-bell mx-0\"></i>
@@ -821,6 +844,16 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
                 </div>
               </a>
             </div>
+          </li>
+          <li class=\"nav-item dropdown mr-0\">
+            <a id=\"logout\"
+               title=\"Logout\"
+               data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+               href=\"/logout\"
+               class=\"nav-link count-indicator d-flex align-items-center justify-content-center\"
+            >
+              <i class=\"mdi mdi-logout mx-0\"></i>
+            </a>
           </li>
         </ul>
         <button class=\"navbar-toggler navbar-toggler-right d-lg-none align-self-center\" type=\"button\" data-toggle=\"offcanvas\">

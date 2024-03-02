@@ -46,21 +46,18 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Username">
-                                {{ form_row(registrationForm.email) }}
+                                {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control form-control-lg', 'placeholder': 'Email'}}) }}
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
-                                {{ form_row(registrationForm.plainPassword, {
-                                label: 'Password'
-                                }) }}
+                                {{ form_widget(registrationForm.plainPassword, { 'label': 'Password', 'attr': {'class': 'form-control form-control-lg', 'placeholder': 'Password'} } ) }}
                             </div>
                             <div class="mb-4">
-                                {{ form_row(registrationForm.agreeTerms) }}
+                                        {{ form_widget(registrationForm.agreeTerms) }}
                                 <div class="form-check">
-                                    <label class="form-check-label text-muted">
-                                        <input type="checkbox" class="form-check-input">
-                                        I agree to all Terms & Conditions
+                                    <label class="form-check-label required" for="registration_form_agreeTerms">
+                                        <input type="checkbox" id="registration_form_agreeTerms" name="registration_form[agreeTerms]" required="required" class="form-check-input" value="1">
+                                        I agree to all Terms &amp; Conditions
+                                        <i class="input-helper"></i>
                                     </label>
                                 </div>
                             </div>
@@ -71,7 +68,6 @@
                             <div class="text-center mt-4 font-weight-light">
                                 Already have an account? <a href="login" class="text-primary">Login</a>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -91,6 +87,18 @@
 <script src="dashboard-template/js/settings.js"></script>
 <script src="dashboard-template/js/todolist.js"></script>
 <!-- endinject -->
+
+<script>
+document
+  .querySelectorAll('body > div.container-scroller > div > div > div > div > div > form > div.mb-4 > div:nth-child(1)')
+  .forEach(item => {
+      item.remove();
+  });
+
+
+</script>
+
+
 </body>
 
 </html>
