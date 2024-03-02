@@ -66,20 +66,63 @@ class LoanPersistedNotifier {
                 $bid->setAmount($automation->getBidAmount());
                 $bid->setAutomation($automation);
                 $this->bidRepository->save($bid);
-                $this->sendAutomaticBidEmail($automation, $bid, $currentUser);
+                $this->sendAutomaticBidEmail($automation, $bid, $loan, $currentUser);
             }
         }
     }
 
-    public function sendAutomaticBidEmail(Automation $automation, Bid $bid, User $user): void {
+    public function sendAutomaticBidEmail(Automation $automation, Bid $bid, Loan $loan, User $user): void {
             $email = (new Email())
                 ->from('notifications.safe.spot@gmail.com')
                 ->to($user->getEmail())
                 ->subject('Automated Bid Placed')
                 ->text('Sending emails is fun again!')
-                ->html('<p>A loan newly created did match one of your bid automations
+                ->html('
+                <p>A newly created loan did match one of your bid automations
                 (<a href="http://localhost:8080/bids/automations/create?id=' . $automation->getId() . '">' .$automation->getName() . '</a>),
-                therefore a bid of ' . $bid->getAmount() . ' TND was automatically placed.</p>');
+                therefore a <b> bid of ' . $bid->getAmount() . ' TND was automatically placed</b>.</p>
+                    <table>
+                        <tr>
+                            <td><b>Bid : </b></td>
+                            <td>' . $bid->getAmount() . ' TND</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td><b>Automation : </b></td>
+                            <td><a href="http://localhost:8080/bids/automations/create?id=' . $automation->getId() . '">' .$automation->getName() . '</a></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td><b>Details of the Loan: </b></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tbody style="text-indent:20px;">
+                                        <tr>
+                                            <td>Amount: </td>
+                                            <td>' . $loan->getAmount() . ' TND</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Interest: </td>
+                                            <td>' . $loan->getInterest() . ' % </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Term: </td>
+                                            <td>' . $loan->getTerm() . ' months </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Purpose: </td>
+                                            <td>' . $loan->getPurpose() . '</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                ');
 
             $this->mailer->send($email);
     }

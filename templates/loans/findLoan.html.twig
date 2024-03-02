@@ -128,7 +128,9 @@
 
 <script>
 
-new DataTable('#loans');
+new DataTable('#loans'
+//, { layout: { topEnd: { search: { text: '', placeholder: 'Type search here' } } } }
+);
 
 function triggerDeleteLoanModal(loanId){
   $('#delete-loan-link').attr('href', `/loans/${loanId}/delete`);

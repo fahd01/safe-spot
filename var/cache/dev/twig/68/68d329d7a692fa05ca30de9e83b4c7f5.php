@@ -299,7 +299,9 @@ class __TwigTemplate_e986357761069446591297304997addf extends Template
 
 <script>
 
-new DataTable('#loans');
+new DataTable('#loans'
+//, { layout: { topEnd: { search: { text: '', placeholder: 'Type search here' } } } }
+);
 
 function triggerDeleteLoanModal(loanId){
   \$('#delete-loan-link').attr('href', `/loans/\${loanId}/delete`);
@@ -472,7 +474,9 @@ function triggerDeleteLoanModal(loanId){
 
 <script>
 
-new DataTable('#loans');
+new DataTable('#loans'
+//, { layout: { topEnd: { search: { text: '', placeholder: 'Type search here' } } } }
+);
 
 function triggerDeleteLoanModal(loanId){
   \$('#delete-loan-link').attr('href', `/loans/\${loanId}/delete`);
