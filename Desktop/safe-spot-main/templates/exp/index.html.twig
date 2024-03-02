@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exp index{% endblock %}
+
+{% block body %}
+    <h1>Exp index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for exp in exps %}
+            <tr>
+                <td>{{ exp.id }}</td>
+                <td>{{ exp.name }}</td>
+                <td>{{ exp.description }}</td>
+                <td>
+                    <a href="{{ path('app_exp_show', {'id': exp.id}) }}">show</a>
+                    <a href="{{ path('app_exp_edit', {'id': exp.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_exp_new') }}">Create new</a>
+{% endblock %}
