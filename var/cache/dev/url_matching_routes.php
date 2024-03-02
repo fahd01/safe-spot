@@ -26,7 +26,9 @@ return [
         '/loans/list' => [[['_route' => 'app_loans_list', '_controller' => 'App\\Controller\\LoansController::list'], null, null, null, false, false, null]],
         '/loans/create' => [[['_route' => 'app_loans_create', '_controller' => 'App\\Controller\\LoansController::new'], null, null, null, false, false, null]],
         '/loans/mine' => [[['_route' => 'app_loans_mine', '_controller' => 'App\\Controller\\LoansController::myLoans'], null, null, null, false, false, null]],
-        '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\LoginController::index'], null, null, null, false, false, null]],
+        '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\LoginController::login'], null, null, null, false, false, null]],
+        '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
+        '/verify/email' => [[['_route' => 'app_verify_email', '_controller' => 'App\\Controller\\RegistrationController::verifyUserEmail'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
