@@ -115,7 +115,7 @@ class __TwigTemplate_71429f652d58788c0bcc3deb278180a1 extends Template
     <div class=\"card\">
       <div class=\"card-body\">
         <h4 class=\"card-title\">Loans Management</h4>
-        <a href=\"/loans/create\"
+        <a href=\"/admin/loans/create\"
            role=\"button\"
            class=\"btn btn-info btn-sm btn-icon-text mr-3 float-right\"
            data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
@@ -197,7 +197,7 @@ class __TwigTemplate_71429f652d58788c0bcc3deb278180a1 extends Template
             echo twig_include($this->env, $context, "loans/_loanProgress.html.twig", ["progress" => twig_get_attribute($this->env, $this->source, $context["item"], "bidsProgress", [], "method", false, false, false, 54), "remainingAmount" => (twig_get_attribute($this->env, $this->source, $context["item"], "amount", [], "any", false, false, false, 54) - twig_get_attribute($this->env, $this->source, $context["item"], "collectedBids", [], "method", false, false, false, 54)), "collectedAmount" => twig_get_attribute($this->env, $this->source, $context["item"], "collectedBids", [], "method", false, false, false, 54)]);
             echo " </td>
                 <td>
-                  <a href=\"/loans/create?id=";
+                  <a href=\"/admin/loans/create?id=";
             // line 56
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 56), "html", null, true);
             echo "\"
@@ -257,7 +257,7 @@ class __TwigTemplate_71429f652d58788c0bcc3deb278180a1 extends Template
       </div>
       <div class=\"modal-footer\">
         <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>
-        <a role=\"button\" id=\"delete-loan-link\" href=\"/loans/id/delete\" class=\"btn btn-danger\">Yes, delete</a>
+        <a role=\"button\" id=\"delete-loan-link\" href=\"/admin/loans/id/delete\" class=\"btn btn-danger\">Yes, delete</a>
       </div>
     </div>
   </div>
@@ -265,7 +265,7 @@ class __TwigTemplate_71429f652d58788c0bcc3deb278180a1 extends Template
 
 <script>
 function triggerDeleteLoanModal(loanId){
-  \$('#delete-loan-link').attr('href', `/loans/\${loanId}/delete`);
+  \$('#delete-loan-link').attr('href', `/admin/loans/\${loanId}/delete`);
   \$('#delete-loan-modal').modal();
 }
 </script>
@@ -322,7 +322,7 @@ function triggerDeleteLoanModal(loanId){
     <div class=\"card\">
       <div class=\"card-body\">
         <h4 class=\"card-title\">Loans Management</h4>
-        <a href=\"/loans/create\"
+        <a href=\"/admin/loans/create\"
            role=\"button\"
            class=\"btn btn-info btn-sm btn-icon-text mr-3 float-right\"
            data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
@@ -360,7 +360,7 @@ function triggerDeleteLoanModal(loanId){
                 <td> {{ item.borrower.firstName }} {{ item.borrower.lastName }}</td>
                 <td> {{ include ('loans/_loanProgress.html.twig',{'progress':item.bidsProgress(),'remainingAmount':item.amount-item.collectedBids(), 'collectedAmount':item.collectedBids() }) }} </td>
                 <td>
-                  <a href=\"/loans/create?id={{ item.id }}\"
+                  <a href=\"/admin/loans/create?id={{ item.id }}\"
                      data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\"
                      role=\"button\" class=\"btn btn-warning btn-sm btn-icon-text mr-3\" title=\"Edit this loan\">
                     <i class=\"mdi mdi-pencil btn-icon-prepend\"></i>
@@ -401,7 +401,7 @@ function triggerDeleteLoanModal(loanId){
       </div>
       <div class=\"modal-footer\">
         <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>
-        <a role=\"button\" id=\"delete-loan-link\" href=\"/loans/id/delete\" class=\"btn btn-danger\">Yes, delete</a>
+        <a role=\"button\" id=\"delete-loan-link\" href=\"/admin/loans/id/delete\" class=\"btn btn-danger\">Yes, delete</a>
       </div>
     </div>
   </div>
@@ -409,7 +409,7 @@ function triggerDeleteLoanModal(loanId){
 
 <script>
 function triggerDeleteLoanModal(loanId){
-  \$('#delete-loan-link').attr('href', `/loans/\${loanId}/delete`);
+  \$('#delete-loan-link').attr('href', `/admin/loans/\${loanId}/delete`);
   \$('#delete-loan-modal').modal();
 }
 </script>

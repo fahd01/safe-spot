@@ -50,7 +50,7 @@ class __TwigTemplate_8018ac552c5e833b14aa02af1df421f5 extends Template
             </a>
         </li>
         <li class=\"nav-item\">
-            <a class=\"nav-link\"  href=\"/admin/loans/list\" >
+            <a class=\"nav-link\"  href=\"/admin/bids/list\" >
                 <i class=\"mdi mdi-wrench menu-icon\"></i>
                 <span class=\"menu-title\">Manage Bids</span>
             </a>
@@ -99,7 +99,7 @@ class __TwigTemplate_8018ac552c5e833b14aa02af1df421f5 extends Template
             </a>
         </li>
         <li class=\"nav-item\">
-            <a class=\"nav-link\"  href=\"/admin/loans/list\" >
+            <a class=\"nav-link\"  href=\"/admin/bids/list\" >
                 <i class=\"mdi mdi-wrench menu-icon\"></i>
                 <span class=\"menu-title\">Manage Bids</span>
             </a>

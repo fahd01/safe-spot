@@ -15,7 +15,7 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Loans Management</h4>
-        <a href="/loans/create"
+        <a href="/admin/loans/create"
            role="button"
            class="btn btn-info btn-sm btn-icon-text mr-3 float-right"
            data-bs-toggle="tooltip" data-bs-placement="bottom" data-html="true"
@@ -53,7 +53,7 @@
                 <td> {{ item.borrower.firstName }} {{ item.borrower.lastName }}</td>
                 <td> {{ include ('loans/_loanProgress.html.twig',{'progress':item.bidsProgress(),'remainingAmount':item.amount-item.collectedBids(), 'collectedAmount':item.collectedBids() }) }} </td>
                 <td>
-                  <a href="/loans/create?id={{ item.id }}"
+                  <a href="/admin/loans/create?id={{ item.id }}"
                      data-bs-toggle="tooltip" data-bs-placement="bottom"
                      role="button" class="btn btn-warning btn-sm btn-icon-text mr-3" title="Edit this loan">
                     <i class="mdi mdi-pencil btn-icon-prepend"></i>
@@ -94,7 +94,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a role="button" id="delete-loan-link" href="/loans/id/delete" class="btn btn-danger">Yes, delete</a>
+        <a role="button" id="delete-loan-link" href="/admin/loans/id/delete" class="btn btn-danger">Yes, delete</a>
       </div>
     </div>
   </div>
@@ -102,7 +102,7 @@
 
 <script>
 function triggerDeleteLoanModal(loanId){
-  $('#delete-loan-link').attr('href', `/loans/${loanId}/delete`);
+  $('#delete-loan-link').attr('href', `/admin/loans/${loanId}/delete`);
   $('#delete-loan-modal').modal();
 }
 </script>

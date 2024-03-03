@@ -69,11 +69,14 @@ class BidController extends AbstractController
 
     #[Route('/bids/{id}/approve', name: 'app_approve_bid')]
     public function approve (Bid $bid, BidRepository $bidRepo, LoanRepository $loanRepo){
-        # TODO check if loan is still in bidding and how much is remaining
+        # TODO check if loan is still in bidding
         $loan = $bid->getLoan();
         $remainingAmount = $loan->getAmount() - $loan->collectedBids();
-        if ($remainingAmount < $bid->getAmount())
-            return $this->redirectToRoute('app_loans_mine');
+        if ($remainingAmount < $bid->getAmount()) {
+            $bid->setAmount($remainingAmount);
+            # TODO bidder allows trimming bid ??
+            # TODO notify bidder
+        }
 
         $bid->setStatus(BidStatus::Approved);
         $bidRepo->save($bid);

@@ -18,8 +18,8 @@
                             <h6 class="mb-2 mb-md-0 text-uppercase font-weight-medium">{{ automation.name }}</h6>
 
                             <div style="margin-left: auto;order: 2;">
-                                <label class="badge badge-warning mx-2">{{random(0, 10)}} Bids Approved</label>
-                                <label class="badge badge-info mx-2">{{random(10, 40)}} Bids Placed</label>
+                                <label class="badge badge-warning mx-2">{{ getApprovedBids(automation) }} Bids Approved</label>
+                                <label class="badge badge-info mx-2">{{ getPlacedBids(automation) }} Bids Placed</label>
 
                                 <!--
                                 <a href="/bids/automations/create?id={{ automation.id }}"

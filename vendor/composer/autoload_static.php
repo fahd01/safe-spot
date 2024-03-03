@@ -128,6 +128,11 @@ class ComposerStaticInit1964e81243082a04fc25f2d3d9b3e964
             'Monolog\\' => 8,
             'Masterminds\\' => 12,
         ),
+        'K' => 
+        array (
+            'Knp\\Snappy\\' => 11,
+            'Knp\\Bundle\\SnappyBundle\\' => 24,
+        ),
         'E' => 
         array (
             'Egulias\\EmailValidator\\' => 23,
@@ -507,6 +512,14 @@ class ComposerStaticInit1964e81243082a04fc25f2d3d9b3e964
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
+        ),
+        'Knp\\Snappy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy',
+        ),
+        'Knp\\Bundle\\SnappyBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-snappy-bundle/src',
         ),
         'Egulias\\EmailValidator\\' => 
         array (
