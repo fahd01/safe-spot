@@ -192,7 +192,34 @@ public function statistiques(InvestissementRepository $recrepo)
         'Content-Type' => 'application/pdf',
     ]);
 }
+public function __construct(ServiceB $serviceB)
+{
+    $this->serviceB = $serviceB;
+}
 
+public function doSomething()
+{
+    // Utiliser le serviceB ici
+}
+}
+
+// Classe ServiceB
+class ServiceB
+{
+// ...
+}
+
+// Configuration des services
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
+
+$containerBuilder = new ContainerBuilder();
+$containerBuilder->register('service_b', ServiceB::class);
+$containerBuilder->register('service_a', ServiceA::class)
+->addArgument(new Reference('service_b'));
+
+$serviceA = $containerBuilder->get('service_a');
+$serviceA->doSomething();
    
 
 
