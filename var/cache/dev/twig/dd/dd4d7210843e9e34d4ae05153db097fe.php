@@ -1,0 +1,946 @@
+<?php
+
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Extension\SandboxExtension;
+use Twig\Markup;
+use Twig\Sandbox\SecurityError;
+use Twig\Sandbox\SecurityNotAllowedTagError;
+use Twig\Sandbox\SecurityNotAllowedFilterError;
+use Twig\Sandbox\SecurityNotAllowedFunctionError;
+use Twig\Source;
+use Twig\Template;
+
+/* base.html.twig */
+class __TwigTemplate_171685184e3da88295a1e135fd20b884 extends Template
+{
+    private $source;
+    private $macros = [];
+
+    public function __construct(Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->source = $this->getSourceContext();
+
+        $this->parent = false;
+
+        $this->blocks = [
+            'title' => [$this, 'block_title'],
+            'stylesheets' => [$this, 'block_stylesheets'],
+            'javascripts' => [$this, 'block_javascripts'],
+            'importmap' => [$this, 'block_importmap'],
+            'breadcrumbs' => [$this, 'block_breadcrumbs'],
+            'body' => [$this, 'block_body'],
+        ];
+    }
+
+    protected function doDisplay(array $context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "base.html.twig"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "base.html.twig"));
+
+        // line 1
+        echo "<!DOCTYPE html>
+<html lang=\"en\">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset=\"utf-8\">
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
+  <!-- base:css -->
+  <link rel=\"stylesheet\" href=\"";
+        // line 9
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/dashboard-template/vendors/typicons/typicons.css"), "html", null, true);
+        echo "\">
+  <link rel=\"stylesheet\" href=\"";
+        // line 10
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/dashboard-template/vendors/css/vendor.bundle.base.css"), "html", null, true);
+        echo "\">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel=\"stylesheet\" href=\"";
+        // line 15
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/dashboard-template/css/vertical-layout-light/style.css"), "html", null, true);
+        echo "\">
+  <!-- endinject -->
+  <link rel=\"shortcut icon\" href=\"";
+        // line 17
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/dashboard-template/images/favicon.png"), "html", null, true);
+        echo "\">
+
+  <title>";
+        // line 19
+        $this->displayBlock('title', $context, $blocks);
+        echo "</title>
+
+  ";
+        // line 21
+        $this->displayBlock('stylesheets', $context, $blocks);
+        // line 23
+        echo "
+  ";
+        // line 24
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 27
+        echo "
+</head>
+<body>
+  <div class=\"container-scroller\">
+    <!-- partial:partials/_navbar.html -->
+    <nav class=\"navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row\">
+      <div class=\"navbar-brand-wrapper d-flex justify-content-center\">
+        <div class=\"navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100\">
+          <a class=\"navbar-brand brand-logo\" href=\"";
+        // line 35
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("index.html"), "html", null, true);
+        echo "\">
+            <h1>SafeSpot.</h1>
+          </a>
+          <a class=\"navbar-brand brand-logo-mini\" href=\"";
+        // line 38
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("index.html"), "html", null, true);
+        echo "\"><img src=\"";
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/dashboard-template/images/logo-mini.svg"), "html", null, true);
+        echo "\" alt=\"logo\"/></a>
+          <button class=\"navbar-toggler navbar-toggler align-self-center\" type=\"button\" data-toggle=\"minimize\">
+            <span class=\"typcn typcn-th-menu\"></span>
+          </button>
+        </div>
+      </div>
+      <div class=\"navbar-menu-wrapper d-flex align-items-center justify-content-end\">
+        <ul class=\"navbar-nav mr-lg-2\">
+          <li class=\"nav-item nav-profile dropdown\">
+            <a class=\"nav-link\" href=\"#\" data-toggle=\"dropdown\" id=\"profileDropdown\">
+              <img src=\"";
+        // line 48
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/dashboard-template/images/faces/face5.jpg"), "html", null, true);
+        echo "\" alt=\"profile\"/>
+              <span class=\"nav-profile-name\">";
+        // line 49
+        echo twig_escape_filter($this->env, ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 49, $this->source); })()), "user", [], "any", false, false, false, 49), "nom", [], "any", false, false, false, 49) . " ") . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 49, $this->source); })()), "user", [], "any", false, false, false, 49), "prenom", [], "any", false, false, false, 49)), "html", null, true);
+        echo "</span>
+            </a>
+            <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown\" aria-labelledby=\"profileDropdown\">
+              <a class=\"dropdown-item\">
+                <i class=\"typcn typcn-cog-outline text-primary\"></i>
+                Settings
+              </a>
+              <a class=\"dropdown-item\">
+                <i class=\"typcn typcn-eject text-primary\"></i>
+                Logout
+              </a>
+            </div>
+          </li>
+        </ul>
+        <ul class=\"navbar-nav navbar-nav-right\">
+          <li class=\"nav-item nav-date dropdown\">
+            <a class=\"nav-link d-flex justify-content-center align-items-center\" href=\"javascript:;\">
+              <h6 class=\"date mb-0\">Today : ";
+        // line 66
+        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "d M"), "html", null, true);
+        echo "</h6>
+              <i class=\"typcn typcn-calendar\"></i>
+            </a>
+          </li>
+          <li class=\"nav-item dropdown mr-0\">
+            <a class=\"nav-link d-flex align-items-center justify-content-center\" href=\"";
+        // line 71
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
+        echo "\">
+              <i class=\"typcn typcn-arrow-right-thick mx-0\"></i>
+              <span class=\"count\"></span>
+            </a>
+          </li>
+        </ul>
+        <button class=\"navbar-toggler navbar-toggler-right d-lg-none align-self-center\" type=\"button\" data-toggle=\"offcanvas\">
+          <span class=\"typcn typcn-th-menu\"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <nav class=\"navbar-breadcrumb col-xl-12 col-12 d-flex flex-row p-0\">
+      <div class=\"navbar-links-wrapper d-flex align-items-stretch\">
+        <div class=\"nav-link\">
+          <a href=\"";
+        // line 86
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("afficheall");
+        echo "\"><i class=\"typcn typcn-user\"></i></a>
+        </div>
+      </div>
+      <div class=\"navbar-menu-wrapper d-flex align-items-center justify-content-end\">
+        <ul class=\"navbar-nav mr-lg-2\">
+          <li class=\"nav-item ml-0\">
+            <h4 class=\"mb-0\">Dashboard</h4>
+          </li>
+          <li class=\"nav-item\">
+            <div class=\"d-flex align-items-baseline\">
+              <i class=\"typcn typcn-chevron-right\"></i>
+              <p class=\"mb-0\">";
+        // line 97
+        $this->displayBlock('breadcrumbs', $context, $blocks);
+        echo "</p>
+            </div>
+          </li>
+        </ul>
+        <ul class=\"navbar-nav navbar-nav-right\">
+          <li class=\"nav-item nav-search d-none d-md-block mr-0\">
+            <div class=\"input-group\">
+              <input type=\"text\" class=\"form-control\" placeholder=\"Search...\" aria-label=\"search\" aria-describedby=\"search\">
+              <div class=\"input-group-prepend\">
+                <span class=\"input-group-text\" id=\"search\">
+                  <i class=\"typcn typcn-zoom\"></i>
+                </span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class=\"container-fluid page-body-wrapper\">
+      <!-- partial:partials/_settings-panel.html -->
+      <div class=\"theme-setting-wrapper\">
+        <div id=\"settings-trigger\"><i class=\"typcn typcn-cog-outline\"></i></div>
+        <div id=\"theme-settings\" class=\"settings-panel\">
+          <i class=\"settings-close typcn typcn-times\"></i>
+          <p class=\"settings-heading\">SIDEBAR SKINS</p>
+          <div class=\"sidebar-bg-options selected\" id=\"sidebar-light-theme\"><div class=\"img-ss rounded-circle bg-light border mr-3\"></div>Light</div>
+          <div class=\"sidebar-bg-options\" id=\"sidebar-dark-theme\"><div class=\"img-ss rounded-circle bg-dark border mr-3\"></div>Dark</div>
+          <p class=\"settings-heading mt-2\">HEADER SKINS</p>
+          <div class=\"color-tiles mx-0 px-4\">
+            <div class=\"tiles success\"></div>
+            <div class=\"tiles warning\"></div>
+            <div class=\"tiles danger\"></div>
+            <div class=\"tiles info\"></div>
+            <div class=\"tiles dark\"></div>
+            <div class=\"tiles default\"></div>
+          </div>
+        </div>
+      </div>
+      <div id=\"right-sidebar\" class=\"settings-panel\">
+        <i class=\"settings-close typcn typcn-times\"></i>
+        <ul class=\"nav nav-tabs\" id=\"setting-panel\" role=\"tablist\">
+          <li class=\"nav-item\">
+            <a class=\"nav-link active\" id=\"todo-tab\" data-toggle=\"tab\" href=\"#todo-section\" role=\"tab\" aria-controls=\"todo-section\" aria-expanded=\"true\">TO DO LIST</a>
+          </li>
+          <li class=\"nav-item\">
+            <a class=\"nav-link\" id=\"chats-tab\" data-toggle=\"tab\" href=\"#chats-section\" role=\"tab\" aria-controls=\"chats-section\">CHATS</a>
+          </li>
+        </ul>
+        <div class=\"tab-content\" id=\"setting-content\">
+          <div class=\"tab-pane fade show active scroll-wrapper\" id=\"todo-section\" role=\"tabpanel\" aria-labelledby=\"todo-section\">
+            <div class=\"add-items d-flex px-3 mb-0\">
+              <form class=\"form w-100\">
+                <div class=\"form-group d-flex\">
+                  <input type=\"text\" class=\"form-control todo-list-input\" placeholder=\"Add To-do\">
+                  <button type=\"submit\" class=\"add btn btn-primary todo-list-add-btn\" id=\"add-task\">Add</button>
+                </div>
+              </form>
+            </div>
+            <div class=\"list-wrapper px-3\">
+              <ul class=\"d-flex flex-column-reverse todo-list\">
+                <li>
+                  <div class=\"form-check\">
+                    <label class=\"form-check-label\">
+                      <input class=\"checkbox\" type=\"checkbox\">
+                      Team review meeting at 3.00 PM
+                    </label>
+                  </div>
+                  <i class=\"remove typcn typcn-delete-outline\"></i>
+                </li>
+                <li>
+                  <div class=\"form-check\">
+                    <label class=\"form-check-label\">
+                      <input class=\"checkbox\" type=\"checkbox\">
+                      Prepare for presentation
+                    </label>
+                  </div>
+                  <i class=\"remove typcn typcn-delete-outline\"></i>
+                </li>
+                <li>
+                  <div class=\"form-check\">
+                    <label class=\"form-check-label\">
+                      <input class=\"checkbox\" type=\"checkbox\">
+                      Resolve all the low priority tickets due today
+                    </label>
+                  </div>
+                  <i class=\"remove typcn typcn-delete-outline\"></i>
+                </li>
+                <li class=\"completed\">
+                  <div class=\"form-check\">
+                    <label class=\"form-check-label\">
+                      <input class=\"checkbox\" type=\"checkbox\" checked>
+                      Schedule meeting for next week
+                    </label>
+                  </div>
+                  <i class=\"remove typcn typcn-delete-outline\"></i>
+                </li>
+                <li class=\"completed\">
+                  <div class=\"form-check\">
+                    <label class=\"form-check-label\">
+                      <input class=\"checkbox\" type=\"checkbox\" checked>
+                      Project review
+                    </label>
+                  </div>
+                  <i class=\"remove typcn typcn-delete-outline\"></i>
+                </li>
+              </ul>
+            </div>
+            <div class=\"events py-4 border-bottom px-3\">
+              <div class=\"wrapper d-flex mb-2\">
+                <i class=\"typcn typcn-media-record-outline text-primary mr-2\"></i>
+                <span>Feb 11 2018</span>
+              </div>
+              <p class=\"mb-0 font-weight-thin text-gray\">Creating component page</p>
+              <p class=\"text-gray mb-0\">build a js based app</p>
+            </div>
+            <div class=\"events pt-4 px-3\">
+              <div class=\"wrapper d-flex mb-2\">
+                <i class=\"typcn typcn-media-record-outline text-primary mr-2\"></i>
+                <span>Feb 7 2018</span>
+              </div>
+              <p class=\"mb-0 font-weight-thin text-gray\">Meeting with Alisa</p>
+              <p class=\"text-gray mb-0 \">Call Sarah Graves</p>
+            </div>
+          </div>
+          <!-- To do section tab ends -->
+          <div class=\"tab-pane fade\" id=\"chats-section\" role=\"tabpanel\" aria-labelledby=\"chats-section\">
+            <div class=\"d-flex align-items-center justify-content-between border-bottom\">
+              <p class=\"settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0\">Friends</p>
+              <small class=\"settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal\">See All</small>
+            </div>
+            <ul class=\"chat-list\">
+              <li class=\"list active\">
+                <div class=\"profile\"><img src=\"";
+        // line 229
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/dashboard-template/images/faces/face1.jpg"), "html", null, true);
+        echo "\" alt=\"image\"><span class=\"online\"></span></div>
+                <div class=\"info\">
+                  <p>Thomas Douglas</p>
+                  <p>Available</p>
+                </div>
+                <small class=\"text-muted my-auto\">19 min</small>
+              </li>
+              <li class=\"list\">
+                <div class=\"profile\"><img src=\"/dashboard-template/images/faces/face2.jpg\" alt=\"image\"><span class=\"offline\"></span></div>
+                <div class=\"info\">
+                  <div class=\"wrapper d-flex\">
+                    <p>Catherine</p>
+                  </div>
+                  <p>Away</p>
+                </div>
+                <div class=\"badge badge-success badge-pill my-auto mx-2\">4</div>
+                <small class=\"text-muted my-auto\">23 min</small>
+              </li>
+              <li class=\"list\">
+                <div class=\"profile\"><img src=\"";
+        // line 248
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/dashboard-template/images/faces/face3.jpg"), "html", null, true);
+        echo "\" alt=\"image\"><span class=\"online\"></span></div>
+                <div class=\"info\">
+                  <p>Daniel Russell</p>
+                  <p>Available</p>
+                </div>
+                <small class=\"text-muted my-auto\">14 min</small>
+              </li>
+              <li class=\"list\">
+                <div class=\"profile\"><img src=\"";
+        // line 256
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/dashboard-template/images/faces/face4.jpg"), "html", null, true);
+        echo "\" alt=\"image\"><span class=\"offline\"></span></div>
+                <div class=\"info\">
+                  <p>James Richardson</p>
+                  <p>Away</p>
+                </div>
+                <small class=\"text-muted my-auto\">2 min</small>
+              </li>
+              <li class=\"list\">
+                <div class=\"profile\"><img src=\"";
+        // line 264
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/dashboard-template/images/faces/face5.jpg"), "html", null, true);
+        echo "\" alt=\"image\"><span class=\"online\"></span></div>
+                <div class=\"info\">
+                  <p>Madeline Kennedy</p>
+                  <p>Available</p>
+                </div>
+                <small class=\"text-muted my-auto\">5 min</small>
+              </li>
+              <li class=\"list\">
+                <div class=\"profile\"><img src=\"";
+        // line 272
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/dashboard-template/images/faces/face6.jpg"), "html", null, true);
+        echo "\" alt=\"image\"><span class=\"online\"></span></div>
+                <div class=\"info\">
+                  <p>Sarah Graves</p>
+                  <p>Available</p>
+                </div>
+                <small class=\"text-muted my-auto\">47 min</small>
+              </li>
+            </ul>
+          </div>
+          <!-- chat tab ends -->
+        </div>
+      </div>
+      <div class=\"main-panel\">
+        <div class=\"content-wrapper\">
+          <!-- twig page bodies will be inserted here -->
+           ";
+        // line 287
+        $this->displayBlock('body', $context, $blocks);
+        // line 288
+        echo "        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class=\"footer\">
+            <div class=\"card\">
+                <div class=\"card-body\">
+                    <div class=\"d-sm-flex justify-content-center justify-content-sm-between\">
+                        <span class=\"text-muted text-center text-sm-left d-block d-sm-inline-block\">Copyright © 2024 <a href=\"#\" class=\"text-muted\" target=\"_blank\">Safe Spot</a>. All rights reserved.</span>
+                        <span class=\"float-none float-sm-right d-block mt-1 mt-sm-0 text-center text-muted\"> <a href=\"#\" class=\"text-muted\" target=\"_blank\">Insert social media icons</a></span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <!-- base:js -->
+  <script src=\"";
+        // line 310
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/dashboard-template/vendors/js/vendor.bundle.base.js"), "html", null, true);
+        echo "\"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <script src=\"";
+        // line 313
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/dashboard-template/vendors/chart.js/Chart.min.js"), "html", null, true);
+        echo "\"></script>
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src=\"";
+        // line 316
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/dashboard-template/js/off-canvas.js"), "html", null, true);
+        echo "\"></script>
+  <script src=\"";
+        // line 317
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/dashboard-template/js/hoverable-collapse.js"), "html", null, true);
+        echo "\"></script>
+  <script src=\"";
+        // line 318
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/dashboard-template/js/template.js"), "html", null, true);
+        echo "\"></script>
+  <script src=\"";
+        // line 319
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/dashboard-template/js/settings.js"), "html", null, true);
+        echo "\"></script>
+  <script src=\"";
+        // line 320
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/dashboard-template/js/todolist.js"), "html", null, true);
+        echo "\"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src=\"";
+        // line 323
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/dashboard-template/js/dashboard.js"), "html", null, true);
+        echo "\"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>
+
+";
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+    }
+
+    // line 19
+    public function block_title($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
+
+        echo "Welcome!";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 21
+    public function block_stylesheets($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
+
+        // line 22
+        echo "  ";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 24
+    public function block_javascripts($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
+
+        // line 25
+        echo "  ";
+        $this->displayBlock('importmap', $context, $blocks);
+        // line 26
+        echo "  ";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 25
+    public function block_importmap($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "importmap"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "importmap"));
+
+        echo $this->env->getRuntime('Symfony\Bridge\Twig\Extension\ImportMapRuntime')->importmap("app");
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 97
+    public function block_breadcrumbs($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "breadcrumbs"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "breadcrumbs"));
+
+        echo "Home Page";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 287
+    public function block_body($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getTemplateName()
+    {
+        return "base.html.twig";
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function isTraitable()
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getDebugInfo()
+    {
+        return array (  573 => 287,  554 => 97,  535 => 25,  525 => 26,  522 => 25,  512 => 24,  502 => 22,  492 => 21,  473 => 19,  456 => 323,  450 => 320,  446 => 319,  442 => 318,  438 => 317,  434 => 316,  428 => 313,  422 => 310,  398 => 288,  396 => 287,  378 => 272,  367 => 264,  356 => 256,  345 => 248,  323 => 229,  188 => 97,  174 => 86,  156 => 71,  148 => 66,  128 => 49,  124 => 48,  109 => 38,  103 => 35,  93 => 27,  91 => 24,  88 => 23,  86 => 21,  81 => 19,  76 => 17,  71 => 15,  63 => 10,  59 => 9,  49 => 1,);
+    }
+
+    public function getSourceContext()
+    {
+        return new Source("<!DOCTYPE html>
+<html lang=\"en\">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset=\"utf-8\">
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
+  <!-- base:css -->
+  <link rel=\"stylesheet\" href=\"{{ asset('/dashboard-template/vendors/typicons/typicons.css') }}\">
+  <link rel=\"stylesheet\" href=\"{{ asset('/dashboard-template/vendors/css/vendor.bundle.base.css') }}\">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel=\"stylesheet\" href=\"{{ asset('/dashboard-template/css/vertical-layout-light/style.css') }}\">
+  <!-- endinject -->
+  <link rel=\"shortcut icon\" href=\"{{ asset('/dashboard-template/images/favicon.png') }}\">
+
+  <title>{% block title %}Welcome!{% endblock %}</title>
+
+  {% block stylesheets %}
+  {% endblock %}
+
+  {% block javascripts %}
+  {% block importmap %}{{ importmap('app') }}{% endblock %}
+  {% endblock %}
+
+</head>
+<body>
+  <div class=\"container-scroller\">
+    <!-- partial:partials/_navbar.html -->
+    <nav class=\"navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row\">
+      <div class=\"navbar-brand-wrapper d-flex justify-content-center\">
+        <div class=\"navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100\">
+          <a class=\"navbar-brand brand-logo\" href=\"{{ asset('index.html') }}\">
+            <h1>SafeSpot.</h1>
+          </a>
+          <a class=\"navbar-brand brand-logo-mini\" href=\"{{ asset('index.html') }}\"><img src=\"{{ asset('/dashboard-template/images/logo-mini.svg') }}\" alt=\"logo\"/></a>
+          <button class=\"navbar-toggler navbar-toggler align-self-center\" type=\"button\" data-toggle=\"minimize\">
+            <span class=\"typcn typcn-th-menu\"></span>
+          </button>
+        </div>
+      </div>
+      <div class=\"navbar-menu-wrapper d-flex align-items-center justify-content-end\">
+        <ul class=\"navbar-nav mr-lg-2\">
+          <li class=\"nav-item nav-profile dropdown\">
+            <a class=\"nav-link\" href=\"#\" data-toggle=\"dropdown\" id=\"profileDropdown\">
+              <img src=\"{{ asset('/dashboard-template/images/faces/face5.jpg') }}\" alt=\"profile\"/>
+              <span class=\"nav-profile-name\">{{ app.user.nom ~ ' ' ~ app.user.prenom }}</span>
+            </a>
+            <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown\" aria-labelledby=\"profileDropdown\">
+              <a class=\"dropdown-item\">
+                <i class=\"typcn typcn-cog-outline text-primary\"></i>
+                Settings
+              </a>
+              <a class=\"dropdown-item\">
+                <i class=\"typcn typcn-eject text-primary\"></i>
+                Logout
+              </a>
+            </div>
+          </li>
+        </ul>
+        <ul class=\"navbar-nav navbar-nav-right\">
+          <li class=\"nav-item nav-date dropdown\">
+            <a class=\"nav-link d-flex justify-content-center align-items-center\" href=\"javascript:;\">
+              <h6 class=\"date mb-0\">Today : {{ \"now\"|date(\"d M\") }}</h6>
+              <i class=\"typcn typcn-calendar\"></i>
+            </a>
+          </li>
+          <li class=\"nav-item dropdown mr-0\">
+            <a class=\"nav-link d-flex align-items-center justify-content-center\" href=\"{{ path('app_logout') }}\">
+              <i class=\"typcn typcn-arrow-right-thick mx-0\"></i>
+              <span class=\"count\"></span>
+            </a>
+          </li>
+        </ul>
+        <button class=\"navbar-toggler navbar-toggler-right d-lg-none align-self-center\" type=\"button\" data-toggle=\"offcanvas\">
+          <span class=\"typcn typcn-th-menu\"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <nav class=\"navbar-breadcrumb col-xl-12 col-12 d-flex flex-row p-0\">
+      <div class=\"navbar-links-wrapper d-flex align-items-stretch\">
+        <div class=\"nav-link\">
+          <a href=\"{{ path('afficheall') }}\"><i class=\"typcn typcn-user\"></i></a>
+        </div>
+      </div>
+      <div class=\"navbar-menu-wrapper d-flex align-items-center justify-content-end\">
+        <ul class=\"navbar-nav mr-lg-2\">
+          <li class=\"nav-item ml-0\">
+            <h4 class=\"mb-0\">Dashboard</h4>
+          </li>
+          <li class=\"nav-item\">
+            <div class=\"d-flex align-items-baseline\">
+              <i class=\"typcn typcn-chevron-right\"></i>
+              <p class=\"mb-0\">{% block breadcrumbs %}Home Page{% endblock %}</p>
+            </div>
+          </li>
+        </ul>
+        <ul class=\"navbar-nav navbar-nav-right\">
+          <li class=\"nav-item nav-search d-none d-md-block mr-0\">
+            <div class=\"input-group\">
+              <input type=\"text\" class=\"form-control\" placeholder=\"Search...\" aria-label=\"search\" aria-describedby=\"search\">
+              <div class=\"input-group-prepend\">
+                <span class=\"input-group-text\" id=\"search\">
+                  <i class=\"typcn typcn-zoom\"></i>
+                </span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class=\"container-fluid page-body-wrapper\">
+      <!-- partial:partials/_settings-panel.html -->
+      <div class=\"theme-setting-wrapper\">
+        <div id=\"settings-trigger\"><i class=\"typcn typcn-cog-outline\"></i></div>
+        <div id=\"theme-settings\" class=\"settings-panel\">
+          <i class=\"settings-close typcn typcn-times\"></i>
+          <p class=\"settings-heading\">SIDEBAR SKINS</p>
+          <div class=\"sidebar-bg-options selected\" id=\"sidebar-light-theme\"><div class=\"img-ss rounded-circle bg-light border mr-3\"></div>Light</div>
+          <div class=\"sidebar-bg-options\" id=\"sidebar-dark-theme\"><div class=\"img-ss rounded-circle bg-dark border mr-3\"></div>Dark</div>
+          <p class=\"settings-heading mt-2\">HEADER SKINS</p>
+          <div class=\"color-tiles mx-0 px-4\">
+            <div class=\"tiles success\"></div>
+            <div class=\"tiles warning\"></div>
+            <div class=\"tiles danger\"></div>
+            <div class=\"tiles info\"></div>
+            <div class=\"tiles dark\"></div>
+            <div class=\"tiles default\"></div>
+          </div>
+        </div>
+      </div>
+      <div id=\"right-sidebar\" class=\"settings-panel\">
+        <i class=\"settings-close typcn typcn-times\"></i>
+        <ul class=\"nav nav-tabs\" id=\"setting-panel\" role=\"tablist\">
+          <li class=\"nav-item\">
+            <a class=\"nav-link active\" id=\"todo-tab\" data-toggle=\"tab\" href=\"#todo-section\" role=\"tab\" aria-controls=\"todo-section\" aria-expanded=\"true\">TO DO LIST</a>
+          </li>
+          <li class=\"nav-item\">
+            <a class=\"nav-link\" id=\"chats-tab\" data-toggle=\"tab\" href=\"#chats-section\" role=\"tab\" aria-controls=\"chats-section\">CHATS</a>
+          </li>
+        </ul>
+        <div class=\"tab-content\" id=\"setting-content\">
+          <div class=\"tab-pane fade show active scroll-wrapper\" id=\"todo-section\" role=\"tabpanel\" aria-labelledby=\"todo-section\">
+            <div class=\"add-items d-flex px-3 mb-0\">
+              <form class=\"form w-100\">
+                <div class=\"form-group d-flex\">
+                  <input type=\"text\" class=\"form-control todo-list-input\" placeholder=\"Add To-do\">
+                  <button type=\"submit\" class=\"add btn btn-primary todo-list-add-btn\" id=\"add-task\">Add</button>
+                </div>
+              </form>
+            </div>
+            <div class=\"list-wrapper px-3\">
+              <ul class=\"d-flex flex-column-reverse todo-list\">
+                <li>
+                  <div class=\"form-check\">
+                    <label class=\"form-check-label\">
+                      <input class=\"checkbox\" type=\"checkbox\">
+                      Team review meeting at 3.00 PM
+                    </label>
+                  </div>
+                  <i class=\"remove typcn typcn-delete-outline\"></i>
+                </li>
+                <li>
+                  <div class=\"form-check\">
+                    <label class=\"form-check-label\">
+                      <input class=\"checkbox\" type=\"checkbox\">
+                      Prepare for presentation
+                    </label>
+                  </div>
+                  <i class=\"remove typcn typcn-delete-outline\"></i>
+                </li>
+                <li>
+                  <div class=\"form-check\">
+                    <label class=\"form-check-label\">
+                      <input class=\"checkbox\" type=\"checkbox\">
+                      Resolve all the low priority tickets due today
+                    </label>
+                  </div>
+                  <i class=\"remove typcn typcn-delete-outline\"></i>
+                </li>
+                <li class=\"completed\">
+                  <div class=\"form-check\">
+                    <label class=\"form-check-label\">
+                      <input class=\"checkbox\" type=\"checkbox\" checked>
+                      Schedule meeting for next week
+                    </label>
+                  </div>
+                  <i class=\"remove typcn typcn-delete-outline\"></i>
+                </li>
+                <li class=\"completed\">
+                  <div class=\"form-check\">
+                    <label class=\"form-check-label\">
+                      <input class=\"checkbox\" type=\"checkbox\" checked>
+                      Project review
+                    </label>
+                  </div>
+                  <i class=\"remove typcn typcn-delete-outline\"></i>
+                </li>
+              </ul>
+            </div>
+            <div class=\"events py-4 border-bottom px-3\">
+              <div class=\"wrapper d-flex mb-2\">
+                <i class=\"typcn typcn-media-record-outline text-primary mr-2\"></i>
+                <span>Feb 11 2018</span>
+              </div>
+              <p class=\"mb-0 font-weight-thin text-gray\">Creating component page</p>
+              <p class=\"text-gray mb-0\">build a js based app</p>
+            </div>
+            <div class=\"events pt-4 px-3\">
+              <div class=\"wrapper d-flex mb-2\">
+                <i class=\"typcn typcn-media-record-outline text-primary mr-2\"></i>
+                <span>Feb 7 2018</span>
+              </div>
+              <p class=\"mb-0 font-weight-thin text-gray\">Meeting with Alisa</p>
+              <p class=\"text-gray mb-0 \">Call Sarah Graves</p>
+            </div>
+          </div>
+          <!-- To do section tab ends -->
+          <div class=\"tab-pane fade\" id=\"chats-section\" role=\"tabpanel\" aria-labelledby=\"chats-section\">
+            <div class=\"d-flex align-items-center justify-content-between border-bottom\">
+              <p class=\"settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0\">Friends</p>
+              <small class=\"settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal\">See All</small>
+            </div>
+            <ul class=\"chat-list\">
+              <li class=\"list active\">
+                <div class=\"profile\"><img src=\"{{ asset('/dashboard-template/images/faces/face1.jpg') }}\" alt=\"image\"><span class=\"online\"></span></div>
+                <div class=\"info\">
+                  <p>Thomas Douglas</p>
+                  <p>Available</p>
+                </div>
+                <small class=\"text-muted my-auto\">19 min</small>
+              </li>
+              <li class=\"list\">
+                <div class=\"profile\"><img src=\"/dashboard-template/images/faces/face2.jpg\" alt=\"image\"><span class=\"offline\"></span></div>
+                <div class=\"info\">
+                  <div class=\"wrapper d-flex\">
+                    <p>Catherine</p>
+                  </div>
+                  <p>Away</p>
+                </div>
+                <div class=\"badge badge-success badge-pill my-auto mx-2\">4</div>
+                <small class=\"text-muted my-auto\">23 min</small>
+              </li>
+              <li class=\"list\">
+                <div class=\"profile\"><img src=\"{{ asset('/dashboard-template/images/faces/face3.jpg') }}\" alt=\"image\"><span class=\"online\"></span></div>
+                <div class=\"info\">
+                  <p>Daniel Russell</p>
+                  <p>Available</p>
+                </div>
+                <small class=\"text-muted my-auto\">14 min</small>
+              </li>
+              <li class=\"list\">
+                <div class=\"profile\"><img src=\"{{ asset('/dashboard-template/images/faces/face4.jpg') }}\" alt=\"image\"><span class=\"offline\"></span></div>
+                <div class=\"info\">
+                  <p>James Richardson</p>
+                  <p>Away</p>
+                </div>
+                <small class=\"text-muted my-auto\">2 min</small>
+              </li>
+              <li class=\"list\">
+                <div class=\"profile\"><img src=\"{{ asset('/dashboard-template/images/faces/face5.jpg') }}\" alt=\"image\"><span class=\"online\"></span></div>
+                <div class=\"info\">
+                  <p>Madeline Kennedy</p>
+                  <p>Available</p>
+                </div>
+                <small class=\"text-muted my-auto\">5 min</small>
+              </li>
+              <li class=\"list\">
+                <div class=\"profile\"><img src=\"{{ asset('/dashboard-template/images/faces/face6.jpg') }}\" alt=\"image\"><span class=\"online\"></span></div>
+                <div class=\"info\">
+                  <p>Sarah Graves</p>
+                  <p>Available</p>
+                </div>
+                <small class=\"text-muted my-auto\">47 min</small>
+              </li>
+            </ul>
+          </div>
+          <!-- chat tab ends -->
+        </div>
+      </div>
+      <div class=\"main-panel\">
+        <div class=\"content-wrapper\">
+          <!-- twig page bodies will be inserted here -->
+           {% block body %}{% endblock %}
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class=\"footer\">
+            <div class=\"card\">
+                <div class=\"card-body\">
+                    <div class=\"d-sm-flex justify-content-center justify-content-sm-between\">
+                        <span class=\"text-muted text-center text-sm-left d-block d-sm-inline-block\">Copyright © 2024 <a href=\"#\" class=\"text-muted\" target=\"_blank\">Safe Spot</a>. All rights reserved.</span>
+                        <span class=\"float-none float-sm-right d-block mt-1 mt-sm-0 text-center text-muted\"> <a href=\"#\" class=\"text-muted\" target=\"_blank\">Insert social media icons</a></span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <!-- base:js -->
+  <script src=\"{{ asset('/dashboard-template/vendors/js/vendor.bundle.base.js') }}\"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <script src=\"{{ asset('/dashboard-template/vendors/chart.js/Chart.min.js') }}\"></script>
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src=\"{{ asset('/dashboard-template/js/off-canvas.js') }}\"></script>
+  <script src=\"{{ asset('/dashboard-template/js/hoverable-collapse.js') }}\"></script>
+  <script src=\"{{ asset('/dashboard-template/js/template.js') }}\"></script>
+  <script src=\"{{ asset('/dashboard-template/js/settings.js') }}\"></script>
+  <script src=\"{{ asset('/dashboard-template/js/todolist.js') }}\"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src=\"{{ asset('/dashboard-template/js/dashboard.js') }}\"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>
+
+", "base.html.twig", "C:\\Users\\user\\Desktop\\safe-spot-main\\templates\\base.html.twig");
+    }
+}
