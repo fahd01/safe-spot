@@ -29,9 +29,9 @@ use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
 class DoctrineReceiver implements ListableReceiverInterface, MessageCountAwareInterface
 {
     private const MAX_RETRIES = 3;
-    private int $retryingSafetyCounter = 0;
-    private Connection $connection;
-    private SerializerInterface $serializer;
+    private $retryingSafetyCounter = 0;
+    private $connection;
+    private $serializer;
 
     public function __construct(Connection $connection, ?SerializerInterface $serializer = null)
     {
@@ -39,6 +39,9 @@ class DoctrineReceiver implements ListableReceiverInterface, MessageCountAwareIn
         $this->serializer = $serializer ?? new PhpSerializer();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function get(): iterable
     {
         try {
@@ -65,6 +68,9 @@ class DoctrineReceiver implements ListableReceiverInterface, MessageCountAwareIn
         return [$this->createEnvelopeFromData($doctrineEnvelope)];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function ack(Envelope $envelope): void
     {
         try {
@@ -74,6 +80,9 @@ class DoctrineReceiver implements ListableReceiverInterface, MessageCountAwareIn
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function reject(Envelope $envelope): void
     {
         try {
@@ -83,6 +92,9 @@ class DoctrineReceiver implements ListableReceiverInterface, MessageCountAwareIn
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getMessageCount(): int
     {
         try {
@@ -92,6 +104,9 @@ class DoctrineReceiver implements ListableReceiverInterface, MessageCountAwareIn
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function all(?int $limit = null): iterable
     {
         try {
@@ -105,7 +120,10 @@ class DoctrineReceiver implements ListableReceiverInterface, MessageCountAwareIn
         }
     }
 
-    public function find(mixed $id): ?Envelope
+    /**
+     * {@inheritdoc}
+     */
+    public function find($id): ?Envelope
     {
         try {
             $doctrineEnvelope = $this->connection->find($id);
@@ -150,4 +168,8 @@ class DoctrineReceiver implements ListableReceiverInterface, MessageCountAwareIn
             new TransportMessageIdStamp($data['id'])
         );
     }
+}
+
+if (!class_exists(\Symfony\Component\Messenger\Transport\Doctrine\DoctrineReceiver::class, false)) {
+    class_alias(DoctrineReceiver::class, \Symfony\Component\Messenger\Transport\Doctrine\DoctrineReceiver::class);
 }

@@ -3,7 +3,7 @@
 {% block toolbar %}
     {% if collector.dumpsCount %}
         {% set icon %}
-            {{ source('@Debug/Profiler/icon.svg') }}
+            {{ include('@Debug/Profiler/icon.svg') }}
             <span class="sf-toolbar-value">{{ collector.dumpsCount }}</span>
         {% endset %}
 
@@ -11,9 +11,6 @@
             {% for dump in collector.getDumps('html') %}
                 <div class="sf-toolbar-info-piece">
                     <span>
-                    {% if dump.label is defined and '' != dump.label %}
-                        <span class="sf-toolbar-file-line"><strong>{{ dump.label }}</strong> in </span>
-                    {% endif %}
                     {% if dump.file %}
                         {% set link = dump.file|file_link(dump.line) %}
                         {% if link %}
@@ -38,7 +35,7 @@
 
 {% block menu %}
     <span class="label {{ collector.dumpsCount == 0 ? 'disabled' }}">
-        <span class="icon">{{ source('@Debug/Profiler/icon.svg') }}</span>
+        <span class="icon">{{ include('@Debug/Profiler/icon.svg') }}</span>
         <strong>Debug</strong>
     </span>
 {% endblock %}
@@ -48,12 +45,7 @@
 
     {% for dump in collector.getDumps('html') %}
         <div class="sf-dump sf-reset">
-            <span class="metadata">
-                {% if dump.label is defined and '' != dump.label %}
-                    <strong>{{ dump.label }}</strong> in
-                {% else %}
-                    In
-                {% endif %}
+            <span class="metadata">In
                 {% if dump.line %}
                     {% set link = dump.file|file_link(dump.line) %}
                     {% if link %}
@@ -76,7 +68,7 @@
             {{ dump.data|raw }}
         </div>
     {% else %}
-        <div class="empty empty-panel">
+        <div class="empty">
             <p>No content was dumped.</p>
         </div>
     {% endfor %}

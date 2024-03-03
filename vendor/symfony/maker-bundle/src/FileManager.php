@@ -194,7 +194,6 @@ class FileManager
         }
 
         $finalPath = implode('/', $finalParts);
-
         // Normalize: // => /
         // Normalize: /./ => /
         return str_replace(['//', '/./'], '/', $finalPath);

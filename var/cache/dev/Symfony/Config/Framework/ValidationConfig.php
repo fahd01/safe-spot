@@ -17,7 +17,6 @@ class ValidationConfig
     private $enabled;
     private $cache;
     private $enableAnnotations;
-    private $enableAttributes;
     private $staticMethod;
     private $translationDomain;
     private $emailValidationMode;
@@ -31,7 +30,7 @@ class ValidationConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): static
+    public function enabled($value): self
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -44,23 +43,10 @@ class ValidationConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function cache($value): static
+    public function cache($value): self
     {
         $this->_usedProperties['cache'] = true;
         $this->cache = $value;
-
-        return $this;
-    }
-
-    /**
-     * @default null
-     * @param ParamConfigurator|bool $value
-     * @return $this
-     */
-    public function enableAnnotations($value): static
-    {
-        $this->_usedProperties['enableAnnotations'] = true;
-        $this->enableAnnotations = $value;
 
         return $this;
     }
@@ -70,20 +56,19 @@ class ValidationConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enableAttributes($value): static
+    public function enableAnnotations($value): self
     {
-        $this->_usedProperties['enableAttributes'] = true;
-        $this->enableAttributes = $value;
+        $this->_usedProperties['enableAnnotations'] = true;
+        $this->enableAnnotations = $value;
 
         return $this;
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function staticMethod(ParamConfigurator|array $value): static
+    public function staticMethod($value): self
     {
         $this->_usedProperties['staticMethod'] = true;
         $this->staticMethod = $value;
@@ -96,7 +81,7 @@ class ValidationConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function translationDomain($value): static
+    public function translationDomain($value): self
     {
         $this->_usedProperties['translationDomain'] = true;
         $this->translationDomain = $value;
@@ -109,7 +94,7 @@ class ValidationConfig
      * @param ParamConfigurator|'html5'|'loose'|'strict' $value
      * @return $this
      */
-    public function emailValidationMode($value): static
+    public function emailValidationMode($value): self
     {
         $this->_usedProperties['emailValidationMode'] = true;
         $this->emailValidationMode = $value;
@@ -117,9 +102,6 @@ class ValidationConfig
         return $this;
     }
 
-    /**
-     * @default {"paths":[]}
-    */
     public function mapping(array $value = []): \Symfony\Config\Framework\Validation\MappingConfig
     {
         if (null === $this->mapping) {
@@ -132,9 +114,6 @@ class ValidationConfig
         return $this->mapping;
     }
 
-    /**
-     * @default {"enabled":true,"endpoint":null}
-    */
     public function notCompromisedPassword(array $value = []): \Symfony\Config\Framework\Validation\NotCompromisedPasswordConfig
     {
         if (null === $this->notCompromisedPassword) {
@@ -148,15 +127,9 @@ class ValidationConfig
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
-     * A collection of namespaces for which auto-mapping will be enabled by default, or null to opt-in with the EnableAutoMapping constraint.
-     * @example []
-     * @example ["validator.property_info_loader"]
      * @return \Symfony\Config\Framework\Validation\AutoMappingConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Framework\Validation\AutoMappingConfig : static)
      */
-    public function autoMapping(string $namespace, array $value = []): \Symfony\Config\Framework\Validation\AutoMappingConfig|static
+    public function autoMapping(string $namespace, $value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['autoMapping'] = true;
@@ -195,12 +168,6 @@ class ValidationConfig
             unset($value['enable_annotations']);
         }
 
-        if (array_key_exists('enable_attributes', $value)) {
-            $this->_usedProperties['enableAttributes'] = true;
-            $this->enableAttributes = $value['enable_attributes'];
-            unset($value['enable_attributes']);
-        }
-
         if (array_key_exists('static_method', $value)) {
             $this->_usedProperties['staticMethod'] = true;
             $this->staticMethod = $value['static_method'];
@@ -233,7 +200,7 @@ class ValidationConfig
 
         if (array_key_exists('auto_mapping', $value)) {
             $this->_usedProperties['autoMapping'] = true;
-            $this->autoMapping = array_map(fn ($v) => \is_array($v) ? new \Symfony\Config\Framework\Validation\AutoMappingConfig($v) : $v, $value['auto_mapping']);
+            $this->autoMapping = array_map(function ($v) { return \is_array($v) ? new \Symfony\Config\Framework\Validation\AutoMappingConfig($v) : $v; }, $value['auto_mapping']);
             unset($value['auto_mapping']);
         }
 
@@ -254,9 +221,6 @@ class ValidationConfig
         if (isset($this->_usedProperties['enableAnnotations'])) {
             $output['enable_annotations'] = $this->enableAnnotations;
         }
-        if (isset($this->_usedProperties['enableAttributes'])) {
-            $output['enable_attributes'] = $this->enableAttributes;
-        }
         if (isset($this->_usedProperties['staticMethod'])) {
             $output['static_method'] = $this->staticMethod;
         }
@@ -273,7 +237,7 @@ class ValidationConfig
             $output['not_compromised_password'] = $this->notCompromisedPassword->toArray();
         }
         if (isset($this->_usedProperties['autoMapping'])) {
-            $output['auto_mapping'] = array_map(fn ($v) => $v instanceof \Symfony\Config\Framework\Validation\AutoMappingConfig ? $v->toArray() : $v, $this->autoMapping);
+            $output['auto_mapping'] = array_map(function ($v) { return $v instanceof \Symfony\Config\Framework\Validation\AutoMappingConfig ? $v->toArray() : $v; }, $this->autoMapping);
         }
 
         return $output;

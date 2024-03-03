@@ -18,7 +18,7 @@ class CssinlinerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): static
+    public function enabled($value): self
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;

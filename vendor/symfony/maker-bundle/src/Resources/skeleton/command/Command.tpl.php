@@ -10,11 +10,6 @@ namespace <?= $namespace; ?>;
 )]
 class <?= $class_name; ?> extends Command
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     protected function configure(): void
     {
         $this

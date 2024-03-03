@@ -22,14 +22,17 @@ use Symfony\Component\Notifier\EventListener\NotificationLoggerListener;
  */
 final class NotificationDataCollector extends DataCollector
 {
-    private NotificationLoggerListener $logger;
+    private $logger;
 
     public function __construct(NotificationLoggerListener $logger)
     {
         $this->logger = $logger;
     }
 
-    public function collect(Request $request, Response $response, ?\Throwable $exception = null): void
+    /**
+     * {@inheritdoc}
+     */
+    public function collect(Request $request, Response $response, ?\Throwable $exception = null)
     {
         $this->data['events'] = $this->logger->getEvents();
     }
@@ -39,11 +42,17 @@ final class NotificationDataCollector extends DataCollector
         return $this->data['events'];
     }
 
-    public function reset(): void
+    /**
+     * {@inheritdoc}
+     */
+    public function reset()
     {
         $this->data = [];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getName(): string
     {
         return 'notifier';

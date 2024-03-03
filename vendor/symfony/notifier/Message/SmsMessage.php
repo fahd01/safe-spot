@@ -18,16 +18,13 @@ use Symfony\Component\Notifier\Recipient\SmsRecipientInterface;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class SmsMessage implements MessageInterface, FromNotificationInterface
+final class SmsMessage implements MessageInterface
 {
-    private ?string $transport = null;
-    private string $subject;
-    private string $phone;
-    private string $from;
-    private ?MessageOptionsInterface $options;
-    private ?Notification $notification = null;
+    private $transport;
+    private $subject;
+    private $phone;
 
-    public function __construct(string $phone, string $subject, string $from = '', ?MessageOptionsInterface $options = null)
+    public function __construct(string $phone, string $subject)
     {
         if ('' === $phone) {
             throw new InvalidArgumentException(sprintf('"%s" needs a phone number, it cannot be empty.', __CLASS__));
@@ -35,22 +32,17 @@ class SmsMessage implements MessageInterface, FromNotificationInterface
 
         $this->subject = $subject;
         $this->phone = $phone;
-        $this->from = $from;
-        $this->options = $options;
     }
 
     public static function fromNotification(Notification $notification, SmsRecipientInterface $recipient): self
     {
-        $message = new self($recipient->getPhone(), $notification->getSubject());
-        $message->notification = $notification;
-
-        return $message;
+        return new self($recipient->getPhone(), $notification->getSubject());
     }
 
     /**
      * @return $this
      */
-    public function phone(string $phone): static
+    public function phone(string $phone): self
     {
         if ('' === $phone) {
             throw new InvalidArgumentException(sprintf('"%s" needs a phone number, it cannot be empty.', static::class));
@@ -74,7 +66,7 @@ class SmsMessage implements MessageInterface, FromNotificationInterface
     /**
      * @return $this
      */
-    public function subject(string $subject): static
+    public function subject(string $subject): self
     {
         $this->subject = $subject;
 
@@ -89,7 +81,7 @@ class SmsMessage implements MessageInterface, FromNotificationInterface
     /**
      * @return $this
      */
-    public function transport(?string $transport): static
+    public function transport(?string $transport): self
     {
         $this->transport = $transport;
 
@@ -101,38 +93,8 @@ class SmsMessage implements MessageInterface, FromNotificationInterface
         return $this->transport;
     }
 
-    /**
-     * @return $this
-     */
-    public function from(string $from): static
-    {
-        $this->from = $from;
-
-        return $this;
-    }
-
-    public function getFrom(): string
-    {
-        return $this->from;
-    }
-
-    /**
-     * @return $this
-     */
-    public function options(MessageOptionsInterface $options): static
-    {
-        $this->options = $options;
-
-        return $this;
-    }
-
     public function getOptions(): ?MessageOptionsInterface
     {
-        return $this->options;
-    }
-
-    public function getNotification(): ?Notification
-    {
-        return $this->notification;
+        return null;
     }
 }

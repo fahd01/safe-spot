@@ -21,7 +21,7 @@ class PdfConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): static
+    public function enabled($value): self
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -34,7 +34,7 @@ class PdfConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function binary($value): static
+    public function binary($value): self
     {
         $this->_usedProperties['binary'] = true;
         $this->binary = $value;
@@ -43,9 +43,10 @@ class PdfConfig
     }
 
     /**
+     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function options(string $name, mixed $value): static
+    public function options(string $name, $value): self
     {
         $this->_usedProperties['options'] = true;
         $this->options[$name] = $value;
@@ -54,11 +55,10 @@ class PdfConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function env(ParamConfigurator|array $value): static
+    public function env($value): self
     {
         $this->_usedProperties['env'] = true;
         $this->env = $value;

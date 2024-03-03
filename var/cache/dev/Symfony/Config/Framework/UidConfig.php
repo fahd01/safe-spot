@@ -23,7 +23,7 @@ class UidConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): static
+    public function enabled($value): self
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -32,11 +32,11 @@ class UidConfig
     }
 
     /**
-     * @default null
-     * @param ParamConfigurator|7|6|4|1 $value
+     * @default 6
+     * @param ParamConfigurator|6|4|1 $value
      * @return $this
      */
-    public function defaultUuidVersion($value): static
+    public function defaultUuidVersion($value): self
     {
         $this->_usedProperties['defaultUuidVersion'] = true;
         $this->defaultUuidVersion = $value;
@@ -49,7 +49,7 @@ class UidConfig
      * @param ParamConfigurator|5|3 $value
      * @return $this
      */
-    public function nameBasedUuidVersion($value): static
+    public function nameBasedUuidVersion($value): self
     {
         $this->_usedProperties['nameBasedUuidVersion'] = true;
         $this->nameBasedUuidVersion = $value;
@@ -62,7 +62,7 @@ class UidConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function nameBasedUuidNamespace($value): static
+    public function nameBasedUuidNamespace($value): self
     {
         $this->_usedProperties['nameBasedUuidNamespace'] = true;
         $this->nameBasedUuidNamespace = $value;
@@ -71,11 +71,11 @@ class UidConfig
     }
 
     /**
-     * @default null
-     * @param ParamConfigurator|7|6|1 $value
+     * @default 6
+     * @param ParamConfigurator|6|1 $value
      * @return $this
      */
-    public function timeBasedUuidVersion($value): static
+    public function timeBasedUuidVersion($value): self
     {
         $this->_usedProperties['timeBasedUuidVersion'] = true;
         $this->timeBasedUuidVersion = $value;
@@ -88,7 +88,7 @@ class UidConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function timeBasedUuidNode($value): static
+    public function timeBasedUuidNode($value): self
     {
         $this->_usedProperties['timeBasedUuidNode'] = true;
         $this->timeBasedUuidNode = $value;

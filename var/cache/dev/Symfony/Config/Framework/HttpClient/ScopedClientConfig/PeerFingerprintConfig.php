@@ -18,10 +18,9 @@ class PeerFingerprintConfig
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
-     *
      * @return $this
      */
-    public function sha1(mixed $value): static
+    public function sha1($value): self
     {
         $this->_usedProperties['sha1'] = true;
         $this->sha1 = $value;
@@ -32,10 +31,9 @@ class PeerFingerprintConfig
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
-     *
      * @return $this
      */
-    public function pinsha256(mixed $value): static
+    public function pinsha256($value): self
     {
         $this->_usedProperties['pinsha256'] = true;
         $this->pinsha256 = $value;
@@ -46,10 +44,9 @@ class PeerFingerprintConfig
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
-     *
      * @return $this
      */
-    public function md5(mixed $value): static
+    public function md5($value): self
     {
         $this->_usedProperties['md5'] = true;
         $this->md5 = $value;

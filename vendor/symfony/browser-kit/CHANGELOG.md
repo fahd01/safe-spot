@@ -1,21 +1,6 @@
 CHANGELOG
 =========
 
-6.4
----
-
- * Add argument `$serverParameters` to `AbstractBrowser::click()` and `AbstractBrowser::clickLink()`
-
-6.3
----
-
- * Add `AbstractBrowser::useHtml5Parser()`
-
-6.1
----
-
- * Add `toArray` method to `Response`
-
 5.3
 ---
 

@@ -57,7 +57,9 @@ abstract class TransportTestCase extends TestCase
      */
     public function testSupportedMessages(MessageInterface $message, ?TransportInterface $transport = null)
     {
-        $transport ??= $this->createTransport();
+        if (null === $transport) {
+            $transport = $this->createTransport();
+        }
 
         $this->assertTrue($transport->supports($message));
     }
@@ -67,7 +69,9 @@ abstract class TransportTestCase extends TestCase
      */
     public function testUnsupportedMessages(MessageInterface $message, ?TransportInterface $transport = null)
     {
-        $transport ??= $this->createTransport();
+        if (null === $transport) {
+            $transport = $this->createTransport();
+        }
 
         $this->assertFalse($transport->supports($message));
     }
@@ -77,7 +81,9 @@ abstract class TransportTestCase extends TestCase
      */
     public function testUnsupportedMessagesTrowUnsupportedMessageTypeExceptionWhenSend(MessageInterface $message, ?TransportInterface $transport = null)
     {
-        $transport ??= $this->createTransport();
+        if (null === $transport) {
+            $transport = $this->createTransport();
+        }
 
         $this->expectException(UnsupportedMessageTypeException::class);
 

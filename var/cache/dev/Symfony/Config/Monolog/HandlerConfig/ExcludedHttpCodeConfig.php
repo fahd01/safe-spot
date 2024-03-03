@@ -19,7 +19,7 @@ class ExcludedHttpCodeConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function code($value): static
+    public function code($value): self
     {
         $this->_usedProperties['code'] = true;
         $this->code = $value;
@@ -28,11 +28,10 @@ class ExcludedHttpCodeConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function urls(ParamConfigurator|array $value): static
+    public function urls($value): self
     {
         $this->_usedProperties['urls'] = true;
         $this->urls = $value;

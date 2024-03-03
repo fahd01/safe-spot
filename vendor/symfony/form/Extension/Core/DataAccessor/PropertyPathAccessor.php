@@ -29,14 +29,17 @@ use Symfony\Component\PropertyAccess\PropertyPathInterface;
  */
 class PropertyPathAccessor implements DataAccessorInterface
 {
-    private PropertyAccessorInterface $propertyAccessor;
+    private $propertyAccessor;
 
     public function __construct(?PropertyAccessorInterface $propertyAccessor = null)
     {
         $this->propertyAccessor = $propertyAccessor ?? PropertyAccess::createPropertyAccessor();
     }
 
-    public function getValue(object|array $data, FormInterface $form): mixed
+    /**
+     * {@inheritdoc}
+     */
+    public function getValue($data, FormInterface $form)
     {
         if (null === $propertyPath = $form->getPropertyPath()) {
             throw new AccessException('Unable to read from the given form data as no property path is defined.');
@@ -45,7 +48,10 @@ class PropertyPathAccessor implements DataAccessorInterface
         return $this->getPropertyValue($data, $propertyPath);
     }
 
-    public function setValue(object|array &$data, mixed $value, FormInterface $form): void
+    /**
+     * {@inheritdoc}
+     */
+    public function setValue(&$data, $propertyValue, FormInterface $form): void
     {
         if (null === $propertyPath = $form->getPropertyPath()) {
             throw new AccessException('Unable to write the given value as no property path is defined.');
@@ -53,28 +59,34 @@ class PropertyPathAccessor implements DataAccessorInterface
 
         // If the field is of type DateTimeInterface and the data is the same skip the update to
         // keep the original object hash
-        if ($value instanceof \DateTimeInterface && $value == $this->getPropertyValue($data, $propertyPath)) {
+        if ($propertyValue instanceof \DateTimeInterface && $propertyValue == $this->getPropertyValue($data, $propertyPath)) {
             return;
         }
 
         // If the data is identical to the value in $data, we are
         // dealing with a reference
-        if (!\is_object($data) || !$form->getConfig()->getByReference() || $value !== $this->getPropertyValue($data, $propertyPath)) {
-            $this->propertyAccessor->setValue($data, $propertyPath, $value);
+        if (!\is_object($data) || !$form->getConfig()->getByReference() || $propertyValue !== $this->getPropertyValue($data, $propertyPath)) {
+            $this->propertyAccessor->setValue($data, $propertyPath, $propertyValue);
         }
     }
 
-    public function isReadable(object|array $data, FormInterface $form): bool
+    /**
+     * {@inheritdoc}
+     */
+    public function isReadable($data, FormInterface $form): bool
     {
         return null !== $form->getPropertyPath();
     }
 
-    public function isWritable(object|array $data, FormInterface $form): bool
+    /**
+     * {@inheritdoc}
+     */
+    public function isWritable($data, FormInterface $form): bool
     {
         return null !== $form->getPropertyPath();
     }
 
-    private function getPropertyValue(object|array $data, PropertyPathInterface $propertyPath): mixed
+    private function getPropertyValue($data, PropertyPathInterface $propertyPath)
     {
         try {
             return $this->propertyAccessor->getValue($data, $propertyPath);
@@ -85,7 +97,7 @@ class PropertyPathAccessor implements DataAccessorInterface
 
             if (!$e instanceof UninitializedPropertyException
                 // For versions without UninitializedPropertyException check the exception message
-                && (class_exists(UninitializedPropertyException::class) || !str_contains($e->getMessage(), 'You should initialize it'))
+                && (class_exists(UninitializedPropertyException::class) || false === strpos($e->getMessage(), 'You should initialize it'))
             ) {
                 throw $e;
             }

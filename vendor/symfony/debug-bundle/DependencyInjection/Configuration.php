@@ -21,7 +21,10 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
-    public function getConfigTreeBuilder(): TreeBuilder
+    /**
+     * {@inheritdoc}
+     */
+    public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder('debug');
 

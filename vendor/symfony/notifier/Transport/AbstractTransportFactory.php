@@ -11,6 +11,8 @@
 
 namespace Symfony\Component\Notifier\Transport;
 
+use Symfony\Component\EventDispatcher\Event;
+use Symfony\Component\EventDispatcher\LegacyEventDispatcherProxy;
 use Symfony\Component\Notifier\Exception\IncompleteDsnException;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -26,7 +28,7 @@ abstract class AbstractTransportFactory implements TransportFactoryInterface
 
     public function __construct(?EventDispatcherInterface $dispatcher = null, ?HttpClientInterface $client = null)
     {
-        $this->dispatcher = $dispatcher;
+        $this->dispatcher = class_exists(Event::class) ? LegacyEventDispatcherProxy::decorate($dispatcher) : $dispatcher;
         $this->client = $client;
     }
 
@@ -42,11 +44,21 @@ abstract class AbstractTransportFactory implements TransportFactoryInterface
 
     protected function getUser(Dsn $dsn): string
     {
-        return $dsn->getUser() ?? throw new IncompleteDsnException('User is not set.', $dsn->getScheme().'://'.$dsn->getHost());
+        $user = $dsn->getUser();
+        if (null === $user) {
+            throw new IncompleteDsnException('User is not set.', $dsn->getScheme().'://'.$dsn->getHost());
+        }
+
+        return $user;
     }
 
     protected function getPassword(Dsn $dsn): string
     {
-        return $dsn->getPassword() ?? throw new IncompleteDsnException('Password is not set.', $dsn->getOriginalDsn());
+        $password = $dsn->getPassword();
+        if (null === $password) {
+            throw new IncompleteDsnException('Password is not set.', $dsn->getOriginalDsn());
+        }
+
+        return $password;
     }
 }

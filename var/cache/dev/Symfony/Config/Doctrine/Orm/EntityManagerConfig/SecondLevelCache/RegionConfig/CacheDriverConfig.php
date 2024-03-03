@@ -20,7 +20,7 @@ class CacheDriverConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function type($value): static
+    public function type($value): self
     {
         $this->_usedProperties['type'] = true;
         $this->type = $value;
@@ -33,7 +33,7 @@ class CacheDriverConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function id($value): static
+    public function id($value): self
     {
         $this->_usedProperties['id'] = true;
         $this->id = $value;
@@ -46,7 +46,7 @@ class CacheDriverConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function pool($value): static
+    public function pool($value): self
     {
         $this->_usedProperties['pool'] = true;
         $this->pool = $value;

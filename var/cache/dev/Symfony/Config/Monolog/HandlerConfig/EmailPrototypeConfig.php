@@ -19,7 +19,7 @@ class EmailPrototypeConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function id($value): static
+    public function id($value): self
     {
         $this->_usedProperties['id'] = true;
         $this->id = $value;
@@ -32,7 +32,7 @@ class EmailPrototypeConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function method($value): static
+    public function method($value): self
     {
         $this->_usedProperties['method'] = true;
         $this->method = $value;

@@ -28,7 +28,7 @@ class OrmConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultEntityManager($value): static
+    public function defaultEntityManager($value): self
     {
         $this->_usedProperties['defaultEntityManager'] = true;
         $this->defaultEntityManager = $value;
@@ -42,7 +42,7 @@ class OrmConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function autoGenerateProxyClasses($value): static
+    public function autoGenerateProxyClasses($value): self
     {
         $this->_usedProperties['autoGenerateProxyClasses'] = true;
         $this->autoGenerateProxyClasses = $value;
@@ -52,11 +52,11 @@ class OrmConfig
 
     /**
      * Enables the new implementation of proxies based on lazy ghosts instead of using the legacy implementation
-     * @default true
+     * @default false
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enableLazyGhostObjects($value): static
+    public function enableLazyGhostObjects($value): self
     {
         $this->_usedProperties['enableLazyGhostObjects'] = true;
         $this->enableLazyGhostObjects = $value;
@@ -69,7 +69,7 @@ class OrmConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function proxyDir($value): static
+    public function proxyDir($value): self
     {
         $this->_usedProperties['proxyDir'] = true;
         $this->proxyDir = $value;
@@ -82,7 +82,7 @@ class OrmConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function proxyNamespace($value): static
+    public function proxyNamespace($value): self
     {
         $this->_usedProperties['proxyNamespace'] = true;
         $this->proxyNamespace = $value;
@@ -90,9 +90,6 @@ class OrmConfig
         return $this;
     }
 
-    /**
-     * @default {"enabled":true,"auto_mapping":true,"evict_cache":false}
-    */
     public function controllerResolver(array $value = []): \Symfony\Config\Doctrine\Orm\ControllerResolverConfig
     {
         if (null === $this->controllerResolver) {
@@ -118,9 +115,10 @@ class OrmConfig
     }
 
     /**
+     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function resolveTargetEntity(string $interface, mixed $value): static
+    public function resolveTargetEntity(string $interface, $value): self
     {
         $this->_usedProperties['resolveTargetEntities'] = true;
         $this->resolveTargetEntities[$interface] = $value;
@@ -168,7 +166,7 @@ class OrmConfig
 
         if (array_key_exists('entity_managers', $value)) {
             $this->_usedProperties['entityManagers'] = true;
-            $this->entityManagers = array_map(fn ($v) => new \Symfony\Config\Doctrine\Orm\EntityManagerConfig($v), $value['entity_managers']);
+            $this->entityManagers = array_map(function ($v) { return new \Symfony\Config\Doctrine\Orm\EntityManagerConfig($v); }, $value['entity_managers']);
             unset($value['entity_managers']);
         }
 
@@ -205,7 +203,7 @@ class OrmConfig
             $output['controller_resolver'] = $this->controllerResolver->toArray();
         }
         if (isset($this->_usedProperties['entityManagers'])) {
-            $output['entity_managers'] = array_map(fn ($v) => $v->toArray(), $this->entityManagers);
+            $output['entity_managers'] = array_map(function ($v) { return $v->toArray(); }, $this->entityManagers);
         }
         if (isset($this->_usedProperties['resolveTargetEntities'])) {
             $output['resolve_target_entities'] = $this->resolveTargetEntities;

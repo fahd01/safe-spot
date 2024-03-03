@@ -19,7 +19,7 @@ class RequestConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): static
+    public function enabled($value): self
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -28,9 +28,10 @@ class RequestConfig
     }
 
     /**
+     * @param ParamConfigurator|array $value
      * @return $this
      */
-    public function format(string $name, mixed $value): static
+    public function format(string $name, $value): self
     {
         $this->_usedProperties['formats'] = true;
         $this->formats[$name] = $value;

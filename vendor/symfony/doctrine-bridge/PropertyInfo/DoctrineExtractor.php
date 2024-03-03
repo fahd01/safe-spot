@@ -16,6 +16,9 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\AssociationMapping;
 use Doctrine\ORM\Mapping\ClassMetadata;
+use Doctrine\ORM\Mapping\EmbeddedClassMapping;
+use Doctrine\ORM\Mapping\FieldMapping;
+use Doctrine\ORM\Mapping\JoinColumnMapping;
 use Doctrine\ORM\Mapping\MappingException as OrmMappingException;
 use Doctrine\Persistence\Mapping\MappingException;
 use Symfony\Component\PropertyInfo\PropertyAccessExtractorInterface;
@@ -30,12 +33,17 @@ use Symfony\Component\PropertyInfo\Type;
  */
 class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeExtractorInterface, PropertyAccessExtractorInterface
 {
-    public function __construct(
-        private readonly EntityManagerInterface $entityManager,
-    ) {
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
     }
 
-    public function getProperties(string $class, array $context = []): ?array
+    /**
+     * {@inheritdoc}
+     */
+    public function getProperties(string $class, array $context = [])
     {
         if (null === $metadata = $this->getMetadata($class)) {
             return null;
@@ -44,7 +52,9 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
         $properties = array_merge($metadata->getFieldNames(), $metadata->getAssociationNames());
 
         if ($metadata instanceof ClassMetadata && $metadata->embeddedClasses) {
-            $properties = array_filter($properties, fn ($property) => !str_contains($property, '.'));
+            $properties = array_filter($properties, function ($property) {
+                return !str_contains($property, '.');
+            });
 
             $properties = array_merge($properties, array_keys($metadata->embeddedClasses));
         }
@@ -52,7 +62,10 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
         return $properties;
     }
 
-    public function getTypes(string $class, string $property, array $context = []): ?array
+    /**
+     * {@inheritdoc}
+     */
+    public function getTypes(string $class, string $property, array $context = [])
     {
         if (null === $metadata = $this->getMetadata($class)) {
             return null;
@@ -78,20 +91,20 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
             if ($metadata instanceof ClassMetadata) {
                 $associationMapping = $metadata->getAssociationMapping($property);
 
-                if (isset($associationMapping['indexBy'])) {
-                    $subMetadata = $this->entityManager->getClassMetadata($associationMapping['targetEntity']);
+                if (self::getMappingValue($associationMapping, 'indexBy')) {
+                    $subMetadata = $this->entityManager->getClassMetadata(self::getMappingValue($associationMapping, 'targetEntity'));
 
                     // Check if indexBy value is a property
-                    $fieldName = $associationMapping['indexBy'];
+                    $fieldName = self::getMappingValue($associationMapping, 'indexBy');
                     if (null === ($typeOfField = $subMetadata->getTypeOfField($fieldName))) {
-                        $fieldName = $subMetadata->getFieldForColumn($associationMapping['indexBy']);
+                        $fieldName = $subMetadata->getFieldForColumn(self::getMappingValue($associationMapping, 'indexBy'));
                         // Not a property, maybe a column name?
                         if (null === ($typeOfField = $subMetadata->getTypeOfField($fieldName))) {
                             // Maybe the column name is the association join column?
                             $associationMapping = $subMetadata->getAssociationMapping($fieldName);
 
                             $indexProperty = $subMetadata->getSingleAssociationReferencedJoinColumnName($fieldName);
-                            $subMetadata = $this->entityManager->getClassMetadata($associationMapping['targetEntity']);
+                            $subMetadata = $this->entityManager->getClassMetadata(self::getMappingValue($associationMapping, 'targetEntity'));
 
                             // Not a property, maybe a column name?
                             if (null === ($typeOfField = $subMetadata->getTypeOfField($indexProperty))) {
@@ -118,7 +131,7 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
         }
 
         if ($metadata instanceof ClassMetadata && isset($metadata->embeddedClasses[$property])) {
-            return [new Type(Type::BUILTIN_TYPE_OBJECT, false, $metadata->embeddedClasses[$property]['class'])];
+            return [new Type(Type::BUILTIN_TYPE_OBJECT, false, self::getMappingValue($metadata->embeddedClasses[$property], 'class'))];
         }
 
         if ($metadata->hasField($property)) {
@@ -130,7 +143,7 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
 
             $nullable = $metadata instanceof ClassMetadata && $metadata->isNullable($property);
             $enumType = null;
-            if (null !== $enumClass = $metadata->getFieldMapping($property)['enumType'] ?? null) {
+            if (null !== $enumClass = self::getMappingValue($metadata->getFieldMapping($property), 'enumType') ?? null) {
                 $enumType = new Type(Type::BUILTIN_TYPE_OBJECT, $nullable, $enumClass);
             }
 
@@ -184,12 +197,18 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
         return null;
     }
 
-    public function isReadable(string $class, string $property, array $context = []): ?bool
+    /**
+     * {@inheritdoc}
+     */
+    public function isReadable(string $class, string $property, array $context = [])
     {
         return null;
     }
 
-    public function isWritable(string $class, string $property, array $context = []): ?bool
+    /**
+     * {@inheritdoc}
+     */
+    public function isWritable(string $class, string $property, array $context = [])
     {
         if (
             null === ($metadata = $this->getMetadata($class))
@@ -206,7 +225,7 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
     {
         try {
             return $this->entityManager->getClassMetadata($class);
-        } catch (MappingException|OrmMappingException) {
+        } catch (MappingException|OrmMappingException $exception) {
             return null;
         }
     }
@@ -218,19 +237,19 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
      *
      * @see https://github.com/doctrine/doctrine2/blob/v2.5.4/lib/Doctrine/ORM/Tools/EntityGenerator.php#L1221-L1246
      */
-    private function isAssociationNullable(array|AssociationMapping $associationMapping): bool
+    private function isAssociationNullable($associationMapping): bool
     {
-        if (isset($associationMapping['id']) && $associationMapping['id']) {
+        if (self::getMappingValue($associationMapping, 'id')) {
             return false;
         }
 
-        if (!isset($associationMapping['joinColumns'])) {
+        if (!self::getMappingValue($associationMapping, 'joinColumns')) {
             return true;
         }
 
-        $joinColumns = $associationMapping['joinColumns'];
+        $joinColumns = self::getMappingValue($associationMapping, 'joinColumns');
         foreach ($joinColumns as $joinColumn) {
-            if (isset($joinColumn['nullable']) && !$joinColumn['nullable']) {
+            if (false === self::getMappingValue($joinColumn, 'nullable')) {
                 return false;
             }
         }
@@ -243,33 +262,61 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
      */
     private function getPhpType(string $doctrineType): ?string
     {
-        return match ($doctrineType) {
-            Types::SMALLINT,
-            Types::INTEGER => Type::BUILTIN_TYPE_INT,
-            Types::FLOAT => Type::BUILTIN_TYPE_FLOAT,
-            Types::BIGINT,
-            Types::STRING,
-            Types::TEXT,
-            Types::GUID,
-            Types::DECIMAL => Type::BUILTIN_TYPE_STRING,
-            Types::BOOLEAN => Type::BUILTIN_TYPE_BOOL,
-            Types::BLOB,
-            Types::BINARY => Type::BUILTIN_TYPE_RESOURCE,
-            'object', // DBAL < 4
-            Types::DATE_MUTABLE,
-            Types::DATETIME_MUTABLE,
-            Types::DATETIMETZ_MUTABLE,
-            'vardatetime',
-            Types::TIME_MUTABLE,
-            Types::DATE_IMMUTABLE,
-            Types::DATETIME_IMMUTABLE,
-            Types::DATETIMETZ_IMMUTABLE,
-            Types::TIME_IMMUTABLE,
-            Types::DATEINTERVAL => Type::BUILTIN_TYPE_OBJECT,
-            'array', // DBAL < 4
-            'json_array', // DBAL < 3
-            Types::SIMPLE_ARRAY => Type::BUILTIN_TYPE_ARRAY,
-            default => null,
-        };
+        switch ($doctrineType) {
+            case Types::SMALLINT:
+            case Types::INTEGER:
+                return Type::BUILTIN_TYPE_INT;
+
+            case Types::FLOAT:
+                return Type::BUILTIN_TYPE_FLOAT;
+
+            case Types::BIGINT:
+            case Types::STRING:
+            case Types::TEXT:
+            case Types::GUID:
+            case Types::DECIMAL:
+                return Type::BUILTIN_TYPE_STRING;
+
+            case Types::BOOLEAN:
+                return Type::BUILTIN_TYPE_BOOL;
+
+            case Types::BLOB:
+            case Types::BINARY:
+                return Type::BUILTIN_TYPE_RESOURCE;
+
+            case 'object': // DBAL < 4
+            case Types::DATE_MUTABLE:
+            case Types::DATETIME_MUTABLE:
+            case Types::DATETIMETZ_MUTABLE:
+            case 'vardatetime':
+            case Types::TIME_MUTABLE:
+            case Types::DATE_IMMUTABLE:
+            case Types::DATETIME_IMMUTABLE:
+            case Types::DATETIMETZ_IMMUTABLE:
+            case Types::TIME_IMMUTABLE:
+            case Types::DATEINTERVAL:
+                return Type::BUILTIN_TYPE_OBJECT;
+
+            case 'array': // DBAL < 4
+            case Types::SIMPLE_ARRAY:
+            case 'json_array': // DBAL < 3
+                return Type::BUILTIN_TYPE_ARRAY;
+        }
+
+        return null;
+    }
+
+    /**
+     * @param array|AssociationMapping|EmbeddedClassMapping|FieldMapping|JoinColumnMapping $mapping
+     *
+     * @return mixed
+     */
+    private static function getMappingValue($mapping, string $key)
+    {
+        if ($mapping instanceof AssociationMapping || $mapping instanceof EmbeddedClassMapping || $mapping instanceof FieldMapping || $mapping instanceof JoinColumnMapping) {
+            return $mapping->$key;
+        }
+
+        return $mapping[$key] ?? null;
     }
 }

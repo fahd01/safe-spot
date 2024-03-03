@@ -58,10 +58,6 @@ class MakerTestKernel extends Kernel implements CompilerPassInterface
                 'utf8' => true,
             ],
             'http_method_override' => false,
-            'handle_all_throwables' => true,
-            'php_errors' => [
-                'log' => true,
-            ],
         ]);
     }
 

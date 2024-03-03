@@ -22,7 +22,7 @@ class TableStorageConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function tableName($value): static
+    public function tableName($value): self
     {
         $this->_usedProperties['tableName'] = true;
         $this->tableName = $value;
@@ -35,7 +35,7 @@ class TableStorageConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function versionColumnName($value): static
+    public function versionColumnName($value): self
     {
         $this->_usedProperties['versionColumnName'] = true;
         $this->versionColumnName = $value;
@@ -48,7 +48,7 @@ class TableStorageConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function versionColumnLength($value): static
+    public function versionColumnLength($value): self
     {
         $this->_usedProperties['versionColumnLength'] = true;
         $this->versionColumnLength = $value;
@@ -61,7 +61,7 @@ class TableStorageConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function executedAtColumnName($value): static
+    public function executedAtColumnName($value): self
     {
         $this->_usedProperties['executedAtColumnName'] = true;
         $this->executedAtColumnName = $value;
@@ -74,7 +74,7 @@ class TableStorageConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function executionTimeColumnName($value): static
+    public function executionTimeColumnName($value): self
     {
         $this->_usedProperties['executionTimeColumnName'] = true;
         $this->executionTimeColumnName = $value;

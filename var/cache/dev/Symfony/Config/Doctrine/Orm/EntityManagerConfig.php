@@ -42,13 +42,9 @@ class EntityManagerConfig
     private $_usedProperties = [];
 
     /**
-     * @template TValue
-     * @param TValue $value
-     * @default {"type":null}
      * @return \Symfony\Config\Doctrine\Orm\EntityManagerConfig\QueryCacheDriverConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Doctrine\Orm\EntityManagerConfig\QueryCacheDriverConfig : static)
      */
-    public function queryCacheDriver(string|array $value = []): \Symfony\Config\Doctrine\Orm\EntityManagerConfig\QueryCacheDriverConfig|static
+    public function queryCacheDriver($value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['queryCacheDriver'] = true;
@@ -68,12 +64,9 @@ class EntityManagerConfig
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
      * @return \Symfony\Config\Doctrine\Orm\EntityManagerConfig\MetadataCacheDriverConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Doctrine\Orm\EntityManagerConfig\MetadataCacheDriverConfig : static)
      */
-    public function metadataCacheDriver(string|array $value = []): \Symfony\Config\Doctrine\Orm\EntityManagerConfig\MetadataCacheDriverConfig|static
+    public function metadataCacheDriver($value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['metadataCacheDriver'] = true;
@@ -93,13 +86,9 @@ class EntityManagerConfig
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
-     * @default {"type":null}
      * @return \Symfony\Config\Doctrine\Orm\EntityManagerConfig\ResultCacheDriverConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Doctrine\Orm\EntityManagerConfig\ResultCacheDriverConfig : static)
      */
-    public function resultCacheDriver(string|array $value = []): \Symfony\Config\Doctrine\Orm\EntityManagerConfig\ResultCacheDriverConfig|static
+    public function resultCacheDriver($value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['resultCacheDriver'] = true;
@@ -119,12 +108,9 @@ class EntityManagerConfig
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
      * @return \Symfony\Config\Doctrine\Orm\EntityManagerConfig\EntityListenersConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Doctrine\Orm\EntityManagerConfig\EntityListenersConfig : static)
      */
-    public function entityListeners(mixed $value = []): \Symfony\Config\Doctrine\Orm\EntityManagerConfig\EntityListenersConfig|static
+    public function entityListeners($value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['entityListeners'] = true;
@@ -148,7 +134,7 @@ class EntityManagerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function connection($value): static
+    public function connection($value): self
     {
         $this->_usedProperties['connection'] = true;
         $this->connection = $value;
@@ -161,7 +147,7 @@ class EntityManagerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function classMetadataFactoryName($value): static
+    public function classMetadataFactoryName($value): self
     {
         $this->_usedProperties['classMetadataFactoryName'] = true;
         $this->classMetadataFactoryName = $value;
@@ -174,7 +160,7 @@ class EntityManagerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultRepositoryClass($value): static
+    public function defaultRepositoryClass($value): self
     {
         $this->_usedProperties['defaultRepositoryClass'] = true;
         $this->defaultRepositoryClass = $value;
@@ -187,7 +173,7 @@ class EntityManagerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function autoMapping($value): static
+    public function autoMapping($value): self
     {
         $this->_usedProperties['autoMapping'] = true;
         $this->autoMapping = $value;
@@ -200,7 +186,7 @@ class EntityManagerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function namingStrategy($value): static
+    public function namingStrategy($value): self
     {
         $this->_usedProperties['namingStrategy'] = true;
         $this->namingStrategy = $value;
@@ -213,7 +199,7 @@ class EntityManagerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function quoteStrategy($value): static
+    public function quoteStrategy($value): self
     {
         $this->_usedProperties['quoteStrategy'] = true;
         $this->quoteStrategy = $value;
@@ -226,7 +212,7 @@ class EntityManagerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function entityListenerResolver($value): static
+    public function entityListenerResolver($value): self
     {
         $this->_usedProperties['entityListenerResolver'] = true;
         $this->entityListenerResolver = $value;
@@ -239,7 +225,7 @@ class EntityManagerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function repositoryFactory($value): static
+    public function repositoryFactory($value): self
     {
         $this->_usedProperties['repositoryFactory'] = true;
         $this->repositoryFactory = $value;
@@ -248,11 +234,10 @@ class EntityManagerConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function schemaIgnoreClasses(ParamConfigurator|array $value): static
+    public function schemaIgnoreClasses($value): self
     {
         $this->_usedProperties['schemaIgnoreClasses'] = true;
         $this->schemaIgnoreClasses = $value;
@@ -262,11 +247,11 @@ class EntityManagerConfig
 
     /**
      * Set to "true" to opt-in to the new mapping driver mode that was added in Doctrine ORM 2.16 and will be mandatory in ORM 3.0. See https://github.com/doctrine/orm/pull/10455.
-     * @default true
+     * @default false
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function reportFieldsWhereDeclared($value): static
+    public function reportFieldsWhereDeclared($value): self
     {
         $this->_usedProperties['reportFieldsWhereDeclared'] = true;
         $this->reportFieldsWhereDeclared = $value;
@@ -280,7 +265,7 @@ class EntityManagerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function validateXmlMapping($value): static
+    public function validateXmlMapping($value): self
     {
         $this->_usedProperties['validateXmlMapping'] = true;
         $this->validateXmlMapping = $value;
@@ -301,9 +286,10 @@ class EntityManagerConfig
     }
 
     /**
+     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function hydrator(string $name, mixed $value): static
+    public function hydrator(string $name, $value): self
     {
         $this->_usedProperties['hydrators'] = true;
         $this->hydrators[$name] = $value;
@@ -312,12 +298,9 @@ class EntityManagerConfig
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
      * @return \Symfony\Config\Doctrine\Orm\EntityManagerConfig\MappingConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Doctrine\Orm\EntityManagerConfig\MappingConfig : static)
      */
-    public function mapping(string $name, string|array $value = []): \Symfony\Config\Doctrine\Orm\EntityManagerConfig\MappingConfig|static
+    public function mapping(string $name, $value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['mappings'] = true;
@@ -349,13 +332,9 @@ class EntityManagerConfig
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
-     * Register SQL Filters in the entity manager
      * @return \Symfony\Config\Doctrine\Orm\EntityManagerConfig\FilterConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Doctrine\Orm\EntityManagerConfig\FilterConfig : static)
      */
-    public function filter(string $name, mixed $value = []): \Symfony\Config\Doctrine\Orm\EntityManagerConfig\FilterConfig|static
+    public function filter(string $name, $value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['filters'] = true;
@@ -480,7 +459,7 @@ class EntityManagerConfig
 
         if (array_key_exists('mappings', $value)) {
             $this->_usedProperties['mappings'] = true;
-            $this->mappings = array_map(fn ($v) => \is_array($v) ? new \Symfony\Config\Doctrine\Orm\EntityManagerConfig\MappingConfig($v) : $v, $value['mappings']);
+            $this->mappings = array_map(function ($v) { return \is_array($v) ? new \Symfony\Config\Doctrine\Orm\EntityManagerConfig\MappingConfig($v) : $v; }, $value['mappings']);
             unset($value['mappings']);
         }
 
@@ -492,7 +471,7 @@ class EntityManagerConfig
 
         if (array_key_exists('filters', $value)) {
             $this->_usedProperties['filters'] = true;
-            $this->filters = array_map(fn ($v) => \is_array($v) ? new \Symfony\Config\Doctrine\Orm\EntityManagerConfig\FilterConfig($v) : $v, $value['filters']);
+            $this->filters = array_map(function ($v) { return \is_array($v) ? new \Symfony\Config\Doctrine\Orm\EntityManagerConfig\FilterConfig($v) : $v; }, $value['filters']);
             unset($value['filters']);
         }
 
@@ -556,13 +535,13 @@ class EntityManagerConfig
             $output['hydrators'] = $this->hydrators;
         }
         if (isset($this->_usedProperties['mappings'])) {
-            $output['mappings'] = array_map(fn ($v) => $v instanceof \Symfony\Config\Doctrine\Orm\EntityManagerConfig\MappingConfig ? $v->toArray() : $v, $this->mappings);
+            $output['mappings'] = array_map(function ($v) { return $v instanceof \Symfony\Config\Doctrine\Orm\EntityManagerConfig\MappingConfig ? $v->toArray() : $v; }, $this->mappings);
         }
         if (isset($this->_usedProperties['dql'])) {
             $output['dql'] = $this->dql->toArray();
         }
         if (isset($this->_usedProperties['filters'])) {
-            $output['filters'] = array_map(fn ($v) => $v instanceof \Symfony\Config\Doctrine\Orm\EntityManagerConfig\FilterConfig ? $v->toArray() : $v, $this->filters);
+            $output['filters'] = array_map(function ($v) { return $v instanceof \Symfony\Config\Doctrine\Orm\EntityManagerConfig\FilterConfig ? $v->toArray() : $v; }, $this->filters);
         }
 
         return $output;

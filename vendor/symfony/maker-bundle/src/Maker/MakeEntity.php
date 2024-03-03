@@ -11,6 +11,7 @@
 
 namespace Symfony\Bundle\MakerBundle\Maker;
 
+use ApiPlatform\Core\Annotation\ApiResource as LegacyApiResource;
 use ApiPlatform\Metadata\ApiResource;
 use Doctrine\DBAL\Types\Type;
 use Symfony\Bundle\MakerBundle\ConsoleStyle;
@@ -20,6 +21,7 @@ use Symfony\Bundle\MakerBundle\Doctrine\EntityClassGenerator;
 use Symfony\Bundle\MakerBundle\Doctrine\EntityRegenerator;
 use Symfony\Bundle\MakerBundle\Doctrine\EntityRelation;
 use Symfony\Bundle\MakerBundle\Doctrine\ORMDependencyBuilder;
+use Symfony\Bundle\MakerBundle\Exception\RuntimeCommandException;
 use Symfony\Bundle\MakerBundle\FileManager;
 use Symfony\Bundle\MakerBundle\Generator;
 use Symfony\Bundle\MakerBundle\InputAwareMakerInterface;
@@ -28,7 +30,6 @@ use Symfony\Bundle\MakerBundle\Str;
 use Symfony\Bundle\MakerBundle\Util\ClassDetails;
 use Symfony\Bundle\MakerBundle\Util\ClassSourceManipulator;
 use Symfony\Bundle\MakerBundle\Util\CliOutputHelper;
-use Symfony\Bundle\MakerBundle\Util\ClassSource\Model\ClassProperty;
 use Symfony\Bundle\MakerBundle\Util\PhpCompatUtil;
 use Symfony\Bundle\MakerBundle\Validator;
 use Symfony\Component\Console\Command\Command;
@@ -91,7 +92,7 @@ final class MakeEntity extends AbstractMaker implements InputAwareMakerInterface
 
     public static function getCommandDescription(): string
     {
-        return 'Create or update a Doctrine entity class, and optionally an API Platform resource';
+        return 'Creates or updates a Doctrine entity class, and optionally an API Platform resource';
     }
 
     public function configureCommand(Command $command, InputConfiguration $inputConfig): void
@@ -134,7 +135,7 @@ final class MakeEntity extends AbstractMaker implements InputAwareMakerInterface
 
         if (
             !$input->getOption('api-resource')
-            && class_exists(ApiResource::class)
+            && (class_exists(ApiResource::class) || class_exists(LegacyApiResource::class))
             && !class_exists($this->generator->createClassNameDetails($entityClassName, 'Entity\\')->getFullName())
         ) {
             $description = $command->getDefinition()->getOption('api-resource')->getDescription();
@@ -200,6 +201,10 @@ final class MakeEntity extends AbstractMaker implements InputAwareMakerInterface
             $generator->writeChanges();
         }
 
+        if (!$this->doesEntityUseAttributeMapping($entityClassDetails->getFullName())) {
+            throw new RuntimeCommandException(sprintf('Only attribute mapping is supported by make:entity, but the <info>%s</info> class uses a different format. If you would like this command to generate the properties & getter/setter methods, add your mapping configuration, and then re-run this command with the <info>--regenerate</info> flag.', $entityClassDetails->getFullName()));
+        }
+
         if ($classExists) {
             $entityPath = $this->getPathOfClass($entityClassDetails->getFullName());
             $io->text([
@@ -228,10 +233,12 @@ final class MakeEntity extends AbstractMaker implements InputAwareMakerInterface
             $fileManagerOperations = [];
             $fileManagerOperations[$entityPath] = $manipulator;
 
-            if ($newField instanceof ClassProperty) {
-                $manipulator->addEntityField($newField);
+            if (\is_array($newField)) {
+                $annotationOptions = $newField;
+                unset($annotationOptions['fieldName']);
+                $manipulator->addEntityField($newField['fieldName'], $annotationOptions);
 
-                $currentFields[] = $newField->propertyName;
+                $currentFields[] = $newField['fieldName'];
             } elseif ($newField instanceof EntityRelation) {
                 // both overridden below for OneToMany
                 $newFieldName = $newField->getOwningProperty();
@@ -312,10 +319,17 @@ final class MakeEntity extends AbstractMaker implements InputAwareMakerInterface
     public function configureDependencies(DependencyBuilder $dependencies, InputInterface $input = null): void
     {
         if (null !== $input && $input->getOption('api-resource')) {
-            $dependencies->addClassDependency(
-                ApiResource::class,
-                'api'
-            );
+            if (class_exists(ApiResource::class)) {
+                $dependencies->addClassDependency(
+                    ApiResource::class,
+                    'api'
+                );
+            } else {
+                $dependencies->addClassDependency(
+                    LegacyApiResource::class,
+                    'api'
+                );
+            }
         }
 
         if (null !== $input && $input->getOption('broadcast')) {
@@ -328,7 +342,7 @@ final class MakeEntity extends AbstractMaker implements InputAwareMakerInterface
         ORMDependencyBuilder::buildDependencies($dependencies);
     }
 
-    private function askForNextField(ConsoleStyle $io, array $fields, string $entityClass, bool $isFirstField): EntityRelation|ClassProperty|null
+    private function askForNextField(ConsoleStyle $io, array $fields, string $entityClass, bool $isFirstField): EntityRelation|array|null
     {
         $io->writeln('');
 
@@ -406,24 +420,23 @@ final class MakeEntity extends AbstractMaker implements InputAwareMakerInterface
         }
 
         // this is a normal field
-        $classProperty = new ClassProperty(propertyName: $fieldName, type: $type);
-
+        $data = ['fieldName' => $fieldName, 'type' => $type];
         if ('string' === $type) {
             // default to 255, avoid the question
-            $classProperty->length = $io->ask('Field length', 255, [Validator::class, 'validateLength']);
+            $data['length'] = $io->ask('Field length', 255, [Validator::class, 'validateLength']);
         } elseif ('decimal' === $type) {
             // 10 is the default value given in \Doctrine\DBAL\Schema\Column::$_precision
-            $classProperty->precision = $io->ask('Precision (total number of digits stored: 100.00 would be 5)', 10, [Validator::class, 'validatePrecision']);
+            $data['precision'] = $io->ask('Precision (total number of digits stored: 100.00 would be 5)', 10, [Validator::class, 'validatePrecision']);
 
             // 0 is the default value given in \Doctrine\DBAL\Schema\Column::$_scale
-            $classProperty->scale = $io->ask('Scale (number of decimals to store: 100.00 would be 2)', 0, [Validator::class, 'validateScale']);
+            $data['scale'] = $io->ask('Scale (number of decimals to store: 100.00 would be 2)', 0, [Validator::class, 'validateScale']);
         }
 
         if ($io->confirm('Can this field be null in the database (nullable)', false)) {
-            $classProperty->nullable = true;
+            $data['nullable'] = true;
         }
 
-        return $classProperty;
+        return $data;
     }
 
     private function printAvailableTypes(ConsoleStyle $io): void
@@ -536,6 +549,7 @@ final class MakeEntity extends AbstractMaker implements InputAwareMakerInterface
                 $targetEntityClass = $answeredEntityClass;
             } else {
                 $io->error(sprintf('Unknown class "%s"', $answeredEntityClass));
+                continue;
             }
         }
 
@@ -832,6 +846,23 @@ final class MakeEntity extends AbstractMaker implements InputAwareMakerInterface
         return array_map(static fn (\ReflectionProperty $prop) => $prop->getName(), $reflClass->getProperties());
     }
 
+    /** @legacy Drop when Annotations are no longer supported */
+    private function doesEntityUseAttributeMapping(string $className): bool
+    {
+        if (!class_exists($className)) {
+            $otherClassMetadatas = $this->doctrineHelper->getMetadata(Str::getNamespace($className).'\\', true);
+
+            // if we have no metadata, we should assume this is the first class being mapped
+            if (empty($otherClassMetadatas)) {
+                return false;
+            }
+
+            $className = reset($otherClassMetadatas)->getName();
+        }
+
+        return $this->doctrineHelper->doesClassUsesAttributes($className);
+    }
+
     private function getEntityNamespace(): string
     {
         return $this->doctrineHelper->getEntityNamespace();
@@ -839,6 +870,13 @@ final class MakeEntity extends AbstractMaker implements InputAwareMakerInterface
 
     private function getTypesMap(): array
     {
-        return Type::getTypesMap();
+        $types = Type::getTypesMap();
+
+        // remove deprecated json_array if it exists
+        if (\defined(sprintf('%s::JSON_ARRAY', Type::class))) {
+            unset($types[Type::JSON_ARRAY]);
+        }
+
+        return $types;
     }
 }

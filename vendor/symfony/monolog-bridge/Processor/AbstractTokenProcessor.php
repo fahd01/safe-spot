@@ -11,7 +11,6 @@
 
 namespace Symfony\Bridge\Monolog\Processor;
 
-use Monolog\LogRecord;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
@@ -20,13 +19,9 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
  *
  * @author Dany Maillard <danymaillard93b@gmail.com>
  * @author Igor Timoshenko <igor.timoshenko@i.ua>
- *
- * @internal since Symfony 6.1
  */
 abstract class AbstractTokenProcessor
 {
-    use CompatibilityProcessor;
-
     /**
      * @var TokenStorageInterface
      */
@@ -41,17 +36,22 @@ abstract class AbstractTokenProcessor
 
     abstract protected function getToken(): ?TokenInterface;
 
-    private function doInvoke(array|LogRecord $record): array|LogRecord
+    public function __invoke(array $record): array
     {
         $record['extra'][$this->getKey()] = null;
 
         if (null !== $token = $this->getToken()) {
             $record['extra'][$this->getKey()] = [
-                'authenticated' => (bool) $token->getUser(),
+                'authenticated' => method_exists($token, 'isAuthenticated') ? $token->isAuthenticated(false) : (bool) $token->getUser(),
                 'roles' => $token->getRoleNames(),
             ];
 
-            $record['extra'][$this->getKey()]['user_identifier'] = $token->getUserIdentifier();
+            // @deprecated since Symfony 5.3, change to $token->getUserIdentifier() in 6.0
+            if (method_exists($token, 'getUserIdentifier')) {
+                $record['extra'][$this->getKey()]['username'] = $record['extra'][$this->getKey()]['user_identifier'] = $token->getUserIdentifier();
+            } else {
+                $record['extra'][$this->getKey()]['username'] = $token->getUsername();
+            }
         }
 
         return $record;

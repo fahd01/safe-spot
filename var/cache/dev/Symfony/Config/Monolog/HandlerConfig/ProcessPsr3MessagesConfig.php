@@ -20,7 +20,7 @@ class ProcessPsr3MessagesConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): static
+    public function enabled($value): self
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -33,7 +33,7 @@ class ProcessPsr3MessagesConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function dateFormat($value): static
+    public function dateFormat($value): self
     {
         $this->_usedProperties['dateFormat'] = true;
         $this->dateFormat = $value;
@@ -46,7 +46,7 @@ class ProcessPsr3MessagesConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function removeUsedContextFields($value): static
+    public function removeUsedContextFields($value): self
     {
         $this->_usedProperties['removeUsedContextFields'] = true;
         $this->removeUsedContextFields = $value;

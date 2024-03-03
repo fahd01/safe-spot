@@ -14,7 +14,6 @@ use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 class DefaultOptionsConfig 
 {
     private $headers;
-    private $vars;
     private $maxRedirects;
     private $httpVersion;
     private $resolve;
@@ -32,31 +31,17 @@ class DefaultOptionsConfig
     private $passphrase;
     private $ciphers;
     private $peerFingerprint;
-    private $cryptoMethod;
-    private $extra;
     private $retryFailed;
     private $_usedProperties = [];
 
     /**
+     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function header(string $name, mixed $value): static
+    public function header(string $name, $value): self
     {
         $this->_usedProperties['headers'] = true;
         $this->headers[$name] = $value;
-
-        return $this;
-    }
-
-    /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
-     *
-     * @return $this
-     */
-    public function vars(ParamConfigurator|array $value): static
-    {
-        $this->_usedProperties['vars'] = true;
-        $this->vars = $value;
 
         return $this;
     }
@@ -67,7 +52,7 @@ class DefaultOptionsConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function maxRedirects($value): static
+    public function maxRedirects($value): self
     {
         $this->_usedProperties['maxRedirects'] = true;
         $this->maxRedirects = $value;
@@ -81,7 +66,7 @@ class DefaultOptionsConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function httpVersion($value): static
+    public function httpVersion($value): self
     {
         $this->_usedProperties['httpVersion'] = true;
         $this->httpVersion = $value;
@@ -90,9 +75,10 @@ class DefaultOptionsConfig
     }
 
     /**
+     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function resolve(string $host, mixed $value): static
+    public function resolve(string $host, $value): self
     {
         $this->_usedProperties['resolve'] = true;
         $this->resolve[$host] = $value;
@@ -106,7 +92,7 @@ class DefaultOptionsConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function proxy($value): static
+    public function proxy($value): self
     {
         $this->_usedProperties['proxy'] = true;
         $this->proxy = $value;
@@ -120,7 +106,7 @@ class DefaultOptionsConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function noProxy($value): static
+    public function noProxy($value): self
     {
         $this->_usedProperties['noProxy'] = true;
         $this->noProxy = $value;
@@ -134,7 +120,7 @@ class DefaultOptionsConfig
      * @param ParamConfigurator|float $value
      * @return $this
      */
-    public function timeout($value): static
+    public function timeout($value): self
     {
         $this->_usedProperties['timeout'] = true;
         $this->timeout = $value;
@@ -148,7 +134,7 @@ class DefaultOptionsConfig
      * @param ParamConfigurator|float $value
      * @return $this
      */
-    public function maxDuration($value): static
+    public function maxDuration($value): self
     {
         $this->_usedProperties['maxDuration'] = true;
         $this->maxDuration = $value;
@@ -162,7 +148,7 @@ class DefaultOptionsConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function bindto($value): static
+    public function bindto($value): self
     {
         $this->_usedProperties['bindto'] = true;
         $this->bindto = $value;
@@ -171,12 +157,12 @@ class DefaultOptionsConfig
     }
 
     /**
-     * Indicates if the peer should be verified in a TLS context.
+     * Indicates if the peer should be verified in an SSL/TLS context.
      * @default null
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function verifyPeer($value): static
+    public function verifyPeer($value): self
     {
         $this->_usedProperties['verifyPeer'] = true;
         $this->verifyPeer = $value;
@@ -190,7 +176,7 @@ class DefaultOptionsConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function verifyHost($value): static
+    public function verifyHost($value): self
     {
         $this->_usedProperties['verifyHost'] = true;
         $this->verifyHost = $value;
@@ -204,7 +190,7 @@ class DefaultOptionsConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function cafile($value): static
+    public function cafile($value): self
     {
         $this->_usedProperties['cafile'] = true;
         $this->cafile = $value;
@@ -218,7 +204,7 @@ class DefaultOptionsConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function capath($value): static
+    public function capath($value): self
     {
         $this->_usedProperties['capath'] = true;
         $this->capath = $value;
@@ -232,7 +218,7 @@ class DefaultOptionsConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function localCert($value): static
+    public function localCert($value): self
     {
         $this->_usedProperties['localCert'] = true;
         $this->localCert = $value;
@@ -246,7 +232,7 @@ class DefaultOptionsConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function localPk($value): static
+    public function localPk($value): self
     {
         $this->_usedProperties['localPk'] = true;
         $this->localPk = $value;
@@ -260,7 +246,7 @@ class DefaultOptionsConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function passphrase($value): static
+    public function passphrase($value): self
     {
         $this->_usedProperties['passphrase'] = true;
         $this->passphrase = $value;
@@ -269,12 +255,12 @@ class DefaultOptionsConfig
     }
 
     /**
-     * A list of TLS ciphers separated by colons, commas or spaces (e.g. "RC3-SHA:TLS13-AES-128-GCM-SHA256"...)
+     * A list of SSL/TLS ciphers separated by colons, commas or spaces (e.g. "RC3-SHA:TLS13-AES-128-GCM-SHA256"...)
      * @default null
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function ciphers($value): static
+    public function ciphers($value): self
     {
         $this->_usedProperties['ciphers'] = true;
         $this->ciphers = $value;
@@ -282,9 +268,6 @@ class DefaultOptionsConfig
         return $this;
     }
 
-    /**
-     * Associative array: hashing algorithm => hash(es).
-    */
     public function peerFingerprint(array $value = []): \Symfony\Config\Framework\HttpClient\DefaultOptions\PeerFingerprintConfig
     {
         if (null === $this->peerFingerprint) {
@@ -298,40 +281,9 @@ class DefaultOptionsConfig
     }
 
     /**
-     * The minimum version of TLS to accept; must be one of STREAM_CRYPTO_METHOD_TLSv*_CLIENT constants.
-     * @default null
-     * @param ParamConfigurator|mixed $value
-     * @return $this
-     */
-    public function cryptoMethod($value): static
-    {
-        $this->_usedProperties['cryptoMethod'] = true;
-        $this->cryptoMethod = $value;
-
-        return $this;
-    }
-
-    /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
-     *
-     * @return $this
-     */
-    public function extra(ParamConfigurator|array $value): static
-    {
-        $this->_usedProperties['extra'] = true;
-        $this->extra = $value;
-
-        return $this;
-    }
-
-    /**
-     * @template TValue
-     * @param TValue $value
-     * @default {"enabled":false,"retry_strategy":null,"http_codes":[],"max_retries":3,"delay":1000,"multiplier":2,"max_delay":0,"jitter":0.1}
      * @return \Symfony\Config\Framework\HttpClient\DefaultOptions\RetryFailedConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Framework\HttpClient\DefaultOptions\RetryFailedConfig : static)
      */
-    public function retryFailed(mixed $value = []): \Symfony\Config\Framework\HttpClient\DefaultOptions\RetryFailedConfig|static
+    public function retryFailed($value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['retryFailed'] = true;
@@ -356,12 +308,6 @@ class DefaultOptionsConfig
             $this->_usedProperties['headers'] = true;
             $this->headers = $value['headers'];
             unset($value['headers']);
-        }
-
-        if (array_key_exists('vars', $value)) {
-            $this->_usedProperties['vars'] = true;
-            $this->vars = $value['vars'];
-            unset($value['vars']);
         }
 
         if (array_key_exists('max_redirects', $value)) {
@@ -466,18 +412,6 @@ class DefaultOptionsConfig
             unset($value['peer_fingerprint']);
         }
 
-        if (array_key_exists('crypto_method', $value)) {
-            $this->_usedProperties['cryptoMethod'] = true;
-            $this->cryptoMethod = $value['crypto_method'];
-            unset($value['crypto_method']);
-        }
-
-        if (array_key_exists('extra', $value)) {
-            $this->_usedProperties['extra'] = true;
-            $this->extra = $value['extra'];
-            unset($value['extra']);
-        }
-
         if (array_key_exists('retry_failed', $value)) {
             $this->_usedProperties['retryFailed'] = true;
             $this->retryFailed = \is_array($value['retry_failed']) ? new \Symfony\Config\Framework\HttpClient\DefaultOptions\RetryFailedConfig($value['retry_failed']) : $value['retry_failed'];
@@ -494,9 +428,6 @@ class DefaultOptionsConfig
         $output = [];
         if (isset($this->_usedProperties['headers'])) {
             $output['headers'] = $this->headers;
-        }
-        if (isset($this->_usedProperties['vars'])) {
-            $output['vars'] = $this->vars;
         }
         if (isset($this->_usedProperties['maxRedirects'])) {
             $output['max_redirects'] = $this->maxRedirects;
@@ -548,12 +479,6 @@ class DefaultOptionsConfig
         }
         if (isset($this->_usedProperties['peerFingerprint'])) {
             $output['peer_fingerprint'] = $this->peerFingerprint->toArray();
-        }
-        if (isset($this->_usedProperties['cryptoMethod'])) {
-            $output['crypto_method'] = $this->cryptoMethod;
-        }
-        if (isset($this->_usedProperties['extra'])) {
-            $output['extra'] = $this->extra;
         }
         if (isset($this->_usedProperties['retryFailed'])) {
             $output['retry_failed'] = $this->retryFailed instanceof \Symfony\Config\Framework\HttpClient\DefaultOptions\RetryFailedConfig ? $this->retryFailed->toArray() : $this->retryFailed;

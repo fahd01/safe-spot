@@ -35,13 +35,13 @@ use Symfony\Component\Asset\VersionStrategy\VersionStrategyInterface;
  */
 class UrlPackage extends Package
 {
-    private array $baseUrls = [];
-    private ?self $sslPackage = null;
+    private $baseUrls = [];
+    private $sslPackage;
 
     /**
      * @param string|string[] $baseUrls Base asset URLs
      */
-    public function __construct(string|array $baseUrls, VersionStrategyInterface $versionStrategy, ?ContextInterface $context = null)
+    public function __construct($baseUrls, VersionStrategyInterface $versionStrategy, ?ContextInterface $context = null)
     {
         parent::__construct($versionStrategy, $context);
 
@@ -64,7 +64,10 @@ class UrlPackage extends Package
         }
     }
 
-    public function getUrl(string $path): string
+    /**
+     * {@inheritdoc}
+     */
+    public function getUrl(string $path)
     {
         if ($this->isAbsoluteUrl($path)) {
             return $path;
@@ -89,8 +92,10 @@ class UrlPackage extends Package
 
     /**
      * Returns the base URL for a path.
+     *
+     * @return string
      */
-    public function getBaseUrl(string $path): string
+    public function getBaseUrl(string $path)
     {
         if (1 === \count($this->baseUrls)) {
             return $this->baseUrls[0];
@@ -104,17 +109,19 @@ class UrlPackage extends Package
      *
      * Override this method to change the default distribution strategy.
      * This method should always return the same base URL index for a given path.
+     *
+     * @return int
      */
-    protected function chooseBaseUrl(string $path): int
+    protected function chooseBaseUrl(string $path)
     {
-        return abs(crc32($path)) % \count($this->baseUrls);
+        return (int) fmod(hexdec(substr(hash('sha256', $path), 0, 10)), \count($this->baseUrls));
     }
 
-    private function getSslUrls(array $urls): array
+    private function getSslUrls(array $urls)
     {
         $sslUrls = [];
         foreach ($urls as $url) {
-            if (str_starts_with($url, 'https://') || str_starts_with($url, '//') || '' === $url) {
+            if ('https://' === substr($url, 0, 8) || '//' === substr($url, 0, 2)) {
                 $sslUrls[] = $url;
             } elseif (null === parse_url($url, \PHP_URL_SCHEME)) {
                 throw new InvalidArgumentException(sprintf('"%s" is not a valid URL.', $url));

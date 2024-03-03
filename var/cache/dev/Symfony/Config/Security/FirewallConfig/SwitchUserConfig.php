@@ -13,7 +13,6 @@ class SwitchUserConfig
     private $provider;
     private $parameter;
     private $role;
-    private $targetRoute;
     private $_usedProperties = [];
 
     /**
@@ -21,7 +20,7 @@ class SwitchUserConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function provider($value): static
+    public function provider($value): self
     {
         $this->_usedProperties['provider'] = true;
         $this->provider = $value;
@@ -34,7 +33,7 @@ class SwitchUserConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function parameter($value): static
+    public function parameter($value): self
     {
         $this->_usedProperties['parameter'] = true;
         $this->parameter = $value;
@@ -47,23 +46,10 @@ class SwitchUserConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function role($value): static
+    public function role($value): self
     {
         $this->_usedProperties['role'] = true;
         $this->role = $value;
-
-        return $this;
-    }
-
-    /**
-     * @default null
-     * @param ParamConfigurator|mixed $value
-     * @return $this
-     */
-    public function targetRoute($value): static
-    {
-        $this->_usedProperties['targetRoute'] = true;
-        $this->targetRoute = $value;
 
         return $this;
     }
@@ -88,12 +74,6 @@ class SwitchUserConfig
             unset($value['role']);
         }
 
-        if (array_key_exists('target_route', $value)) {
-            $this->_usedProperties['targetRoute'] = true;
-            $this->targetRoute = $value['target_route'];
-            unset($value['target_route']);
-        }
-
         if ([] !== $value) {
             throw new InvalidConfigurationException(sprintf('The following keys are not supported by "%s": ', __CLASS__).implode(', ', array_keys($value)));
         }
@@ -110,9 +90,6 @@ class SwitchUserConfig
         }
         if (isset($this->_usedProperties['role'])) {
             $output['role'] = $this->role;
-        }
-        if (isset($this->_usedProperties['targetRoute'])) {
-            $output['target_route'] = $this->targetRoute;
         }
 
         return $output;

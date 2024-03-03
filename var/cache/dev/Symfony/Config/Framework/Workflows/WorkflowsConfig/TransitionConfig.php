@@ -22,7 +22,7 @@ class TransitionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function name($value): static
+    public function name($value): self
     {
         $this->_usedProperties['name'] = true;
         $this->name = $value;
@@ -37,7 +37,7 @@ class TransitionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function guard($value): static
+    public function guard($value): self
     {
         $this->_usedProperties['guard'] = true;
         $this->guard = $value;
@@ -46,11 +46,10 @@ class TransitionConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed>|string $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function from(ParamConfigurator|string|array $value): static
+    public function from($value): self
     {
         $this->_usedProperties['from'] = true;
         $this->from = $value;
@@ -59,11 +58,10 @@ class TransitionConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed>|string $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function to(ParamConfigurator|string|array $value): static
+    public function to($value): self
     {
         $this->_usedProperties['to'] = true;
         $this->to = $value;
@@ -72,11 +70,10 @@ class TransitionConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function metadata(ParamConfigurator|array $value): static
+    public function metadata($value): self
     {
         $this->_usedProperties['metadata'] = true;
         $this->metadata = $value;

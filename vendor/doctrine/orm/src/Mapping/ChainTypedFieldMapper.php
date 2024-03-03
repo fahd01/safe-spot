@@ -12,7 +12,7 @@ final class ChainTypedFieldMapper implements TypedFieldMapper
      * @readonly
      * @var TypedFieldMapper[] $typedFieldMappers
      */
-    private readonly array $typedFieldMappers;
+    private array $typedFieldMappers;
 
     public function __construct(TypedFieldMapper ...$typedFieldMappers)
     {

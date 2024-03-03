@@ -23,7 +23,7 @@ class PseudoLocalizationConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): static
+    public function enabled($value): self
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -36,7 +36,7 @@ class PseudoLocalizationConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function accents($value): static
+    public function accents($value): self
     {
         $this->_usedProperties['accents'] = true;
         $this->accents = $value;
@@ -49,7 +49,7 @@ class PseudoLocalizationConfig
      * @param ParamConfigurator|float $value
      * @return $this
      */
-    public function expansionFactor($value): static
+    public function expansionFactor($value): self
     {
         $this->_usedProperties['expansionFactor'] = true;
         $this->expansionFactor = $value;
@@ -62,7 +62,7 @@ class PseudoLocalizationConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function brackets($value): static
+    public function brackets($value): self
     {
         $this->_usedProperties['brackets'] = true;
         $this->brackets = $value;
@@ -75,7 +75,7 @@ class PseudoLocalizationConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function parseHtml($value): static
+    public function parseHtml($value): self
     {
         $this->_usedProperties['parseHtml'] = true;
         $this->parseHtml = $value;
@@ -84,11 +84,10 @@ class PseudoLocalizationConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function localizableHtmlAttributes(ParamConfigurator|array $value): static
+    public function localizableHtmlAttributes($value): self
     {
         $this->_usedProperties['localizableHtmlAttributes'] = true;
         $this->localizableHtmlAttributes = $value;

@@ -22,7 +22,7 @@ class AccessDecisionManagerConfig
      * @param ParamConfigurator|'affirmative'|'consensus'|'unanimous'|'priority' $value
      * @return $this
      */
-    public function strategy($value): static
+    public function strategy($value): self
     {
         $this->_usedProperties['strategy'] = true;
         $this->strategy = $value;
@@ -35,7 +35,7 @@ class AccessDecisionManagerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function service($value): static
+    public function service($value): self
     {
         $this->_usedProperties['service'] = true;
         $this->service = $value;
@@ -48,7 +48,7 @@ class AccessDecisionManagerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function strategyService($value): static
+    public function strategyService($value): self
     {
         $this->_usedProperties['strategyService'] = true;
         $this->strategyService = $value;
@@ -61,7 +61,7 @@ class AccessDecisionManagerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function allowIfAllAbstain($value): static
+    public function allowIfAllAbstain($value): self
     {
         $this->_usedProperties['allowIfAllAbstain'] = true;
         $this->allowIfAllAbstain = $value;
@@ -74,7 +74,7 @@ class AccessDecisionManagerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function allowIfEqualGrantedDenied($value): static
+    public function allowIfEqualGrantedDenied($value): self
     {
         $this->_usedProperties['allowIfEqualGrantedDenied'] = true;
         $this->allowIfEqualGrantedDenied = $value;

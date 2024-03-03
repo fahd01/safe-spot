@@ -24,7 +24,7 @@ class HttpBasicLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function provider($value): static
+    public function provider($value): self
     {
         $this->_usedProperties['provider'] = true;
         $this->provider = $value;
@@ -37,7 +37,7 @@ class HttpBasicLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function realm($value): static
+    public function realm($value): self
     {
         $this->_usedProperties['realm'] = true;
         $this->realm = $value;
@@ -50,7 +50,7 @@ class HttpBasicLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function service($value): static
+    public function service($value): self
     {
         $this->_usedProperties['service'] = true;
         $this->service = $value;
@@ -63,7 +63,7 @@ class HttpBasicLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function dnString($value): static
+    public function dnString($value): self
     {
         $this->_usedProperties['dnString'] = true;
         $this->dnString = $value;
@@ -76,7 +76,7 @@ class HttpBasicLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function queryString($value): static
+    public function queryString($value): self
     {
         $this->_usedProperties['queryString'] = true;
         $this->queryString = $value;
@@ -88,7 +88,7 @@ class HttpBasicLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function searchDn($value): static
+    public function searchDn($value): self
     {
         $this->_usedProperties['searchDn'] = true;
         $this->searchDn = $value;
@@ -100,7 +100,7 @@ class HttpBasicLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function searchPassword($value): static
+    public function searchPassword($value): self
     {
         $this->_usedProperties['searchPassword'] = true;
         $this->searchPassword = $value;

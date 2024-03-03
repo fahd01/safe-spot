@@ -14,9 +14,19 @@ class MemoryConfig
     private $users;
     private $_usedProperties = [];
 
-    public function user(string $identifier, array $value = []): \Symfony\Config\Security\ProviderConfig\Memory\UserConfig
+    /**
+     * @return \Symfony\Config\Security\ProviderConfig\Memory\UserConfig|$this
+     */
+    public function user(string $identifier, $value = [])
     {
-        if (!isset($this->users[$identifier])) {
+        if (!\is_array($value)) {
+            $this->_usedProperties['users'] = true;
+            $this->users[$identifier] = $value;
+
+            return $this;
+        }
+
+        if (!isset($this->users[$identifier]) || !$this->users[$identifier] instanceof \Symfony\Config\Security\ProviderConfig\Memory\UserConfig) {
             $this->_usedProperties['users'] = true;
             $this->users[$identifier] = new \Symfony\Config\Security\ProviderConfig\Memory\UserConfig($value);
         } elseif (1 < \func_num_args()) {
@@ -30,7 +40,7 @@ class MemoryConfig
     {
         if (array_key_exists('users', $value)) {
             $this->_usedProperties['users'] = true;
-            $this->users = array_map(fn ($v) => new \Symfony\Config\Security\ProviderConfig\Memory\UserConfig($v), $value['users']);
+            $this->users = array_map(function ($v) { return \is_array($v) ? new \Symfony\Config\Security\ProviderConfig\Memory\UserConfig($v) : $v; }, $value['users']);
             unset($value['users']);
         }
 
@@ -43,7 +53,7 @@ class MemoryConfig
     {
         $output = [];
         if (isset($this->_usedProperties['users'])) {
-            $output['users'] = array_map(fn ($v) => $v->toArray(), $this->users);
+            $output['users'] = array_map(function ($v) { return $v instanceof \Symfony\Config\Security\ProviderConfig\Memory\UserConfig ? $v->toArray() : $v; }, $this->users);
         }
 
         return $output;

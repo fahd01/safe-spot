@@ -28,7 +28,7 @@ class AssetsConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): static
+    public function enabled($value): self
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -42,7 +42,7 @@ class AssetsConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function strictMode($value): static
+    public function strictMode($value): self
     {
         $this->_usedProperties['strictMode'] = true;
         $this->strictMode = $value;
@@ -55,7 +55,7 @@ class AssetsConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function versionStrategy($value): static
+    public function versionStrategy($value): self
     {
         $this->_usedProperties['versionStrategy'] = true;
         $this->versionStrategy = $value;
@@ -68,7 +68,7 @@ class AssetsConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function version($value): static
+    public function version($value): self
     {
         $this->_usedProperties['version'] = true;
         $this->version = $value;
@@ -81,7 +81,7 @@ class AssetsConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function versionFormat($value): static
+    public function versionFormat($value): self
     {
         $this->_usedProperties['versionFormat'] = true;
         $this->versionFormat = $value;
@@ -94,7 +94,7 @@ class AssetsConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function jsonManifestPath($value): static
+    public function jsonManifestPath($value): self
     {
         $this->_usedProperties['jsonManifestPath'] = true;
         $this->jsonManifestPath = $value;
@@ -106,7 +106,7 @@ class AssetsConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function basePath($value): static
+    public function basePath($value): self
     {
         $this->_usedProperties['basePath'] = true;
         $this->basePath = $value;
@@ -115,11 +115,10 @@ class AssetsConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed>|mixed $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function baseUrls(mixed $value): static
+    public function baseUrls($value): self
     {
         $this->_usedProperties['baseUrls'] = true;
         $this->baseUrls = $value;
@@ -191,7 +190,7 @@ class AssetsConfig
 
         if (array_key_exists('packages', $value)) {
             $this->_usedProperties['packages'] = true;
-            $this->packages = array_map(fn ($v) => new \Symfony\Config\Framework\Assets\PackageConfig($v), $value['packages']);
+            $this->packages = array_map(function ($v) { return new \Symfony\Config\Framework\Assets\PackageConfig($v); }, $value['packages']);
             unset($value['packages']);
         }
 
@@ -228,7 +227,7 @@ class AssetsConfig
             $output['base_urls'] = $this->baseUrls;
         }
         if (isset($this->_usedProperties['packages'])) {
-            $output['packages'] = array_map(fn ($v) => $v->toArray(), $this->packages);
+            $output['packages'] = array_map(function ($v) { return $v->toArray(); }, $this->packages);
         }
 
         return $output;

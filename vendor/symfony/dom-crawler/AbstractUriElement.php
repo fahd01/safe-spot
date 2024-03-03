@@ -55,39 +55,49 @@ abstract class AbstractUriElement
 
     /**
      * Gets the node associated with this link.
+     *
+     * @return \DOMElement
      */
-    public function getNode(): \DOMElement
+    public function getNode()
     {
         return $this->node;
     }
 
     /**
      * Gets the method associated with this link.
+     *
+     * @return string
      */
-    public function getMethod(): string
+    public function getMethod()
     {
         return $this->method ?? 'GET';
     }
 
     /**
      * Gets the URI associated with this link.
+     *
+     * @return string
      */
-    public function getUri(): string
+    public function getUri()
     {
         return UriResolver::resolve($this->getRawUri(), $this->currentUri);
     }
 
     /**
      * Returns raw URI data.
+     *
+     * @return string
      */
-    abstract protected function getRawUri(): string;
+    abstract protected function getRawUri();
 
     /**
      * Returns the canonicalized URI path (see RFC 3986, section 5.2.4).
      *
      * @param string $path URI path
+     *
+     * @return string
      */
-    protected function canonicalizePath(string $path): string
+    protected function canonicalizePath(string $path)
     {
         if ('' === $path || '/' === $path) {
             return $path;
@@ -114,8 +124,6 @@ abstract class AbstractUriElement
      * Sets current \DOMElement instance.
      *
      * @param \DOMElement $node A \DOMElement instance
-     *
-     * @return void
      *
      * @throws \LogicException If given node is not an anchor
      */

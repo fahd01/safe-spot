@@ -19,7 +19,7 @@ class EnvelopeConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function sender($value): static
+    public function sender($value): self
     {
         $this->_usedProperties['sender'] = true;
         $this->sender = $value;
@@ -28,11 +28,10 @@ class EnvelopeConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function recipients(ParamConfigurator|array $value): static
+    public function recipients($value): self
     {
         $this->_usedProperties['recipients'] = true;
         $this->recipients = $value;

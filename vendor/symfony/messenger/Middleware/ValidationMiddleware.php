@@ -21,13 +21,16 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 class ValidationMiddleware implements MiddlewareInterface
 {
-    private ValidatorInterface $validator;
+    private $validator;
 
     public function __construct(ValidatorInterface $validator)
     {
         $this->validator = $validator;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function handle(Envelope $envelope, StackInterface $stack): Envelope
     {
         $message = $envelope->getMessage();

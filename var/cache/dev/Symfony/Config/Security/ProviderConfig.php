@@ -27,7 +27,7 @@ class ProviderConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function id($value): static
+    public function id($value): self
     {
         $this->_usedProperties['id'] = true;
         $this->id = $value;

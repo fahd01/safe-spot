@@ -20,11 +20,10 @@ class PoolConfig
     private $_usedProperties = [];
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed>|mixed $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function adapters(mixed $value): static
+    public function adapters($value): self
     {
         $this->_usedProperties['adapters'] = true;
         $this->adapters = $value;
@@ -37,7 +36,7 @@ class PoolConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function tags($value): static
+    public function tags($value): self
     {
         $this->_usedProperties['tags'] = true;
         $this->tags = $value;
@@ -50,7 +49,7 @@ class PoolConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function public($value): static
+    public function public($value): self
     {
         $this->_usedProperties['public'] = true;
         $this->public = $value;
@@ -65,7 +64,7 @@ class PoolConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultLifetime($value): static
+    public function defaultLifetime($value): self
     {
         $this->_usedProperties['defaultLifetime'] = true;
         $this->defaultLifetime = $value;
@@ -79,7 +78,7 @@ class PoolConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function provider($value): static
+    public function provider($value): self
     {
         $this->_usedProperties['provider'] = true;
         $this->provider = $value;
@@ -93,7 +92,7 @@ class PoolConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function earlyExpirationMessageBus($value): static
+    public function earlyExpirationMessageBus($value): self
     {
         $this->_usedProperties['earlyExpirationMessageBus'] = true;
         $this->earlyExpirationMessageBus = $value;
@@ -106,7 +105,7 @@ class PoolConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function clearer($value): static
+    public function clearer($value): self
     {
         $this->_usedProperties['clearer'] = true;
         $this->clearer = $value;

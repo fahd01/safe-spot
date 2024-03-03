@@ -11,7 +11,6 @@
 
 namespace Symfony\Bridge\Monolog\Processor;
 
-use Monolog\LogRecord;
 use Symfony\Component\Console\ConsoleEvents;
 use Symfony\Component\Console\Event\ConsoleEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -21,16 +20,12 @@ use Symfony\Contracts\Service\ResetInterface;
  * Adds the current console command information to the log entry.
  *
  * @author Piotr Stankowski <git@trakos.pl>
- *
- * @final since Symfony 6.1
  */
 class ConsoleCommandProcessor implements EventSubscriberInterface, ResetInterface
 {
-    use CompatibilityProcessor;
-
-    private array $commandData;
-    private bool $includeArguments;
-    private bool $includeOptions;
+    private $commandData;
+    private $includeArguments;
+    private $includeOptions;
 
     public function __construct(bool $includeArguments = true, bool $includeOptions = false)
     {
@@ -38,26 +33,20 @@ class ConsoleCommandProcessor implements EventSubscriberInterface, ResetInterfac
         $this->includeOptions = $includeOptions;
     }
 
-    private function doInvoke(array|LogRecord $record): array|LogRecord
+    public function __invoke(array $records)
     {
-        if (isset($this->commandData) && !isset($record['extra']['command'])) {
-            $record['extra']['command'] = $this->commandData;
+        if (null !== $this->commandData && !isset($records['extra']['command'])) {
+            $records['extra']['command'] = $this->commandData;
         }
 
-        return $record;
+        return $records;
     }
 
-    /**
-     * @return void
-     */
     public function reset()
     {
-        unset($this->commandData);
+        $this->commandData = null;
     }
 
-    /**
-     * @return void
-     */
     public function addCommandData(ConsoleEvent $event)
     {
         $this->commandData = [
@@ -71,7 +60,7 @@ class ConsoleCommandProcessor implements EventSubscriberInterface, ResetInterfac
         }
     }
 
-    public static function getSubscribedEvents(): array
+    public static function getSubscribedEvents()
     {
         return [
             ConsoleEvents::COMMAND => ['addCommandData', 1],

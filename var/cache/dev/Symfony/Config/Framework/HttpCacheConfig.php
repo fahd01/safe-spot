@@ -16,12 +16,10 @@ class HttpCacheConfig
     private $traceHeader;
     private $defaultTtl;
     private $privateHeaders;
-    private $skipResponseHeaders;
     private $allowReload;
     private $allowRevalidate;
     private $staleWhileRevalidate;
     private $staleIfError;
-    private $terminateOnCacheHit;
     private $_usedProperties = [];
 
     /**
@@ -29,7 +27,7 @@ class HttpCacheConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): static
+    public function enabled($value): self
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -42,7 +40,7 @@ class HttpCacheConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function debug($value): static
+    public function debug($value): self
     {
         $this->_usedProperties['debug'] = true;
         $this->debug = $value;
@@ -55,7 +53,7 @@ class HttpCacheConfig
      * @param ParamConfigurator|'none'|'short'|'full' $value
      * @return $this
      */
-    public function traceLevel($value): static
+    public function traceLevel($value): self
     {
         $this->_usedProperties['traceLevel'] = true;
         $this->traceLevel = $value;
@@ -68,7 +66,7 @@ class HttpCacheConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function traceHeader($value): static
+    public function traceHeader($value): self
     {
         $this->_usedProperties['traceHeader'] = true;
         $this->traceHeader = $value;
@@ -81,7 +79,7 @@ class HttpCacheConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function defaultTtl($value): static
+    public function defaultTtl($value): self
     {
         $this->_usedProperties['defaultTtl'] = true;
         $this->defaultTtl = $value;
@@ -90,27 +88,13 @@ class HttpCacheConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function privateHeaders(ParamConfigurator|array $value): static
+    public function privateHeaders($value): self
     {
         $this->_usedProperties['privateHeaders'] = true;
         $this->privateHeaders = $value;
-
-        return $this;
-    }
-
-    /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
-     *
-     * @return $this
-     */
-    public function skipResponseHeaders(ParamConfigurator|array $value): static
-    {
-        $this->_usedProperties['skipResponseHeaders'] = true;
-        $this->skipResponseHeaders = $value;
 
         return $this;
     }
@@ -120,7 +104,7 @@ class HttpCacheConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function allowReload($value): static
+    public function allowReload($value): self
     {
         $this->_usedProperties['allowReload'] = true;
         $this->allowReload = $value;
@@ -133,7 +117,7 @@ class HttpCacheConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function allowRevalidate($value): static
+    public function allowRevalidate($value): self
     {
         $this->_usedProperties['allowRevalidate'] = true;
         $this->allowRevalidate = $value;
@@ -146,7 +130,7 @@ class HttpCacheConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function staleWhileRevalidate($value): static
+    public function staleWhileRevalidate($value): self
     {
         $this->_usedProperties['staleWhileRevalidate'] = true;
         $this->staleWhileRevalidate = $value;
@@ -159,23 +143,10 @@ class HttpCacheConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function staleIfError($value): static
+    public function staleIfError($value): self
     {
         $this->_usedProperties['staleIfError'] = true;
         $this->staleIfError = $value;
-
-        return $this;
-    }
-
-    /**
-     * @default null
-     * @param ParamConfigurator|bool $value
-     * @return $this
-     */
-    public function terminateOnCacheHit($value): static
-    {
-        $this->_usedProperties['terminateOnCacheHit'] = true;
-        $this->terminateOnCacheHit = $value;
 
         return $this;
     }
@@ -218,12 +189,6 @@ class HttpCacheConfig
             unset($value['private_headers']);
         }
 
-        if (array_key_exists('skip_response_headers', $value)) {
-            $this->_usedProperties['skipResponseHeaders'] = true;
-            $this->skipResponseHeaders = $value['skip_response_headers'];
-            unset($value['skip_response_headers']);
-        }
-
         if (array_key_exists('allow_reload', $value)) {
             $this->_usedProperties['allowReload'] = true;
             $this->allowReload = $value['allow_reload'];
@@ -246,12 +211,6 @@ class HttpCacheConfig
             $this->_usedProperties['staleIfError'] = true;
             $this->staleIfError = $value['stale_if_error'];
             unset($value['stale_if_error']);
-        }
-
-        if (array_key_exists('terminate_on_cache_hit', $value)) {
-            $this->_usedProperties['terminateOnCacheHit'] = true;
-            $this->terminateOnCacheHit = $value['terminate_on_cache_hit'];
-            unset($value['terminate_on_cache_hit']);
         }
 
         if ([] !== $value) {
@@ -280,9 +239,6 @@ class HttpCacheConfig
         if (isset($this->_usedProperties['privateHeaders'])) {
             $output['private_headers'] = $this->privateHeaders;
         }
-        if (isset($this->_usedProperties['skipResponseHeaders'])) {
-            $output['skip_response_headers'] = $this->skipResponseHeaders;
-        }
         if (isset($this->_usedProperties['allowReload'])) {
             $output['allow_reload'] = $this->allowReload;
         }
@@ -294,9 +250,6 @@ class HttpCacheConfig
         }
         if (isset($this->_usedProperties['staleIfError'])) {
             $output['stale_if_error'] = $this->staleIfError;
-        }
-        if (isset($this->_usedProperties['terminateOnCacheHit'])) {
-            $output['terminate_on_cache_hit'] = $this->terminateOnCacheHit;
         }
 
         return $output;

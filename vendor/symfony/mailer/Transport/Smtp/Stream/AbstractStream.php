@@ -24,14 +24,11 @@ use Symfony\Component\Mailer\Exception\TransportException;
  */
 abstract class AbstractStream
 {
-    /** @var resource|null */
     protected $stream;
-    /** @var resource|null */
     protected $in;
-    /** @var resource|null */
     protected $out;
 
-    private string $debug = '';
+    private $debug = '';
 
     public function write(string $bytes, bool $debug = true): void
     {

@@ -59,13 +59,13 @@ class GenericRuntime implements RuntimeInterface
      */
     public function __construct(array $options = [])
     {
-        $options['env_var_name'] ??= 'APP_ENV';
-        $debugKey = $options['debug_var_name'] ??= 'APP_DEBUG';
+        $options['env_var_name'] ?? $options['env_var_name'] = 'APP_ENV';
+        $debugKey = $options['debug_var_name'] ?? $options['debug_var_name'] = 'APP_DEBUG';
 
         $debug = $options['debug'] ?? $_SERVER[$debugKey] ?? $_ENV[$debugKey] ?? true;
 
         if (!\is_bool($debug)) {
-            $debug = filter_var($debug, \FILTER_VALIDATE_BOOL);
+            $debug = filter_var($debug, \FILTER_VALIDATE_BOOLEAN);
         }
 
         if ($debug) {
@@ -83,9 +83,15 @@ class GenericRuntime implements RuntimeInterface
         $this->options = $options;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getResolver(callable $callable, ?\ReflectionFunction $reflector = null): ResolverInterface
     {
-        $callable = $callable(...);
+        if (!$callable instanceof \Closure) {
+            $callable = \Closure::fromCallable($callable);
+        }
+
         $parameters = ($reflector ?? new \ReflectionFunction($callable))->getParameters();
         $arguments = function () use ($parameters) {
             $arguments = [];
@@ -111,16 +117,21 @@ class GenericRuntime implements RuntimeInterface
         return new ClosureResolver($callable, $arguments);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getRunner(?object $application): RunnerInterface
     {
-        $application ??= static fn () => 0;
+        if (null === $application) {
+            $application = static function () { return 0; };
+        }
 
         if ($application instanceof RunnerInterface) {
             return $application;
         }
 
         if (!$application instanceof \Closure) {
-            if ($runtime = $this->resolveRuntime($application::class)) {
+            if ($runtime = $this->resolveRuntime(\get_class($application))) {
                 return $runtime->getRunner($application);
             }
 
@@ -128,7 +139,7 @@ class GenericRuntime implements RuntimeInterface
                 throw new \LogicException(sprintf('"%s" doesn\'t know how to handle apps of type "%s".', get_debug_type($this), get_debug_type($application)));
             }
 
-            $application = $application(...);
+            $application = \Closure::fromCallable($application);
         }
 
         if ($_SERVER[$this->options['debug_var_name']] && ($r = new \ReflectionFunction($application)) && $r->getNumberOfRequiredParameters()) {
@@ -138,7 +149,10 @@ class GenericRuntime implements RuntimeInterface
         return new ClosureRunner($application);
     }
 
-    protected function getArgument(\ReflectionParameter $parameter, ?string $type): mixed
+    /**
+     * @return mixed
+     */
+    protected function getArgument(\ReflectionParameter $parameter, ?string $type)
     {
         if ('array' === $type) {
             switch ($parameter->name) {

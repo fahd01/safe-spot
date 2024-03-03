@@ -13,7 +13,6 @@ class RouterConfig
     private $enabled;
     private $resource;
     private $type;
-    private $cacheDir;
     private $defaultUri;
     private $httpPort;
     private $httpsPort;
@@ -26,7 +25,7 @@ class RouterConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): static
+    public function enabled($value): self
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -39,7 +38,7 @@ class RouterConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function resource($value): static
+    public function resource($value): self
     {
         $this->_usedProperties['resource'] = true;
         $this->resource = $value;
@@ -52,23 +51,10 @@ class RouterConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function type($value): static
+    public function type($value): self
     {
         $this->_usedProperties['type'] = true;
         $this->type = $value;
-
-        return $this;
-    }
-
-    /**
-     * @default '%kernel.cache_dir%'
-     * @param ParamConfigurator|mixed $value
-     * @return $this
-     */
-    public function cacheDir($value): static
-    {
-        $this->_usedProperties['cacheDir'] = true;
-        $this->cacheDir = $value;
 
         return $this;
     }
@@ -79,7 +65,7 @@ class RouterConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultUri($value): static
+    public function defaultUri($value): self
     {
         $this->_usedProperties['defaultUri'] = true;
         $this->defaultUri = $value;
@@ -92,7 +78,7 @@ class RouterConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function httpPort($value): static
+    public function httpPort($value): self
     {
         $this->_usedProperties['httpPort'] = true;
         $this->httpPort = $value;
@@ -105,7 +91,7 @@ class RouterConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function httpsPort($value): static
+    public function httpsPort($value): self
     {
         $this->_usedProperties['httpsPort'] = true;
         $this->httpsPort = $value;
@@ -122,7 +108,7 @@ class RouterConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function strictRequirements($value): static
+    public function strictRequirements($value): self
     {
         $this->_usedProperties['strictRequirements'] = true;
         $this->strictRequirements = $value;
@@ -131,11 +117,11 @@ class RouterConfig
     }
 
     /**
-     * @default true
+     * @default null
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function utf8($value): static
+    public function utf8($value): self
     {
         $this->_usedProperties['utf8'] = true;
         $this->utf8 = $value;
@@ -161,12 +147,6 @@ class RouterConfig
             $this->_usedProperties['type'] = true;
             $this->type = $value['type'];
             unset($value['type']);
-        }
-
-        if (array_key_exists('cache_dir', $value)) {
-            $this->_usedProperties['cacheDir'] = true;
-            $this->cacheDir = $value['cache_dir'];
-            unset($value['cache_dir']);
         }
 
         if (array_key_exists('default_uri', $value)) {
@@ -215,9 +195,6 @@ class RouterConfig
         }
         if (isset($this->_usedProperties['type'])) {
             $output['type'] = $this->type;
-        }
-        if (isset($this->_usedProperties['cacheDir'])) {
-            $output['cache_dir'] = $this->cacheDir;
         }
         if (isset($this->_usedProperties['defaultUri'])) {
             $output['default_uri'] = $this->defaultUri;

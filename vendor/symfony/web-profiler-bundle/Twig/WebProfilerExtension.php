@@ -28,14 +28,20 @@ use Twig\TwigFunction;
  */
 class WebProfilerExtension extends ProfilerExtension
 {
-    private HtmlDumper $dumper;
+    /**
+     * @var HtmlDumper
+     */
+    private $dumper;
 
     /**
      * @var resource
      */
     private $output;
 
-    private int $stackLevel = 0;
+    /**
+     * @var int
+     */
+    private $stackLevel = 0;
 
     public function __construct(?HtmlDumper $dumper = null)
     {
@@ -58,12 +64,12 @@ class WebProfilerExtension extends ProfilerExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('profiler_dump', $this->dumpData(...), ['is_safe' => ['html'], 'needs_environment' => true]),
-            new TwigFunction('profiler_dump_log', $this->dumpLog(...), ['is_safe' => ['html'], 'needs_environment' => true]),
+            new TwigFunction('profiler_dump', [$this, 'dumpData'], ['is_safe' => ['html'], 'needs_environment' => true]),
+            new TwigFunction('profiler_dump_log', [$this, 'dumpLog'], ['is_safe' => ['html'], 'needs_environment' => true]),
         ];
     }
 
-    public function dumpData(Environment $env, Data $data, int $maxDepth = 0): string
+    public function dumpData(Environment $env, Data $data, int $maxDepth = 0)
     {
         $this->dumper->setCharset($env->getCharset());
         $this->dumper->dump($data, null, [
@@ -77,7 +83,7 @@ class WebProfilerExtension extends ProfilerExtension
         return str_replace("\n</pre", '</pre', rtrim($dump));
     }
 
-    public function dumpLog(Environment $env, string $message, ?Data $context = null): string
+    public function dumpLog(Environment $env, string $message, ?Data $context = null)
     {
         $message = self::escape($env, $message);
         $message = preg_replace('/&quot;(.*?)&quot;/', '&quot;<b>$1</b>&quot;', $message);
@@ -101,7 +107,7 @@ class WebProfilerExtension extends ProfilerExtension
         return '<span class="dump-inline">'.strtr($message, $replacements).'</span>';
     }
 
-    public function getName(): string
+    public function getName()
     {
         return 'profiler';
     }

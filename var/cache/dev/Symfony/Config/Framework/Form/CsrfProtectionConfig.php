@@ -19,7 +19,7 @@ class CsrfProtectionConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): static
+    public function enabled($value): self
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -32,7 +32,7 @@ class CsrfProtectionConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function fieldName($value): static
+    public function fieldName($value): self
     {
         $this->_usedProperties['fieldName'] = true;
         $this->fieldName = $value;

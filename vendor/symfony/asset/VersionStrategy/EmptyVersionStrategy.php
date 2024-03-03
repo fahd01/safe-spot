@@ -18,12 +18,18 @@ namespace Symfony\Component\Asset\VersionStrategy;
  */
 class EmptyVersionStrategy implements VersionStrategyInterface
 {
-    public function getVersion(string $path): string
+    /**
+     * {@inheritdoc}
+     */
+    public function getVersion(string $path)
     {
         return '';
     }
 
-    public function applyVersion(string $path): string
+    /**
+     * {@inheritdoc}
+     */
+    public function applyVersion(string $path)
     {
         return $path;
     }

@@ -23,7 +23,7 @@ class RedisConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function id($value): static
+    public function id($value): self
     {
         $this->_usedProperties['id'] = true;
         $this->id = $value;
@@ -36,7 +36,7 @@ class RedisConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function host($value): static
+    public function host($value): self
     {
         $this->_usedProperties['host'] = true;
         $this->host = $value;
@@ -49,7 +49,7 @@ class RedisConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function password($value): static
+    public function password($value): self
     {
         $this->_usedProperties['password'] = true;
         $this->password = $value;
@@ -62,7 +62,7 @@ class RedisConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function port($value): static
+    public function port($value): self
     {
         $this->_usedProperties['port'] = true;
         $this->port = $value;
@@ -75,7 +75,7 @@ class RedisConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function database($value): static
+    public function database($value): self
     {
         $this->_usedProperties['database'] = true;
         $this->database = $value;
@@ -88,7 +88,7 @@ class RedisConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function keyName($value): static
+    public function keyName($value): self
     {
         $this->_usedProperties['keyName'] = true;
         $this->keyName = $value;

@@ -127,7 +127,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function type($value): static
+    public function type($value): self
     {
         $this->_usedProperties['type'] = true;
         $this->type = $value;
@@ -140,7 +140,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function id($value): static
+    public function id($value): self
     {
         $this->_usedProperties['id'] = true;
         $this->id = $value;
@@ -153,7 +153,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function priority($value): static
+    public function priority($value): self
     {
         $this->_usedProperties['priority'] = true;
         $this->priority = $value;
@@ -166,7 +166,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function level($value): static
+    public function level($value): self
     {
         $this->_usedProperties['level'] = true;
         $this->level = $value;
@@ -179,7 +179,7 @@ class HandlerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function bubble($value): static
+    public function bubble($value): self
     {
         $this->_usedProperties['bubble'] = true;
         $this->bubble = $value;
@@ -192,7 +192,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function appName($value): static
+    public function appName($value): self
     {
         $this->_usedProperties['appName'] = true;
         $this->appName = $value;
@@ -205,7 +205,7 @@ class HandlerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function fillExtraContext($value): static
+    public function fillExtraContext($value): self
     {
         $this->_usedProperties['fillExtraContext'] = true;
         $this->fillExtraContext = $value;
@@ -218,7 +218,7 @@ class HandlerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function includeStacktraces($value): static
+    public function includeStacktraces($value): self
     {
         $this->_usedProperties['includeStacktraces'] = true;
         $this->includeStacktraces = $value;
@@ -227,13 +227,9 @@ class HandlerConfig
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
-     * @default {"enabled":null}
      * @return \Symfony\Config\Monolog\HandlerConfig\ProcessPsr3MessagesConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Monolog\HandlerConfig\ProcessPsr3MessagesConfig : static)
      */
-    public function processPsr3Messages(mixed $value = []): \Symfony\Config\Monolog\HandlerConfig\ProcessPsr3MessagesConfig|static
+    public function processPsr3Messages($value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['processPsr3Messages'] = true;
@@ -257,7 +253,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function path($value): static
+    public function path($value): self
     {
         $this->_usedProperties['path'] = true;
         $this->path = $value;
@@ -270,7 +266,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function filePermission($value): static
+    public function filePermission($value): self
     {
         $this->_usedProperties['filePermission'] = true;
         $this->filePermission = $value;
@@ -283,7 +279,7 @@ class HandlerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function useLocking($value): static
+    public function useLocking($value): self
     {
         $this->_usedProperties['useLocking'] = true;
         $this->useLocking = $value;
@@ -296,7 +292,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function filenameFormat($value): static
+    public function filenameFormat($value): self
     {
         $this->_usedProperties['filenameFormat'] = true;
         $this->filenameFormat = $value;
@@ -309,7 +305,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function dateFormat($value): static
+    public function dateFormat($value): self
     {
         $this->_usedProperties['dateFormat'] = true;
         $this->dateFormat = $value;
@@ -322,7 +318,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function ident($value): static
+    public function ident($value): self
     {
         $this->_usedProperties['ident'] = true;
         $this->ident = $value;
@@ -335,7 +331,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function logopts($value): static
+    public function logopts($value): self
     {
         $this->_usedProperties['logopts'] = true;
         $this->logopts = $value;
@@ -348,7 +344,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function facility($value): static
+    public function facility($value): self
     {
         $this->_usedProperties['facility'] = true;
         $this->facility = $value;
@@ -361,7 +357,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function maxFiles($value): static
+    public function maxFiles($value): self
     {
         $this->_usedProperties['maxFiles'] = true;
         $this->maxFiles = $value;
@@ -374,7 +370,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function actionLevel($value): static
+    public function actionLevel($value): self
     {
         $this->_usedProperties['actionLevel'] = true;
         $this->actionLevel = $value;
@@ -387,7 +383,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function activationStrategy($value): static
+    public function activationStrategy($value): self
     {
         $this->_usedProperties['activationStrategy'] = true;
         $this->activationStrategy = $value;
@@ -400,7 +396,7 @@ class HandlerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function stopBuffering($value): static
+    public function stopBuffering($value): self
     {
         $this->_usedProperties['stopBuffering'] = true;
         $this->stopBuffering = $value;
@@ -413,7 +409,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function passthruLevel($value): static
+    public function passthruLevel($value): self
     {
         $this->_usedProperties['passthruLevel'] = true;
         $this->passthruLevel = $value;
@@ -422,11 +418,10 @@ class HandlerConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function excluded404s(ParamConfigurator|array $value): static
+    public function excluded404s($value): self
     {
         $this->_usedProperties['excluded404s'] = true;
         $this->excluded404s = $value;
@@ -435,12 +430,9 @@ class HandlerConfig
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
      * @return \Symfony\Config\Monolog\HandlerConfig\ExcludedHttpCodeConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Monolog\HandlerConfig\ExcludedHttpCodeConfig : static)
      */
-    public function excludedHttpCode(mixed $value = []): \Symfony\Config\Monolog\HandlerConfig\ExcludedHttpCodeConfig|static
+    public function excludedHttpCode($value = [])
     {
         $this->_usedProperties['excludedHttpCodes'] = true;
         if (!\is_array($value)) {
@@ -453,11 +445,10 @@ class HandlerConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function acceptedLevels(ParamConfigurator|array $value): static
+    public function acceptedLevels($value): self
     {
         $this->_usedProperties['acceptedLevels'] = true;
         $this->acceptedLevels = $value;
@@ -470,7 +461,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function minLevel($value): static
+    public function minLevel($value): self
     {
         $this->_usedProperties['minLevel'] = true;
         $this->minLevel = $value;
@@ -483,7 +474,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function maxLevel($value): static
+    public function maxLevel($value): self
     {
         $this->_usedProperties['maxLevel'] = true;
         $this->maxLevel = $value;
@@ -496,7 +487,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function bufferSize($value): static
+    public function bufferSize($value): self
     {
         $this->_usedProperties['bufferSize'] = true;
         $this->bufferSize = $value;
@@ -509,7 +500,7 @@ class HandlerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function flushOnOverflow($value): static
+    public function flushOnOverflow($value): self
     {
         $this->_usedProperties['flushOnOverflow'] = true;
         $this->flushOnOverflow = $value;
@@ -522,7 +513,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function handler($value): static
+    public function handler($value): self
     {
         $this->_usedProperties['handler'] = true;
         $this->handler = $value;
@@ -535,7 +526,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function url($value): static
+    public function url($value): self
     {
         $this->_usedProperties['url'] = true;
         $this->url = $value;
@@ -548,7 +539,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function exchange($value): static
+    public function exchange($value): self
     {
         $this->_usedProperties['exchange'] = true;
         $this->exchange = $value;
@@ -561,7 +552,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function exchangeName($value): static
+    public function exchangeName($value): self
     {
         $this->_usedProperties['exchangeName'] = true;
         $this->exchangeName = $value;
@@ -574,7 +565,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function room($value): static
+    public function room($value): self
     {
         $this->_usedProperties['room'] = true;
         $this->room = $value;
@@ -587,7 +578,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function messageFormat($value): static
+    public function messageFormat($value): self
     {
         $this->_usedProperties['messageFormat'] = true;
         $this->messageFormat = $value;
@@ -600,7 +591,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function apiVersion($value): static
+    public function apiVersion($value): self
     {
         $this->_usedProperties['apiVersion'] = true;
         $this->apiVersion = $value;
@@ -613,7 +604,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function channel($value): static
+    public function channel($value): self
     {
         $this->_usedProperties['channel'] = true;
         $this->channel = $value;
@@ -626,7 +617,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function botName($value): static
+    public function botName($value): self
     {
         $this->_usedProperties['botName'] = true;
         $this->botName = $value;
@@ -639,7 +630,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function useAttachment($value): static
+    public function useAttachment($value): self
     {
         $this->_usedProperties['useAttachment'] = true;
         $this->useAttachment = $value;
@@ -652,7 +643,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function useShortAttachment($value): static
+    public function useShortAttachment($value): self
     {
         $this->_usedProperties['useShortAttachment'] = true;
         $this->useShortAttachment = $value;
@@ -665,7 +656,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function includeExtra($value): static
+    public function includeExtra($value): self
     {
         $this->_usedProperties['includeExtra'] = true;
         $this->includeExtra = $value;
@@ -678,7 +669,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function iconEmoji($value): static
+    public function iconEmoji($value): self
     {
         $this->_usedProperties['iconEmoji'] = true;
         $this->iconEmoji = $value;
@@ -691,7 +682,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function webhookUrl($value): static
+    public function webhookUrl($value): self
     {
         $this->_usedProperties['webhookUrl'] = true;
         $this->webhookUrl = $value;
@@ -704,7 +695,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function team($value): static
+    public function team($value): self
     {
         $this->_usedProperties['team'] = true;
         $this->team = $value;
@@ -717,7 +708,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function notify($value): static
+    public function notify($value): self
     {
         $this->_usedProperties['notify'] = true;
         $this->notify = $value;
@@ -730,7 +721,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function nickname($value): static
+    public function nickname($value): self
     {
         $this->_usedProperties['nickname'] = true;
         $this->nickname = $value;
@@ -743,7 +734,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function token($value): static
+    public function token($value): self
     {
         $this->_usedProperties['token'] = true;
         $this->token = $value;
@@ -756,7 +747,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function region($value): static
+    public function region($value): self
     {
         $this->_usedProperties['region'] = true;
         $this->region = $value;
@@ -769,7 +760,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function source($value): static
+    public function source($value): self
     {
         $this->_usedProperties['source'] = true;
         $this->source = $value;
@@ -782,7 +773,7 @@ class HandlerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function useSsl($value): static
+    public function useSsl($value): self
     {
         $this->_usedProperties['useSsl'] = true;
         $this->useSsl = $value;
@@ -793,10 +784,9 @@ class HandlerConfig
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
-     *
      * @return $this
      */
-    public function user(mixed $value): static
+    public function user($value): self
     {
         $this->_usedProperties['user'] = true;
         $this->user = $value;
@@ -809,7 +799,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function title($value): static
+    public function title($value): self
     {
         $this->_usedProperties['title'] = true;
         $this->title = $value;
@@ -822,7 +812,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function host($value): static
+    public function host($value): self
     {
         $this->_usedProperties['host'] = true;
         $this->host = $value;
@@ -835,7 +825,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function port($value): static
+    public function port($value): self
     {
         $this->_usedProperties['port'] = true;
         $this->port = $value;
@@ -844,11 +834,10 @@ class HandlerConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function config(ParamConfigurator|array $value): static
+    public function config($value): self
     {
         $this->_usedProperties['config'] = true;
         $this->config = $value;
@@ -857,11 +846,10 @@ class HandlerConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function members(ParamConfigurator|array $value): static
+    public function members($value): self
     {
         $this->_usedProperties['members'] = true;
         $this->members = $value;
@@ -874,7 +862,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function connectionString($value): static
+    public function connectionString($value): self
     {
         $this->_usedProperties['connectionString'] = true;
         $this->connectionString = $value;
@@ -887,7 +875,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function timeout($value): static
+    public function timeout($value): self
     {
         $this->_usedProperties['timeout'] = true;
         $this->timeout = $value;
@@ -900,7 +888,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function time($value): static
+    public function time($value): self
     {
         $this->_usedProperties['time'] = true;
         $this->time = $value;
@@ -913,7 +901,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function deduplicationLevel($value): static
+    public function deduplicationLevel($value): self
     {
         $this->_usedProperties['deduplicationLevel'] = true;
         $this->deduplicationLevel = $value;
@@ -926,7 +914,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function store($value): static
+    public function store($value): self
     {
         $this->_usedProperties['store'] = true;
         $this->store = $value;
@@ -939,7 +927,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function connectionTimeout($value): static
+    public function connectionTimeout($value): self
     {
         $this->_usedProperties['connectionTimeout'] = true;
         $this->connectionTimeout = $value;
@@ -952,7 +940,7 @@ class HandlerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function persistent($value): static
+    public function persistent($value): self
     {
         $this->_usedProperties['persistent'] = true;
         $this->persistent = $value;
@@ -965,7 +953,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function dsn($value): static
+    public function dsn($value): self
     {
         $this->_usedProperties['dsn'] = true;
         $this->dsn = $value;
@@ -978,7 +966,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function hubId($value): static
+    public function hubId($value): self
     {
         $this->_usedProperties['hubId'] = true;
         $this->hubId = $value;
@@ -991,7 +979,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function clientId($value): static
+    public function clientId($value): self
     {
         $this->_usedProperties['clientId'] = true;
         $this->clientId = $value;
@@ -1004,7 +992,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function autoLogStacks($value): static
+    public function autoLogStacks($value): self
     {
         $this->_usedProperties['autoLogStacks'] = true;
         $this->autoLogStacks = $value;
@@ -1017,7 +1005,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function release($value): static
+    public function release($value): self
     {
         $this->_usedProperties['release'] = true;
         $this->release = $value;
@@ -1030,7 +1018,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function environment($value): static
+    public function environment($value): self
     {
         $this->_usedProperties['environment'] = true;
         $this->environment = $value;
@@ -1043,7 +1031,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function messageType($value): static
+    public function messageType($value): self
     {
         $this->_usedProperties['messageType'] = true;
         $this->messageType = $value;
@@ -1056,7 +1044,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function parseMode($value): static
+    public function parseMode($value): self
     {
         $this->_usedProperties['parseMode'] = true;
         $this->parseMode = $value;
@@ -1069,7 +1057,7 @@ class HandlerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function disableWebpagePreview($value): static
+    public function disableWebpagePreview($value): self
     {
         $this->_usedProperties['disableWebpagePreview'] = true;
         $this->disableWebpagePreview = $value;
@@ -1082,7 +1070,7 @@ class HandlerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function disableNotification($value): static
+    public function disableNotification($value): self
     {
         $this->_usedProperties['disableNotification'] = true;
         $this->disableNotification = $value;
@@ -1095,7 +1083,7 @@ class HandlerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function splitLongMessages($value): static
+    public function splitLongMessages($value): self
     {
         $this->_usedProperties['splitLongMessages'] = true;
         $this->splitLongMessages = $value;
@@ -1108,7 +1096,7 @@ class HandlerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function delayBetweenMessages($value): static
+    public function delayBetweenMessages($value): self
     {
         $this->_usedProperties['delayBetweenMessages'] = true;
         $this->delayBetweenMessages = $value;
@@ -1121,7 +1109,7 @@ class HandlerConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function factor($value): static
+    public function factor($value): self
     {
         $this->_usedProperties['factor'] = true;
         $this->factor = $value;
@@ -1130,11 +1118,10 @@ class HandlerConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed>|string $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function tags(ParamConfigurator|string|array $value): static
+    public function tags($value): self
     {
         $this->_usedProperties['tags'] = true;
         $this->tags = $value;
@@ -1146,10 +1133,9 @@ class HandlerConfig
      * @default null
      * @param ParamConfigurator|mixed $value
      * @deprecated ".console_formater_options" is deprecated, use ".console_formatter_options" instead.
-     *
      * @return $this
      */
-    public function consoleFormaterOptions(mixed $value): static
+    public function consoleFormaterOptions($value): self
     {
         $this->_usedProperties['consoleFormaterOptions'] = true;
         $this->consoleFormaterOptions = $value;
@@ -1161,11 +1147,10 @@ class HandlerConfig
      * @default array (
     )
      * @param ParamConfigurator|mixed $value
-     *
      * @return $this
      */
-    public function consoleFormatterOptions(mixed $value = array (
-    )): static
+    public function consoleFormatterOptions($value = array (
+    )): self
     {
         $this->_usedProperties['consoleFormatterOptions'] = true;
         $this->consoleFormatterOptions = $value;
@@ -1178,7 +1163,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function formatter($value): static
+    public function formatter($value): self
     {
         $this->_usedProperties['formatter'] = true;
         $this->formatter = $value;
@@ -1191,7 +1176,7 @@ class HandlerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function nested($value): static
+    public function nested($value): self
     {
         $this->_usedProperties['nested'] = true;
         $this->nested = $value;
@@ -1200,12 +1185,9 @@ class HandlerConfig
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
      * @return \Symfony\Config\Monolog\HandlerConfig\PublisherConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Monolog\HandlerConfig\PublisherConfig : static)
      */
-    public function publisher(string|array $value = []): \Symfony\Config\Monolog\HandlerConfig\PublisherConfig|static
+    public function publisher($value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['publisher'] = true;
@@ -1225,12 +1207,9 @@ class HandlerConfig
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
      * @return \Symfony\Config\Monolog\HandlerConfig\MongoConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Monolog\HandlerConfig\MongoConfig : static)
      */
-    public function mongo(string|array $value = []): \Symfony\Config\Monolog\HandlerConfig\MongoConfig|static
+    public function mongo($value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['mongo'] = true;
@@ -1250,12 +1229,9 @@ class HandlerConfig
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
      * @return \Symfony\Config\Monolog\HandlerConfig\ElasticsearchConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Monolog\HandlerConfig\ElasticsearchConfig : static)
      */
-    public function elasticsearch(string|array $value = []): \Symfony\Config\Monolog\HandlerConfig\ElasticsearchConfig|static
+    public function elasticsearch($value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['elasticsearch'] = true;
@@ -1279,7 +1255,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function index($value): static
+    public function index($value): self
     {
         $this->_usedProperties['index'] = true;
         $this->index = $value;
@@ -1292,7 +1268,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function documentType($value): static
+    public function documentType($value): self
     {
         $this->_usedProperties['documentType'] = true;
         $this->documentType = $value;
@@ -1305,7 +1281,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function ignoreError($value): static
+    public function ignoreError($value): self
     {
         $this->_usedProperties['ignoreError'] = true;
         $this->ignoreError = $value;
@@ -1314,12 +1290,9 @@ class HandlerConfig
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
      * @return \Symfony\Config\Monolog\HandlerConfig\RedisConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Monolog\HandlerConfig\RedisConfig : static)
      */
-    public function redis(string|array $value = []): \Symfony\Config\Monolog\HandlerConfig\RedisConfig|static
+    public function redis($value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['redis'] = true;
@@ -1339,12 +1312,9 @@ class HandlerConfig
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
      * @return \Symfony\Config\Monolog\HandlerConfig\PredisConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Monolog\HandlerConfig\PredisConfig : static)
      */
-    public function predis(string|array $value = []): \Symfony\Config\Monolog\HandlerConfig\PredisConfig|static
+    public function predis($value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['predis'] = true;
@@ -1368,7 +1338,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function fromEmail($value): static
+    public function fromEmail($value): self
     {
         $this->_usedProperties['fromEmail'] = true;
         $this->fromEmail = $value;
@@ -1377,11 +1347,10 @@ class HandlerConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed>|string $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function toEmail(ParamConfigurator|string|array $value): static
+    public function toEmail($value): self
     {
         $this->_usedProperties['toEmail'] = true;
         $this->toEmail = $value;
@@ -1394,7 +1363,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function subject($value): static
+    public function subject($value): self
     {
         $this->_usedProperties['subject'] = true;
         $this->subject = $value;
@@ -1407,7 +1376,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function contentType($value): static
+    public function contentType($value): self
     {
         $this->_usedProperties['contentType'] = true;
         $this->contentType = $value;
@@ -1416,11 +1385,10 @@ class HandlerConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function headers(ParamConfigurator|array $value): static
+    public function headers($value): self
     {
         $this->_usedProperties['headers'] = true;
         $this->headers = $value;
@@ -1433,7 +1401,7 @@ class HandlerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function mailer($value): static
+    public function mailer($value): self
     {
         $this->_usedProperties['mailer'] = true;
         $this->mailer = $value;
@@ -1442,12 +1410,9 @@ class HandlerConfig
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
      * @return \Symfony\Config\Monolog\HandlerConfig\EmailPrototypeConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Monolog\HandlerConfig\EmailPrototypeConfig : static)
      */
-    public function emailPrototype(string|array $value = []): \Symfony\Config\Monolog\HandlerConfig\EmailPrototypeConfig|static
+    public function emailPrototype($value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['emailPrototype'] = true;
@@ -1471,7 +1436,7 @@ class HandlerConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function lazy($value): static
+    public function lazy($value): self
     {
         $this->_usedProperties['lazy'] = true;
         $this->lazy = $value;
@@ -1480,12 +1445,9 @@ class HandlerConfig
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
      * @return \Symfony\Config\Monolog\HandlerConfig\VerbosityLevelsConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Monolog\HandlerConfig\VerbosityLevelsConfig : static)
      */
-    public function verbosityLevels(array $value = []): \Symfony\Config\Monolog\HandlerConfig\VerbosityLevelsConfig|static
+    public function verbosityLevels($value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['verbosityLevels'] = true;
@@ -1505,12 +1467,9 @@ class HandlerConfig
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
      * @return \Symfony\Config\Monolog\HandlerConfig\ChannelsConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Monolog\HandlerConfig\ChannelsConfig : static)
      */
-    public function channels(mixed $value = []): \Symfony\Config\Monolog\HandlerConfig\ChannelsConfig|static
+    public function channels($value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['channels'] = true;
@@ -1671,7 +1630,7 @@ class HandlerConfig
 
         if (array_key_exists('excluded_http_codes', $value)) {
             $this->_usedProperties['excludedHttpCodes'] = true;
-            $this->excludedHttpCodes = array_map(fn ($v) => \is_array($v) ? new \Symfony\Config\Monolog\HandlerConfig\ExcludedHttpCodeConfig($v) : $v, $value['excluded_http_codes']);
+            $this->excludedHttpCodes = array_map(function ($v) { return \is_array($v) ? new \Symfony\Config\Monolog\HandlerConfig\ExcludedHttpCodeConfig($v) : $v; }, $value['excluded_http_codes']);
             unset($value['excluded_http_codes']);
         }
 
@@ -2203,7 +2162,7 @@ class HandlerConfig
             $output['excluded_404s'] = $this->excluded404s;
         }
         if (isset($this->_usedProperties['excludedHttpCodes'])) {
-            $output['excluded_http_codes'] = array_map(fn ($v) => $v instanceof \Symfony\Config\Monolog\HandlerConfig\ExcludedHttpCodeConfig ? $v->toArray() : $v, $this->excludedHttpCodes);
+            $output['excluded_http_codes'] = array_map(function ($v) { return $v instanceof \Symfony\Config\Monolog\HandlerConfig\ExcludedHttpCodeConfig ? $v->toArray() : $v; }, $this->excludedHttpCodes);
         }
         if (isset($this->_usedProperties['acceptedLevels'])) {
             $output['accepted_levels'] = $this->acceptedLevels;

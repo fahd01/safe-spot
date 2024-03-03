@@ -64,7 +64,7 @@ final class MakeUser extends AbstractMaker
 
     public static function getCommandDescription(): string
     {
-        return 'Create a new security user class';
+        return 'Creates a new security user class';
     }
 
     public function configureCommand(Command $command, InputConfiguration $inputConfig): void

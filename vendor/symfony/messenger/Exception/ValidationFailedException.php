@@ -18,20 +18,17 @@ use Symfony\Component\Validator\ConstraintViolationListInterface;
  */
 class ValidationFailedException extends RuntimeException
 {
-    private ConstraintViolationListInterface $violations;
-    private object $violatingMessage;
+    private $violations;
+    private $violatingMessage;
 
     public function __construct(object $violatingMessage, ConstraintViolationListInterface $violations)
     {
         $this->violatingMessage = $violatingMessage;
         $this->violations = $violations;
 
-        parent::__construct(sprintf('Message of type "%s" failed validation.', $this->violatingMessage::class));
+        parent::__construct(sprintf('Message of type "%s" failed validation.', \get_class($this->violatingMessage)));
     }
 
-    /**
-     * @return object
-     */
     public function getViolatingMessage()
     {
         return $this->violatingMessage;

@@ -22,7 +22,7 @@ class FormConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): static
+    public function enabled($value): self
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -30,9 +30,6 @@ class FormConfig
         return $this;
     }
 
-    /**
-     * @default {"enabled":null,"field_name":"_token"}
-    */
     public function csrfProtection(array $value = []): \Symfony\Config\Framework\Form\CsrfProtectionConfig
     {
         if (null === $this->csrfProtection) {
@@ -46,12 +43,11 @@ class FormConfig
     }
 
     /**
-     * @default null
+     * @default true
      * @param ParamConfigurator|bool $value
-     * @deprecated The child node "legacy_error_messages" at path "form" is deprecated.
      * @return $this
      */
-    public function legacyErrorMessages($value): static
+    public function legacyErrorMessages($value): self
     {
         $this->_usedProperties['legacyErrorMessages'] = true;
         $this->legacyErrorMessages = $value;

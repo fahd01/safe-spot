@@ -25,19 +25,25 @@ use Symfony\Component\VarDumper\Caster\ClassStub;
  */
 class MessengerDataCollector extends DataCollector implements LateDataCollectorInterface
 {
-    private array $traceableBuses = [];
+    private $traceableBuses = [];
 
-    public function registerBus(string $name, TraceableMessageBus $bus): void
+    public function registerBus(string $name, TraceableMessageBus $bus)
     {
         $this->traceableBuses[$name] = $bus;
     }
 
-    public function collect(Request $request, Response $response, ?\Throwable $exception = null): void
+    /**
+     * {@inheritdoc}
+     */
+    public function collect(Request $request, Response $response, ?\Throwable $exception = null)
     {
         // Noop. Everything is collected live by the traceable buses & cloned as late as possible.
     }
 
-    public function lateCollect(): void
+    /**
+     * {@inheritdoc}
+     */
+    public function lateCollect()
     {
         $this->data = ['messages' => [], 'buses' => array_keys($this->traceableBuses)];
 
@@ -50,18 +56,24 @@ class MessengerDataCollector extends DataCollector implements LateDataCollectorI
         }
 
         // Order by call time
-        usort($messages, fn ($a, $b) => $a[1] <=> $b[1]);
+        usort($messages, function ($a, $b) { return $a[1] <=> $b[1]; });
 
         // Keep the messages clones only
         $this->data['messages'] = array_column($messages, 0);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getName(): string
     {
         return 'messenger';
     }
 
-    public function reset(): void
+    /**
+     * {@inheritdoc}
+     */
+    public function reset()
     {
         $this->data = [];
         foreach ($this->traceableBuses as $traceableBus) {
@@ -69,6 +81,9 @@ class MessengerDataCollector extends DataCollector implements LateDataCollectorI
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function getCasters(): array
     {
         $casters = parent::getCasters();
@@ -79,7 +94,7 @@ class MessengerDataCollector extends DataCollector implements LateDataCollectorI
         return $casters;
     }
 
-    private function collectMessage(string $busName, array $tracedMessage): array
+    private function collectMessage(string $busName, array $tracedMessage)
     {
         $message = $tracedMessage['message'];
 
@@ -88,7 +103,7 @@ class MessengerDataCollector extends DataCollector implements LateDataCollectorI
             'stamps' => $tracedMessage['stamps'] ?? null,
             'stamps_after_dispatch' => $tracedMessage['stamps_after_dispatch'] ?? null,
             'message' => [
-                'type' => new ClassStub($message::class),
+                'type' => new ClassStub(\get_class($message)),
                 'value' => $message,
             ],
             'caller' => $tracedMessage['caller'],
@@ -98,7 +113,7 @@ class MessengerDataCollector extends DataCollector implements LateDataCollectorI
             $exception = $tracedMessage['exception'];
 
             $debugRepresentation['exception'] = [
-                'type' => $exception::class,
+                'type' => \get_class($exception),
                 'value' => $exception,
             ];
         }
@@ -122,7 +137,9 @@ class MessengerDataCollector extends DataCollector implements LateDataCollectorI
             return $this->data['messages'];
         }
 
-        return array_filter($this->data['messages'], fn ($message) => $bus === $message['bus']);
+        return array_filter($this->data['messages'], function ($message) use ($bus) {
+            return $bus === $message['bus'];
+        });
     }
 
     public function getBuses(): array

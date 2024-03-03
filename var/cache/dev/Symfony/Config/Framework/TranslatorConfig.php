@@ -20,6 +20,7 @@ class TranslatorConfig
     private $cacheDir;
     private $defaultPath;
     private $paths;
+    private $enabledLocales;
     private $pseudoLocalization;
     private $providers;
     private $_usedProperties = [];
@@ -29,7 +30,7 @@ class TranslatorConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): static
+    public function enabled($value): self
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -38,11 +39,10 @@ class TranslatorConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed>|string $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function fallbacks(ParamConfigurator|string|array $value): static
+    public function fallbacks($value): self
     {
         $this->_usedProperties['fallbacks'] = true;
         $this->fallbacks = $value;
@@ -55,7 +55,7 @@ class TranslatorConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function logging($value): static
+    public function logging($value): self
     {
         $this->_usedProperties['logging'] = true;
         $this->logging = $value;
@@ -68,7 +68,7 @@ class TranslatorConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function formatter($value): static
+    public function formatter($value): self
     {
         $this->_usedProperties['formatter'] = true;
         $this->formatter = $value;
@@ -81,7 +81,7 @@ class TranslatorConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function cacheDir($value): static
+    public function cacheDir($value): self
     {
         $this->_usedProperties['cacheDir'] = true;
         $this->cacheDir = $value;
@@ -95,7 +95,7 @@ class TranslatorConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultPath($value): static
+    public function defaultPath($value): self
     {
         $this->_usedProperties['defaultPath'] = true;
         $this->defaultPath = $value;
@@ -104,11 +104,10 @@ class TranslatorConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function paths(ParamConfigurator|array $value): static
+    public function paths($value): self
     {
         $this->_usedProperties['paths'] = true;
         $this->paths = $value;
@@ -117,13 +116,21 @@ class TranslatorConfig
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
-     * @default {"enabled":false,"accents":true,"expansion_factor":1,"brackets":true,"parse_html":false,"localizable_html_attributes":[]}
-     * @return \Symfony\Config\Framework\Translator\PseudoLocalizationConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Framework\Translator\PseudoLocalizationConfig : static)
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
+     * @return $this
      */
-    public function pseudoLocalization(array $value = []): \Symfony\Config\Framework\Translator\PseudoLocalizationConfig|static
+    public function enabledLocales($value): self
+    {
+        $this->_usedProperties['enabledLocales'] = true;
+        $this->enabledLocales = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return \Symfony\Config\Framework\Translator\PseudoLocalizationConfig|$this
+     */
+    public function pseudoLocalization($value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['pseudoLocalization'] = true;
@@ -142,9 +149,6 @@ class TranslatorConfig
         return $this->pseudoLocalization;
     }
 
-    /**
-     * Translation providers you can read/write your translations from
-    */
     public function provider(string $name, array $value = []): \Symfony\Config\Framework\Translator\ProviderConfig
     {
         if (!isset($this->providers[$name])) {
@@ -201,6 +205,12 @@ class TranslatorConfig
             unset($value['paths']);
         }
 
+        if (array_key_exists('enabled_locales', $value)) {
+            $this->_usedProperties['enabledLocales'] = true;
+            $this->enabledLocales = $value['enabled_locales'];
+            unset($value['enabled_locales']);
+        }
+
         if (array_key_exists('pseudo_localization', $value)) {
             $this->_usedProperties['pseudoLocalization'] = true;
             $this->pseudoLocalization = \is_array($value['pseudo_localization']) ? new \Symfony\Config\Framework\Translator\PseudoLocalizationConfig($value['pseudo_localization']) : $value['pseudo_localization'];
@@ -209,7 +219,7 @@ class TranslatorConfig
 
         if (array_key_exists('providers', $value)) {
             $this->_usedProperties['providers'] = true;
-            $this->providers = array_map(fn ($v) => new \Symfony\Config\Framework\Translator\ProviderConfig($v), $value['providers']);
+            $this->providers = array_map(function ($v) { return new \Symfony\Config\Framework\Translator\ProviderConfig($v); }, $value['providers']);
             unset($value['providers']);
         }
 
@@ -242,11 +252,14 @@ class TranslatorConfig
         if (isset($this->_usedProperties['paths'])) {
             $output['paths'] = $this->paths;
         }
+        if (isset($this->_usedProperties['enabledLocales'])) {
+            $output['enabled_locales'] = $this->enabledLocales;
+        }
         if (isset($this->_usedProperties['pseudoLocalization'])) {
             $output['pseudo_localization'] = $this->pseudoLocalization instanceof \Symfony\Config\Framework\Translator\PseudoLocalizationConfig ? $this->pseudoLocalization->toArray() : $this->pseudoLocalization;
         }
         if (isset($this->_usedProperties['providers'])) {
-            $output['providers'] = array_map(fn ($v) => $v->toArray(), $this->providers);
+            $output['providers'] = array_map(function ($v) { return $v->toArray(); }, $this->providers);
         }
 
         return $output;

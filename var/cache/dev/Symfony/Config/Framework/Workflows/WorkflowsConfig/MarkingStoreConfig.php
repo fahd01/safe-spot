@@ -20,7 +20,7 @@ class MarkingStoreConfig
      * @param ParamConfigurator|'method' $value
      * @return $this
      */
-    public function type($value): static
+    public function type($value): self
     {
         $this->_usedProperties['type'] = true;
         $this->type = $value;
@@ -29,11 +29,11 @@ class MarkingStoreConfig
     }
 
     /**
-     * @default null
+     * @default 'marking'
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function property($value): static
+    public function property($value): self
     {
         $this->_usedProperties['property'] = true;
         $this->property = $value;
@@ -46,7 +46,7 @@ class MarkingStoreConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function service($value): static
+    public function service($value): self
     {
         $this->_usedProperties['service'] = true;
         $this->service = $value;

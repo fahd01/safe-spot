@@ -28,7 +28,7 @@ class PasswordHasherConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function algorithm($value): static
+    public function algorithm($value): self
     {
         $this->_usedProperties['algorithm'] = true;
         $this->algorithm = $value;
@@ -37,11 +37,10 @@ class PasswordHasherConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed>|mixed $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function migrateFrom(mixed $value): static
+    public function migrateFrom($value): self
     {
         $this->_usedProperties['migrateFrom'] = true;
         $this->migrateFrom = $value;
@@ -55,7 +54,7 @@ class PasswordHasherConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function hashAlgorithm($value): static
+    public function hashAlgorithm($value): self
     {
         $this->_usedProperties['hashAlgorithm'] = true;
         $this->hashAlgorithm = $value;
@@ -68,7 +67,7 @@ class PasswordHasherConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function keyLength($value): static
+    public function keyLength($value): self
     {
         $this->_usedProperties['keyLength'] = true;
         $this->keyLength = $value;
@@ -81,7 +80,7 @@ class PasswordHasherConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function ignoreCase($value): static
+    public function ignoreCase($value): self
     {
         $this->_usedProperties['ignoreCase'] = true;
         $this->ignoreCase = $value;
@@ -94,7 +93,7 @@ class PasswordHasherConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function encodeAsBase64($value): static
+    public function encodeAsBase64($value): self
     {
         $this->_usedProperties['encodeAsBase64'] = true;
         $this->encodeAsBase64 = $value;
@@ -107,7 +106,7 @@ class PasswordHasherConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function iterations($value): static
+    public function iterations($value): self
     {
         $this->_usedProperties['iterations'] = true;
         $this->iterations = $value;
@@ -120,7 +119,7 @@ class PasswordHasherConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function cost($value): static
+    public function cost($value): self
     {
         $this->_usedProperties['cost'] = true;
         $this->cost = $value;
@@ -133,7 +132,7 @@ class PasswordHasherConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function memoryCost($value): static
+    public function memoryCost($value): self
     {
         $this->_usedProperties['memoryCost'] = true;
         $this->memoryCost = $value;
@@ -146,7 +145,7 @@ class PasswordHasherConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function timeCost($value): static
+    public function timeCost($value): self
     {
         $this->_usedProperties['timeCost'] = true;
         $this->timeCost = $value;
@@ -159,7 +158,7 @@ class PasswordHasherConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function id($value): static
+    public function id($value): self
     {
         $this->_usedProperties['id'] = true;
         $this->id = $value;

@@ -13,7 +13,6 @@ namespace Symfony\Bridge\Doctrine\Form\ChoiceList;
 
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Form\ChoiceList\Loader\AbstractChoiceLoader;
-use Symfony\Component\Form\Exception\LogicException;
 
 /**
  * Loads choices using a Doctrine object manager.
@@ -22,8 +21,10 @@ use Symfony\Component\Form\Exception\LogicException;
  */
 class DoctrineChoiceLoader extends AbstractChoiceLoader
 {
-    /** @var class-string */
-    private readonly string $class;
+    private $manager;
+    private $class;
+    private $idReader;
+    private $objectLoader;
 
     /**
      * Creates a new choice loader.
@@ -34,19 +35,23 @@ class DoctrineChoiceLoader extends AbstractChoiceLoader
      *
      * @param string $class The class name of the loaded objects
      */
-    public function __construct(
-        private readonly ObjectManager $manager,
-        string $class,
-        private readonly ?IdReader $idReader = null,
-        private readonly ?EntityLoaderInterface $objectLoader = null,
-    ) {
+    public function __construct(ObjectManager $manager, string $class, ?IdReader $idReader = null, ?EntityLoaderInterface $objectLoader = null)
+    {
+        $classMetadata = $manager->getClassMetadata($class);
+
         if ($idReader && !$idReader->isSingleId()) {
-            throw new \InvalidArgumentException(sprintf('The "$idReader" argument of "%s" must be null when the query cannot be optimized because of composite id fields.', __METHOD__));
+            throw new \InvalidArgumentException(sprintf('The `$idReader` argument of "%s" must be null when the query cannot be optimized because of composite id fields.', __METHOD__));
         }
 
-        $this->class = $manager->getClassMetadata($class)->getName();
+        $this->manager = $manager;
+        $this->class = $classMetadata->getName();
+        $this->idReader = $idReader;
+        $this->objectLoader = $objectLoader;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function loadChoices(): iterable
     {
         return $this->objectLoader
@@ -54,13 +59,25 @@ class DoctrineChoiceLoader extends AbstractChoiceLoader
             : $this->manager->getRepository($this->class)->findAll();
     }
 
+    /**
+     * @internal to be remove in Symfony 6
+     */
     protected function doLoadValuesForChoices(array $choices): array
     {
         // Optimize performance for single-field identifiers. We already
         // know that the IDs are used as values
         // Attention: This optimization does not check choices for existence
         if ($this->idReader) {
-            throw new LogicException('Not defining the IdReader explicitly as a value callback when the query can be optimized is not supported.');
+            trigger_deprecation('symfony/doctrine-bridge', '5.1', 'Not defining explicitly the IdReader as value callback when query can be optimized is deprecated. Don\'t pass the IdReader to "%s" or define the "choice_value" option instead.', __CLASS__);
+            // Maintain order and indices of the given objects
+            $values = [];
+            foreach ($choices as $i => $object) {
+                if ($object instanceof $this->class) {
+                    $values[$i] = $this->idReader->getIdValue($object);
+                }
+            }
+
+            return $values;
         }
 
         return parent::doLoadValuesForChoices($choices);
@@ -68,8 +85,10 @@ class DoctrineChoiceLoader extends AbstractChoiceLoader
 
     protected function doLoadChoicesForValues(array $values, ?callable $value): array
     {
-        if ($this->idReader && null === $value) {
-            throw new LogicException('Not defining the IdReader explicitly as a value callback when the query can be optimized is not supported.');
+        $legacy = $this->idReader && null === $value;
+
+        if ($legacy) {
+            trigger_deprecation('symfony/doctrine-bridge', '5.1', 'Not defining explicitly the IdReader as value callback when query can be optimized is deprecated. Don\'t pass the IdReader to "%s" or define the "choice_value" option instead.', __CLASS__);
         }
 
         $idReader = null;
@@ -77,6 +96,8 @@ class DoctrineChoiceLoader extends AbstractChoiceLoader
             $idReader = $value[0];
         } elseif ($value instanceof \Closure && ($rThis = (new \ReflectionFunction($value))->getClosureThis()) instanceof IdReader) {
             $idReader = $rThis;
+        } elseif ($legacy) {
+            $idReader = $this->idReader;
         }
 
         // Optimize performance in case we have an object loader and

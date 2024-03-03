@@ -21,13 +21,15 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 class DoctrineValidationPass implements CompilerPassInterface
 {
-    public function __construct(
-        private readonly string $managerType,
-    ) {
+    private $managerType;
+
+    public function __construct(string $managerType)
+    {
+        $this->managerType = $managerType;
     }
 
     /**
-     * @return void
+     * {@inheritdoc}
      */
     public function process(ContainerBuilder $container)
     {
@@ -39,7 +41,7 @@ class DoctrineValidationPass implements CompilerPassInterface
      * Gets the validation mapping files for the format and extends them with
      * files matching a doctrine search pattern (Resources/config/validation.orm.xml).
      */
-    private function updateValidatorMappingFiles(ContainerBuilder $container, string $mapping, string $extension): void
+    private function updateValidatorMappingFiles(ContainerBuilder $container, string $mapping, string $extension)
     {
         if (!$container->hasParameter('validator.mapping.loader.'.$mapping.'_files_loader.mapping_files')) {
             return;

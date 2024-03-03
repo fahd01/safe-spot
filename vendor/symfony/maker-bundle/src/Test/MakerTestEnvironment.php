@@ -22,8 +22,6 @@ use Symfony\Component\Process\InputStream;
  */
 final class MakerTestEnvironment
 {
-    public const GENERATED_FILES_REGEX = '#(?:created|updated):\s(?:.*\\\\)*(.*\.[a-z]{3,4}).*(?:\\\\n)?#ui';
-
     private Filesystem $fs;
     private bool|string $rootPath;
     private string $cachePath;
@@ -159,14 +157,8 @@ final class MakerTestEnvironment
                 // install any missing dependencies
                 $dependencies = $this->determineMissingDependencies();
                 if ($dependencies) {
-                    // -v actually silences the "very" verbose output in case of an error
-                    $composerProcess = MakerTestProcess::create(sprintf('composer require %s -v', implode(' ', $dependencies)), $this->path)
-                        ->run(true)
-                    ;
-
-                    if (!$composerProcess->isSuccessful()) {
-                        throw new \Exception(sprintf('Error running command: composer require %s -v. Output: "%s". Error: "%s"', implode(' ', $dependencies), $composerProcess->getOutput(), $composerProcess->getErrorOutput()));
-                    }
+                    MakerTestProcess::create(sprintf('composer require %s', implode(' ', $dependencies)), $this->path)
+                        ->run();
                 }
 
                 $this->changeRootNamespaceIfNeeded();
@@ -183,7 +175,6 @@ final class MakerTestEnvironment
             }
         } else {
             MakerTestProcess::create('git reset --hard && git clean -fd', $this->path)->run();
-            $this->fs->remove($this->path.'/var/cache');
         }
     }
 
@@ -215,9 +206,9 @@ final class MakerTestEnvironment
 
         $matches = [];
 
-        preg_match_all(self::GENERATED_FILES_REGEX, $output, $matches, \PREG_PATTERN_ORDER);
+        preg_match_all('#(created|updated): (]8;;[^]*\\\)?(.*?)(]8;;\\\)?\n#iu', $output, $matches, \PREG_PATTERN_ORDER);
 
-        return array_map('trim', $matches[1]);
+        return array_map('trim', $matches[3]);
     }
 
     public function fileExists(string $file): bool
@@ -281,7 +272,7 @@ final class MakerTestEnvironment
             // do not explicitly set the PHPUnit version
             [
                 'filename' => 'phpunit.xml.dist',
-                'find' => '<server name="SYMFONY_PHPUNIT_VERSION" value="9.6" />',
+                'find' => '<server name="SYMFONY_PHPUNIT_VERSION" value="9.5" />',
                 'replace' => '',
             ],
         ];
@@ -404,7 +395,7 @@ echo json_encode($missingDependencies);
         return array_merge($data, $this->testDetails->getExtraDependencies());
     }
 
-    public function getTargetSkeletonVersion(): ?string
+    private function getTargetSkeletonVersion(): ?string
     {
         return $_SERVER['SYMFONY_VERSION'] ?? '';
     }

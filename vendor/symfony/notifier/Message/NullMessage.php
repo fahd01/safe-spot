@@ -16,7 +16,7 @@ namespace Symfony\Component\Notifier\Message;
  */
 final class NullMessage implements MessageInterface
 {
-    private MessageInterface $decoratedMessage;
+    private $decoratedMessage;
 
     public function __construct(MessageInterface $message)
     {
@@ -40,6 +40,6 @@ final class NullMessage implements MessageInterface
 
     public function getTransport(): ?string
     {
-        return $this->decoratedMessage->getTransport() ?? null;
+        return $this->decoratedMessage->getTransport() ?? 'null';
     }
 }

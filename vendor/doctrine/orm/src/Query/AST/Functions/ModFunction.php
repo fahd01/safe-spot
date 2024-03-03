@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Doctrine\ORM\Query\AST\Functions;
 
-use Doctrine\ORM\Query\AST\Node;
+use Doctrine\ORM\Query\AST\SimpleArithmeticExpression;
+use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
-use Doctrine\ORM\Query\TokenType;
 
 /**
  * "MOD" "(" SimpleArithmeticExpression "," SimpleArithmeticExpression ")"
@@ -16,28 +16,33 @@ use Doctrine\ORM\Query\TokenType;
  */
 class ModFunction extends FunctionNode
 {
-    public Node|string $firstSimpleArithmeticExpression;
-    public Node|string $secondSimpleArithmeticExpression;
+    /** @var SimpleArithmeticExpression */
+    public $firstSimpleArithmeticExpression;
 
-    public function getSql(SqlWalker $sqlWalker): string
+    /** @var SimpleArithmeticExpression */
+    public $secondSimpleArithmeticExpression;
+
+    /** @inheritDoc */
+    public function getSql(SqlWalker $sqlWalker)
     {
         return $sqlWalker->getConnection()->getDatabasePlatform()->getModExpression(
             $sqlWalker->walkSimpleArithmeticExpression($this->firstSimpleArithmeticExpression),
-            $sqlWalker->walkSimpleArithmeticExpression($this->secondSimpleArithmeticExpression),
+            $sqlWalker->walkSimpleArithmeticExpression($this->secondSimpleArithmeticExpression)
         );
     }
 
-    public function parse(Parser $parser): void
+    /** @inheritDoc */
+    public function parse(Parser $parser)
     {
-        $parser->match(TokenType::T_IDENTIFIER);
-        $parser->match(TokenType::T_OPEN_PARENTHESIS);
+        $parser->match(Lexer::T_IDENTIFIER);
+        $parser->match(Lexer::T_OPEN_PARENTHESIS);
 
         $this->firstSimpleArithmeticExpression = $parser->SimpleArithmeticExpression();
 
-        $parser->match(TokenType::T_COMMA);
+        $parser->match(Lexer::T_COMMA);
 
         $this->secondSimpleArithmeticExpression = $parser->SimpleArithmeticExpression();
 
-        $parser->match(TokenType::T_CLOSE_PARENTHESIS);
+        $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 }

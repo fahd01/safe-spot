@@ -16,6 +16,8 @@ use Doctrine\DBAL\Schema\Table;
 /**
  * Uses PostgreSQL LISTEN/NOTIFY to push messages to workers.
  *
+ * If you do not want to use the LISTEN mechanism, set the `use_notify` option to `false` when calling DoctrineTransportFactory::createTransport.
+ *
  * @internal
  *
  * @author Kévin Dunglas <dunglas@gmail.com>
@@ -23,12 +25,10 @@ use Doctrine\DBAL\Schema\Table;
 final class PostgreSqlConnection extends Connection
 {
     /**
-     * * use_notify: Set to false to disable the use of LISTEN/NOTIFY. Default: true
      * * check_delayed_interval: The interval to check for delayed messages, in milliseconds. Set to 0 to disable checks. Default: 60000 (1 minute)
      * * get_notify_timeout: The length of time to wait for a response when calling PDO::pgsqlGetNotify, in milliseconds. Default: 0.
      */
     protected const DEFAULT_OPTIONS = parent::DEFAULT_OPTIONS + [
-        'use_notify' => true,
         'check_delayed_interval' => 60000,
         'get_notify_timeout' => 0,
     ];
@@ -38,9 +38,6 @@ final class PostgreSqlConnection extends Connection
         throw new \BadMethodCallException('Cannot serialize '.__CLASS__);
     }
 
-    /**
-     * @return void
-     */
     public function __wakeup()
     {
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
@@ -51,7 +48,7 @@ final class PostgreSqlConnection extends Connection
         $this->unlisten();
     }
 
-    public function reset(): void
+    public function reset()
     {
         parent::reset();
         $this->unlisten();
@@ -80,9 +77,9 @@ final class PostgreSqlConnection extends Connection
         $notification = $wrappedConnection->pgsqlGetNotify(\PDO::FETCH_ASSOC, $this->configuration['get_notify_timeout']);
         if (
             // no notifications, or for another table or queue
-            (false === $notification || $notification['message'] !== $this->configuration['table_name'] || $notification['payload'] !== $this->configuration['queue_name'])
+            (false === $notification || $notification['message'] !== $this->configuration['table_name'] || $notification['payload'] !== $this->configuration['queue_name']) &&
             // delayed messages
-            && (microtime(true) * 1000 - $this->queueEmptiedAt < $this->configuration['check_delayed_interval'])
+            (microtime(true) * 1000 - $this->queueEmptiedAt < $this->configuration['check_delayed_interval'])
         ) {
             usleep(1000);
 
@@ -147,7 +144,7 @@ SQL
         return sprintf('%1$s.notify_%2$s', $tableConfig[0], $tableConfig[1]);
     }
 
-    private function unlisten(): void
+    private function unlisten()
     {
         $this->executeStatement(sprintf('UNLISTEN "%s"', $this->configuration['table_name']));
     }

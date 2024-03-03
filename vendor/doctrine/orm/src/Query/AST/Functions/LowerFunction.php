@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Doctrine\ORM\Query\AST\Functions;
 
 use Doctrine\ORM\Query\AST\Node;
+use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
-use Doctrine\ORM\Query\TokenType;
 
 use function sprintf;
 
@@ -18,23 +18,26 @@ use function sprintf;
  */
 class LowerFunction extends FunctionNode
 {
-    public Node $stringPrimary;
+    /** @var Node */
+    public $stringPrimary;
 
-    public function getSql(SqlWalker $sqlWalker): string
+    /** @inheritDoc */
+    public function getSql(SqlWalker $sqlWalker)
     {
         return sprintf(
             'LOWER(%s)',
-            $sqlWalker->walkSimpleArithmeticExpression($this->stringPrimary),
+            $sqlWalker->walkSimpleArithmeticExpression($this->stringPrimary)
         );
     }
 
-    public function parse(Parser $parser): void
+    /** @inheritDoc */
+    public function parse(Parser $parser)
     {
-        $parser->match(TokenType::T_IDENTIFIER);
-        $parser->match(TokenType::T_OPEN_PARENTHESIS);
+        $parser->match(Lexer::T_IDENTIFIER);
+        $parser->match(Lexer::T_OPEN_PARENTHESIS);
 
         $this->stringPrimary = $parser->StringPrimary();
 
-        $parser->match(TokenType::T_CLOSE_PARENTHESIS);
+        $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 }

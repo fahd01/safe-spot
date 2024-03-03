@@ -13,7 +13,6 @@ class X509Config
     private $provider;
     private $user;
     private $credentials;
-    private $userIdentifier;
     private $_usedProperties = [];
 
     /**
@@ -21,7 +20,7 @@ class X509Config
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function provider($value): static
+    public function provider($value): self
     {
         $this->_usedProperties['provider'] = true;
         $this->provider = $value;
@@ -34,7 +33,7 @@ class X509Config
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function user($value): static
+    public function user($value): self
     {
         $this->_usedProperties['user'] = true;
         $this->user = $value;
@@ -47,23 +46,10 @@ class X509Config
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function credentials($value): static
+    public function credentials($value): self
     {
         $this->_usedProperties['credentials'] = true;
         $this->credentials = $value;
-
-        return $this;
-    }
-
-    /**
-     * @default 'emailAddress'
-     * @param ParamConfigurator|mixed $value
-     * @return $this
-     */
-    public function userIdentifier($value): static
-    {
-        $this->_usedProperties['userIdentifier'] = true;
-        $this->userIdentifier = $value;
 
         return $this;
     }
@@ -88,12 +74,6 @@ class X509Config
             unset($value['credentials']);
         }
 
-        if (array_key_exists('user_identifier', $value)) {
-            $this->_usedProperties['userIdentifier'] = true;
-            $this->userIdentifier = $value['user_identifier'];
-            unset($value['user_identifier']);
-        }
-
         if ([] !== $value) {
             throw new InvalidConfigurationException(sprintf('The following keys are not supported by "%s": ', __CLASS__).implode(', ', array_keys($value)));
         }
@@ -110,9 +90,6 @@ class X509Config
         }
         if (isset($this->_usedProperties['credentials'])) {
             $output['credentials'] = $this->credentials;
-        }
-        if (isset($this->_usedProperties['userIdentifier'])) {
-            $output['user_identifier'] = $this->userIdentifier;
         }
 
         return $output;

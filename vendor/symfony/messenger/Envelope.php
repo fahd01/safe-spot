@@ -21,13 +21,12 @@ use Symfony\Component\Messenger\Stamp\StampInterface;
 final class Envelope
 {
     /**
-     * @var array<class-string<StampInterface>, list<StampInterface>>
+     * @var array<string, list<StampInterface>>
      */
-    private array $stamps = [];
-    private object $message;
+    private $stamps = [];
+    private $message;
 
     /**
-     * @param object|Envelope  $message
      * @param StampInterface[] $stamps
      */
     public function __construct(object $message, array $stamps = [])
@@ -35,13 +34,14 @@ final class Envelope
         $this->message = $message;
 
         foreach ($stamps as $stamp) {
-            $this->stamps[$stamp::class][] = $stamp;
+            $this->stamps[\get_class($stamp)][] = $stamp;
         }
     }
 
     /**
      * Makes sure the message is in an Envelope and adds the given stamps.
      *
+     * @param object|Envelope  $message
      * @param StampInterface[] $stamps
      */
     public static function wrap(object $message, array $stamps = []): self
@@ -52,27 +52,27 @@ final class Envelope
     }
 
     /**
-     * Adds one or more stamps.
+     * @return static A new Envelope instance with additional stamp
      */
-    public function with(StampInterface ...$stamps): static
+    public function with(StampInterface ...$stamps): self
     {
         $cloned = clone $this;
 
         foreach ($stamps as $stamp) {
-            $cloned->stamps[$stamp::class][] = $stamp;
+            $cloned->stamps[\get_class($stamp)][] = $stamp;
         }
 
         return $cloned;
     }
 
     /**
-     * Removes all stamps of the given class.
+     * @return static A new Envelope instance without any stamps of the given class
      */
-    public function withoutAll(string $stampFqcn): static
+    public function withoutAll(string $stampFqcn): self
     {
         $cloned = clone $this;
 
-        unset($cloned->stamps[$stampFqcn]);
+        unset($cloned->stamps[$this->resolveAlias($stampFqcn)]);
 
         return $cloned;
     }
@@ -83,6 +83,7 @@ final class Envelope
     public function withoutStampsOfType(string $type): self
     {
         $cloned = clone $this;
+        $type = $this->resolveAlias($type);
 
         foreach ($cloned->stamps as $class => $stamps) {
             if ($class === $type || is_subclass_of($class, $type)) {
@@ -93,38 +94,38 @@ final class Envelope
         return $cloned;
     }
 
-    /**
-     * @template TStamp of StampInterface
-     *
-     * @param class-string<TStamp> $stampFqcn
-     *
-     * @return TStamp|null
-     */
     public function last(string $stampFqcn): ?StampInterface
     {
-        return isset($this->stamps[$stampFqcn]) ? end($this->stamps[$stampFqcn]) : null;
+        return isset($this->stamps[$stampFqcn = $this->resolveAlias($stampFqcn)]) ? end($this->stamps[$stampFqcn]) : null;
     }
 
     /**
-     * @template TStamp of StampInterface
-     *
-     * @param class-string<TStamp>|null $stampFqcn
-     *
      * @return StampInterface[]|StampInterface[][] The stamps for the specified FQCN, or all stamps by their class name
-     *
-     * @psalm-return ($stampFqcn is string : array<class-string<StampInterface>, list<StampInterface>> ? list<TStamp>)
      */
     public function all(?string $stampFqcn = null): array
     {
         if (null !== $stampFqcn) {
-            return $this->stamps[$stampFqcn] ?? [];
+            return $this->stamps[$this->resolveAlias($stampFqcn)] ?? [];
         }
 
         return $this->stamps;
     }
 
+    /**
+     * @return object The original message contained in the envelope
+     */
     public function getMessage(): object
     {
         return $this->message;
+    }
+
+    /**
+     * BC to be removed in 6.0.
+     */
+    private function resolveAlias(string $fqcn): string
+    {
+        static $resolved;
+
+        return $resolved[$fqcn] ?? ($resolved[$fqcn] = class_exists($fqcn) ? (new \ReflectionClass($fqcn))->getName() : $fqcn);
     }
 }

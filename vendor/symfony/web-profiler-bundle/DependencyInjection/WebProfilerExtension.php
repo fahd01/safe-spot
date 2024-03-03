@@ -37,8 +37,6 @@ class WebProfilerExtension extends Extension
      * Loads the web profiler configuration.
      *
      * @param array $configs An array of configuration settings
-     *
-     * @return void
      */
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -59,12 +57,15 @@ class WebProfilerExtension extends Extension
             ->replaceArgument(3, new ServiceClosureArgument(new Reference('debug.file_link_formatter.url_format')));
     }
 
-    public function getXsdValidationBasePath(): string|false
+    /**
+     * {@inheritdoc}
+     */
+    public function getXsdValidationBasePath()
     {
         return __DIR__.'/../Resources/config/schema';
     }
 
-    public function getNamespace(): string
+    public function getNamespace()
     {
         return 'http://symfony.com/schema/dic/webprofiler';
     }

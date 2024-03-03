@@ -23,9 +23,9 @@ use Symfony\Component\Messenger\Exception\InvalidArgumentException;
  */
 class StopWorkerOnTimeLimitListener implements EventSubscriberInterface
 {
-    private int $timeLimitInSeconds;
-    private ?LoggerInterface $logger;
-    private float $endTime = 0;
+    private $timeLimitInSeconds;
+    private $logger;
+    private $endTime;
 
     public function __construct(int $timeLimitInSeconds, ?LoggerInterface $logger = null)
     {
@@ -47,11 +47,13 @@ class StopWorkerOnTimeLimitListener implements EventSubscriberInterface
     {
         if ($this->endTime < microtime(true)) {
             $event->getWorker()->stop();
-            $this->logger?->info('Worker stopped due to time limit of {timeLimit}s exceeded', ['timeLimit' => $this->timeLimitInSeconds]);
+            if (null !== $this->logger) {
+                $this->logger->info('Worker stopped due to time limit of {timeLimit}s exceeded', ['timeLimit' => $this->timeLimitInSeconds]);
+            }
         }
     }
 
-    public static function getSubscribedEvents(): array
+    public static function getSubscribedEvents()
     {
         return [
             WorkerStartedEvent::class => 'onWorkerStarted',

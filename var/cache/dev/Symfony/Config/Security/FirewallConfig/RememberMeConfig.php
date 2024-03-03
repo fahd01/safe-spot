@@ -35,7 +35,7 @@ class RememberMeConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function secret($value): static
+    public function secret($value): self
     {
         $this->_usedProperties['secret'] = true;
         $this->secret = $value;
@@ -48,7 +48,7 @@ class RememberMeConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function service($value): static
+    public function service($value): self
     {
         $this->_usedProperties['service'] = true;
         $this->service = $value;
@@ -57,11 +57,10 @@ class RememberMeConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed>|string $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function userProviders(ParamConfigurator|string|array $value): static
+    public function userProviders($value): self
     {
         $this->_usedProperties['userProviders'] = true;
         $this->userProviders = $value;
@@ -74,7 +73,7 @@ class RememberMeConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function catchExceptions($value): static
+    public function catchExceptions($value): self
     {
         $this->_usedProperties['catchExceptions'] = true;
         $this->catchExceptions = $value;
@@ -83,11 +82,10 @@ class RememberMeConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function signatureProperties(ParamConfigurator|array $value): static
+    public function signatureProperties($value): self
     {
         $this->_usedProperties['signatureProperties'] = true;
         $this->signatureProperties = $value;
@@ -96,12 +94,9 @@ class RememberMeConfig
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
      * @return \Symfony\Config\Security\FirewallConfig\RememberMe\TokenProviderConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Security\FirewallConfig\RememberMe\TokenProviderConfig : static)
      */
-    public function tokenProvider(string|array $value = []): \Symfony\Config\Security\FirewallConfig\RememberMe\TokenProviderConfig|static
+    public function tokenProvider($value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['tokenProvider'] = true;
@@ -126,7 +121,7 @@ class RememberMeConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function tokenVerifier($value): static
+    public function tokenVerifier($value): self
     {
         $this->_usedProperties['tokenVerifier'] = true;
         $this->tokenVerifier = $value;
@@ -139,7 +134,7 @@ class RememberMeConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function name($value): static
+    public function name($value): self
     {
         $this->_usedProperties['name'] = true;
         $this->name = $value;
@@ -152,7 +147,7 @@ class RememberMeConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function lifetime($value): static
+    public function lifetime($value): self
     {
         $this->_usedProperties['lifetime'] = true;
         $this->lifetime = $value;
@@ -165,7 +160,7 @@ class RememberMeConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function path($value): static
+    public function path($value): self
     {
         $this->_usedProperties['path'] = true;
         $this->path = $value;
@@ -178,7 +173,7 @@ class RememberMeConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function domain($value): static
+    public function domain($value): self
     {
         $this->_usedProperties['domain'] = true;
         $this->domain = $value;
@@ -191,7 +186,7 @@ class RememberMeConfig
      * @param ParamConfigurator|true|false|'auto' $value
      * @return $this
      */
-    public function secure($value): static
+    public function secure($value): self
     {
         $this->_usedProperties['secure'] = true;
         $this->secure = $value;
@@ -204,7 +199,7 @@ class RememberMeConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function httponly($value): static
+    public function httponly($value): self
     {
         $this->_usedProperties['httponly'] = true;
         $this->httponly = $value;
@@ -217,7 +212,7 @@ class RememberMeConfig
      * @param ParamConfigurator|NULL|'lax'|'strict'|'none' $value
      * @return $this
      */
-    public function samesite($value): static
+    public function samesite($value): self
     {
         $this->_usedProperties['samesite'] = true;
         $this->samesite = $value;
@@ -230,7 +225,7 @@ class RememberMeConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function alwaysRememberMe($value): static
+    public function alwaysRememberMe($value): self
     {
         $this->_usedProperties['alwaysRememberMe'] = true;
         $this->alwaysRememberMe = $value;
@@ -243,7 +238,7 @@ class RememberMeConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function rememberMeParameter($value): static
+    public function rememberMeParameter($value): self
     {
         $this->_usedProperties['rememberMeParameter'] = true;
         $this->rememberMeParameter = $value;

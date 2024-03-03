@@ -13,20 +13,19 @@ namespace Symfony\Component\Messenger\Exception;
 
 use Symfony\Component\Messenger\Envelope;
 
-class HandlerFailedException extends RuntimeException implements WrappedExceptionsInterface
+class HandlerFailedException extends RuntimeException
 {
-    use WrappedExceptionsTrait;
-
-    private Envelope $envelope;
+    private $exceptions;
+    private $envelope;
 
     /**
-     * @param \Throwable[] $exceptions The name of the handler should be given as key
+     * @param \Throwable[] $exceptions
      */
     public function __construct(Envelope $envelope, array $exceptions)
     {
         $firstFailure = current($exceptions);
 
-        $message = sprintf('Handling "%s" failed: ', $envelope->getMessage()::class);
+        $message = sprintf('Handling "%s" failed: ', \get_class($envelope->getMessage()));
 
         parent::__construct(
             $message.(1 === \count($exceptions)
@@ -47,28 +46,21 @@ class HandlerFailedException extends RuntimeException implements WrappedExceptio
     }
 
     /**
-     * @deprecated since Symfony 6.4, use {@see self::getWrappedExceptions()} instead
-     *
      * @return \Throwable[]
      */
     public function getNestedExceptions(): array
     {
-        trigger_deprecation('symfony/messenger', '6.4', 'The "%s()" method is deprecated, use "%s::getWrappedExceptions()" instead.', __METHOD__, self::class);
-
-        return array_values($this->exceptions);
+        return $this->exceptions;
     }
 
-    /**
-     * @deprecated since Symfony 6.4, use {@see self::getWrappedExceptions()} instead
-     */
     public function getNestedExceptionOfClass(string $exceptionClassName): array
     {
-        trigger_deprecation('symfony/messenger', '6.4', 'The "%s()" method is deprecated, use "%s::getWrappedExceptions()" instead.', __METHOD__, self::class);
-
         return array_values(
             array_filter(
                 $this->exceptions,
-                fn ($exception) => is_a($exception, $exceptionClassName)
+                function ($exception) use ($exceptionClassName) {
+                    return is_a($exception, $exceptionClassName);
+                }
             )
         );
     }

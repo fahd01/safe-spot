@@ -22,7 +22,7 @@ class SerializerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultSerializer($value): static
+    public function defaultSerializer($value): self
     {
         $this->_usedProperties['defaultSerializer'] = true;
         $this->defaultSerializer = $value;
@@ -30,9 +30,6 @@ class SerializerConfig
         return $this;
     }
 
-    /**
-     * @default {"format":"json","context":[]}
-    */
     public function symfonySerializer(array $value = []): \Symfony\Config\Framework\Messenger\Serializer\SymfonySerializerConfig
     {
         if (null === $this->symfonySerializer) {

@@ -18,7 +18,7 @@ use Symfony\Component\Notifier\Message\SentMessage;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */
-interface TransportInterface extends \Stringable
+interface TransportInterface
 {
     /**
      * @throws TransportExceptionInterface
@@ -26,4 +26,6 @@ interface TransportInterface extends \Stringable
     public function send(MessageInterface $message): ?SentMessage;
 
     public function supports(MessageInterface $message): bool;
+
+    public function __toString(): string;
 }

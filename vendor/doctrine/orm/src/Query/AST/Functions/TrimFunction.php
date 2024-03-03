@@ -6,9 +6,9 @@ namespace Doctrine\ORM\Query\AST\Functions;
 
 use Doctrine\DBAL\Platforms\TrimMode;
 use Doctrine\ORM\Query\AST\Node;
+use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
-use Doctrine\ORM\Query\TokenType;
 
 use function assert;
 use function strcasecmp;
@@ -20,13 +20,25 @@ use function strcasecmp;
  */
 class TrimFunction extends FunctionNode
 {
-    public bool $leading          = false;
-    public bool $trailing         = false;
-    public bool $both             = false;
-    public string|false $trimChar = false;
-    public Node $stringPrimary;
+    /** @var bool */
+    public $leading;
 
-    public function getSql(SqlWalker $sqlWalker): string
+    /** @var bool */
+    public $trailing;
+
+    /** @var bool */
+    public $both;
+
+    /** @var string|false */
+    public $trimChar = false;
+
+    /** @var Node */
+    public $stringPrimary;
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSql(SqlWalker $sqlWalker)
     {
         $stringPrimary = $sqlWalker->walkStringPrimary($this->stringPrimary);
         $platform      = $sqlWalker->getConnection()->getDatabasePlatform();
@@ -36,40 +48,43 @@ class TrimFunction extends FunctionNode
             return $platform->getTrimExpression(
                 $stringPrimary,
                 $trimMode,
-                $platform->quoteStringLiteral($this->trimChar),
+                $platform->quoteStringLiteral($this->trimChar)
             );
         }
 
         return $platform->getTrimExpression($stringPrimary, $trimMode);
     }
 
-    public function parse(Parser $parser): void
+    /**
+     * {@inheritDoc}
+     */
+    public function parse(Parser $parser)
     {
         $lexer = $parser->getLexer();
 
-        $parser->match(TokenType::T_IDENTIFIER);
-        $parser->match(TokenType::T_OPEN_PARENTHESIS);
+        $parser->match(Lexer::T_IDENTIFIER);
+        $parser->match(Lexer::T_OPEN_PARENTHESIS);
 
         $this->parseTrimMode($parser);
 
-        if ($lexer->isNextToken(TokenType::T_STRING)) {
-            $parser->match(TokenType::T_STRING);
+        if ($lexer->isNextToken(Lexer::T_STRING)) {
+            $parser->match(Lexer::T_STRING);
 
             assert($lexer->token !== null);
             $this->trimChar = $lexer->token->value;
         }
 
-        if ($this->leading || $this->trailing || $this->both || $this->trimChar) {
-            $parser->match(TokenType::T_FROM);
+        if ($this->leading || $this->trailing || $this->both || ($this->trimChar !== false)) {
+            $parser->match(Lexer::T_FROM);
         }
 
         $this->stringPrimary = $parser->StringPrimary();
 
-        $parser->match(TokenType::T_CLOSE_PARENTHESIS);
+        $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
     /** @psalm-return TrimMode::* */
-    private function getTrimMode(): TrimMode|int
+    private function getTrimMode(): int
     {
         if ($this->leading) {
             return TrimMode::LEADING;
@@ -93,7 +108,7 @@ class TrimFunction extends FunctionNode
         $value = $lexer->lookahead->value;
 
         if (strcasecmp('leading', $value) === 0) {
-            $parser->match(TokenType::T_LEADING);
+            $parser->match(Lexer::T_LEADING);
 
             $this->leading = true;
 
@@ -101,7 +116,7 @@ class TrimFunction extends FunctionNode
         }
 
         if (strcasecmp('trailing', $value) === 0) {
-            $parser->match(TokenType::T_TRAILING);
+            $parser->match(Lexer::T_TRAILING);
 
             $this->trailing = true;
 
@@ -109,7 +124,7 @@ class TrimFunction extends FunctionNode
         }
 
         if (strcasecmp('both', $value) === 0) {
-            $parser->match(TokenType::T_BOTH);
+            $parser->match(Lexer::T_BOTH);
 
             $this->both = true;
 

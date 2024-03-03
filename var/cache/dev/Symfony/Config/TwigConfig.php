@@ -5,7 +5,6 @@ namespace Symfony\Config;
 require_once __DIR__.\DIRECTORY_SEPARATOR.'Twig'.\DIRECTORY_SEPARATOR.'GlobalConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'Twig'.\DIRECTORY_SEPARATOR.'DateConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'Twig'.\DIRECTORY_SEPARATOR.'NumberFormatConfig.php';
-require_once __DIR__.\DIRECTORY_SEPARATOR.'Twig'.\DIRECTORY_SEPARATOR.'MailerConfig.php';
 
 use Symfony\Component\Config\Loader\ParamConfigurator;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
@@ -28,19 +27,16 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
     private $autoReload;
     private $optimizations;
     private $defaultPath;
-    private $fileNamePattern;
     private $paths;
     private $date;
     private $numberFormat;
-    private $mailer;
     private $_usedProperties = [];
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function formThemes(ParamConfigurator|array $value): static
+    public function formThemes($value): self
     {
         $this->_usedProperties['formThemes'] = true;
         $this->formThemes = $value;
@@ -49,14 +45,9 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
-     * @example "@bar"
-     * @example 3.14
      * @return \Symfony\Config\Twig\GlobalConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Twig\GlobalConfig : static)
      */
-    public function global(string $key, mixed $value = []): \Symfony\Config\Twig\GlobalConfig|static
+    public function global(string $key, $value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['globals'] = true;
@@ -78,11 +69,9 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
     /**
      * @default 'name'
      * @param ParamConfigurator|mixed $value
-     * @deprecated Option "autoescape" at "twig" is deprecated, use autoescape_service[_method] instead.
-     *
      * @return $this
      */
-    public function autoescape(mixed $value = 'name'): static
+    public function autoescape($value = 'name'): self
     {
         $this->_usedProperties['autoescape'] = true;
         $this->autoescape = $value;
@@ -95,7 +84,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function autoescapeService($value): static
+    public function autoescapeService($value): self
     {
         $this->_usedProperties['autoescapeService'] = true;
         $this->autoescapeService = $value;
@@ -108,7 +97,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function autoescapeServiceMethod($value): static
+    public function autoescapeServiceMethod($value): self
     {
         $this->_usedProperties['autoescapeServiceMethod'] = true;
         $this->autoescapeServiceMethod = $value;
@@ -122,7 +111,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function baseTemplateClass($value): static
+    public function baseTemplateClass($value): self
     {
         $this->_usedProperties['baseTemplateClass'] = true;
         $this->baseTemplateClass = $value;
@@ -135,7 +124,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function cache($value): static
+    public function cache($value): self
     {
         $this->_usedProperties['cache'] = true;
         $this->cache = $value;
@@ -148,7 +137,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function charset($value): static
+    public function charset($value): self
     {
         $this->_usedProperties['charset'] = true;
         $this->charset = $value;
@@ -161,7 +150,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function debug($value): static
+    public function debug($value): self
     {
         $this->_usedProperties['debug'] = true;
         $this->debug = $value;
@@ -174,7 +163,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function strictVariables($value): static
+    public function strictVariables($value): self
     {
         $this->_usedProperties['strictVariables'] = true;
         $this->strictVariables = $value;
@@ -187,7 +176,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function autoReload($value): static
+    public function autoReload($value): self
     {
         $this->_usedProperties['autoReload'] = true;
         $this->autoReload = $value;
@@ -200,7 +189,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function optimizations($value): static
+    public function optimizations($value): self
     {
         $this->_usedProperties['optimizations'] = true;
         $this->optimizations = $value;
@@ -214,7 +203,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultPath($value): static
+    public function defaultPath($value): self
     {
         $this->_usedProperties['defaultPath'] = true;
         $this->defaultPath = $value;
@@ -223,22 +212,10 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed>|string $value
-     *
+     * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function fileNamePattern(ParamConfigurator|string|array $value): static
-    {
-        $this->_usedProperties['fileNamePattern'] = true;
-        $this->fileNamePattern = $value;
-
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function path(string $paths, mixed $value): static
+    public function path(string $paths, $value): self
     {
         $this->_usedProperties['paths'] = true;
         $this->paths[$paths] = $value;
@@ -246,10 +223,6 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
         return $this;
     }
 
-    /**
-     * The default format options used by the date filter
-     * @default {"format":"F j, Y H:i","interval_format":"%d days","timezone":null}
-    */
     public function date(array $value = []): \Symfony\Config\Twig\DateConfig
     {
         if (null === $this->date) {
@@ -262,10 +235,6 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
         return $this->date;
     }
 
-    /**
-     * The default format options for the number_format filter
-     * @default {"decimals":0,"decimal_point":".","thousands_separator":","}
-    */
     public function numberFormat(array $value = []): \Symfony\Config\Twig\NumberFormatConfig
     {
         if (null === $this->numberFormat) {
@@ -276,18 +245,6 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
         }
 
         return $this->numberFormat;
-    }
-
-    public function mailer(array $value = []): \Symfony\Config\Twig\MailerConfig
-    {
-        if (null === $this->mailer) {
-            $this->_usedProperties['mailer'] = true;
-            $this->mailer = new \Symfony\Config\Twig\MailerConfig($value);
-        } elseif (0 < \func_num_args()) {
-            throw new InvalidConfigurationException('The node created by "mailer()" has already been initialized. You cannot pass values the second time you call mailer().');
-        }
-
-        return $this->mailer;
     }
 
     public function getExtensionAlias(): string
@@ -305,7 +262,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
 
         if (array_key_exists('globals', $value)) {
             $this->_usedProperties['globals'] = true;
-            $this->globals = array_map(fn ($v) => \is_array($v) ? new \Symfony\Config\Twig\GlobalConfig($v) : $v, $value['globals']);
+            $this->globals = array_map(function ($v) { return \is_array($v) ? new \Symfony\Config\Twig\GlobalConfig($v) : $v; }, $value['globals']);
             unset($value['globals']);
         }
 
@@ -375,12 +332,6 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
             unset($value['default_path']);
         }
 
-        if (array_key_exists('file_name_pattern', $value)) {
-            $this->_usedProperties['fileNamePattern'] = true;
-            $this->fileNamePattern = $value['file_name_pattern'];
-            unset($value['file_name_pattern']);
-        }
-
         if (array_key_exists('paths', $value)) {
             $this->_usedProperties['paths'] = true;
             $this->paths = $value['paths'];
@@ -399,12 +350,6 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
             unset($value['number_format']);
         }
 
-        if (array_key_exists('mailer', $value)) {
-            $this->_usedProperties['mailer'] = true;
-            $this->mailer = new \Symfony\Config\Twig\MailerConfig($value['mailer']);
-            unset($value['mailer']);
-        }
-
         if ([] !== $value) {
             throw new InvalidConfigurationException(sprintf('The following keys are not supported by "%s": ', __CLASS__).implode(', ', array_keys($value)));
         }
@@ -417,7 +362,7 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
             $output['form_themes'] = $this->formThemes;
         }
         if (isset($this->_usedProperties['globals'])) {
-            $output['globals'] = array_map(fn ($v) => $v instanceof \Symfony\Config\Twig\GlobalConfig ? $v->toArray() : $v, $this->globals);
+            $output['globals'] = array_map(function ($v) { return $v instanceof \Symfony\Config\Twig\GlobalConfig ? $v->toArray() : $v; }, $this->globals);
         }
         if (isset($this->_usedProperties['autoescape'])) {
             $output['autoescape'] = $this->autoescape;
@@ -452,9 +397,6 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
         if (isset($this->_usedProperties['defaultPath'])) {
             $output['default_path'] = $this->defaultPath;
         }
-        if (isset($this->_usedProperties['fileNamePattern'])) {
-            $output['file_name_pattern'] = $this->fileNamePattern;
-        }
         if (isset($this->_usedProperties['paths'])) {
             $output['paths'] = $this->paths;
         }
@@ -463,9 +405,6 @@ class TwigConfig implements \Symfony\Component\Config\Builder\ConfigBuilderInter
         }
         if (isset($this->_usedProperties['numberFormat'])) {
             $output['number_format'] = $this->numberFormat->toArray();
-        }
-        if (isset($this->_usedProperties['mailer'])) {
-            $output['mailer'] = $this->mailer->toArray();
         }
 
         return $output;

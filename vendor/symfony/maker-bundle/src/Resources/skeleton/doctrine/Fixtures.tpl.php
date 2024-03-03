@@ -2,7 +2,8 @@
 
 namespace <?= $namespace; ?>;
 
-<?= $use_statements; ?>
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use <?= $object_manager_class; ?>;
 
 class <?= $class_name ?> extends Fixture
 {

@@ -45,7 +45,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function provider($value): static
+    public function provider($value): self
     {
         $this->_usedProperties['provider'] = true;
         $this->provider = $value;
@@ -58,7 +58,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function rememberMe($value): static
+    public function rememberMe($value): self
     {
         $this->_usedProperties['rememberMe'] = true;
         $this->rememberMe = $value;
@@ -71,7 +71,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function successHandler($value): static
+    public function successHandler($value): self
     {
         $this->_usedProperties['successHandler'] = true;
         $this->successHandler = $value;
@@ -84,7 +84,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function failureHandler($value): static
+    public function failureHandler($value): self
     {
         $this->_usedProperties['failureHandler'] = true;
         $this->failureHandler = $value;
@@ -97,7 +97,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function checkPath($value): static
+    public function checkPath($value): self
     {
         $this->_usedProperties['checkPath'] = true;
         $this->checkPath = $value;
@@ -110,7 +110,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function useForward($value): static
+    public function useForward($value): self
     {
         $this->_usedProperties['useForward'] = true;
         $this->useForward = $value;
@@ -121,10 +121,9 @@ class FormLoginLdapConfig
     /**
      * @default false
      * @param ParamConfigurator|bool $value
-     * @deprecated Option "require_previous_session" at "form_login_ldap" is deprecated, it will be removed in version 7.0. Setting it has no effect anymore.
      * @return $this
      */
-    public function requirePreviousSession($value): static
+    public function requirePreviousSession($value): self
     {
         $this->_usedProperties['requirePreviousSession'] = true;
         $this->requirePreviousSession = $value;
@@ -137,7 +136,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function loginPath($value): static
+    public function loginPath($value): self
     {
         $this->_usedProperties['loginPath'] = true;
         $this->loginPath = $value;
@@ -150,7 +149,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function usernameParameter($value): static
+    public function usernameParameter($value): self
     {
         $this->_usedProperties['usernameParameter'] = true;
         $this->usernameParameter = $value;
@@ -163,7 +162,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function passwordParameter($value): static
+    public function passwordParameter($value): self
     {
         $this->_usedProperties['passwordParameter'] = true;
         $this->passwordParameter = $value;
@@ -176,7 +175,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function csrfParameter($value): static
+    public function csrfParameter($value): self
     {
         $this->_usedProperties['csrfParameter'] = true;
         $this->csrfParameter = $value;
@@ -189,7 +188,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function csrfTokenId($value): static
+    public function csrfTokenId($value): self
     {
         $this->_usedProperties['csrfTokenId'] = true;
         $this->csrfTokenId = $value;
@@ -202,7 +201,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enableCsrf($value): static
+    public function enableCsrf($value): self
     {
         $this->_usedProperties['enableCsrf'] = true;
         $this->enableCsrf = $value;
@@ -215,7 +214,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function postOnly($value): static
+    public function postOnly($value): self
     {
         $this->_usedProperties['postOnly'] = true;
         $this->postOnly = $value;
@@ -228,7 +227,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function formOnly($value): static
+    public function formOnly($value): self
     {
         $this->_usedProperties['formOnly'] = true;
         $this->formOnly = $value;
@@ -241,7 +240,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function alwaysUseDefaultTargetPath($value): static
+    public function alwaysUseDefaultTargetPath($value): self
     {
         $this->_usedProperties['alwaysUseDefaultTargetPath'] = true;
         $this->alwaysUseDefaultTargetPath = $value;
@@ -254,7 +253,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultTargetPath($value): static
+    public function defaultTargetPath($value): self
     {
         $this->_usedProperties['defaultTargetPath'] = true;
         $this->defaultTargetPath = $value;
@@ -267,7 +266,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function targetPathParameter($value): static
+    public function targetPathParameter($value): self
     {
         $this->_usedProperties['targetPathParameter'] = true;
         $this->targetPathParameter = $value;
@@ -280,7 +279,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function useReferer($value): static
+    public function useReferer($value): self
     {
         $this->_usedProperties['useReferer'] = true;
         $this->useReferer = $value;
@@ -293,7 +292,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function failurePath($value): static
+    public function failurePath($value): self
     {
         $this->_usedProperties['failurePath'] = true;
         $this->failurePath = $value;
@@ -306,7 +305,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function failureForward($value): static
+    public function failureForward($value): self
     {
         $this->_usedProperties['failureForward'] = true;
         $this->failureForward = $value;
@@ -319,7 +318,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function failurePathParameter($value): static
+    public function failurePathParameter($value): self
     {
         $this->_usedProperties['failurePathParameter'] = true;
         $this->failurePathParameter = $value;
@@ -332,7 +331,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function csrfTokenGenerator($value): static
+    public function csrfTokenGenerator($value): self
     {
         $this->_usedProperties['csrfTokenGenerator'] = true;
         $this->csrfTokenGenerator = $value;
@@ -345,7 +344,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function service($value): static
+    public function service($value): self
     {
         $this->_usedProperties['service'] = true;
         $this->service = $value;
@@ -358,7 +357,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function dnString($value): static
+    public function dnString($value): self
     {
         $this->_usedProperties['dnString'] = true;
         $this->dnString = $value;
@@ -371,7 +370,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function queryString($value): static
+    public function queryString($value): self
     {
         $this->_usedProperties['queryString'] = true;
         $this->queryString = $value;
@@ -383,7 +382,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function searchDn($value): static
+    public function searchDn($value): self
     {
         $this->_usedProperties['searchDn'] = true;
         $this->searchDn = $value;
@@ -395,7 +394,7 @@ class FormLoginLdapConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function searchPassword($value): static
+    public function searchPassword($value): self
     {
         $this->_usedProperties['searchPassword'] = true;
         $this->searchPassword = $value;

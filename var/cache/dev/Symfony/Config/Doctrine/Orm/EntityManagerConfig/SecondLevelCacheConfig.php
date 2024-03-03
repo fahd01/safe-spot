@@ -25,13 +25,9 @@ class SecondLevelCacheConfig
     private $_usedProperties = [];
 
     /**
-     * @template TValue
-     * @param TValue $value
-     * @default {"type":null}
      * @return \Symfony\Config\Doctrine\Orm\EntityManagerConfig\SecondLevelCache\RegionCacheDriverConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Doctrine\Orm\EntityManagerConfig\SecondLevelCache\RegionCacheDriverConfig : static)
      */
-    public function regionCacheDriver(string|array $value = []): \Symfony\Config\Doctrine\Orm\EntityManagerConfig\SecondLevelCache\RegionCacheDriverConfig|static
+    public function regionCacheDriver($value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['regionCacheDriver'] = true;
@@ -55,7 +51,7 @@ class SecondLevelCacheConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function regionLockLifetime($value): static
+    public function regionLockLifetime($value): self
     {
         $this->_usedProperties['regionLockLifetime'] = true;
         $this->regionLockLifetime = $value;
@@ -68,7 +64,7 @@ class SecondLevelCacheConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function logEnabled($value): static
+    public function logEnabled($value): self
     {
         $this->_usedProperties['logEnabled'] = true;
         $this->logEnabled = $value;
@@ -81,7 +77,7 @@ class SecondLevelCacheConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function regionLifetime($value): static
+    public function regionLifetime($value): self
     {
         $this->_usedProperties['regionLifetime'] = true;
         $this->regionLifetime = $value;
@@ -94,7 +90,7 @@ class SecondLevelCacheConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function enabled($value): static
+    public function enabled($value): self
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
@@ -107,7 +103,7 @@ class SecondLevelCacheConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function factory($value): static
+    public function factory($value): self
     {
         $this->_usedProperties['factory'] = true;
         $this->factory = $value;
@@ -179,13 +175,13 @@ class SecondLevelCacheConfig
 
         if (array_key_exists('regions', $value)) {
             $this->_usedProperties['regions'] = true;
-            $this->regions = array_map(fn ($v) => new \Symfony\Config\Doctrine\Orm\EntityManagerConfig\SecondLevelCache\RegionConfig($v), $value['regions']);
+            $this->regions = array_map(function ($v) { return new \Symfony\Config\Doctrine\Orm\EntityManagerConfig\SecondLevelCache\RegionConfig($v); }, $value['regions']);
             unset($value['regions']);
         }
 
         if (array_key_exists('loggers', $value)) {
             $this->_usedProperties['loggers'] = true;
-            $this->loggers = array_map(fn ($v) => new \Symfony\Config\Doctrine\Orm\EntityManagerConfig\SecondLevelCache\LoggerConfig($v), $value['loggers']);
+            $this->loggers = array_map(function ($v) { return new \Symfony\Config\Doctrine\Orm\EntityManagerConfig\SecondLevelCache\LoggerConfig($v); }, $value['loggers']);
             unset($value['loggers']);
         }
 
@@ -216,10 +212,10 @@ class SecondLevelCacheConfig
             $output['factory'] = $this->factory;
         }
         if (isset($this->_usedProperties['regions'])) {
-            $output['regions'] = array_map(fn ($v) => $v->toArray(), $this->regions);
+            $output['regions'] = array_map(function ($v) { return $v->toArray(); }, $this->regions);
         }
         if (isset($this->_usedProperties['loggers'])) {
-            $output['loggers'] = array_map(fn ($v) => $v->toArray(), $this->loggers);
+            $output['loggers'] = array_map(function ($v) { return $v->toArray(); }, $this->loggers);
         }
 
         return $output;

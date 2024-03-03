@@ -16,6 +16,7 @@ class CacheConfig
     private $app;
     private $system;
     private $directory;
+    private $defaultDoctrineProvider;
     private $defaultPsr6Provider;
     private $defaultRedisProvider;
     private $defaultMemcachedProvider;
@@ -31,7 +32,7 @@ class CacheConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function prefixSeed($value): static
+    public function prefixSeed($value): self
     {
         $this->_usedProperties['prefixSeed'] = true;
         $this->prefixSeed = $value;
@@ -45,7 +46,7 @@ class CacheConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function app($value): static
+    public function app($value): self
     {
         $this->_usedProperties['app'] = true;
         $this->app = $value;
@@ -59,7 +60,7 @@ class CacheConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function system($value): static
+    public function system($value): self
     {
         $this->_usedProperties['system'] = true;
         $this->system = $value;
@@ -72,7 +73,7 @@ class CacheConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function directory($value): static
+    public function directory($value): self
     {
         $this->_usedProperties['directory'] = true;
         $this->directory = $value;
@@ -85,7 +86,20 @@ class CacheConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultPsr6Provider($value): static
+    public function defaultDoctrineProvider($value): self
+    {
+        $this->_usedProperties['defaultDoctrineProvider'] = true;
+        $this->defaultDoctrineProvider = $value;
+
+        return $this;
+    }
+
+    /**
+     * @default null
+     * @param ParamConfigurator|mixed $value
+     * @return $this
+     */
+    public function defaultPsr6Provider($value): self
     {
         $this->_usedProperties['defaultPsr6Provider'] = true;
         $this->defaultPsr6Provider = $value;
@@ -98,7 +112,7 @@ class CacheConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultRedisProvider($value): static
+    public function defaultRedisProvider($value): self
     {
         $this->_usedProperties['defaultRedisProvider'] = true;
         $this->defaultRedisProvider = $value;
@@ -111,7 +125,7 @@ class CacheConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultMemcachedProvider($value): static
+    public function defaultMemcachedProvider($value): self
     {
         $this->_usedProperties['defaultMemcachedProvider'] = true;
         $this->defaultMemcachedProvider = $value;
@@ -124,7 +138,7 @@ class CacheConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultDoctrineDbalProvider($value): static
+    public function defaultDoctrineDbalProvider($value): self
     {
         $this->_usedProperties['defaultDoctrineDbalProvider'] = true;
         $this->defaultDoctrineDbalProvider = $value;
@@ -133,11 +147,11 @@ class CacheConfig
     }
 
     /**
-     * @default null
+     * @default 'database_connection'
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function defaultPdoProvider($value): static
+    public function defaultPdoProvider($value): self
     {
         $this->_usedProperties['defaultPdoProvider'] = true;
         $this->defaultPdoProvider = $value;
@@ -146,12 +160,9 @@ class CacheConfig
     }
 
     /**
-     * @template TValue
-     * @param TValue $value
      * @return \Symfony\Config\Framework\Cache\PoolConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Framework\Cache\PoolConfig : static)
      */
-    public function pool(string $name, mixed $value = []): \Symfony\Config\Framework\Cache\PoolConfig|static
+    public function pool(string $name, $value = [])
     {
         if (!\is_array($value)) {
             $this->_usedProperties['pools'] = true;
@@ -196,6 +207,12 @@ class CacheConfig
             unset($value['directory']);
         }
 
+        if (array_key_exists('default_doctrine_provider', $value)) {
+            $this->_usedProperties['defaultDoctrineProvider'] = true;
+            $this->defaultDoctrineProvider = $value['default_doctrine_provider'];
+            unset($value['default_doctrine_provider']);
+        }
+
         if (array_key_exists('default_psr6_provider', $value)) {
             $this->_usedProperties['defaultPsr6Provider'] = true;
             $this->defaultPsr6Provider = $value['default_psr6_provider'];
@@ -228,7 +245,7 @@ class CacheConfig
 
         if (array_key_exists('pools', $value)) {
             $this->_usedProperties['pools'] = true;
-            $this->pools = array_map(fn ($v) => \is_array($v) ? new \Symfony\Config\Framework\Cache\PoolConfig($v) : $v, $value['pools']);
+            $this->pools = array_map(function ($v) { return \is_array($v) ? new \Symfony\Config\Framework\Cache\PoolConfig($v) : $v; }, $value['pools']);
             unset($value['pools']);
         }
 
@@ -252,6 +269,9 @@ class CacheConfig
         if (isset($this->_usedProperties['directory'])) {
             $output['directory'] = $this->directory;
         }
+        if (isset($this->_usedProperties['defaultDoctrineProvider'])) {
+            $output['default_doctrine_provider'] = $this->defaultDoctrineProvider;
+        }
         if (isset($this->_usedProperties['defaultPsr6Provider'])) {
             $output['default_psr6_provider'] = $this->defaultPsr6Provider;
         }
@@ -268,7 +288,7 @@ class CacheConfig
             $output['default_pdo_provider'] = $this->defaultPdoProvider;
         }
         if (isset($this->_usedProperties['pools'])) {
-            $output['pools'] = array_map(fn ($v) => $v instanceof \Symfony\Config\Framework\Cache\PoolConfig ? $v->toArray() : $v, $this->pools);
+            $output['pools'] = array_map(function ($v) { return $v instanceof \Symfony\Config\Framework\Cache\PoolConfig ? $v->toArray() : $v; }, $this->pools);
         }
 
         return $output;

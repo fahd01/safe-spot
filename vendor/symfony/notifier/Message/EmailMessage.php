@@ -23,11 +23,10 @@ use Symfony\Component\Notifier\Recipient\EmailRecipientInterface;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class EmailMessage implements MessageInterface, FromNotificationInterface
+final class EmailMessage implements MessageInterface
 {
-    private RawMessage $message;
-    private ?Envelope $envelope;
-    private ?Notification $notification = null;
+    private $message;
+    private $envelope;
 
     public function __construct(RawMessage $message, ?Envelope $envelope = null)
     {
@@ -60,10 +59,7 @@ class EmailMessage implements MessageInterface, FromNotificationInterface
             }
         }
 
-        $message = new self($email);
-        $message->notification = $notification;
-
-        return $message;
+        return new self($email);
     }
 
     public function getMessage(): RawMessage
@@ -79,7 +75,7 @@ class EmailMessage implements MessageInterface, FromNotificationInterface
     /**
      * @return $this
      */
-    public function envelope(Envelope $envelope): static
+    public function envelope(Envelope $envelope): self
     {
         $this->envelope = $envelope;
 
@@ -104,7 +100,7 @@ class EmailMessage implements MessageInterface, FromNotificationInterface
     /**
      * @return $this
      */
-    public function transport(?string $transport): static
+    public function transport(?string $transport): self
     {
         if (!$this->message instanceof Email) {
             throw new LogicException('Cannot set a Transport on a RawMessage instance.');
@@ -121,10 +117,5 @@ class EmailMessage implements MessageInterface, FromNotificationInterface
     public function getTransport(): ?string
     {
         return $this->message instanceof Email ? $this->message->getHeaders()->getHeaderBody('X-Transport') : null;
-    }
-
-    public function getNotification(): ?Notification
-    {
-        return $this->notification;
     }
 }

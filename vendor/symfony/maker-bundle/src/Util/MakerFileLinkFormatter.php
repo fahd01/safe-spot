@@ -12,8 +12,7 @@
 namespace Symfony\Bundle\MakerBundle\Util;
 
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
-use Symfony\Component\ErrorHandler\ErrorRenderer\FileLinkFormatter;
-use Symfony\Component\HttpKernel\Debug\FileLinkFormatter as LegacyFileLinkFormatter;
+use Symfony\Component\HttpKernel\Debug\FileLinkFormatter;
 
 /**
  * @internal
@@ -21,7 +20,7 @@ use Symfony\Component\HttpKernel\Debug\FileLinkFormatter as LegacyFileLinkFormat
 final class MakerFileLinkFormatter
 {
     public function __construct(
-        private FileLinkFormatter|LegacyFileLinkFormatter|null $fileLinkFormatter = null,
+        private ?FileLinkFormatter $fileLinkFormatter = null,
     ) {
     }
 

@@ -27,10 +27,17 @@ use Symfony\Component\Runtime\SymfonyRuntime;
  */
 class ComposerPlugin implements PluginInterface, EventSubscriberInterface
 {
-    private Composer $composer;
-    private IOInterface $io;
+    /**
+     * @var Composer
+     */
+    private $composer;
 
-    private static bool $activated = false;
+    /**
+     * @var IOInterface
+     */
+    private $io;
+
+    private static $activated = false;
 
     public function activate(Composer $composer, IOInterface $io): void
     {
@@ -77,7 +84,7 @@ class ComposerPlugin implements PluginInterface, EventSubscriberInterface
         $projectDir = $fs->makePathRelative($projectDir, $vendorDir);
         $nestingLevel = 0;
 
-        while (str_starts_with($projectDir, '../')) {
+        while (0 === strpos($projectDir, '../')) {
             ++$nestingLevel;
             $projectDir = substr($projectDir, 3);
         }

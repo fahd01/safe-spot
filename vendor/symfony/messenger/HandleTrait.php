@@ -21,7 +21,8 @@ use Symfony\Component\Messenger\Stamp\HandledStamp;
  */
 trait HandleTrait
 {
-    private MessageBusInterface $messageBus;
+    /** @var MessageBusInterface */
+    private $messageBus;
 
     /**
      * Dispatches the given message, expecting to be handled by a single handler
@@ -30,11 +31,13 @@ trait HandleTrait
      * the last one usually returning the handler result.
      *
      * @param object|Envelope $message The message or the message pre-wrapped in an envelope
+     *
+     * @return mixed
      */
-    private function handle(object $message): mixed
+    private function handle(object $message)
     {
-        if (!isset($this->messageBus)) {
-            throw new LogicException(sprintf('You must provide a "%s" instance in the "%s::$messageBus" property, but that property has not been initialized yet.', MessageBusInterface::class, static::class));
+        if (!$this->messageBus instanceof MessageBusInterface) {
+            throw new LogicException(sprintf('You must provide a "%s" instance in the "%s::$messageBus" property, "%s" given.', MessageBusInterface::class, static::class, get_debug_type($this->messageBus)));
         }
 
         $envelope = $this->messageBus->dispatch($message);
@@ -46,7 +49,9 @@ trait HandleTrait
         }
 
         if (\count($handledStamps) > 1) {
-            $handlers = implode(', ', array_map(fn (HandledStamp $stamp): string => sprintf('"%s"', $stamp->getHandlerName()), $handledStamps));
+            $handlers = implode(', ', array_map(function (HandledStamp $stamp): string {
+                return sprintf('"%s"', $stamp->getHandlerName());
+            }, $handledStamps));
 
             throw new LogicException(sprintf('Message of type "%s" was handled multiple times. Only one handler is expected when using "%s::%s()", got %d: %s.', get_debug_type($envelope->getMessage()), static::class, __FUNCTION__, \count($handledStamps), $handlers));
         }

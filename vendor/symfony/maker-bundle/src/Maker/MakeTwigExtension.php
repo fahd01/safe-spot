@@ -37,7 +37,7 @@ final class MakeTwigExtension extends AbstractMaker
 
     public static function getCommandDescription(): string
     {
-        return 'Create a new Twig extension with its runtime class';
+        return 'Creates a new Twig extension with its runtime class';
     }
 
     public function configureCommand(Command $command, InputConfiguration $inputConfig): void

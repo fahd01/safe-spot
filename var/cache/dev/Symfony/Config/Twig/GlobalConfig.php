@@ -20,7 +20,7 @@ class GlobalConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function id($value): static
+    public function id($value): self
     {
         $this->_usedProperties['id'] = true;
         $this->id = $value;
@@ -33,7 +33,7 @@ class GlobalConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function type($value): static
+    public function type($value): self
     {
         $this->_usedProperties['type'] = true;
         $this->type = $value;
@@ -44,10 +44,9 @@ class GlobalConfig
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
-     *
      * @return $this
      */
-    public function value(mixed $value): static
+    public function value($value): self
     {
         $this->_usedProperties['value'] = true;
         $this->value = $value;

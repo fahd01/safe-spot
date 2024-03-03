@@ -27,7 +27,7 @@ class JsonLoginConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function provider($value): static
+    public function provider($value): self
     {
         $this->_usedProperties['provider'] = true;
         $this->provider = $value;
@@ -40,7 +40,7 @@ class JsonLoginConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function rememberMe($value): static
+    public function rememberMe($value): self
     {
         $this->_usedProperties['rememberMe'] = true;
         $this->rememberMe = $value;
@@ -53,7 +53,7 @@ class JsonLoginConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function successHandler($value): static
+    public function successHandler($value): self
     {
         $this->_usedProperties['successHandler'] = true;
         $this->successHandler = $value;
@@ -66,7 +66,7 @@ class JsonLoginConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function failureHandler($value): static
+    public function failureHandler($value): self
     {
         $this->_usedProperties['failureHandler'] = true;
         $this->failureHandler = $value;
@@ -79,7 +79,7 @@ class JsonLoginConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function checkPath($value): static
+    public function checkPath($value): self
     {
         $this->_usedProperties['checkPath'] = true;
         $this->checkPath = $value;
@@ -92,7 +92,7 @@ class JsonLoginConfig
      * @param ParamConfigurator|bool $value
      * @return $this
      */
-    public function useForward($value): static
+    public function useForward($value): self
     {
         $this->_usedProperties['useForward'] = true;
         $this->useForward = $value;
@@ -103,10 +103,9 @@ class JsonLoginConfig
     /**
      * @default false
      * @param ParamConfigurator|bool $value
-     * @deprecated Option "require_previous_session" at "json_login" is deprecated, it will be removed in version 7.0. Setting it has no effect anymore.
      * @return $this
      */
-    public function requirePreviousSession($value): static
+    public function requirePreviousSession($value): self
     {
         $this->_usedProperties['requirePreviousSession'] = true;
         $this->requirePreviousSession = $value;
@@ -119,7 +118,7 @@ class JsonLoginConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function loginPath($value): static
+    public function loginPath($value): self
     {
         $this->_usedProperties['loginPath'] = true;
         $this->loginPath = $value;
@@ -132,7 +131,7 @@ class JsonLoginConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function usernamePath($value): static
+    public function usernamePath($value): self
     {
         $this->_usedProperties['usernamePath'] = true;
         $this->usernamePath = $value;
@@ -145,7 +144,7 @@ class JsonLoginConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function passwordPath($value): static
+    public function passwordPath($value): self
     {
         $this->_usedProperties['passwordPath'] = true;
         $this->passwordPath = $value;

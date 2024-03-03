@@ -24,7 +24,7 @@ class KnpSnappyConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function temporaryFolder($value): static
+    public function temporaryFolder($value): self
     {
         $this->_usedProperties['temporaryFolder'] = true;
         $this->temporaryFolder = $value;
@@ -38,7 +38,7 @@ class KnpSnappyConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function processTimeout($value): static
+    public function processTimeout($value): self
     {
         $this->_usedProperties['processTimeout'] = true;
         $this->processTimeout = $value;
@@ -46,9 +46,6 @@ class KnpSnappyConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this;
     }
 
-    /**
-     * @default {"enabled":true,"binary":"wkhtmltopdf","options":[],"env":[]}
-    */
     public function pdf(array $value = []): \Symfony\Config\KnpSnappy\PdfConfig
     {
         if (null === $this->pdf) {
@@ -61,9 +58,6 @@ class KnpSnappyConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->pdf;
     }
 
-    /**
-     * @default {"enabled":true,"binary":"wkhtmltoimage","options":[],"env":[]}
-    */
     public function image(array $value = []): \Symfony\Config\KnpSnappy\ImageConfig
     {
         if (null === $this->image) {

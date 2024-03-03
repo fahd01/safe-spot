@@ -19,7 +19,7 @@ class LoggerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function name($value): static
+    public function name($value): self
     {
         $this->_usedProperties['name'] = true;
         $this->name = $value;
@@ -32,7 +32,7 @@ class LoggerConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function service($value): static
+    public function service($value): self
     {
         $this->_usedProperties['service'] = true;
         $this->service = $value;

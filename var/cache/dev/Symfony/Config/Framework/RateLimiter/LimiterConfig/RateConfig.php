@@ -20,7 +20,7 @@ class RateConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function interval($value): static
+    public function interval($value): self
     {
         $this->_usedProperties['interval'] = true;
         $this->interval = $value;
@@ -34,7 +34,7 @@ class RateConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function amount($value): static
+    public function amount($value): self
     {
         $this->_usedProperties['amount'] = true;
         $this->amount = $value;

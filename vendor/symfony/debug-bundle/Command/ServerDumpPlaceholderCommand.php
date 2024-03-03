@@ -11,7 +11,6 @@
 
 namespace Symfony\Bundle\DebugBundle\Command;
 
-use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -26,10 +25,12 @@ use Symfony\Component\VarDumper\Server\DumpServer;
  *
  * @internal
  */
-#[AsCommand(name: 'server:dump', description: 'Start a dump server that collects and displays dumps in a single place')]
 class ServerDumpPlaceholderCommand extends Command
 {
-    private ServerDumpCommand $replacedCommand;
+    protected static $defaultName = 'server:dump';
+    protected static $defaultDescription = 'Start a dump server that collects and displays dumps in a single place';
+
+    private $replacedCommand;
 
     public function __construct(?DumpServer $server = null, array $descriptors = [])
     {
@@ -38,7 +39,7 @@ class ServerDumpPlaceholderCommand extends Command
         parent::__construct();
     }
 
-    protected function configure(): void
+    protected function configure()
     {
         $this->setDefinition($this->replacedCommand->getDefinition());
         $this->setHelp($this->replacedCommand->getHelp());

@@ -16,7 +16,7 @@ namespace Symfony\Component\Asset\Exception;
  */
 class AssetNotFoundException extends RuntimeException
 {
-    private array $alternatives;
+    private $alternatives;
 
     /**
      * @param string     $message      Exception message to throw

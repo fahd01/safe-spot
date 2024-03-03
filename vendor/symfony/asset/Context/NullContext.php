@@ -18,12 +18,18 @@ namespace Symfony\Component\Asset\Context;
  */
 class NullContext implements ContextInterface
 {
-    public function getBasePath(): string
+    /**
+     * {@inheritdoc}
+     */
+    public function getBasePath()
     {
         return '';
     }
 
-    public function isSecure(): bool
+    /**
+     * {@inheritdoc}
+     */
+    public function isSecure()
     {
         return false;
     }

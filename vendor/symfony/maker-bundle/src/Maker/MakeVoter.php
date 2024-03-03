@@ -33,7 +33,7 @@ final class MakeVoter extends AbstractMaker
 
     public static function getCommandDescription(): string
     {
-        return 'Create a new security voter class';
+        return 'Creates a new security voter class';
     }
 
     public function configureCommand(Command $command, InputConfiguration $inputConfig): void

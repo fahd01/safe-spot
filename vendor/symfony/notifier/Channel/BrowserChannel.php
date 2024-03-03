@@ -12,8 +12,6 @@
 namespace Symfony\Component\Notifier\Channel;
 
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Notifier\FlashMessage\DefaultFlashMessageImportanceMapper;
-use Symfony\Component\Notifier\FlashMessage\FlashMessageImportanceMapperInterface;
 use Symfony\Component\Notifier\Notification\Notification;
 use Symfony\Component\Notifier\Recipient\RecipientInterface;
 
@@ -22,14 +20,11 @@ use Symfony\Component\Notifier\Recipient\RecipientInterface;
  */
 final class BrowserChannel implements ChannelInterface
 {
-    private RequestStack $stack;
+    private $stack;
 
-    private FlashMessageImportanceMapperInterface $mapper;
-
-    public function __construct(RequestStack $stack, FlashMessageImportanceMapperInterface $mapper = new DefaultFlashMessageImportanceMapper())
+    public function __construct(RequestStack $stack)
     {
         $this->stack = $stack;
-        $this->mapper = $mapper;
     }
 
     public function notify(Notification $notification, RecipientInterface $recipient, ?string $transportName = null): void
@@ -42,7 +37,7 @@ final class BrowserChannel implements ChannelInterface
         if ($notification->getEmoji()) {
             $message = $notification->getEmoji().' '.$message;
         }
-        $request->getSession()->getFlashBag()->add($this->mapper->flashMessageTypeFromImportance($notification->getImportance()), $message);
+        $request->getSession()->getFlashBag()->add('notification', $message);
     }
 
     public function supports(Notification $notification, RecipientInterface $recipient): bool

@@ -32,7 +32,10 @@ abstract class FormPerformanceTestCase extends FormIntegrationTestCase
      */
     protected $maxRunningTime = 0;
 
-    private function doRunTest(): mixed
+    /**
+     * @return mixed
+     */
+    private function doRunTest()
     {
         $s = microtime(true);
         $result = parent::runTest();
@@ -57,7 +60,10 @@ abstract class FormPerformanceTestCase extends FormIntegrationTestCase
         $this->maxRunningTime = $maxRunningTime;
     }
 
-    public function getMaxRunningTime(): int
+    /**
+     * @return int
+     */
+    public function getMaxRunningTime()
     {
         return $this->maxRunningTime;
     }

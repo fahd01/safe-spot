@@ -10,14 +10,11 @@ use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
  */
 class AccessControlConfig 
 {
-    private $requestMatcher;
     private $requiresChannel;
     private $path;
     private $host;
     private $port;
     private $ips;
-    private $attributes;
-    private $route;
     private $methods;
     private $allowIf;
     private $roles;
@@ -28,20 +25,7 @@ class AccessControlConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function requestMatcher($value): static
-    {
-        $this->_usedProperties['requestMatcher'] = true;
-        $this->requestMatcher = $value;
-
-        return $this;
-    }
-
-    /**
-     * @default null
-     * @param ParamConfigurator|mixed $value
-     * @return $this
-     */
-    public function requiresChannel($value): static
+    public function requiresChannel($value): self
     {
         $this->_usedProperties['requiresChannel'] = true;
         $this->requiresChannel = $value;
@@ -56,7 +40,7 @@ class AccessControlConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function path($value): static
+    public function path($value): self
     {
         $this->_usedProperties['path'] = true;
         $this->path = $value;
@@ -69,7 +53,7 @@ class AccessControlConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function host($value): static
+    public function host($value): self
     {
         $this->_usedProperties['host'] = true;
         $this->host = $value;
@@ -82,7 +66,7 @@ class AccessControlConfig
      * @param ParamConfigurator|int $value
      * @return $this
      */
-    public function port($value): static
+    public function port($value): self
     {
         $this->_usedProperties['port'] = true;
         $this->port = $value;
@@ -91,11 +75,10 @@ class AccessControlConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed>|string $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function ips(ParamConfigurator|string|array $value): static
+    public function ips($value): self
     {
         $this->_usedProperties['ips'] = true;
         $this->ips = $value;
@@ -104,35 +87,10 @@ class AccessControlConfig
     }
 
     /**
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function attribute(string $key, mixed $value): static
-    {
-        $this->_usedProperties['attributes'] = true;
-        $this->attributes[$key] = $value;
-
-        return $this;
-    }
-
-    /**
-     * @default null
-     * @param ParamConfigurator|mixed $value
-     * @return $this
-     */
-    public function route($value): static
-    {
-        $this->_usedProperties['route'] = true;
-        $this->route = $value;
-
-        return $this;
-    }
-
-    /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed>|string $value
-     *
-     * @return $this
-     */
-    public function methods(ParamConfigurator|string|array $value): static
+    public function methods($value): self
     {
         $this->_usedProperties['methods'] = true;
         $this->methods = $value;
@@ -145,7 +103,7 @@ class AccessControlConfig
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
-    public function allowIf($value): static
+    public function allowIf($value): self
     {
         $this->_usedProperties['allowIf'] = true;
         $this->allowIf = $value;
@@ -154,11 +112,10 @@ class AccessControlConfig
     }
 
     /**
-     * @param ParamConfigurator|list<ParamConfigurator|mixed>|string $value
-     *
+     * @param ParamConfigurator|list<mixed|ParamConfigurator> $value
      * @return $this
      */
-    public function roles(ParamConfigurator|string|array $value): static
+    public function roles($value): self
     {
         $this->_usedProperties['roles'] = true;
         $this->roles = $value;
@@ -168,12 +125,6 @@ class AccessControlConfig
 
     public function __construct(array $value = [])
     {
-        if (array_key_exists('request_matcher', $value)) {
-            $this->_usedProperties['requestMatcher'] = true;
-            $this->requestMatcher = $value['request_matcher'];
-            unset($value['request_matcher']);
-        }
-
         if (array_key_exists('requires_channel', $value)) {
             $this->_usedProperties['requiresChannel'] = true;
             $this->requiresChannel = $value['requires_channel'];
@@ -204,18 +155,6 @@ class AccessControlConfig
             unset($value['ips']);
         }
 
-        if (array_key_exists('attributes', $value)) {
-            $this->_usedProperties['attributes'] = true;
-            $this->attributes = $value['attributes'];
-            unset($value['attributes']);
-        }
-
-        if (array_key_exists('route', $value)) {
-            $this->_usedProperties['route'] = true;
-            $this->route = $value['route'];
-            unset($value['route']);
-        }
-
         if (array_key_exists('methods', $value)) {
             $this->_usedProperties['methods'] = true;
             $this->methods = $value['methods'];
@@ -242,9 +181,6 @@ class AccessControlConfig
     public function toArray(): array
     {
         $output = [];
-        if (isset($this->_usedProperties['requestMatcher'])) {
-            $output['request_matcher'] = $this->requestMatcher;
-        }
         if (isset($this->_usedProperties['requiresChannel'])) {
             $output['requires_channel'] = $this->requiresChannel;
         }
@@ -259,12 +195,6 @@ class AccessControlConfig
         }
         if (isset($this->_usedProperties['ips'])) {
             $output['ips'] = $this->ips;
-        }
-        if (isset($this->_usedProperties['attributes'])) {
-            $output['attributes'] = $this->attributes;
-        }
-        if (isset($this->_usedProperties['route'])) {
-            $output['route'] = $this->route;
         }
         if (isset($this->_usedProperties['methods'])) {
             $output['methods'] = $this->methods;

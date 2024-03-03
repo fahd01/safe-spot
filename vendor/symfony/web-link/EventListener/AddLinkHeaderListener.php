@@ -29,12 +29,14 @@ class_exists(HttpHeaderSerializer::class);
  */
 class AddLinkHeaderListener implements EventSubscriberInterface
 {
-    public function __construct(
-        private readonly HttpHeaderSerializer $serializer = new HttpHeaderSerializer(),
-    ) {
+    private $serializer;
+
+    public function __construct()
+    {
+        $this->serializer = new HttpHeaderSerializer();
     }
 
-    public function onKernelResponse(ResponseEvent $event): void
+    public function onKernelResponse(ResponseEvent $event)
     {
         if (!$event->isMainRequest()) {
             return;
@@ -48,6 +50,9 @@ class AddLinkHeaderListener implements EventSubscriberInterface
         $event->getResponse()->headers->set('Link', $this->serializer->serialize($links), false);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public static function getSubscribedEvents(): array
     {
         return [KernelEvents::RESPONSE => 'onKernelResponse'];
