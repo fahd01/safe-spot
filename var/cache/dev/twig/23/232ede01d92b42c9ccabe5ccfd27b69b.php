@@ -87,7 +87,7 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
     <nav class=\"navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row\">
       <div class=\"navbar-brand-wrapper d-flex justify-content-center\">
         <div class=\"navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100\">
-          <a class=\"navbar-brand brand-logo\" href=\"index.html\">
+          <a class=\"navbar-brand brand-logo\" href=\"/\">
             <img src=\"/dashboard-template/images/logo-1.svg\" alt=\"logo\"/>
           </a>
           <a class=\"navbar-brand brand-logo-mini\" href=\"index.html\"><img src=\"/dashboard-template/images/logo-mini.svg\" alt=\"logo\"/></a>
@@ -713,7 +713,7 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
     <nav class=\"navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row\">
       <div class=\"navbar-brand-wrapper d-flex justify-content-center\">
         <div class=\"navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100\">
-          <a class=\"navbar-brand brand-logo\" href=\"index.html\">
+          <a class=\"navbar-brand brand-logo\" href=\"/\">
             <img src=\"/dashboard-template/images/logo-1.svg\" alt=\"logo\"/>
           </a>
           <a class=\"navbar-brand brand-logo-mini\" href=\"index.html\"><img src=\"/dashboard-template/images/logo-mini.svg\" alt=\"logo\"/></a>

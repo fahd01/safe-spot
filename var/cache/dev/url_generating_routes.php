@@ -43,6 +43,7 @@ return [
     'app_login' => [[], ['_controller' => 'App\\Controller\\LoginController::login'], [], [['text', '/login']], [], [], []],
     'app_register' => [[], ['_controller' => 'App\\Controller\\RegistrationController::register'], [], [['text', '/register']], [], [], []],
     'app_verify_email' => [[], ['_controller' => 'App\\Controller\\RegistrationController::verifyUserEmail'], [], [['text', '/verify/email']], [], [], []],
+    'app_welcome_page' => [[], ['_controller' => 'App\\Controller\\WelcomePageController::index'], [], [['text', '/']], [], [], []],
     'App\Controller\AdminBidsController::index' => [[], ['_controller' => 'App\\Controller\\AdminBidsController::index'], [], [['text', '/admin/bids/list']], [], [], []],
     'App\Controller\AdminBidsController::new' => [[], ['_controller' => 'App\\Controller\\AdminBidsController::new'], [], [['text', '/admin/bids/create']], [], [], []],
     'App\Controller\AdminBidsController::delete' => [['id'], ['_controller' => 'App\\Controller\\AdminBidsController::delete'], [], [['text', '/delete'], ['variable', '/', '[^/]++', 'id', true], ['text', '/admin/bids']], [], [], []],
@@ -68,4 +69,5 @@ return [
     'App\Controller\LoginController::login' => [[], ['_controller' => 'App\\Controller\\LoginController::login'], [], [['text', '/login']], [], [], []],
     'App\Controller\RegistrationController::register' => [[], ['_controller' => 'App\\Controller\\RegistrationController::register'], [], [['text', '/register']], [], [], []],
     'App\Controller\RegistrationController::verifyUserEmail' => [[], ['_controller' => 'App\\Controller\\RegistrationController::verifyUserEmail'], [], [['text', '/verify/email']], [], [], []],
+    'App\Controller\WelcomePageController::index' => [[], ['_controller' => 'App\\Controller\\WelcomePageController::index'], [], [['text', '/']], [], [], []],
 ];

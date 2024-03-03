@@ -446,6 +446,13 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\RegistrationController"/>
       </call>
     </service>
+    <service id="App\Controller\WelcomePageController" class="App\Controller\WelcomePageController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\WelcomePageController"/>
+      </call>
+    </service>
     <service id="App\EventListener\LoanPersistedNotifier" class="App\EventListener\LoanPersistedNotifier" autowire="true" autoconfigure="true">
       <tag name="doctrine.orm.entity_listener" event="postPersist" method="onLoanPersisted" entity="App\Entity\Loan"/>
       <argument type="service" id="App\Repository\AutomationRepository"/>
@@ -7449,6 +7456,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\RegistrationController" class="App\Controller\RegistrationController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\RegistrationController" class="App\Controller\RegistrationController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\RegistrationController" class="App\Controller\RegistrationController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\WelcomePageController" class="App\Controller\WelcomePageController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\WelcomePageController" class="App\Controller\WelcomePageController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\WelcomePageController" class="App\Controller\WelcomePageController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\AdminBidType" class="App\Form\AdminBidType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\AdminBidType" class="App\Form\AdminBidType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\AdminLoanType" class="App\Form\AdminLoanType" autowire="true" abstract="true"/>
@@ -8736,6 +8746,12 @@
     <service id=".service_locator.O2p6Lk7.App\Controller\RegistrationController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\RegistrationController"/>
       <argument>App\Controller\RegistrationController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\WelcomePageController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\WelcomePageController"/>
+      <argument>App\Controller\WelcomePageController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
