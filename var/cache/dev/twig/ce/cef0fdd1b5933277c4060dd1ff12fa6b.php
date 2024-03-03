@@ -47,7 +47,7 @@ class __TwigTemplate_e848f31dd4c4b359076ac30a31ab8fae extends Template
     <!-- Required meta tags -->
     <meta charset=\"utf-8\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
-    <title>PolluxUI Admin</title>
+    <title>Register</title>
     <!-- base:css -->
     <link rel=\"stylesheet\" href=\"dashboard-template/vendors/typicons/typicons.css\">
     <link rel=\"stylesheet\" href=\"dashboard-template/vendors/css/vendor.bundle.base.css\">
@@ -57,7 +57,7 @@ class __TwigTemplate_e848f31dd4c4b359076ac30a31ab8fae extends Template
     <!-- inject:css -->
     <link rel=\"stylesheet\" href=\"dashboard-template/css/vertical-layout-light/style.css\">
     <!-- endinject -->
-    <link rel=\"shortcut icon\" href=\"dashboard-template/images/favicon.png\" />
+    <link rel=\"shortcut icon\" href=\"/dashboard-template/images/favicon.png\" />
 </head>
 
 <body>
@@ -223,7 +223,7 @@ document
     <!-- Required meta tags -->
     <meta charset=\"utf-8\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
-    <title>PolluxUI Admin</title>
+    <title>Register</title>
     <!-- base:css -->
     <link rel=\"stylesheet\" href=\"dashboard-template/vendors/typicons/typicons.css\">
     <link rel=\"stylesheet\" href=\"dashboard-template/vendors/css/vendor.bundle.base.css\">
@@ -233,7 +233,7 @@ document
     <!-- inject:css -->
     <link rel=\"stylesheet\" href=\"dashboard-template/css/vertical-layout-light/style.css\">
     <!-- endinject -->
-    <link rel=\"shortcut icon\" href=\"dashboard-template/images/favicon.png\" />
+    <link rel=\"shortcut icon\" href=\"/dashboard-template/images/favicon.png\" />
 </head>
 
 <body>

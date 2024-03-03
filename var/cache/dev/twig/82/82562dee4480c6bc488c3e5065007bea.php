@@ -57,7 +57,7 @@ class __TwigTemplate_e023f8fbd60ef46c9f4845c804f6df80 extends Template
   <!-- inject:css -->
   <link rel=\"stylesheet\" href=\"dashboard-template/css/vertical-layout-light/style.css\">
   <!-- endinject -->
-  <link rel=\"shortcut icon\" href=\"dashboard-template/images/favicon.png\" />
+  <link rel=\"shortcut icon\" href=\"/dashboard-template/images/favicon.png\" />
 </head>
 
 <body>
@@ -217,7 +217,7 @@ class __TwigTemplate_e023f8fbd60ef46c9f4845c804f6df80 extends Template
   <!-- inject:css -->
   <link rel=\"stylesheet\" href=\"dashboard-template/css/vertical-layout-light/style.css\">
   <!-- endinject -->
-  <link rel=\"shortcut icon\" href=\"dashboard-template/images/favicon.png\" />
+  <link rel=\"shortcut icon\" href=\"/dashboard-template/images/favicon.png\" />
 </head>
 
 <body>
