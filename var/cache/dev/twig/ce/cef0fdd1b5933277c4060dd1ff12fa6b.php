@@ -122,15 +122,11 @@ class __TwigTemplate_e848f31dd4c4b359076ac30a31ab8fae extends Template
         // line 52
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 52, $this->source); })()), "plainPassword", [], "any", false, false, false, 52), 'widget', ["label" => "Password", "attr" => ["class" => "form-control form-control-lg", "placeholder" => "Password"]]);
         echo "
-                                ";
-        // line 53
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 53, $this->source); })()), "plainPassword", [], "any", false, false, false, 53), 'help');
-        echo "
                             </div>
                             <div class=\"mb-4\">
                                         ";
-        // line 56
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 56, $this->source); })()), "agreeTerms", [], "any", false, false, false, 56), 'widget');
+        // line 55
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 55, $this->source); })()), "agreeTerms", [], "any", false, false, false, 55), 'widget');
         echo "
                                 <div class=\"form-check\">
                                     <label class=\"form-check-label required\" for=\"registration_form_agreeTerms\">
@@ -144,8 +140,8 @@ class __TwigTemplate_e848f31dd4c4b359076ac30a31ab8fae extends Template
                                 <button type=\"submit\" class=\"btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn\">SIGN UP</button>
                             </div>
                         ";
-        // line 68
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 68, $this->source); })()), 'form_end');
+        // line 67
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 67, $this->source); })()), 'form_end');
         echo "
                             <div class=\"text-center mt-4 font-weight-light\">
                                 Already have an account? <a href=\"login\" class=\"text-primary\">Login</a>
@@ -215,7 +211,7 @@ document
      */
     public function getDebugInfo()
     {
-        return array (  148 => 68,  133 => 56,  127 => 53,  123 => 52,  117 => 49,  110 => 45,  104 => 42,  99 => 40,  94 => 38,  91 => 37,  82 => 35,  78 => 34,  43 => 1,);
+        return array (  144 => 67,  129 => 55,  123 => 52,  117 => 49,  110 => 45,  104 => 42,  99 => 40,  94 => 38,  91 => 37,  82 => 35,  78 => 34,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -272,7 +268,6 @@ document
                             </div>
                             <div class=\"form-group\">
                                 {{ form_widget(registrationForm.plainPassword, { 'label': 'Password', 'attr': {'class': 'form-control form-control-lg', 'placeholder': 'Password'} } ) }}
-                                {{ form_help(registrationForm.plainPassword) }}
                             </div>
                             <div class=\"mb-4\">
                                         {{ form_widget(registrationForm.agreeTerms) }}

@@ -19,10 +19,6 @@ class LoanType extends AbstractType
             ->add('interest')
             ->add('term')
             ->add('purpose')
-
-            ->add('borrower', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',])
             ->add('submit', SubmitType::class, ['label' => 'Create Loan']);
     }
 

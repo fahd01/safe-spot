@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\LoanRepository;
 
+use Symfony\Bundle\SecurityBundle\Security;
+
 class LoansController extends AbstractController
 {
     #[Route('/loans/list', name: 'app_loans_list')]
@@ -23,7 +25,7 @@ class LoansController extends AbstractController
     }
 
     #[Route('/loans/create', name: 'app_loans_create')]
-    public function new(Request $request,LoanRepository $loanRepo ): Response
+    public function new(Request $request,LoanRepository $loanRepo , Security $security): Response
     {
         $id = $request->query->get('id');
 
@@ -32,6 +34,9 @@ class LoansController extends AbstractController
         }
         else {
             $loan = new Loan();
+            # set current user
+            $currentUser = $security->getUser();
+            $loan->setBorrower($currentUser);
         }
 
         $form = $this->createForm(LoanType::class, $loan);
@@ -56,10 +61,10 @@ class LoansController extends AbstractController
     }
 
     #[Route('/loans/mine', name: 'app_loans_mine')]
-    public function myLoans(LoanRepository $repo): Response
+    public function myLoans(LoanRepository $repo, Security $security): Response
     {
-        # TODO inject and use current user
-        $userId = 1;
+        # set current user
+        $userId = $security->getUser()->getId();
         $loans=$repo->findBy(['borrower' => $userId]);
 
         return $this->render('loans/myLoans.html.twig', [

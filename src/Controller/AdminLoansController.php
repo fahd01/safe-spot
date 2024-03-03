@@ -3,7 +3,7 @@
 namespace App\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Loan;
-use App\Form\LoanType;
+use App\Form\AdminLoanType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -24,7 +24,7 @@ class AdminLoansController extends AbstractController
             $loan = new Loan();
         }
 
-        $form = $this->createForm(LoanType::class, $loan);
+        $form = $this->createForm(AdminLoanType::class, $loan);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

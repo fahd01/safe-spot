@@ -137,52 +137,42 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
               <i class=\"typcn typcn-calendar\"></i>
             </a>
           </li>
-          <li class=\"nav-item dropdown\">
-            <a class=\"nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center\" id=\"messageDropdown\" href=\"#\" data-toggle=\"dropdown\">
-              <i class=\"typcn typcn-cog-outline mx-0\"></i>
-              <span class=\"count\"></span>
-            </a>
+          ";
+        // line 76
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+            // line 77
+            echo "          <li class=\"nav-item dropdown\">
+              <a id=\"messageDropdown\"
+                 title=\"Admin Area\"
+                 data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+                 class=\"nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center\"
+                 data-toggle=\"dropdown\">
+                <i class=\"typcn typcn-cog-outline mx-0\"></i>
+                <span class=\"count\"></span>
+              </a>
             <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown preview-list\" aria-labelledby=\"messageDropdown\">
-              <p class=\"mb-0 font-weight-normal float-left dropdown-header\">Messages</p>
-              <a class=\"dropdown-item preview-item\">
-                <div class=\"preview-thumbnail\">
-                    <img src=\"/dashboard-template/images/faces/face4.jpg\" alt=\"image\" class=\"profile-pic\">
-                </div>
+              <p class=\"mb-0 font-weight-normal float-left dropdown-header\">Admin Area</p>
+              <a class=\"dropdown-item preview-item\" href=\"/admin/loans/list\">
                 <div class=\"preview-item-content flex-grow\">
-                  <h6 class=\"preview-subject ellipsis font-weight-normal\">David Grey
-                  </h6>
-                  <p class=\"font-weight-light small-text text-muted mb-0\">
-                    The meeting is cancelled
-                  </p>
+                  <h6 class=\"preview-subject ellipsis font-weight-normal\">Loans Management</h6>
                 </div>
               </a>
-              <a class=\"dropdown-item preview-item\">
-                <div class=\"preview-thumbnail\">
-                    <img src=\"/dashboard-template/images/faces/face2.jpg\" alt=\"image\" class=\"profile-pic\">
-                </div>
+              <a class=\"dropdown-item preview-item\" href=\"/admin/bids/list\">
                 <div class=\"preview-item-content flex-grow\">
-                  <h6 class=\"preview-subject ellipsis font-weight-normal\">Tim Cook
-                  </h6>
-                  <p class=\"font-weight-light small-text text-muted mb-0\">
-                    New product launch
-                  </p>
+                  <h6 class=\"preview-subject ellipsis font-weight-normal\">Bids Management</h6>
                 </div>
               </a>
-              <a class=\"dropdown-item preview-item\">
-                <div class=\"preview-thumbnail\">
-                    <img src=\"/dashboard-template/images/faces/face3.jpg\" alt=\"image\" class=\"profile-pic\">
-                </div>
+              <a class=\"dropdown-item preview-item\" href=\"/admin/loans/stats\">
                 <div class=\"preview-item-content flex-grow\">
-                  <h6 class=\"preview-subject ellipsis font-weight-normal\"> Johnson
-                  </h6>
-                  <p class=\"font-weight-light small-text text-muted mb-0\">
-                    Upcoming board meeting
-                  </p>
+                  <h6 class=\"preview-subject ellipsis font-weight-normal\">Statistics</h6>
                 </div>
               </a>
             </div>
           </li>
-
+          ";
+        }
+        // line 106
+        echo "
           <li class=\"nav-item dropdown mr-0\">
             <a class=\"nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center\" id=\"notificationDropdown\" href=\"#\" data-toggle=\"dropdown\">
               <i class=\"typcn typcn-bell mx-0\"></i>
@@ -264,7 +254,19 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
             <i class=\"mdi mdi-cash-multiple\"></i>
           </a>
         </div>
-      </div>
+        ";
+        // line 188
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+            // line 189
+            echo "        <div class=\"nav-link\">
+          <a href=\"/admin/loans/list\" title=\"Admin Area\" data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\">
+            <i class=\"typcn typcn-cog-outline mx-0\"></i>
+          </a>
+        </div>
+        ";
+        }
+        // line 195
+        echo "      </div>
       <div class=\"navbar-menu-wrapper d-flex align-items-center justify-content-end\">
         <ul class=\"navbar-nav mr-lg-2\">
           <li class=\"nav-item ml-0\">
@@ -464,18 +466,18 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
       ";
-        // line 402
+        // line 394
         $this->displayBlock('navigation', $context, $blocks);
-        // line 403
+        // line 395
         echo "
       <!-- partial -->
       <div class=\"main-panel\">
         <div class=\"content-wrapper\">
           <!-- twig page bodies will be inserted here -->
            ";
-        // line 408
+        // line 400
         $this->displayBlock('body', $context, $blocks);
-        // line 409
+        // line 401
         echo "        </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -614,7 +616,7 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
 
     }
 
-    // line 402
+    // line 394
     public function block_navigation($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -632,7 +634,7 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
 
     }
 
-    // line 408
+    // line 400
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -671,7 +673,7 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  636 => 408,  618 => 402,  599 => 26,  589 => 27,  586 => 26,  576 => 25,  566 => 23,  556 => 22,  537 => 20,  479 => 409,  477 => 408,  470 => 403,  468 => 402,  135 => 72,  113 => 52,  107 => 51,  82 => 28,  80 => 25,  77 => 24,  75 => 22,  70 => 20,  49 => 1,);
+        return array (  638 => 400,  620 => 394,  601 => 26,  591 => 27,  588 => 26,  578 => 25,  568 => 23,  558 => 22,  539 => 20,  481 => 401,  479 => 400,  472 => 395,  470 => 394,  269 => 195,  261 => 189,  259 => 188,  175 => 106,  144 => 77,  142 => 76,  135 => 72,  113 => 52,  107 => 51,  82 => 28,  80 => 25,  77 => 24,  75 => 22,  70 => 20,  49 => 1,);
     }
 
     public function getSourceContext()
@@ -751,51 +753,36 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
               <i class=\"typcn typcn-calendar\"></i>
             </a>
           </li>
+          {% if is_granted('ROLE_ADMIN') %}
           <li class=\"nav-item dropdown\">
-            <a class=\"nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center\" id=\"messageDropdown\" href=\"#\" data-toggle=\"dropdown\">
-              <i class=\"typcn typcn-cog-outline mx-0\"></i>
-              <span class=\"count\"></span>
-            </a>
+              <a id=\"messageDropdown\"
+                 title=\"Admin Area\"
+                 data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+                 class=\"nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center\"
+                 data-toggle=\"dropdown\">
+                <i class=\"typcn typcn-cog-outline mx-0\"></i>
+                <span class=\"count\"></span>
+              </a>
             <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown preview-list\" aria-labelledby=\"messageDropdown\">
-              <p class=\"mb-0 font-weight-normal float-left dropdown-header\">Messages</p>
-              <a class=\"dropdown-item preview-item\">
-                <div class=\"preview-thumbnail\">
-                    <img src=\"/dashboard-template/images/faces/face4.jpg\" alt=\"image\" class=\"profile-pic\">
-                </div>
+              <p class=\"mb-0 font-weight-normal float-left dropdown-header\">Admin Area</p>
+              <a class=\"dropdown-item preview-item\" href=\"/admin/loans/list\">
                 <div class=\"preview-item-content flex-grow\">
-                  <h6 class=\"preview-subject ellipsis font-weight-normal\">David Grey
-                  </h6>
-                  <p class=\"font-weight-light small-text text-muted mb-0\">
-                    The meeting is cancelled
-                  </p>
+                  <h6 class=\"preview-subject ellipsis font-weight-normal\">Loans Management</h6>
                 </div>
               </a>
-              <a class=\"dropdown-item preview-item\">
-                <div class=\"preview-thumbnail\">
-                    <img src=\"/dashboard-template/images/faces/face2.jpg\" alt=\"image\" class=\"profile-pic\">
-                </div>
+              <a class=\"dropdown-item preview-item\" href=\"/admin/bids/list\">
                 <div class=\"preview-item-content flex-grow\">
-                  <h6 class=\"preview-subject ellipsis font-weight-normal\">Tim Cook
-                  </h6>
-                  <p class=\"font-weight-light small-text text-muted mb-0\">
-                    New product launch
-                  </p>
+                  <h6 class=\"preview-subject ellipsis font-weight-normal\">Bids Management</h6>
                 </div>
               </a>
-              <a class=\"dropdown-item preview-item\">
-                <div class=\"preview-thumbnail\">
-                    <img src=\"/dashboard-template/images/faces/face3.jpg\" alt=\"image\" class=\"profile-pic\">
-                </div>
+              <a class=\"dropdown-item preview-item\" href=\"/admin/loans/stats\">
                 <div class=\"preview-item-content flex-grow\">
-                  <h6 class=\"preview-subject ellipsis font-weight-normal\"> Johnson
-                  </h6>
-                  <p class=\"font-weight-light small-text text-muted mb-0\">
-                    Upcoming board meeting
-                  </p>
+                  <h6 class=\"preview-subject ellipsis font-weight-normal\">Statistics</h6>
                 </div>
               </a>
             </div>
           </li>
+          {% endif %}
 
           <li class=\"nav-item dropdown mr-0\">
             <a class=\"nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center\" id=\"notificationDropdown\" href=\"#\" data-toggle=\"dropdown\">
@@ -878,6 +865,13 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
             <i class=\"mdi mdi-cash-multiple\"></i>
           </a>
         </div>
+        {% if is_granted('ROLE_ADMIN') %}
+        <div class=\"nav-link\">
+          <a href=\"/admin/loans/list\" title=\"Admin Area\" data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\">
+            <i class=\"typcn typcn-cog-outline mx-0\"></i>
+          </a>
+        </div>
+        {% endif %}
       </div>
       <div class=\"navbar-menu-wrapper d-flex align-items-center justify-content-end\">
         <ul class=\"navbar-nav mr-lg-2\">

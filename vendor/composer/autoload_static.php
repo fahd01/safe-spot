@@ -112,6 +112,7 @@ class ComposerStaticInit1964e81243082a04fc25f2d3d9b3e964
             'Symfony\\Bridge\\Monolog\\' => 23,
             'Symfony\\Bridge\\Doctrine\\' => 24,
             'SymfonyCasts\\Bundle\\VerifyEmail\\' => 32,
+            'SymfonyCasts\\Bundle\\ResetPassword\\' => 34,
         ),
         'P' => 
         array (
@@ -477,6 +478,10 @@ class ComposerStaticInit1964e81243082a04fc25f2d3d9b3e964
         'SymfonyCasts\\Bundle\\VerifyEmail\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfonycasts/verify-email-bundle/src',
+        ),
+        'SymfonyCasts\\Bundle\\ResetPassword\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfonycasts/reset-password-bundle/src',
         ),
         'Psr\\Log\\' => 
         array (

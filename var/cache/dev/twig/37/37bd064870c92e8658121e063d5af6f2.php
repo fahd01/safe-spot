@@ -86,7 +86,7 @@ class __TwigTemplate_81e5b6acca88dc04dd0b52cd8bb92713 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navigation"));
 
         // line 6
-        echo twig_include($this->env, $context, "loans/_loanNavMenu.html.twig");
+        echo twig_include($this->env, $context, "loans/admin/_navMenu.html.twig");
         echo "
 ";
         
@@ -160,7 +160,7 @@ class __TwigTemplate_81e5b6acca88dc04dd0b52cd8bb92713 extends Template
 {% block title %}Place Bid{% endblock %}
 
 {% block navigation %}
-{{ include('loans/_loanNavMenu.html.twig')}}
+{{ include('loans/admin/_navMenu.html.twig')}}
 {% endblock %}
 
 {% block body %}

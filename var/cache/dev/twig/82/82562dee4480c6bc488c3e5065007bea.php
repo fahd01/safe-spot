@@ -118,8 +118,9 @@ class __TwigTemplate_e023f8fbd60ef46c9f4845c804f6df80 extends Template
                 </div>
                 <div class=\"mt-3\">
                   ";
-        // line 66
-        echo "                  <button type=\"submit\" class=\"btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn\">SIGN IN</button>
+        // line 65
+        echo "                  <input type=\"hidden\" name=\"_target_path\" value=\"/loans/list\">
+                  <button type=\"submit\" class=\"btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn\">SIGN IN</button>
                 </div>
                 <div class=\"my-2 d-flex justify-content-between align-items-center\">
                   <div class=\"form-check\">
@@ -130,11 +131,13 @@ class __TwigTemplate_e023f8fbd60ef46c9f4845c804f6df80 extends Template
                   </div>
                   <a href=\"#\" class=\"auth-link text-black\">Forgot password?</a>
                 </div>
+                <!--
                 <div class=\"mb-2\">
                   <button type=\"button\" class=\"btn btn-block btn-facebook auth-form-btn\">
                     <i class=\"typcn typcn-social-facebook mr-2\"></i>Connect using facebook
                   </button>
                 </div>
+                -->
                 <div class=\"text-center mt-4 font-weight-light\">
                   Don't have an account? <a href=\"register\" class=\"text-primary\">Create</a>
                 </div>
@@ -192,7 +195,7 @@ class __TwigTemplate_e023f8fbd60ef46c9f4845c804f6df80 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  122 => 66,  105 => 50,  95 => 42,  86 => 36,  83 => 35,  81 => 34,  77 => 33,  43 => 1,);
+        return array (  122 => 65,  105 => 50,  95 => 42,  86 => 36,  83 => 35,  81 => 34,  77 => 33,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -260,8 +263,8 @@ class __TwigTemplate_e023f8fbd60ef46c9f4845c804f6df80 extends Template
                   >
                 </div>
                 <div class=\"mt-3\">
-                  {# If you want to control the URL the user is redirected to on success
-                  <input type=\"hidden\" name=\"_target_path\" value=\"/account\"> #}
+                  {# If you want to control the URL the user is redirected to on success #}
+                  <input type=\"hidden\" name=\"_target_path\" value=\"/loans/list\">
                   <button type=\"submit\" class=\"btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn\">SIGN IN</button>
                 </div>
                 <div class=\"my-2 d-flex justify-content-between align-items-center\">
@@ -273,11 +276,13 @@ class __TwigTemplate_e023f8fbd60ef46c9f4845c804f6df80 extends Template
                   </div>
                   <a href=\"#\" class=\"auth-link text-black\">Forgot password?</a>
                 </div>
+                <!--
                 <div class=\"mb-2\">
                   <button type=\"button\" class=\"btn btn-block btn-facebook auth-form-btn\">
                     <i class=\"typcn typcn-social-facebook mr-2\"></i>Connect using facebook
                   </button>
                 </div>
+                -->
                 <div class=\"text-center mt-4 font-weight-light\">
                   Don't have an account? <a href=\"register\" class=\"text-primary\">Create</a>
                 </div>
