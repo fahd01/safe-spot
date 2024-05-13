@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+#[ORM\Table(name: "Response")]
 #[ORM\Entity(repositoryClass: RecResponseRepository::class)]
 class RecResponse
 {
