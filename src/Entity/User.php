@@ -14,6 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use DateTime;
 use DateTimeImmutable;
 
+#[ORM\Table(name: "User")]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[Vich\Uploadable]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]

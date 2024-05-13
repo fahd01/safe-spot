@@ -12,6 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\DBAL\Types\Types as DBALTypes;
 use Symfony\Component\Validator\Constraints as ValidationAssert;
 
+#[ORM\Table(name: "Investissement")]
 #[ORM\Entity(repositoryClass: InvestissementRepository::class)]
 class Investissement
 {
@@ -22,10 +23,10 @@ class Investissement
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-#[Assert\NotNull(message: "Il faut remplir ce champ")]
-#[Assert\GreaterThanOrEqual("today", message: "La date doit être aujourd'hui ou après aujourd'hui")]
-#[Groups("post:read")]
-private ?\DateTimeInterface $date = null;
+    #[Assert\NotNull(message: "Il faut remplir ce champ")]
+    #[Assert\GreaterThanOrEqual("today", message: "La date doit être aujourd'hui ou après aujourd'hui")]
+    #[Groups("post:read")]
+    private ?\DateTimeInterface $date = null;
 
     #[ORM\Column]
     #[Assert\NotNull (message: "Il faut remplire ce chemp")]
