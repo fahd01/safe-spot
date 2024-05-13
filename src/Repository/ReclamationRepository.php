@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Reclamation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\QueryBuilder;
+use Doctrine\ORM\Query\Expr;
 
 /**
  * @extends ServiceEntityRepository<Reclamation>
@@ -16,6 +18,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ReclamationRepository extends ServiceEntityRepository
 {
+    
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Reclamation::class);
@@ -45,4 +48,22 @@ class ReclamationRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+public function findAllQuery(): \Doctrine\ORM\QueryBuilder
+{
+    return $this->createQueryBuilder('r')
+        ->orderBy('r.id', 'DESC');
+}
+// YourRepository.php
+public function findBySearchTerm($nom)
+{
+    $entityManager = $this->getEntityManager();
+    $query = $entityManager->createQuery(
+        "SELECT r FROM APP\Entity\Reclamation r WHERE r.sujet LIKE :nom OR r.description LIKE :nom"
+    )->setParameter('nom', $nom . '%');  // Modify this line
+
+    return $query->getResult();
+}
+
+
+
 }

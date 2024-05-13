@@ -1,0 +1,10 @@
+{{ form_start(form) }}
+<div class="rate">
+    {# Render each radio button manually #}
+    {% for child in form.nbstar %}
+        <input type="radio" id="star{{ child.vars.value }}" name="{{ child.vars.full_name }}" value="{{ child.vars.value }}" class="star-input" {{ child.vars.checked ? 'checked="checked"' : '' }}/>
+        <label for="star{{ child.vars.value }}" class="star">&#9733;</label>
+    {% endfor %}
+</div>
+<button type="submit" class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form, {'render_rest': false}) }}

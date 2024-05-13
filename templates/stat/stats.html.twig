@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistiques{% endblock %}
+{% block navigation %}
+{{ include('loans/_loanNavMenu.html.twig')}}
+{% endblock %}
+
+{% block main %}
+<div class="content-page">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item">
+                                    <a href="javascript: void(0);">Admin</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a href="javascript: void(0);">Statistiques</a>
+                                </li>
+                                <li class="breadcrumb-item active">Investissement</li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">Statistiques des Investissement</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contenu de la vue des statistiques -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Répartition des Investissement par couleur</h5>
+                            <canvas id="reclamationChart" width="400" height="400"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fin du contenu de la vue des statistiques -->
+            
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+<script>
+    let reclamationCanvas = document.querySelector("#reclamationChart");
+    let reclamationChart = new Chart(reclamationCanvas, {
+        type: 'pie',
+        data: {
+            labels: {{ recColor|raw }},
+            datasets: [{
+                label: 'Nombre de réclamations par couleur',
+                data: {{ recCount|raw }},
+                backgroundColor: {{ recColor|raw }},
+            }]
+        }
+    });
+</script>
+{% endblock %}

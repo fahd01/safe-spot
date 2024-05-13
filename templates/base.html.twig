@@ -48,7 +48,7 @@
             <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
               <img src="/dashboard-template/images/faces/face5.jpg" alt="profile"/>
               <span class="nav-profile-name">
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}{{ app.user.firstName }} {{ app.user.lastName }}{% endif %}
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}{{ app.user.prenom }} {{ app.user.nom }}{% endif %}
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -172,13 +172,13 @@
     <nav class="navbar-breadcrumb col-xl-12 col-12 d-flex flex-row p-0">
       <div class="navbar-links-wrapper d-flex align-items-stretch">
         <div class="nav-link">
-          <a href="javascript:;"><i class="typcn typcn-calendar-outline"></i></a>
+          <a href="{{path('afficheall')}}"><i class="typcn typcn-user"></i></a>
         </div>
         <div class="nav-link">
           <a href="javascript:;"><i class="typcn typcn-mail"></i></a>
         </div>
         <div class="nav-link">
-          <a href="javascript:;"><i class="typcn typcn-folder"></i></a>
+          <a href="{{path('app_reclamation_index')}}"><i class="typcn typcn-folder"></i></a>
         </div>
         <div class="nav-link">
           <a href="/loans/list" title="P2P Lending Area" data-bs-toggle="tooltip" data-bs-placement="bottom" data-html="true">
@@ -442,6 +442,7 @@
 
 
 </script>
+
 </body>
 
 </html>

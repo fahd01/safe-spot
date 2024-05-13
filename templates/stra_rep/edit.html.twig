@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit StarRep{% endblock %}
+
+{% block body %}
+    <h1>Edit StarRep</h1>
+
+    {{ include('stra_rep/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_stra_rep_index') }}">back to list</a>
+
+    {{ include('stra_rep/_delete_form.html.twig') }}
+{% endblock %}
