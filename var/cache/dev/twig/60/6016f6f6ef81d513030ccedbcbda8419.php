@@ -108,7 +108,13 @@ class __TwigTemplate_ee2e4f01459b3b857674760599015186 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 11
-        echo "
+        echo "<style>
+    #loans_wrapper > div:nth-child(1) {
+      margin-right: 20px;
+      margin-left: 20px;
+    }
+</style>
+
   <div>
 
 
@@ -125,7 +131,7 @@ class __TwigTemplate_ee2e4f01459b3b857674760599015186 extends Template
           Request Loan
         </a>
         <div class=\"table-responsive pt-3\">
-          <table class=\"table table-striped\">
+          <table class=\"table table-striped\" id=\"loans\">
             <thead>
             <tr>
               <th>ID</th>
@@ -142,9 +148,9 @@ class __TwigTemplate_ee2e4f01459b3b857674760599015186 extends Template
             </thead>
             <tbody>
             ";
-        // line 44
+        // line 50
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["loanskey"]) || array_key_exists("loanskey", $context) ? $context["loanskey"] : (function () { throw new RuntimeError('Variable "loanskey" does not exist.', 44, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["loanskey"]) || array_key_exists("loanskey", $context) ? $context["loanskey"] : (function () { throw new RuntimeError('Variable "loanskey" does not exist.', 50, $this->source); })()));
         $context['loop'] = [
           'parent' => $context['_parent'],
           'index0' => 0,
@@ -159,47 +165,47 @@ class __TwigTemplate_ee2e4f01459b3b857674760599015186 extends Template
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["item"]) {
-            // line 45
+            // line 51
             echo "              <tr>
 
                 <td> ";
-            // line 47
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 47), "html", null, true);
+            // line 53
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 53), "html", null, true);
             echo "    </td>
                 <td> ";
-            // line 48
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "amount", [], "any", false, false, false, 48), "html", null, true);
+            // line 54
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "amount", [], "any", false, false, false, 54), "html", null, true);
             echo " TND </td>
                 <td> ";
-            // line 49
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "interest", [], "any", false, false, false, 49), "html", null, true);
+            // line 55
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "interest", [], "any", false, false, false, 55), "html", null, true);
             echo " % </td>
                 <td> ";
-            // line 50
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "term", [], "any", false, false, false, 50), "html", null, true);
+            // line 56
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "term", [], "any", false, false, false, 56), "html", null, true);
             echo " mois</td>
                 <td> ";
-            // line 51
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "purpose", [], "any", false, false, false, 51), "html", null, true);
+            // line 57
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "purpose", [], "any", false, false, false, 57), "html", null, true);
             echo "</td>
                 <td> ";
-            // line 52
-            echo twig_include($this->env, $context, "loans/_loanStatus.html.twig", ["status" => twig_get_attribute($this->env, $this->source, $context["item"], "status", [], "any", false, false, false, 52)]);
+            // line 58
+            echo twig_include($this->env, $context, "loans/_loanStatus.html.twig", ["status" => twig_get_attribute($this->env, $this->source, $context["item"], "status", [], "any", false, false, false, 58)]);
             echo "  </td>
                 <td> ";
-            // line 53
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "borrower", [], "any", false, false, false, 53), "firstName", [], "any", false, false, false, 53), "html", null, true);
+            // line 59
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "borrower", [], "any", false, false, false, 59), "firstName", [], "any", false, false, false, 59), "html", null, true);
             echo " ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "borrower", [], "any", false, false, false, 53), "lastName", [], "any", false, false, false, 53), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "borrower", [], "any", false, false, false, 59), "lastName", [], "any", false, false, false, 59), "html", null, true);
             echo "</td>
                 <td> ";
-            // line 54
-            echo twig_include($this->env, $context, "loans/_loanProgress.html.twig", ["progress" => twig_get_attribute($this->env, $this->source, $context["item"], "bidsProgress", [], "method", false, false, false, 54), "remainingAmount" => (twig_get_attribute($this->env, $this->source, $context["item"], "amount", [], "any", false, false, false, 54) - twig_get_attribute($this->env, $this->source, $context["item"], "collectedBids", [], "method", false, false, false, 54)), "collectedAmount" => twig_get_attribute($this->env, $this->source, $context["item"], "collectedBids", [], "method", false, false, false, 54)]);
+            // line 60
+            echo twig_include($this->env, $context, "loans/_loanProgress.html.twig", ["progress" => twig_get_attribute($this->env, $this->source, $context["item"], "bidsProgress", [], "method", false, false, false, 60), "remainingAmount" => (twig_get_attribute($this->env, $this->source, $context["item"], "amount", [], "any", false, false, false, 60) - twig_get_attribute($this->env, $this->source, $context["item"], "collectedBids", [], "method", false, false, false, 60)), "collectedAmount" => twig_get_attribute($this->env, $this->source, $context["item"], "collectedBids", [], "method", false, false, false, 60)]);
             echo " </td>
                 <td>
                   <a href=\"/admin/loans/create?id=";
-            // line 56
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 56), "html", null, true);
+            // line 62
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 62), "html", null, true);
             echo "\"
                      data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\"
                      role=\"button\" class=\"btn btn-warning btn-sm btn-icon-text mr-3\" title=\"Edit this loan\">
@@ -207,8 +213,8 @@ class __TwigTemplate_ee2e4f01459b3b857674760599015186 extends Template
                     Edit
                   </a>
                   <button onclick=\"triggerDeleteLoanModal(";
-            // line 62
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 62), "html", null, true);
+            // line 68
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 68), "html", null, true);
             echo ")\"
                      type=\"button\" class=\"btn btn-danger btn-sm btn-icon-text mr-3\"
                           data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Delete this loan\">
@@ -232,7 +238,7 @@ class __TwigTemplate_ee2e4f01459b3b857674760599015186 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['item'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 73
+        // line 79
         echo "
             </tbody>
           </table>
@@ -263,7 +269,19 @@ class __TwigTemplate_ee2e4f01459b3b857674760599015186 extends Template
   </div>
 </div>
 
+<script src=\"https://code.jquery.com/jquery-3.7.1.js\"></script>
+<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js\"></script>
+<script src=\"https://cdn.datatables.net/2.0.1/js/dataTables.js\"></script>
+<script src=\"https://cdn.datatables.net/2.0.1/js/dataTables.bootstrap4.js\"></script>
+
+<link rel=\"stylesheet\" href=\"https://cdn.datatables.net/2.0.1/css/dataTables.bootstrap4.css\">
+
 <script>
+
+new DataTable('#loans'
+//, { layout: { topEnd: { search: { text: '', placeholder: 'Type search here' } } } }
+);
+
 function triggerDeleteLoanModal(loanId){
   \$('#delete-loan-link').attr('href', `/admin/loans/\${loanId}/delete`);
   \$('#delete-loan-modal').modal();
@@ -300,7 +318,7 @@ function triggerDeleteLoanModal(loanId){
      */
     public function getDebugInfo()
     {
-        return array (  236 => 73,  211 => 62,  202 => 56,  197 => 54,  191 => 53,  187 => 52,  183 => 51,  179 => 50,  175 => 49,  171 => 48,  167 => 47,  163 => 45,  146 => 44,  111 => 11,  101 => 10,  89 => 7,  79 => 6,  60 => 4,  37 => 2,);
+        return array (  242 => 79,  217 => 68,  208 => 62,  203 => 60,  197 => 59,  193 => 58,  189 => 57,  185 => 56,  181 => 55,  177 => 54,  173 => 53,  169 => 51,  152 => 50,  111 => 11,  101 => 10,  89 => 7,  79 => 6,  60 => 4,  37 => 2,);
     }
 
     public function getSourceContext()
@@ -315,6 +333,12 @@ function triggerDeleteLoanModal(loanId){
 {% endblock %}
 
 {% block body %}
+<style>
+    #loans_wrapper > div:nth-child(1) {
+      margin-right: 20px;
+      margin-left: 20px;
+    }
+</style>
 
   <div>
 
@@ -332,7 +356,7 @@ function triggerDeleteLoanModal(loanId){
           Request Loan
         </a>
         <div class=\"table-responsive pt-3\">
-          <table class=\"table table-striped\">
+          <table class=\"table table-striped\" id=\"loans\">
             <thead>
             <tr>
               <th>ID</th>
@@ -407,7 +431,19 @@ function triggerDeleteLoanModal(loanId){
   </div>
 </div>
 
+<script src=\"https://code.jquery.com/jquery-3.7.1.js\"></script>
+<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js\"></script>
+<script src=\"https://cdn.datatables.net/2.0.1/js/dataTables.js\"></script>
+<script src=\"https://cdn.datatables.net/2.0.1/js/dataTables.bootstrap4.js\"></script>
+
+<link rel=\"stylesheet\" href=\"https://cdn.datatables.net/2.0.1/css/dataTables.bootstrap4.css\">
+
 <script>
+
+new DataTable('#loans'
+//, { layout: { topEnd: { search: { text: '', placeholder: 'Type search here' } } } }
+);
+
 function triggerDeleteLoanModal(loanId){
   \$('#delete-loan-link').attr('href', `/admin/loans/\${loanId}/delete`);
   \$('#delete-loan-modal').modal();

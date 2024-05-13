@@ -19,11 +19,17 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\InternalProxy
         "\0".parent::class."\0".'email' => [parent::class, 'email', null],
         "\0".parent::class."\0".'firstName' => [parent::class, 'firstName', null],
         "\0".parent::class."\0".'id' => [parent::class, 'id', null],
+        "\0".parent::class."\0".'isVerified' => [parent::class, 'isVerified', null],
         "\0".parent::class."\0".'lastName' => [parent::class, 'lastName', null],
+        "\0".parent::class."\0".'password' => [parent::class, 'password', null],
+        "\0".parent::class."\0".'roles' => [parent::class, 'roles', null],
         'email' => [parent::class, 'email', null],
         'firstName' => [parent::class, 'firstName', null],
         'id' => [parent::class, 'id', null],
+        'isVerified' => [parent::class, 'isVerified', null],
         'lastName' => [parent::class, 'lastName', null],
+        'password' => [parent::class, 'password', null],
+        'roles' => [parent::class, 'roles', null],
     ];
 
     public function __isInitialized(): bool

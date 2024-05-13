@@ -8,6 +8,12 @@
 {% endblock %}
 
 {% block body %}
+<style>
+    #loans_wrapper > div:nth-child(1) {
+      margin-right: 20px;
+      margin-left: 20px;
+    }
+</style>
 
   <div>
 
@@ -25,7 +31,7 @@
           Request Loan
         </a>
         <div class="table-responsive pt-3">
-          <table class="table table-striped">
+          <table class="table table-striped" id="loans">
             <thead>
             <tr>
               <th>ID</th>
@@ -100,7 +106,19 @@
   </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.1/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.0.1/js/dataTables.bootstrap4.js"></script>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.1/css/dataTables.bootstrap4.css">
+
 <script>
+
+new DataTable('#loans'
+//, { layout: { topEnd: { search: { text: '', placeholder: 'Type search here' } } } }
+);
+
 function triggerDeleteLoanModal(loanId){
   $('#delete-loan-link').attr('href', `/admin/loans/${loanId}/delete`);
   $('#delete-loan-modal').modal();

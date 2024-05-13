@@ -18,10 +18,6 @@ class BidType extends AbstractType
     {
         $builder
             ->add('amount')
-            ->add('bidder', EntityType::class, [
-                'class' => User::class,
-'choice_label' => 'id',
-            ])
             ->add('submit', SubmitType::class, ['label' => 'Create Bid']);
         ;
     }

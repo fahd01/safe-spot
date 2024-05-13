@@ -16,18 +16,19 @@ use App\Entity\AutomationRuleOperator;
 
 use App\Repository\AutomationRepository;
 use App\Repository\UserRepository;
+use Symfony\Bundle\SecurityBundle\Security;
 
 class AutomationController extends AbstractController {
 
     #[Route('/bids/automations/create', name: 'app_bids_automations_create')]
-    public function new(Request $request, AutomationRepository $repo, UserRepository $userRepo): Response {
+    public function new(Request $request, AutomationRepository $repo, UserRepository $userRepo, Security $security): Response {
         $id = $request->query->get('id');
         $detailsView = false;
         if ( ctype_digit($id) ) { $automation=$repo->find($id); $detailsView=true;}
         else {
             $automation = new Automation();
-            # TODO inject and use current user instead
-            $currentUser = $userRepo->find(1);
+            # set current user
+            $currentUser = $security->getUser();
             $automation->setOwner($currentUser);
         }
 
@@ -47,9 +48,9 @@ class AutomationController extends AbstractController {
     }
 
     #[Route('/bids/automations/mine', name: 'app_bids_automations_mine')]
-    public function myBidsAutomation(Request $request, AutomationRepository $repo): Response {
-        # TODO inject and use current user
-        $userId = 1;
+    public function myBidsAutomation(Request $request, AutomationRepository $repo, Security $security): Response {
+        # set current user
+        $userId = $security->getUser()->getId();
         $automations=$repo->findBy(['owner' => $userId]);
         return $this->render('bids/myAutomations.html.twig', [
             'automations' => $automations,
@@ -70,9 +71,9 @@ class AutomationController extends AbstractController {
     }
 
     #[Route('/bids/automations/stats', name: 'app_automations_stats')]
-    public function stats (AutomationRepository $repo){
-        # TODO inject and use current user
-        $userId = 1;
+    public function stats (AutomationRepository $repo, Security $security){
+        # set current user
+        $userId = $security->getUser()->getId();
         $automations=$repo->findBy(['owner' => $userId]);
         return $this->render('bids/automationStats.html.twig', [
             'automations' => $automations,

@@ -113,6 +113,15 @@ class __TwigTemplate_79ab2ee58ea1a8aa2c06b733e3a14187 extends Template
     <div class=\"card\">
         <div class=\"card-body\">
             <h4 class=\"card-title\">List of All Bids</h4>
+            <a href=\"/admin/bids/create\"
+               role=\"button\"
+               class=\"btn btn-info btn-sm btn-icon-text mr-3 float-right\"
+               data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+               title=\"Create new Bid\"
+            >
+                <i class=\"mdi mdi-plus-circle-outline btn-icon-prepend\"></i>
+                Create new Bid
+            </a>
 
             <div class=\"table-responsive pt-3\">
                 <table class=\"table table-striped\">
@@ -129,9 +138,9 @@ class __TwigTemplate_79ab2ee58ea1a8aa2c06b733e3a14187 extends Template
                     </thead>
                     <tbody>
                     ";
-        // line 30
+        // line 39
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["bids"]) || array_key_exists("bids", $context) ? $context["bids"] : (function () { throw new RuntimeError('Variable "bids" does not exist.', 30, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["bids"]) || array_key_exists("bids", $context) ? $context["bids"] : (function () { throw new RuntimeError('Variable "bids" does not exist.', 39, $this->source); })()));
         $context['loop'] = [
           'parent' => $context['_parent'],
           'index0' => 0,
@@ -146,21 +155,21 @@ class __TwigTemplate_79ab2ee58ea1a8aa2c06b733e3a14187 extends Template
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["item"]) {
-            // line 31
+            // line 40
             echo "                    <tr>
                         <td>
                             ";
-            // line 33
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 33), "html", null, true);
+            // line 42
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 42), "html", null, true);
             echo "
                         </td>
                         <td>
                             ";
-            // line 36
-            if ((twig_get_attribute($this->env, $this->source, $context["item"], "automation", [], "any", false, false, false, 36) != null)) {
-                // line 37
+            // line 45
+            if ((twig_get_attribute($this->env, $this->source, $context["item"], "automation", [], "any", false, false, false, 45) != null)) {
+                // line 46
                 echo "                            <a href=\"#\" title=\"Placed by '";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "automation", [], "any", false, false, false, 37), "name", [], "any", false, false, false, 37), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "automation", [], "any", false, false, false, 46), "name", [], "any", false, false, false, 46), "html", null, true);
                 echo "' automation\"
                                data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
                             >
@@ -168,35 +177,33 @@ class __TwigTemplate_79ab2ee58ea1a8aa2c06b733e3a14187 extends Template
                             </a>
                             ";
             }
-            // line 43
+            // line 52
             echo "                        </td>
                         <td> ";
-            // line 44
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "amount", [], "any", false, false, false, 44), "html", null, true);
+            // line 53
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "amount", [], "any", false, false, false, 53), "html", null, true);
             echo " TND </td>
                         <td> ";
-            // line 45
-            echo twig_include($this->env, $context, "bids/_bidStatus.html.twig", ["status" => twig_get_attribute($this->env, $this->source, $context["item"], "status", [], "any", false, false, false, 45)]);
+            // line 54
+            echo twig_include($this->env, $context, "bids/_bidStatus.html.twig", ["status" => twig_get_attribute($this->env, $this->source, $context["item"], "status", [], "any", false, false, false, 54)]);
             echo "  </td>
                         <td> ";
-            // line 46
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "loan", [], "any", false, false, false, 46), "id", [], "any", false, false, false, 46), "html", null, true);
+            // line 55
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "loan", [], "any", false, false, false, 55), "id", [], "any", false, false, false, 55), "html", null, true);
             echo " </td>
                         <td> ";
-            // line 47
-            echo twig_include($this->env, $context, "loans/_loanStatus.html.twig", ["status" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "loan", [], "any", false, false, false, 47), "status", [], "any", false, false, false, 47)]);
+            // line 56
+            echo twig_include($this->env, $context, "loans/_loanStatus.html.twig", ["status" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "loan", [], "any", false, false, false, 56), "status", [], "any", false, false, false, 56)]);
             echo " </td>
                         <td>
-                            <a href=\"/admin/loans/";
-            // line 49
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "loan", [], "any", false, false, false, 49), "id", [], "any", false, false, false, 49), "html", null, true);
-            echo "/bids/edit?id=";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 49), "html", null, true);
+                            <a href=\"/admin/bids/create?id=";
+            // line 58
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 58), "html", null, true);
             echo "\"
                                role=\"button\"
                                class=\"btn btn-warning btn-sm btn-icon-text mr-3 ";
-            // line 51
-            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "status", [], "any", false, false, false, 51), "value", [], "any", false, false, false, 51) != "PENDING")) {
+            // line 60
+            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "status", [], "any", false, false, false, 60), "value", [], "any", false, false, false, 60) != "PENDING")) {
                 echo " disabled ";
             }
             echo "\"
@@ -207,19 +214,19 @@ class __TwigTemplate_79ab2ee58ea1a8aa2c06b733e3a14187 extends Template
                                 Edit
                             </a>
                             <button onclick=\"triggerDeleteBidModal(";
-            // line 58
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 58), "html", null, true);
+            // line 67
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "id", [], "any", false, false, false, 67), "html", null, true);
             echo ")\"
                                     type=\"button\"
                                     class=\"btn btn-danger btn-sm btn-icon-text mr-3\"
                                     data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
                                     title=\"Delete this bid\"
                                     ";
-            // line 63
-            if (((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "status", [], "any", false, false, false, 63), "value", [], "any", false, false, false, 63) != "PENDING") && (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "status", [], "any", false, false, false, 63), "value", [], "any", false, false, false, 63) != "REJECTED"))) {
+            // line 72
+            if (((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "status", [], "any", false, false, false, 72), "value", [], "any", false, false, false, 72) != "PENDING") && (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["item"], "status", [], "any", false, false, false, 72), "value", [], "any", false, false, false, 72) != "REJECTED"))) {
                 echo " disabled ";
             }
-            // line 64
+            // line 73
             echo "                                    >
                                 <i class=\"mdi mdi-delete-forever btn-icon-prepend\"></i>
                                 Delete
@@ -241,7 +248,7 @@ class __TwigTemplate_79ab2ee58ea1a8aa2c06b733e3a14187 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['item'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 73
+        // line 82
         echo "
                     </tbody>
                 </table>
@@ -312,7 +319,7 @@ function triggerDeleteBidModal(bidId){
      */
     public function getDebugInfo()
     {
-        return array (  245 => 73,  223 => 64,  219 => 63,  211 => 58,  199 => 51,  192 => 49,  187 => 47,  183 => 46,  179 => 45,  175 => 44,  172 => 43,  162 => 37,  160 => 36,  154 => 33,  150 => 31,  133 => 30,  111 => 10,  101 => 9,  89 => 6,  79 => 5,  60 => 3,  37 => 1,);
+        return array (  252 => 82,  230 => 73,  226 => 72,  218 => 67,  206 => 60,  201 => 58,  196 => 56,  192 => 55,  188 => 54,  184 => 53,  181 => 52,  171 => 46,  169 => 45,  163 => 42,  159 => 40,  142 => 39,  111 => 10,  101 => 9,  89 => 6,  79 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -331,6 +338,15 @@ function triggerDeleteBidModal(bidId){
     <div class=\"card\">
         <div class=\"card-body\">
             <h4 class=\"card-title\">List of All Bids</h4>
+            <a href=\"/admin/bids/create\"
+               role=\"button\"
+               class=\"btn btn-info btn-sm btn-icon-text mr-3 float-right\"
+               data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+               title=\"Create new Bid\"
+            >
+                <i class=\"mdi mdi-plus-circle-outline btn-icon-prepend\"></i>
+                Create new Bid
+            </a>
 
             <div class=\"table-responsive pt-3\">
                 <table class=\"table table-striped\">
@@ -365,7 +381,7 @@ function triggerDeleteBidModal(bidId){
                         <td> {{ item.loan.id }} </td>
                         <td> {{ include ('loans/_loanStatus.html.twig',{'status':item.loan.status}) }} </td>
                         <td>
-                            <a href=\"/admin/loans/{{ item.loan.id }}/bids/edit?id={{ item.id }}\"
+                            <a href=\"/admin/bids/create?id={{ item.id }}\"
                                role=\"button\"
                                class=\"btn btn-warning btn-sm btn-icon-text mr-3 {% if item.status.value != 'PENDING' %} disabled {% endif %}\"
                                data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"

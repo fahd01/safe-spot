@@ -87,7 +87,7 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
     <nav class=\"navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row\">
       <div class=\"navbar-brand-wrapper d-flex justify-content-center\">
         <div class=\"navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100\">
-          <a class=\"navbar-brand brand-logo\" href=\"index.html\">
+          <a class=\"navbar-brand brand-logo\" href=\"/\">
             <img src=\"/dashboard-template/images/logo-1.svg\" alt=\"logo\"/>
           </a>
           <a class=\"navbar-brand brand-logo-mini\" href=\"index.html\"><img src=\"/dashboard-template/images/logo-mini.svg\" alt=\"logo\"/></a>
@@ -101,7 +101,16 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
           <li class=\"nav-item nav-profile dropdown\">
             <a class=\"nav-link\" href=\"#\" data-toggle=\"dropdown\" id=\"profileDropdown\">
               <img src=\"/dashboard-template/images/faces/face5.jpg\" alt=\"profile\"/>
-              <span class=\"nav-profile-name\">Eugenia Mullins</span>
+              <span class=\"nav-profile-name\">
+                ";
+        // line 51
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_FULLY")) {
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 51, $this->source); })()), "user", [], "any", false, false, false, 51), "firstName", [], "any", false, false, false, 51), "html", null, true);
+            echo " ";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 51, $this->source); })()), "user", [], "any", false, false, false, 51), "lastName", [], "any", false, false, false, 51), "html", null, true);
+        }
+        // line 52
+        echo "              </span>
             </a>
             <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown\" aria-labelledby=\"profileDropdown\">
               <a class=\"dropdown-item\">
@@ -122,57 +131,48 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
           <li class=\"nav-item nav-date dropdown\">
             <a class=\"nav-link d-flex justify-content-center align-items-center\" href=\"javascript:;\">
               <h6 class=\"date mb-0\">Today : ";
-        // line 70
+        // line 72
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "M d"), "html", null, true);
         echo "</h6>
               <i class=\"typcn typcn-calendar\"></i>
             </a>
           </li>
-          <li class=\"nav-item dropdown\">
-            <a class=\"nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center\" id=\"messageDropdown\" href=\"#\" data-toggle=\"dropdown\">
-              <i class=\"typcn typcn-cog-outline mx-0\"></i>
-              <span class=\"count\"></span>
-            </a>
+          ";
+        // line 76
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+            // line 77
+            echo "          <li class=\"nav-item dropdown\">
+              <a id=\"messageDropdown\"
+                 title=\"Admin Area\"
+                 data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+                 class=\"nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center\"
+                 data-toggle=\"dropdown\">
+                <i class=\"typcn typcn-cog-outline mx-0\"></i>
+                <span class=\"count\"></span>
+              </a>
             <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown preview-list\" aria-labelledby=\"messageDropdown\">
-              <p class=\"mb-0 font-weight-normal float-left dropdown-header\">Messages</p>
-              <a class=\"dropdown-item preview-item\">
-                <div class=\"preview-thumbnail\">
-                    <img src=\"/dashboard-template/images/faces/face4.jpg\" alt=\"image\" class=\"profile-pic\">
-                </div>
+              <p class=\"mb-0 font-weight-normal float-left dropdown-header\">Admin Area</p>
+              <a class=\"dropdown-item preview-item\" href=\"/admin/loans/list\">
                 <div class=\"preview-item-content flex-grow\">
-                  <h6 class=\"preview-subject ellipsis font-weight-normal\">David Grey
-                  </h6>
-                  <p class=\"font-weight-light small-text text-muted mb-0\">
-                    The meeting is cancelled
-                  </p>
+                  <h6 class=\"preview-subject ellipsis font-weight-normal\">Loans Management</h6>
                 </div>
               </a>
-              <a class=\"dropdown-item preview-item\">
-                <div class=\"preview-thumbnail\">
-                    <img src=\"/dashboard-template/images/faces/face2.jpg\" alt=\"image\" class=\"profile-pic\">
-                </div>
+              <a class=\"dropdown-item preview-item\" href=\"/admin/bids/list\">
                 <div class=\"preview-item-content flex-grow\">
-                  <h6 class=\"preview-subject ellipsis font-weight-normal\">Tim Cook
-                  </h6>
-                  <p class=\"font-weight-light small-text text-muted mb-0\">
-                    New product launch
-                  </p>
+                  <h6 class=\"preview-subject ellipsis font-weight-normal\">Bids Management</h6>
                 </div>
               </a>
-              <a class=\"dropdown-item preview-item\">
-                <div class=\"preview-thumbnail\">
-                    <img src=\"/dashboard-template/images/faces/face3.jpg\" alt=\"image\" class=\"profile-pic\">
-                </div>
+              <a class=\"dropdown-item preview-item\" href=\"/admin/loans/stats\">
                 <div class=\"preview-item-content flex-grow\">
-                  <h6 class=\"preview-subject ellipsis font-weight-normal\"> Johnson
-                  </h6>
-                  <p class=\"font-weight-light small-text text-muted mb-0\">
-                    Upcoming board meeting
-                  </p>
+                  <h6 class=\"preview-subject ellipsis font-weight-normal\">Statistics</h6>
                 </div>
               </a>
             </div>
           </li>
+          ";
+        }
+        // line 106
+        echo "
           <li class=\"nav-item dropdown mr-0\">
             <a class=\"nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center\" id=\"notificationDropdown\" href=\"#\" data-toggle=\"dropdown\">
               <i class=\"typcn typcn-bell mx-0\"></i>
@@ -221,6 +221,16 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
               </a>
             </div>
           </li>
+          <li class=\"nav-item dropdown mr-0\">
+            <a id=\"logout\"
+               title=\"Logout\"
+               data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+               href=\"/logout\"
+               class=\"nav-link count-indicator d-flex align-items-center justify-content-center\"
+            >
+              <i class=\"mdi mdi-logout mx-0\"></i>
+            </a>
+          </li>
         </ul>
         <button class=\"navbar-toggler navbar-toggler-right d-lg-none align-self-center\" type=\"button\" data-toggle=\"offcanvas\">
           <span class=\"typcn typcn-th-menu\"></span>
@@ -244,7 +254,19 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
             <i class=\"mdi mdi-cash-multiple\"></i>
           </a>
         </div>
-      </div>
+        ";
+        // line 188
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+            // line 189
+            echo "        <div class=\"nav-link\">
+          <a href=\"/admin/loans/list\" title=\"Admin Area\" data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\">
+            <i class=\"typcn typcn-cog-outline mx-0\"></i>
+          </a>
+        </div>
+        ";
+        }
+        // line 195
+        echo "      </div>
       <div class=\"navbar-menu-wrapper d-flex align-items-center justify-content-end\">
         <ul class=\"navbar-nav mr-lg-2\">
           <li class=\"nav-item ml-0\">
@@ -444,18 +466,18 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
       ";
-        // line 389
+        // line 394
         $this->displayBlock('navigation', $context, $blocks);
-        // line 390
+        // line 395
         echo "
       <!-- partial -->
       <div class=\"main-panel\">
         <div class=\"content-wrapper\">
           <!-- twig page bodies will be inserted here -->
            ";
-        // line 395
+        // line 400
         $this->displayBlock('body', $context, $blocks);
-        // line 396
+        // line 401
         echo "        </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -594,7 +616,7 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
 
     }
 
-    // line 389
+    // line 394
     public function block_navigation($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -612,7 +634,7 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
 
     }
 
-    // line 395
+    // line 400
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -651,7 +673,7 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  616 => 395,  598 => 389,  579 => 26,  569 => 27,  566 => 26,  556 => 25,  546 => 23,  536 => 22,  517 => 20,  459 => 396,  457 => 395,  450 => 390,  448 => 389,  126 => 70,  82 => 28,  80 => 25,  77 => 24,  75 => 22,  70 => 20,  49 => 1,);
+        return array (  638 => 400,  620 => 394,  601 => 26,  591 => 27,  588 => 26,  578 => 25,  568 => 23,  558 => 22,  539 => 20,  481 => 401,  479 => 400,  472 => 395,  470 => 394,  269 => 195,  261 => 189,  259 => 188,  175 => 106,  144 => 77,  142 => 76,  135 => 72,  113 => 52,  107 => 51,  82 => 28,  80 => 25,  77 => 24,  75 => 22,  70 => 20,  49 => 1,);
     }
 
     public function getSourceContext()
@@ -691,7 +713,7 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
     <nav class=\"navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row\">
       <div class=\"navbar-brand-wrapper d-flex justify-content-center\">
         <div class=\"navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100\">
-          <a class=\"navbar-brand brand-logo\" href=\"index.html\">
+          <a class=\"navbar-brand brand-logo\" href=\"/\">
             <img src=\"/dashboard-template/images/logo-1.svg\" alt=\"logo\"/>
           </a>
           <a class=\"navbar-brand brand-logo-mini\" href=\"index.html\"><img src=\"/dashboard-template/images/logo-mini.svg\" alt=\"logo\"/></a>
@@ -705,7 +727,9 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
           <li class=\"nav-item nav-profile dropdown\">
             <a class=\"nav-link\" href=\"#\" data-toggle=\"dropdown\" id=\"profileDropdown\">
               <img src=\"/dashboard-template/images/faces/face5.jpg\" alt=\"profile\"/>
-              <span class=\"nav-profile-name\">Eugenia Mullins</span>
+              <span class=\"nav-profile-name\">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}{{ app.user.firstName }} {{ app.user.lastName }}{% endif %}
+              </span>
             </a>
             <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown\" aria-labelledby=\"profileDropdown\">
               <a class=\"dropdown-item\">
@@ -729,51 +753,37 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
               <i class=\"typcn typcn-calendar\"></i>
             </a>
           </li>
+          {% if is_granted('ROLE_ADMIN') %}
           <li class=\"nav-item dropdown\">
-            <a class=\"nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center\" id=\"messageDropdown\" href=\"#\" data-toggle=\"dropdown\">
-              <i class=\"typcn typcn-cog-outline mx-0\"></i>
-              <span class=\"count\"></span>
-            </a>
+              <a id=\"messageDropdown\"
+                 title=\"Admin Area\"
+                 data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+                 class=\"nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center\"
+                 data-toggle=\"dropdown\">
+                <i class=\"typcn typcn-cog-outline mx-0\"></i>
+                <span class=\"count\"></span>
+              </a>
             <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown preview-list\" aria-labelledby=\"messageDropdown\">
-              <p class=\"mb-0 font-weight-normal float-left dropdown-header\">Messages</p>
-              <a class=\"dropdown-item preview-item\">
-                <div class=\"preview-thumbnail\">
-                    <img src=\"/dashboard-template/images/faces/face4.jpg\" alt=\"image\" class=\"profile-pic\">
-                </div>
+              <p class=\"mb-0 font-weight-normal float-left dropdown-header\">Admin Area</p>
+              <a class=\"dropdown-item preview-item\" href=\"/admin/loans/list\">
                 <div class=\"preview-item-content flex-grow\">
-                  <h6 class=\"preview-subject ellipsis font-weight-normal\">David Grey
-                  </h6>
-                  <p class=\"font-weight-light small-text text-muted mb-0\">
-                    The meeting is cancelled
-                  </p>
+                  <h6 class=\"preview-subject ellipsis font-weight-normal\">Loans Management</h6>
                 </div>
               </a>
-              <a class=\"dropdown-item preview-item\">
-                <div class=\"preview-thumbnail\">
-                    <img src=\"/dashboard-template/images/faces/face2.jpg\" alt=\"image\" class=\"profile-pic\">
-                </div>
+              <a class=\"dropdown-item preview-item\" href=\"/admin/bids/list\">
                 <div class=\"preview-item-content flex-grow\">
-                  <h6 class=\"preview-subject ellipsis font-weight-normal\">Tim Cook
-                  </h6>
-                  <p class=\"font-weight-light small-text text-muted mb-0\">
-                    New product launch
-                  </p>
+                  <h6 class=\"preview-subject ellipsis font-weight-normal\">Bids Management</h6>
                 </div>
               </a>
-              <a class=\"dropdown-item preview-item\">
-                <div class=\"preview-thumbnail\">
-                    <img src=\"/dashboard-template/images/faces/face3.jpg\" alt=\"image\" class=\"profile-pic\">
-                </div>
+              <a class=\"dropdown-item preview-item\" href=\"/admin/loans/stats\">
                 <div class=\"preview-item-content flex-grow\">
-                  <h6 class=\"preview-subject ellipsis font-weight-normal\"> Johnson
-                  </h6>
-                  <p class=\"font-weight-light small-text text-muted mb-0\">
-                    Upcoming board meeting
-                  </p>
+                  <h6 class=\"preview-subject ellipsis font-weight-normal\">Statistics</h6>
                 </div>
               </a>
             </div>
           </li>
+          {% endif %}
+
           <li class=\"nav-item dropdown mr-0\">
             <a class=\"nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center\" id=\"notificationDropdown\" href=\"#\" data-toggle=\"dropdown\">
               <i class=\"typcn typcn-bell mx-0\"></i>
@@ -822,6 +832,16 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
               </a>
             </div>
           </li>
+          <li class=\"nav-item dropdown mr-0\">
+            <a id=\"logout\"
+               title=\"Logout\"
+               data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\"
+               href=\"/logout\"
+               class=\"nav-link count-indicator d-flex align-items-center justify-content-center\"
+            >
+              <i class=\"mdi mdi-logout mx-0\"></i>
+            </a>
+          </li>
         </ul>
         <button class=\"navbar-toggler navbar-toggler-right d-lg-none align-self-center\" type=\"button\" data-toggle=\"offcanvas\">
           <span class=\"typcn typcn-th-menu\"></span>
@@ -845,6 +865,13 @@ class __TwigTemplate_efa2dd05a6fa769940d3e8c244fb7bc7 extends Template
             <i class=\"mdi mdi-cash-multiple\"></i>
           </a>
         </div>
+        {% if is_granted('ROLE_ADMIN') %}
+        <div class=\"nav-link\">
+          <a href=\"/admin/loans/list\" title=\"Admin Area\" data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" data-html=\"true\">
+            <i class=\"typcn typcn-cog-outline mx-0\"></i>
+          </a>
+        </div>
+        {% endif %}
       </div>
       <div class=\"navbar-menu-wrapper d-flex align-items-center justify-content-end\">
         <ul class=\"navbar-nav mr-lg-2\">

@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\BidRepository;
 use App\Entity\Bid;
 use App\Entity\Loan;
-use App\Form\BidType;
+use App\Form\AdminBidType;
 use App\Entity\BidStatus;
 use App\Entity\LoanStatus;
 use App\Repository\LoanRepository;
@@ -26,13 +26,19 @@ class AdminBidsController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/loans/{id}/bids/edit', name: 'app_admin_bids_edit')]
-    public function new(Request $request, Loan $loan, BidRepository $repo ): Response
+    #[Route('/admin/bids/create', name: 'app_admin_bids_edit')]
+    public function new(Request $request, BidRepository $repo ): Response
     {
         $id = $request->query->get('id');
-        $bid=$repo->find($id);
 
-        $form = $this->createForm(BidType::class, $bid);
+        if (  ctype_digit($id) ) {
+            $bid=$repo->find($id);
+        }
+        else {
+            $bid = new Bid();
+        }
+
+        $form = $this->createForm(AdminBidType::class, $bid);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

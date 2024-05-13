@@ -14,13 +14,15 @@ use App\Entity\BidStatus;
 use App\Entity\LoanStatus;
 use App\Repository\LoanRepository;
 
+use Symfony\Bundle\SecurityBundle\Security;
+
 class BidController extends AbstractController
 {
     #[Route('/bids/mine', name: 'app_my_bids')]
-    public function index(BidRepository $repo): Response
+    public function index(BidRepository $repo, Security $security): Response
     {
-        # TODO inject and use current user
-        $userId = 1;
+        # set current user
+        $userId = $security->getUser()->getId();
         $bids=$repo->findBy(['bidder' => $userId]);;
 
         return $this->render('bids/myBids.html.twig', [
@@ -30,7 +32,7 @@ class BidController extends AbstractController
     }
 
     #[Route('/loans/{id}/bids/create', name: 'app_bids_create')]
-    public function new(Request $request, Loan $loan, BidRepository $repo ): Response
+    public function new(Request $request, Loan $loan, BidRepository $repo, Security $security): Response
     {
         $id = $request->query->get('id');
 
@@ -40,8 +42,9 @@ class BidController extends AbstractController
         else {
             $bid = new Bid();
             $bid->setLoan($loan);
-            # TODO inject and use current user as bidder
-            #$bid->setBidder($currentUser)
+            # set current user
+            $currentUser = $security->getUser();
+            $bid->setBidder($currentUser);
         }
 
         $form = $this->createForm(BidType::class, $bid);
