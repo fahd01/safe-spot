@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Likenews{% endblock %}
+
+{% block body %}
+    <h1>Create new Likenews</h1>
+
+    {{ include('likenews/_form.html.twig') }}
+
+    <a href="{{ path('app_likenews_index') }}">back to list</a>
+{% endblock %}

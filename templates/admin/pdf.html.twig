@@ -1,0 +1,42 @@
+<div style="margin : 30px">
+	<div style="text-align:center">
+		<h2>
+			user PDF</h2>
+	</div>
+
+	<table border="1px">
+		<thead>
+			<tr>
+				<th>email</th>
+                <th>prenom</th>
+                <th>nom</th>
+                <th>tel</th>
+                <th>Adresse</th>
+				<th>QrCode</th>
+
+			</tr>
+		</thead>
+		<tbody>
+            {% for user in user %}
+									<tr>
+										 
+                                        <td>{{ user.email }}</td>
+                                        <td>{{ user.prenom }}</td>
+                                        <td>{{ user.nom }}</td>
+                                        <td>{{ user.numTlph }}</td>
+                                        <td>{{ user.adresse }}</td>
+										
+										<td >
+          </td>
+
+
+									
+									</tr>
+								{% else %}
+									<tr>
+										<td colspan="7">no records found</td>
+									</tr>
+								{% endfor %}
+		</tbody>
+	</table>
+</div>

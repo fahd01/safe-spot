@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New StarRep{% endblock %}
+
+{% block body %}
+    <h1>Create new StarRep</h1>
+
+    {{ include('stra_rep/_form.html.twig') }}
+
+    <a href="{{ path('app_stra_rep_index') }}">back to list</a>
+{% endblock %}

@@ -57,7 +57,7 @@
                 <td> {{ item.term }} mois</td>
                 <td> {{ item.purpose }}</td>
                 <td> {{ include ('loans/_loanStatus.html.twig',{'status':item.status}) }}  </td>
-                <td> {{ item.borrower.firstName }} {{ item.borrower.lastName }}</td>
+                <td> {{ item.borrower.prenom }} {{ item.borrower.nom }}</td>
                 <td> {{ include ('loans/_loanProgress.html.twig',{'progress':item.bidsProgress(),'remainingAmount':item.amount-item.collectedBids(), 'collectedAmount':item.collectedBids() }) }} </td>
                 <td>
                   <a href="/loans/{{ item.id }}/bids/create"
