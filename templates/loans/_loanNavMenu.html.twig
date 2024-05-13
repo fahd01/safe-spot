@@ -25,6 +25,69 @@
                 <span class="menu-title">My Bids</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="typcn typcn-document-text menu-icon"></i>
+              <span class="menu-title">Reclamations</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{path('app_reclamation_index')}}">Reclamations</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{path('app_rec_response_index')}}">Response</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{path('app_actualite_index')}}" aria-expanded="false" aria-controls="ui-basic">
+              <i class="typcn typcn-globe-outline menu-icon"></i>
+              <span class="menu-title">Actualite</span>
+              
+            </a>
+            
+            
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="typcn typcn-document-text menu-icon"></i>
+              <span class="menu-title">Dons</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{path('afficher_dons')}}">Dons</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{path('add_Dons')}}">Add Dons</a></li>
+              </ul>
+            </div>
+          </li>
+         
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="typcn typcn-document-text menu-icon"></i>
+              <span class="menu-title">Investissement</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{path('afficher_inv')}}">Investissement</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{path('add_investissement')}}">Add Investissement</a></li>
+                 <li class="nav-item"> <a class="nav-link" href="{{path('statsabonn')}}">Static Investissement</a></li>
+              </ul>
+            </div>
+          </li>
+
+           <li class="nav-item">
+            <a class="nav-link" href="{{path('account')}}" aria-expanded="false" aria-controls="ui-basic">
+              <i class="typcn typcn-globe-outline menu-icon"></i>
+              <span class="menu-title">Account Edit</span>
+              
+            </a>
+            
+            
+          </li>
+          
         <li class="nav-item
         {% if (app.request.requesturi == '/bids/automations/create') or
               (app.request.requesturi == '/bids/automations/mine') or

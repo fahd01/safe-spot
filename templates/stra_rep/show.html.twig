@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StarRep{% endblock %}
+
+{% block body %}
+    <h1>StarRep</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ star_rep.id }}</td>
+            </tr>
+            <tr>
+                <th>Id_user</th>
+                <td>{{ star_rep.idUser }}</td>
+            </tr>
+            <tr>
+                <th>Nbstar</th>
+                <td>{{ star_rep.nbstar }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_stra_rep_index') }}">back to list</a>
+
+    <a href="{{ path('app_stra_rep_edit', {'id': star_rep.id}) }}">edit</a>
+
+    {{ include('stra_rep/_delete_form.html.twig') }}
+{% endblock %}

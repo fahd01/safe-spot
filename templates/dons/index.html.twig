@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block navigation %}
+{{ include('loans/_loanNavMenu.html.twig')}}
+{% endblock %}
+{% block body  %}
+    <div class="card-body">
+        <h5 class="card-title">Investissements</h5>
+
+        <!-- Default Table -->
+        <table class="table">
+            <thead>
+            <tr>
+
+                <th scope="col">fullname</th>
+                <th scope="col">investissements</th>
+                <th scope="col">Montant</th>
+                <th scope="col">Taux</th>
+                <th scope="col">Etat</th>
+
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr {% for a in Dons %}>
+
+                <td>{{ a.fullname }}</td>
+
+                <td>{{ a.investissements.name }}</td>
+                <td>{{ a.montant }}</td>
+                <td>{{ a.taux }}</td>
+                  {% if a.etat == false %}
+                                        <td><label class="badge badge-danger">{{ a.etat ? 'Yes' : 'No' }}</label></td>
+                                    {% else %}
+                                        <td><label class="badge badge-success">{{ a.etat ? 'Yes' : 'No' }}</label></td>
+                                    {% endif %}
+
+                <td> <a class="btn cur-p btn-success" href="{{ path('update_dons',{'id':a.id}) }}"> update</a> <a class="btn cur-p btn-danger" href="{{ path('delete_dons',{'id':a.id}) }}"> Delete</a> {% if a.etat == false %}<a class="btn cur-p btn-success" href="{{ path('valide_dons',{'id':a.id}) }}"> Valider</a>{% else %} <a class="btn cur-p btn-danger" href="{{ path('disvalide_dons',{'id':a.id}) }}"> DisValider</a>{% endif %}</td>
+
+            </tr {% endfor %} >
+
+            </tbody>
+        </table>
+        <!-- End Default Table Example -->
+    </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StarRep index{% endblock %}
+
+{% block body %}
+    <h1>StarRep index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Id_user</th>
+                <th>Nbstar</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for star_rep in star_reps %}
+            <tr>
+                <td>{{ star_rep.id }}</td>
+                <td>{{ star_rep.idUser }}</td>
+                <td>{{ star_rep.nbstar }}</td>
+                <td>
+                    <a href="{{ path('app_stra_rep_show', {'id': star_rep.id}) }}">show</a>
+                    <a href="{{ path('app_stra_rep_edit', {'id': star_rep.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_stra_rep_new') }}">Create new</a>
+{% endblock %}

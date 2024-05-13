@@ -3,8 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\InvestissementRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Doctrine\DBAL\Types\Types as DBALTypes;
+use Symfony\Component\Validator\Constraints as ValidationAssert;
 
 #[ORM\Entity(repositoryClass: InvestissementRepository::class)]
 class Investissement
@@ -12,54 +18,92 @@ class Investissement
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups("post:read")]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $nom = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $prenom = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $description = null;
-
-    #[ORM\Column]
-    private ?float $montant = null;
-
-    #[ORM\Column]
-    private ?int $taux = null;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $dateDebut = null;
-
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $echeance = null;
+#[Assert\NotNull(message: "Il faut remplir ce champ")]
+#[Assert\GreaterThanOrEqual("today", message: "La date doit être aujourd'hui ou après aujourd'hui")]
+#[Groups("post:read")]
+private ?\DateTimeInterface $date = null;
+
+    #[ORM\Column]
+    #[Assert\NotNull (message: "Il faut remplire ce chemp")]
+    #[Groups("post:read")]
+    private ?float $duree = null;
+
+    #[ORM\Column]
+    #[Assert\NotNull (message: "Il faut remplire ce chemp")]
+    #[Groups("post:read")]
+    private ?int $prixA = null;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotNull (message: "Il faut remplire ce chemp")]
+    #[Groups("post:read")]
+    private ?string $description = null;
+      #[ORM\Column(length: 255)]
+    #[Assert\NotNull (message: "Il faut remplire ce chemp")]
+    #[Groups("post:read")]
+    private ?string $email = null;
+
+    #[ORM\OneToMany(mappedBy: 'investissements', targetEntity: Dons::class, orphanRemoval: true)]
+    #[Groups("post:read")]
+    private Collection $donss;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotNull (message: "Il faut remplire ce chemp")]
+    #[Groups("post:read")]
+    private ?string $Name = null;
+
+    #[ORM\Column(length: 255)]
+    #[Groups("post:read")]
+    private ?string $image = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $color = null;
+
+    public function __construct()
+    {
+        $this->donss = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->nom;
+        return $this->date;
     }
 
-    public function setNom(string $nom): static
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->nom = $nom;
+        $this->date = $date;
 
         return $this;
     }
 
-    public function getPrenom(): ?string
+    public function getDuree(): ?float
     {
-        return $this->prenom;
+        return $this->duree;
     }
 
-    public function setPrenom(string $prenom): static
+    public function setDuree(float $duree): self
     {
-        $this->prenom = $prenom;
+        $this->duree = $duree;
+
+        return $this;
+    }
+
+    public function getPrixA(): ?int
+    {
+        return $this->prixA;
+    }
+
+    public function setPrixA(int $prixA): self
+    {
+        $this->prixA = $prixA;
 
         return $this;
     }
@@ -69,60 +113,87 @@ class Investissement
         return $this->description;
     }
 
-    public function setDescription(string $description): static
+    public function setDescription(string $description): self
     {
         $this->description = $description;
 
         return $this;
     }
 
-    public function getMontant(): ?float
+    public function getEmail(): ?string
     {
-        return $this->montant;
+        return $this->email;
     }
 
-    public function setMontant(float $montant): static
+    public function setEmail(string $email): self
     {
-        $this->montant = $montant;
+        $this->email = $email;
+
+        return $this;
+    }
+    /**
+     * @return Collection<int, Dons>
+     */
+    public function getDonss(): Collection
+    {
+        return $this->donss;
+    }
+
+    public function addDons(Dons $dons): self
+    {
+        if (!$this->donss->contains($dons)) {
+            $this->donss->add($dons);
+            $dons->setInvestissements($this);
+        }
 
         return $this;
     }
 
-    public function getTaux(): ?int
+    public function removeDons(Dons $dons): self
     {
-        return $this->taux;
-    }
-
-    public function setTaux(int $taux): static
-    {
-        $this->taux = $taux;
+        if ($this->donss->removeElement($dons)) {
+            // set the owning side to null (unless already changed)
+            if ($dons->getInvestissements() === $this) {
+                $dons->setInvestissements(null);
+            }
+        }
 
         return $this;
     }
 
-    public function getDateDebut(): ?\DateTimeInterface
+    public function getName(): ?string
     {
-        return $this->dateDebut;
+        return $this->Name;
     }
 
-    public function setDateDebut(\DateTimeInterface $dateDebut): static
+    public function setName(string $Name): self
     {
-        $this->dateDebut = $dateDebut;
+        $this->Name = $Name;
 
         return $this;
     }
 
-    public function getEcheance(): ?\DateTimeInterface
+    public function getImage(): ?string
     {
-        return $this->echeance;
+        return $this->image;
     }
 
-    public function setEcheance(\DateTimeInterface $echeance): static
+    public function setImage(string $image): self
     {
-        $this->echeance = $echeance;
+        $this->image = $image;
 
         return $this;
     }
 
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
+
+        return $this;
+    }
 }
-

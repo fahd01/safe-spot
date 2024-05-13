@@ -6,19 +6,26 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+       {% block stylesheet %}
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="css/aos.css">
-    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
+
+    <link rel="stylesheet" href="{{asset('css/jquery.fancybox.min.css')}}">
+
+    <link rel="stylesheet" href="{{asset('css/bootstrap-datepicker.css')}}">
+
+    <link rel="stylesheet" href="{{asset('fonts/flaticon/font/flaticon.css')}}">
+
+    <link rel="stylesheet" href="{{asset('css/aos.css')}}">
+
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    {% endblock %}
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
   
@@ -80,7 +87,7 @@
         </div>
       </div>
     </header>
-
+{% block body %}
     <div class="site-blocks-cover overlay" style="background-image: url(images/hero_2.jpg);" data-aos="fade" id="home-section">
       <div class="container">
         <div class="row align-items-center justify-content-center">
@@ -527,39 +534,20 @@
         </div>
 
         <div class="row">
+          {% for actualite in actualites %}
           <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="">
             <div class="h-entry">
               <a href="article-1.html">
                 <img src="images/img_1.jpg" alt="Image" class="img-fluid">
               </a>
-              <h2 class="font-size-regular"><a href="./article-1.html">How Our Bank is Revolutionizing Financial Services</a></h2>
-              <div class="meta mb-4">Ham Brook <span class="mx-2">&bullet;</span> Mar 07, 2024<span class="mx-2">&bullet;</span> <a href="#">News</a></div>
-              <p>In an age defined by rapid technological advancements and changing consumer expectations, traditional banking is undergoing a profound transformation. At the forefront ...</p>
-              <p><a href="./article-1.html">Continue Reading...</a></p>
+              <h2 class="font-size-regular"><a href="./article-1.html">{{actualite.title}}</a></h2>
+              <div class="meta mb-4">ADMIN <span class="mx-2">&bullet;</span> {{actualite.dt|date('Y-m-d')}}<span class="mx-2">&bullet;</span> <a href="#">News</a></div>
+              <p>{{actualite.Description}}</p>
+              <p><a href="{{ path('app_actualite_show', {'id': actualite.id}) }}">Continue Reading...</a></p>
             </div> 
           </div>
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="h-entry">
-              <a href="article-2.html">
-                <img src="images/img_4.jpg" alt="Image" class="img-fluid">
-              </a>
-              <h2 class="font-size-regular"><a href="./article-2.html">The Rise of Peer-to-Peer Lending in Distributed Finance</a></h2>
-              <div class="meta mb-4">James Phelps <span class="mx-2">&bullet;</span> Mar 08, 2024<span class="mx-2">&bullet;</span> <a href="#">News</a></div>
-              <p>Peer-to-peer (P2P) lending has emerged as a transformative force in the world of finance, offering individuals unprecedented access to capital and investment opportunities...</p>
-              <p><a href="./article-2.html">Continue Reading...</a></p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="h-entry">
-              <a href="article-3.html">
-                <img src="images/img_3.jpg" alt="Image" class="img-fluid">
-              </a>
-              <h2 class="font-size-regular"><a href="./article-3.html">The Fintech Revolution: Transforming the Future of Finance</a></h2>
-              <div class="meta mb-4">James Phelps <span class="mx-2">&bullet;</span> Mar 09, 2024<span class="mx-2">&bullet;</span> <a href="#">News</a></div>
-              <p>In recent years, the financial technology (fintech) sector has emerged as a dynamic force reshaping the landscape of finance and revolutionizing the way we interact with money...</p>
-              <p><a href="./article-3.html">Continue Reading...</a></p>
-            </div> 
-          </div>
+          
+          {% endfor %}
           
         </div>
       </div>
@@ -602,57 +590,14 @@
 
             
 
-            <form action="#" class="p-5 bg-white">
-              
-              <h2 class="h4 text-black mb-5">Contact Form</h2> 
-
-              <div class="row form-group">
-                <div class="col-md-6 mb-3 mb-md-0">
-                  <label class="text-black" for="fname">First Name</label>
-                  <input type="text" id="fname" class="form-control">
-                </div>
-                <div class="col-md-6">
-                  <label class="text-black" for="lname">Last Name</label>
-                  <input type="text" id="lname" class="form-control">
-                </div>
-              </div>
-
-              <div class="row form-group">
-                
-                <div class="col-md-12">
-                  <label class="text-black" for="email">Email</label> 
-                  <input type="email" id="email" class="form-control">
-                </div>
-              </div>
-
-              <div class="row form-group">
-                
-                <div class="col-md-12">
-                  <label class="text-black" for="subject">Subject</label> 
-                  <input type="subject" id="subject" class="form-control">
-                </div>
-              </div>
-
-              <div class="row form-group">
-                <div class="col-md-12">
-                  <label class="text-black" for="message">Message</label> 
-                  <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Write your notes or questions here..."></textarea>
-                </div>
-              </div>
-
-              <div class="row form-group">
-                <div class="col-md-12">
-                  <input type="submit" value="Send Message" class="btn btn-primary btn-md text-white">
-                </div>
-              </div>
-            </form>
+             {{ include('reclamation/_form.html.twig') }}
           </div>
           
         </div>
       </div>
     </section>
 
-    
+   {% endblock %} 
     <footer class="site-footer">
       <div class="container">
         <div class="row">
@@ -713,19 +658,21 @@
 
   </div> <!-- .site-wrap -->
 
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.countdown.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.fancybox.min.js"></script>
-  <script src="js/jquery.sticky.js"></script>
-  <script src="js/isotope.pkgd.min.js"></script>
 
-  <script src="js/main.js"></script>
+  <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
+  <script src="{{asset('js/jquery-ui.js')}}"></script>
+  <script src="{{asset('js/popper.min.js')}}"></script>
+  <script src="{{asset('js/bootstrap.min.js')}}"></script>
+  <script src="{{asset('js/owl.carousel.min.js')}}"></script>
+  <script src="{{asset('js/jquery.countdown.min.js')}}"></script>
+  <script src="{{asset('js/jquery.easing.1.3.js')}}"></script>
+  <script src="{{asset('js/aos.js')}}"></script>
+  <script src="{{asset('js/jquery.fancybox.min.js')}}"></script>
+  <script src="{{asset('js/jquery.sticky.js')}}"></script>
+  <script src="{{asset('js/isotope.pkgd.min.js')}}"></script>
+
+  
+  <script src="{{asset('js/main.js')}}"></script>
 
   </body>
 </html>

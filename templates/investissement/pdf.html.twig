@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Investissement Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            font-size: 12px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Investissement Report</h1>
+    <table>
+        <thead>
+            <tr>
+               <th scope="col">nom</th>
+                <th scope="col">date</th>
+                <th scope="col">duree</th>
+                <th scope="col">prix</th>
+                <th scope="col">Description</th>
+                 <th scope="col">email</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+           <tr {% for a in Investissement %}>
+
+                <td>{{ a.name }}</td>
+                <td>{{ a.date|date('d-m-Y') }}</td>
+                <td>{{ a.duree }}</td>
+                 <td>{{ a.prixA }}</td>
+                 <td>{{ a.Description }}</td>
+                 <td>{{ a.email }}</td>
+                 
+                 
+
+            </tr {% endfor %} >
+        </tbody>
+    </table>
+</body>
+</html>
